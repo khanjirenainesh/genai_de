@@ -1,0 +1,11 @@
+ROLE,USER_ID,USERNAME,PASSWORD,EMAIL
+Admin,1,admin1,pass1234,admin1@example.com
+Customer,2,customer1,custpass1,customer1@example.com
+Customer,3,customer2,custpass2,customer2@example.com
+Vendor,4,vendor1,vendpass1,vendor1@example.com
+Vendor,5,vendor2,vendpass2,vendor2@example.com
+Admin,6,admin2,pass5678,admin2@example.com
+Customer,7,customer3,custpass3,customer3@example.com
+Customer,8,customer4,custpass4,customer4@example.com
+Vendor,9,vendor3,vendpass3,vendor3@example.com
+Vendor,10,vendor4,vendpass4,vendor4@example.com

@@ -1,0 +1,11 @@
+PRODUCT_NAME,PRODUCT_ID,PRICE,IS_ACTIVE,STOCK_COUNT,RELEASE_DATE,CATEGORY
+Widget A,101,19.99,true,100,2021-01-01,Gadgets
+Widget B,102,29.99,true,150,2021-02-15,Gadgets
+Widget C,103,39.99,false,200,2021-03-01,Gadgets
+Gadget X,104,49.99,true,250,2021-04-10,Accessories
+Gadget Y,105,59.99,false,300,2021-05-20,Accessories
+Gadget Z,106,69.99,true,350,2021-06-30,Accessories
+Device 1,107,79.99,true,400,2021-07-15,Devices
+Device 2,108,89.99,false,450,2021-08-25,Devices
+Device 3,109,99.99,true,500,2021-09-05,Devices
+Appliance A,110,109.99,true,550,2021-10-15,Appliances
