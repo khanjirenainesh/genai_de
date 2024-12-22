@@ -1,0 +1,11 @@
+PAYMENT_METHOD,ORDER_STATUS,TOTAL_AMOUNT,ORDER_ID,USER_ID,ORDER_DATE,SHIPPING_ADDRESS
+Credit Card,Shipped,250.75,601,201,2023-04-10T10:00:00Z,"123 Main St, Springfield, IL"
+PayPal,Processing,150.5,602,202,2023-03-15T11:30:00Z,"456 Elm St, Metropolis, NY"
+Debit Card,Delivered,320.0,603,203,2023-02-25T09:45:00Z,"789 Pine St, Gotham, NJ"
+Bank Transfer,Cancelled,200.0,604,204,2023-01-30T14:20:00Z,"321 Maple St, Riverdale, CA"
+Credit Card,Pending,75.25,605,205,2023-05-05T12:10:00Z,"654 Cedar St, Smallville, TX"
+PayPal,Shipped,125.8,606,206,2023-06-01T13:35:00Z,"987 Birch St, Star City, FL"
+Debit Card,Delivered,180.75,607,207,2023-04-22T10:15:00Z,"123 Willow St, Central City, OH"
+Bank Transfer,Processing,99.99,608,208,2023-03-30T15:00:00Z,"456 Spruce St, Coast City, WA"
+Credit Card,Cancelled,55.0,609,209,2023-02-14T11:50:00Z,"789 Fir St, Metropolis, NY"
+PayPal,Pending,210.4,610,210,2023-01-05T12:30:00Z,"321 Ash St, Gotham, NJ"

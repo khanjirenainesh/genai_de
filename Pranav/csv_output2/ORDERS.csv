@@ -1,0 +1,11 @@
+PAYMENT_METHOD,ORDER_STATUS,TOTAL_AMOUNT,ORDER_ID,USER_ID,ORDER_DATE,SHIPPING_ADDRESS
+Credit Card,Shipped,100.5,3001,1,2023-01-05T10:00:00Z,"123 Elm St, Springfield, USA"
+PayPal,Processing,75.2,3002,2,2023-01-10T11:30:00Z,"456 Oak St, Springfield, USA"
+Credit Card,Delivered,55.75,3003,3,2023-01-15T12:45:00Z,"789 Pine St, Springfield, USA"
+Bank Transfer,Cancelled,120.0,3004,4,2023-01-20T14:00:00Z,"321 Maple St, Springfield, USA"
+Credit Card,Shipped,200.0,3005,5,2023-01-25T15:15:00Z,"654 Cedar St, Springfield, USA"
+PayPal,Processing,89.9,3006,6,2023-02-01T09:30:00Z,"987 Birch St, Springfield, USA"
+Credit Card,Delivered,150.25,3007,7,2023-02-05T10:45:00Z,"246 Fir St, Springfield, USA"
+Bank Transfer,Cancelled,95.5,3008,8,2023-02-10T11:00:00Z,"135 Ash St, Springfield, USA"
+Credit Card,Shipped,110.75,3009,9,2023-02-15T12:30:00Z,"579 Spruce St, Springfield, USA"
+PayPal,Processing,65.4,3010,10,2023-02-20T13:45:00Z,"123 Elm St, Springfield, USA"

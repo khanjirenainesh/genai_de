@@ -1,0 +1,11 @@
+CUSTOMER_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE,ADDRESS,JOIN_DATE
+1,John,Doe,john.doe@example.com,123-456-7890,"123 Elm St, Springfield, USA",2023-01-15T08:30:00Z
+2,Jane,Smith,jane.smith@example.com,987-654-3210,"456 Oak St, Springfield, USA",2023-02-20T09:00:00Z
+3,Alice,Johnson,alice.j@example.com,555-123-4567,"789 Pine St, Springfield, USA",2023-03-10T10:15:00Z
+4,Bob,Brown,bob.brown@example.com,,"321 Maple St, Springfield, USA",
+5,Charlie,Davis,charlie.davis@example.com,444-555-6666,,2023-04-05T11:45:00Z
+6,Diana,,diana@example.com,333-222-1111,"654 Cedar St, Springfield, USA",2023-05-12T12:30:00Z
+7,Edward,Evans,,111-222-3333,"987 Birch St, Springfield, USA",2023-06-14T13:10:00Z
+8,Fiona,Williams,fiona.w@example.com,,"246 Fir St, Springfield, USA",2023-07-20T14:00:00Z
+9,George,Miller,george.m@example.com,222-333-4444,"135 Ash St, Springfield, USA",
+10,Hannah,,hannah@example.com,555-666-7777,"579 Spruce St, Springfield, USA",2023-08-25T15:30:00Z

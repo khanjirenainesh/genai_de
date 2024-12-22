@@ -1,0 +1,11 @@
+PRODUCT_NAME,PRODUCT_ID,PRICE,IS_ACTIVE,STOCK_COUNT,RELEASE_DATE,CATEGORY
+Laptop,100,999.99,True,50,2023-01-01,Electronics
+Smartphone,101,699.99,True,30,2023-01-15,Electronics
+Tablet,102,399.99,False,20,2023-01-20,Electronics
+Headphones,103,199.99,True,10,2023-01-25,Accessories
+Smartwatch,104,299.99,True,60,2023-02-01,Wearables
+Camera,105,499.99,False,40,2023-02-10,Photography
+Printer,106,159.99,True,25,2023-02-15,Office Equipment
+Router,107,89.99,True,35,2023-02-20,Networking
+Monitor,108,249.99,False,45,2023-02-25,Computing
+Keyboard,109,49.99,True,15,2023-03-01,Accessories
