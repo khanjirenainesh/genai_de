@@ -1,3 +1,7 @@
+'''
+this code generates good data and insert into tables
+'''
+
 from snowflake.connector.pandas_tools import write_pandas
 from langchain_openai import AzureChatOpenAI
 from langchain_core.prompts import PromptTemplate
@@ -90,9 +94,9 @@ def get_table_metadata(cursor) -> Dict[str, List[Dict[str, str]]]:
     return tables
 
 def get_synthetic_data_prompt() -> str:
-
-    # Return the prompt template for synthetic data generation.
-
+    """
+    Return the prompt template for synthetic data generation.
+    """
     return """
     You are a data generator tasked with creating synthetic data. Based on the following JSON metadata describing table structure and data types, generate sample data rows for each column. 
     - Adhere to the specified types, constraints, and formats.
@@ -109,9 +113,9 @@ def get_synthetic_data_prompt() -> str:
     """
 
 def generate_synthetic_data(model: AzureChatOpenAI, metadata: Dict) -> Dict:
-    
-    # Generate synthetic data using the AI model.
-    
+    """
+    Generate synthetic data using the AI model.
+    """
     prompt = PromptTemplate(
         input_variables=["metadata"],
         template=get_synthetic_data_prompt()
@@ -130,16 +134,13 @@ def generate_synthetic_data(model: AzureChatOpenAI, metadata: Dict) -> Dict:
         return {}
 
 def save_to_csv(data: Dict[str, List[Dict]], base_dir: str) -> None:
+    """
+    Save generated data to CSV files in the specified output directory.
     
-    # Save generated data to CSV files in the specified output directory.
-    
-    # Args:
-    #     data: Dictionary containing table data
-    #     base_dir: Base project directory path
-    
-    # Construct the output directory path
-    ## modify this path if needed >>>>>>> just create new ones for "csv_output" if needed
-
+    Args:
+        data: Dictionary containing table data
+        base_dir: Base project directory path
+    """
     output_dir = os.path.join(base_dir, "data", "csv_output")
     
     # Create the output directory if it doesn't exist
@@ -159,6 +160,35 @@ def save_to_csv(data: Dict[str, List[Dict]], base_dir: str) -> None:
             writer.writerows(rows)
             
         print(f"Table '{table_name}' saved to {output_csv_file}")
+
+def load_to_snowflake(conn: snowflake.connector.SnowflakeConnection, table_names: List[str], base_dir: str) -> None:
+    """
+    Load CSV files into Snowflake tables.
+    
+    Args:
+        conn: Snowflake connection object
+        table_names: List of table names to load data into
+        base_dir: Base project directory path
+    """
+    output_dir = os.path.join(base_dir, "data", "csv_output")
+    
+    for table_name in table_names:
+        csv_file = os.path.join(output_dir, f"{table_name}.csv")
+        
+        if os.path.exists(csv_file):
+            # Read CSV into DataFrame
+            df = pd.read_csv(csv_file)
+            
+            # Write DataFrame to Snowflake with target schema
+            success, nchunks, nrows, _ = write_pandas(
+                conn=conn,
+                df=df,
+                table_name=table_name
+            )
+            
+            print(f"Loaded {nrows} rows into {table_name}")
+        else:
+            print(f"CSV file for {table_name} not found")
 
 def main():
     # Get environment variables
@@ -192,6 +222,9 @@ def main():
         # Generate and save synthetic data
         synthetic_data = generate_synthetic_data(model, metadata)
         save_to_csv(synthetic_data, project_root)
+        
+        # Load data into Snowflake
+        load_to_snowflake(conn, table_names, project_root)
         
     finally:
         cursor.close()
