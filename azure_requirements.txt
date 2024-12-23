@@ -1,0 +1,8 @@
+azure-functions
+python-tabular
+pyadomd
+msal
+numpy
+pandas
+pymsteams
+azure-storage-blob
