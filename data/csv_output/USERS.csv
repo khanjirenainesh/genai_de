@@ -1,0 +1,11 @@
+ROLE,PASSWORD,EMAIL,USERNAME,USER_ID
+Customer,password123,john.doe@example.com,johndoe,1
+Admin,admin456,admin@example.com,adminuser,2
+Customer,secure789,jane.smith@example.com,janesmith,3
+Customer,mypassword,robert.brown@example.com,robertbrown,4
+Customer,emily2023,emily.davis@example.com,emilydavis,5
+Customer,michael2023,michael.johnson@example.com,michaeljohnson,6
+Customer,laura1234,laura.wilson@example.com,laurawilson,7
+Customer,david5678,david.martinez@example.com,davidmartinez,8
+Customer,sophia91011,sophia.lopez@example.com,sophialopez,9
+Customer,james1213,james.anderson@example.com,jamesanderson,10

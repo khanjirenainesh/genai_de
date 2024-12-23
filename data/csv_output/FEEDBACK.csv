@@ -1,0 +1,11 @@
+USER_ID,PRODUCT_ID,FEEDBACK_DATE,FEEDBACK_ID,RATING,COMMENTS
+1,101,2023-01-20T10:00:00Z,1001,4,Great product!
+2,102,2023-02-25T11:30:00Z,1002,5,Exceeded my expectations.
+3,103,2023-03-10T12:45:00Z,1003,3,Average quality.
+4,104,2023-04-15T14:20:00Z,1004,2,Not satisfied with the product.
+5,105,2023-05-30T16:10:00Z,1005,4,"Very good, will buy again."
+6,106,2023-06-20T17:30:00Z,1006,5,Highly recommend!
+7,107,2023-07-25T18:45:00Z,1007,3,Okay for the price.
+8,108,2023-08-05T08:10:00Z,1008,4,Good purchase.
+9,109,2023-09-12T09:50:00Z,1009,2,Could be better.
+10,110,2023-10-18T10:30:00Z,1010,5,Excellent service and product.

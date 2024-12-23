@@ -1,0 +1,11 @@
+CUSTOMER_ID,FIRST_NAME,LAST_NAME,EMAIL,PHONE,ADDRESS,JOIN_DATE
+1,John,Doe,johndoe@example.com,+1234567890,"123 Elm Street, Springfield",2023-01-15T08:30:00Z
+2,Jane,Smith,janesmith@example.com,+1234567891,"456 Oak Road, Metropolis",2023-02-20T10:45:00Z
+3,Robert,Brown,robertbrown@example.com,+1234567892,"789 Pine Avenue, Gotham",2023-03-05T12:00:00Z
+4,Emily,Davis,emilydavis@example.com,+1234567893,"321 Maple Lane, Star City",2023-04-10T14:15:00Z
+5,Michael,Johnson,michaeljohnson@example.com,+1234567894,"654 Birch Boulevard, Central City",2023-05-25T16:30:00Z
+6,Laura,Wilson,laurawilson@example.com,+1234567895,"987 Cedar Street, Coast City",2023-06-15T18:45:00Z
+7,David,Martinez,davidmartinez@example.com,+1234567896,"123 Ash Lane, Blüdhaven",2023-07-20T20:00:00Z
+8,Sophia,Lopez,sophialopez@example.com,+1234567897,"456 Walnut Avenue, Fawcett City",2023-08-05T09:15:00Z
+9,James,Anderson,jamesanderson@example.com,+1234567898,"789 Cherry Street, National City",2023-09-10T11:30:00Z
+10,Olivia,Garcia,oliviagarcia@example.com,+1234567899,"321 Chestnut Road, Keystone City",2023-10-15T13:45:00Z
