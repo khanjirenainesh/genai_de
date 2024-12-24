@@ -1,0 +1,101 @@
+PAYMENT_METHOD,SHIPPING_ADDRESS,TOTAL_AMOUNT,USER_ID,ORDER_STATUS,ORDER_DATE,ORDER_ID
+Credit Card,"123 Elm St, Springfield, IL",150.75,1001,Shipped,2023-09-15T14:30:00Z,1
+PayPal,"456 Maple Ave, Anytown, CA",89.99,1002,Processing,2023-10-01T09:15:00Z,2
+Credit Card,"789 Oak St, Metropolis, NY",250.0,1003,Delivered,2023-09-20T17:45:00Z,3
+Debit Card,"321 Pine Rd, Gotham, NJ",120.5,1004,Cancelled,2023-08-22T11:30:00Z,4
+Credit Card,"654 Birch Ln, Smallville, KS",75.25,1005,Shipped,2023-07-18T13:00:00Z,5
+PayPal,,49.99,1006,Processing,2023-09-25T10:00:00Z,6
+Credit Card,"987 Cedar St, Hill Valley, CA",199.99,1007,Delivered,2023-09-18T15:30:00Z,7
+Debit Card,"159 Spruce St, Star City, WA",134.75,1008,Returned,2023-08-30T12:45:00Z,8
+Credit Card,"753 Willow Dr, Central City, CO",89.0,1009,Shipped,2023-09-10T09:20:00Z,9
+,"147 Aspen St, Coast City, FL",220.5,1010,Processing,2023-10-02T14:10:00Z,10
+Credit Card,"258 Walnut St, Metro City, TX",310.75,1011,Delivered,2023-09-12T16:50:00Z,11
+PayPal,"369 Chestnut St, Gotham, NJ",99.99,1012,Cancelled,2023-08-15T14:00:00Z,12
+Credit Card,"654 Birch Ln, Smallville, KS",150.0,1013,Shipped,2023-07-20T11:15:00Z,13
+Debit Card,"852 Palm St, Star City, WA",49.5,1014,Processing,2023-09-23T13:40:00Z,14
+Credit Card,"951 Elm St, Springfield, IL",200.99,1015,Delivered,2023-09-05T10:30:00Z,15
+PayPal,,75.75,1016,Returned,2023-08-29T11:10:00Z,16
+Credit Card,"258 Maple Ave, Anytown, CA",89.25,1017,Shipped,2023-09-21T15:20:00Z,17
+Debit Card,"147 Oak St, Metropolis, NY",120.0,1018,Processing,2023-10-03T09:45:00Z,18
+Credit Card,"987 Pine Rd, Gotham, NJ",299.99,1019,Delivered,2023-09-13T16:35:00Z,19
+,"321 Spruce St, Hill Valley, CA",49.99,1020,Cancelled,2023-08-18T12:25:00Z,20
+Credit Card,"753 Cedar St, Smallville, KS",75.0,1021,Shipped,2023-07-25T14:15:00Z,21
+PayPal,"654 Willow Dr, Coast City, FL",220.75,1022,Processing,2023-09-28T16:00:00Z,22
+Credit Card,"159 Aspen St, Metro City, TX",310.5,1023,Delivered,2023-09-17T09:35:00Z,23
+Debit Card,"951 Walnut St, Anytown, CA",99.25,1024,Returned,2023-08-27T15:50:00Z,24
+Credit Card,"258 Chestnut St, Gotham, NJ",150.5,1025,Shipped,2023-07-22T10:05:00Z,25
+PayPal,,49.75,1026,Processing,2023-09-26T13:30:00Z,26
+Credit Card,"654 Birch Ln, Star City, WA",200.25,1027,Delivered,2023-09-08T12:15:00Z,27
+Debit Card,"852 Palm St, Springfield, IL",75.5,1028,Cancelled,2023-08-31T11:00:00Z,28
+Credit Card,"951 Elm St, Metropolis, NY",89.5,1029,Shipped,2023-09-11T09:10:00Z,29
+,"147 Maple Ave, Gotham, NJ",120.75,1030,Processing,2023-10-05T14:55:00Z,30
+Credit Card,"753 Willow Dr, Hill Valley, CA",299.75,1031,Delivered,2023-09-14T16:40:00Z,31
+PayPal,"321 Pine Rd, Smallville, KS",49.5,1032,Returned,2023-08-20T12:00:00Z,32
+Credit Card,"987 Spruce St, Coast City, FL",75.25,1033,Shipped,2023-07-27T14:45:00Z,33
+Debit Card,"147 Cedar St, Metro City, TX",220.5,1034,Processing,2023-09-30T16:20:00Z,34
+Credit Card,"654 Oak St, Anytown, CA",310.25,1035,Delivered,2023-09-19T09:25:00Z,35
+PayPal,,99.75,1036,Cancelled,2023-08-25T15:35:00Z,36
+Credit Card,"258 Birch Ln, Gotham, NJ",150.25,1037,Shipped,2023-07-29T10:50:00Z,37
+Debit Card,"951 Walnut St, Star City, WA",49.99,1038,Processing,2023-09-24T13:05:00Z,38
+Credit Card,"852 Palm St, Springfield, IL",200.5,1039,Delivered,2023-09-06T12:35:00Z,39
+,"321 Elm St, Metropolis, NY",75.99,1040,Returned,2023-08-28T10:40:00Z,40
+Credit Card,"159 Maple Ave, Gotham, NJ",89.75,1041,Shipped,2023-09-22T09:50:00Z,41
+PayPal,"753 Pine Rd, Hill Valley, CA",120.5,1042,Processing,2023-10-04T14:05:00Z,42
+Credit Card,"654 Spruce St, Smallville, KS",299.5,1043,Delivered,2023-09-16T16:10:00Z,43
+Debit Card,"987 Cedar St, Coast City, FL",49.25,1044,Returned,2023-08-22T11:30:00Z,44
+Credit Card,"258 Oak St, Metro City, TX",75.75,1045,Shipped,2023-07-24T14:25:00Z,45
+PayPal,,220.25,1046,Processing,2023-09-29T16:45:00Z,46
+Credit Card,"147 Willow Dr, Anytown, CA",310.99,1047,Delivered,2023-09-09T09:55:00Z,47
+Debit Card,"951 Birch Ln, Gotham, NJ",99.5,1048,Cancelled,2023-08-31T15:15:00Z,48
+Credit Card,"852 Walnut St, Star City, WA",150.75,1049,Shipped,2023-07-21T10:20:00Z,49
+PayPal,"321 Palm St, Springfield, IL",49.75,1050,Processing,2023-09-27T12:20:00Z,50
+Credit Card,"258 Elm St, Metropolis, NY",200.99,1051,Delivered,2023-09-07T11:40:00Z,51
+,"654 Maple Ave, Gotham, NJ",75.5,1052,Returned,2023-08-19T10:55:00Z,52
+Credit Card,"753 Pine Rd, Hill Valley, CA",89.25,1053,Shipped,2023-09-20T09:35:00Z,53
+Debit Card,"147 Spruce St, Smallville, KS",120.99,1054,Processing,2023-10-06T14:30:00Z,54
+Credit Card,"987 Cedar St, Coast City, FL",299.99,1055,Delivered,2023-09-14T16:50:00Z,55
+PayPal,,49.5,1056,Cancelled,2023-08-24T12:10:00Z,56
+Credit Card,"951 Oak St, Metro City, TX",75.75,1057,Shipped,2023-07-26T14:55:00Z,57
+Debit Card,"321 Willow Dr, Anytown, CA",220.5,1058,Processing,2023-09-25T16:15:00Z,58
+Credit Card,"258 Birch Ln, Gotham, NJ",310.75,1059,Delivered,2023-09-18T10:45:00Z,59
+PayPal,"654 Walnut St, Star City, WA",99.99,1060,Returned,2023-08-30T15:25:00Z,60
+Credit Card,"147 Palm St, Springfield, IL",150.5,1061,Shipped,2023-07-19T10:10:00Z,61
+,"852 Elm St, Metropolis, NY",49.75,1062,Processing,2023-09-23T12:40:00Z,62
+Credit Card,"321 Maple Ave, Gotham, NJ",200.25,1063,Delivered,2023-09-03T11:20:00Z,63
+Debit Card,"951 Pine Rd, Hill Valley, CA",75.5,1064,Cancelled,2023-08-21T10:35:00Z,64
+Credit Card,"753 Spruce St, Smallville, KS",89.75,1065,Shipped,2023-09-19T09:00:00Z,65
+PayPal,"654 Cedar St, Coast City, FL",120.25,1066,Processing,2023-10-01T14:45:00Z,66
+Credit Card,"258 Oak St, Metro City, TX",299.5,1067,Delivered,2023-09-15T16:25:00Z,67
+Debit Card,"987 Willow Dr, Anytown, CA",49.99,1068,Returned,2023-08-23T12:55:00Z,68
+Credit Card,"321 Birch Ln, Gotham, NJ",75.25,1069,Shipped,2023-07-23T14:35:00Z,69
+PayPal,"951 Walnut St, Star City, WA",220.99,1070,Processing,2023-09-27T16:05:00Z,70
+Credit Card,"852 Palm St, Springfield, IL",310.25,1071,Delivered,2023-09-11T10:15:00Z,71
+,"654 Elm St, Metropolis, NY",99.75,1072,Cancelled,2023-08-16T15:45:00Z,72
+Credit Card,"147 Maple Ave, Gotham, NJ",150.99,1073,Shipped,2023-07-28T10:30:00Z,73
+Debit Card,"753 Pine Rd, Hill Valley, CA",49.5,1074,Processing,2023-09-22T13:15:00Z,74
+Credit Card,"258 Spruce St, Smallville, KS",200.75,1075,Delivered,2023-09-02T12:50:00Z,75
+PayPal,,75.25,1076,Returned,2023-08-26T11:25:00Z,76
+Credit Card,"987 Cedar St, Coast City, FL",89.99,1077,Shipped,2023-09-17T09:05:00Z,77
+Debit Card,"654 Oak St, Metro City, TX",120.75,1078,Processing,2023-10-02T14:20:00Z,78
+Credit Card,"321 Willow Dr, Anytown, CA",299.25,1079,Delivered,2023-09-12T16:30:00Z,79
+,"852 Birch Ln, Gotham, NJ",49.99,1080,Cancelled,2023-08-17T12:45:00Z,80
+Credit Card,"147 Walnut St, Star City, WA",75.5,1081,Shipped,2023-07-26T14:40:00Z,81
+PayPal,"951 Palm St, Springfield, IL",220.5,1082,Processing,2023-09-29T16:55:00Z,82
+Credit Card,"654 Elm St, Metropolis, NY",310.5,1083,Delivered,2023-09-10T10:05:00Z,83
+Debit Card,"987 Maple Ave, Gotham, NJ",99.75,1084,Returned,2023-08-13T15:55:00Z,84
+Credit Card,"258 Pine Rd, Hill Valley, CA",150.25,1085,Shipped,2023-07-30T10:45:00Z,85
+PayPal,,49.5,1086,Processing,2023-09-28T13:25:00Z,86
+Credit Card,"753 Spruce St, Smallville, KS",200.5,1087,Delivered,2023-09-04T12:05:00Z,87
+Debit Card,"321 Cedar St, Coast City, FL",75.99,1088,Cancelled,2023-08-14T10:15:00Z,88
+Credit Card,"951 Oak St, Metro City, TX",89.75,1089,Shipped,2023-09-21T09:30:00Z,89
+,"654 Willow Dr, Anytown, CA",120.25,1090,Processing,2023-10-03T14:35:00Z,90
+Credit Card,"987 Birch Ln, Gotham, NJ",299.5,1091,Delivered,2023-09-13T16:55:00Z,91
+PayPal,"147 Walnut St, Star City, WA",49.25,1092,Returned,2023-08-15T12:20:00Z,92
+Credit Card,"258 Palm St, Springfield, IL",75.5,1093,Shipped,2023-07-18T14:50:00Z,93
+Debit Card,"321 Elm St, Metropolis, NY",220.75,1094,Processing,2023-09-30T16:30:00Z,94
+Credit Card,"753 Maple Ave, Gotham, NJ",310.25,1095,Delivered,2023-09-09T10:25:00Z,95
+,"654 Pine Rd, Hill Valley, CA",99.5,1096,Cancelled,2023-08-25T15:40:00Z,96
+Credit Card,"987 Spruce St, Smallville, KS",150.99,1097,Shipped,2023-07-20T10:35:00Z,97
+PayPal,"852 Cedar St, Coast City, FL",49.5,1098,Processing,2023-09-26T13:10:00Z,98
+Credit Card,"258 Oak St, Metro City, TX",200.75,1099,Delivered,2023-09-01T12:30:00Z,99
+Debit Card,"321 Willow Dr, Anytown, CA",75.25,1100,Returned,2023-08-29T11:50:00Z,100
