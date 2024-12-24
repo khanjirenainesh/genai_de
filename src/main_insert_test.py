@@ -100,16 +100,15 @@ def get_synthetic_data_prompt() -> str:
     return """
     You are a data generator tasked with creating synthetic data. Based on the following JSON metadata describing table structure and data types, generate sample data rows for each column. 
     - Adhere to the specified types, constraints, and formats.
-    - Provide 10 rows of sample data in JSON array format.
+    - Provide 100 rows of sample data in JSON array format.
     - Ensure the data is realistic and coherent.
 
     Metadata:
     {metadata}
 
     Expected Output:
-    Provide 10 rows of JSON data for each table. Use same format as metadata.
+    Provide 100 rows of JSON data for each table. Use same format as metadata.
     Provide the output in pure json format which I can parse as a json data to various platforms.
-    Generate json serializable data.
     """
 
 def generate_synthetic_data(model: AzureChatOpenAI, metadata: Dict) -> Dict:
@@ -190,6 +189,27 @@ def load_to_snowflake(conn: snowflake.connector.SnowflakeConnection, table_names
         else:
             print(f"CSV file for {table_name} not found")
 
+def generate_synthetic_data_for_table(model: AzureChatOpenAI, table_metadata: Dict) -> Dict:
+    """
+    Generate synthetic data for a single table using the AI model.
+    """
+    prompt = PromptTemplate(
+        input_variables=["metadata"],
+        template=get_synthetic_data_prompt()
+    )
+    
+    formatted_prompt = prompt.format(metadata=json.dumps({"table": table_metadata}, indent=4))
+    response = model.invoke(formatted_prompt)
+    
+    # Clean up the response
+    cleaned_response = response.content.replace("```json", "").replace("```", "").strip()
+    
+    try:
+        return json.loads(cleaned_response)
+    except json.JSONDecodeError as e:
+        print(f"Error parsing JSON: {e}")
+        return {}
+
 def main():
     # Get environment variables
     env_vars = {
@@ -216,15 +236,34 @@ def main():
     try:
         # Get table names and metadata
         table_names = get_table_names(cursor)
-        table_data = fetch_table_data(cursor, table_names)
         metadata = get_table_metadata(cursor)
         
-        # Generate and save synthetic data
-        synthetic_data = generate_synthetic_data(model, metadata)
-        save_to_csv(synthetic_data, project_root)
-        
-        # Load data into Snowflake
-        load_to_snowflake(conn, table_names, project_root)
+        # Process each table iteratively
+        for table_name in table_names:
+            print(f"\nProcessing table: {table_name}")
+            
+            # Generate synthetic data for this table
+            table_metadata = metadata.get(table_name, [])
+            if not table_metadata:
+                print(f"No metadata found for table {table_name}, skipping...")
+                continue
+                
+            print("Generating synthetic data...")
+            synthetic_data = generate_synthetic_data_for_table(model, table_metadata)
+            
+            if not synthetic_data:
+                print(f"No synthetic data generated for {table_name}, skipping...")
+                continue
+            
+            # Save this table's data to CSV
+            print("Saving to CSV...")
+            save_to_csv({table_name: synthetic_data}, project_root)
+            
+            # Load this table's data to Snowflake
+            print("Loading to Snowflake...")
+            load_to_snowflake(conn, [table_name], project_root)
+            
+            print(f"Completed processing table: {table_name}")
         
     finally:
         cursor.close()
