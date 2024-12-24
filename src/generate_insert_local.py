@@ -1,5 +1,6 @@
 '''
-this code generates good data and insert into tables
+this code generates good data and insert into tables one by one local stored file
+
 '''
 
 from snowflake.connector.pandas_tools import write_pandas
@@ -94,20 +95,18 @@ def get_table_metadata(cursor) -> Dict[str, List[Dict[str, str]]]:
     return tables
 
 def get_synthetic_data_prompt() -> str:
-    """
-    Return the prompt template for synthetic data generation.
-    """
+
     return """
     You are a data generator tasked with creating synthetic data. Based on the following JSON metadata describing table structure and data types, generate sample data rows for each column. 
     - Adhere to the specified types, constraints, and formats.
-    - Provide 100 rows of sample data in JSON array format.
+    - Provide 10 rows of sample data in JSON array format.
     - Ensure the data is realistic and coherent.
 
     Metadata:
     {metadata}
 
     Expected Output:
-    Provide 100 rows of JSON data for each table. Use same format as metadata.
+    Provide 10 rows of JSON data for each table. Use same format as metadata.
     Provide the output in pure json format which I can parse as a json data to various platforms.
     """
 
@@ -199,10 +198,13 @@ def generate_synthetic_data_for_table(model: AzureChatOpenAI, table_metadata: Di
     )
     
     formatted_prompt = prompt.format(metadata=json.dumps({"table": table_metadata}, indent=4))
+    print(formatted_prompt)
     response = model.invoke(formatted_prompt)
+    print(response.content)
     
     # Clean up the response
     cleaned_response = response.content.replace("```json", "").replace("```", "").strip()
+    print(cleaned_response)
     
     try:
         return json.loads(cleaned_response)
@@ -244,6 +246,8 @@ def main():
             
             # Generate synthetic data for this table
             table_metadata = metadata.get(table_name, [])
+            print(table_metadata)
+
             if not table_metadata:
                 print(f"No metadata found for table {table_name}, skipping...")
                 continue

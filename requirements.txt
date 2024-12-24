@@ -3,6 +3,8 @@ snowflake-connector-python
 python-dotenv==1.0.1
 openai==1.43.0
 tiktoken==0.7.0
+azure
+azure-storage-file-datalake
 # llamaindex
 llama-cloud==0.0.17
 llama-index==0.11.8
