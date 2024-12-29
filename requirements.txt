@@ -3,8 +3,22 @@ snowflake-connector-python
 python-dotenv==1.0.1
 openai==1.43.0
 tiktoken==0.7.0
-azure
+pytesseract
+streamlit
+pdf2image
+faiss-cpu
+cv2
+PyMuPDF
+fitz
 azure-storage-file-datalake
+azure-functions
+python-tabular
+pyadomd
+msal
+numpy
+pandas
+pymsteams
+azure-storage-blob
 # llamaindex
 llama-cloud==0.0.17
 llama-index==0.11.8
