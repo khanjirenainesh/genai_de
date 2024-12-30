@@ -1,0 +1,11 @@
+PRODUCT_NAME,CATEGORY,STOCK_COUNT,RELEASE_DATE,IS_ACTIVE,PRICE,PRODUCT_ID
+123,Electronics,twenty,2022-13-01,yes,299.99,
+Smartphone,Electronics,-5,2022-02-30,True,three hundred,2
+,Home,10,not a date,true,49.99,3
+Blender,Home,15,2022-05-15,,59.99,3
+Laptop,Electronics,0,2021-11-11,False,-999.99,5
+Headphones,Electronics,30,2022-09-01,True,89.99,6
+Sofa,Furniture,thirty,2023-01-10,False,399.99,7
+Table,Furniture,12,2023-03-14,no,199.99,7
+Chair,Furniture,50,2023/05/01,True,seventy,9
+Monitor,Electronics,25,2022-12-31,true,129.99,10

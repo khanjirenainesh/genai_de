@@ -1,0 +1,11 @@
+CUSTOMER_ID,FIRST_NAME,LAST_NAME,PHONE,ADDRESS,JOIN_DATE,EMAIL
+ABC123,John,Doe,123-456-7890,123 Elm St,2023-01-15T08:00:00Z,johndoe@example.com
+,Jane,Smith,987-654-3210,456 Oak St,2023-02-20T08:00:00Z,janesmith@example.com
+3,Emily,Jones,555*555*5555,789 Pine St,2023-03-12T08:00:00Z,emilyjones@example.com
+4,Michael,Brown,111-222-3333,321 Maple St,2023-13-01T08:00:00Z,michaelbrown@example.com
+5,,,,,,
+3,Chris,Wilson,444-555-6666,654 Birch St,2023-04-01T08:00:00Z,chriswilson@example.com
+7,Laura,Taylor,222-333-4444,987 Cedar St,not a date,laurataylor@example.com
+8,James,Anderson,555-666-7777,213 Spruce St,2023-06-30T08:00:00Z,jamesanderson@ex..ample.com
+9A,Sarah,Martinez,333-444-5555,789 Willow St,2023-07-20T08:00:00Z,sarahmartinez@example.com
+10,David,Lee,666-777-8888,456 Aspen St,2023-08-15T08:00:00Z,

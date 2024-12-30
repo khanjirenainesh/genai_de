@@ -1,0 +1,11 @@
+PASSWORD,EMAIL,ROLE,USERNAME,USER_ID
+,user1@example.com,admin,user1,1
+pass123,user2,user,user2,2
+pass123,user3@example.com,user,,3
+pass123,user4@example.com,user,user4,four
+pass123,user5@example.com,admin,user5,5
+pass123,user6@example.com,user,user6,5
+pass123,user7@example.com,user,user7,7
+pass123,user8@example,user,user8,8
+pass123,user9@example.com,user,user9,9
+pass123,user10@example.com,admin,user10,10
