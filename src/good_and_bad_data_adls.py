@@ -86,8 +86,9 @@ def process_tables():
 
         prompt_template = """
         Generate 50 rows of bad-quality data for the table based on the given metadata. 
-        STRICTLY comply with table constraints and all column data types.
+        STRICTLY comply with table constraints like character length limit and data types because this data will be inserted in respective tables.
         Note: 
+        - DO NOT add any comments using // or descriptions for columns, only give me the JSON data without any comments.
         - This bad data must be VALID in order to insert in respective tables without fail.
         - Don't put null in non-nullable fields and don't exceed character length limit from table metadata.
         - For TIMESTAMP fields, use the format 'YYYY-MM-DD HH:MM:SS' and ensure all timestamps are valid.
@@ -101,8 +102,7 @@ def process_tables():
         Output format: 
         - Provide a JSON array containing serializable data for the table.
         - Generate JSON serializable data.
-        - STRICTLY DO NOT provide any comments using // or descriptions for columns, only give me the JSON data.
-        - Ensure all date and timestamp values are valid and within reasonable ranges.
+        - STRICTLY DO NOT add any comments using // or descriptions for columns, only give me the JSON data without any comments.
 
         Here is the input table Metadata: 
         {metadata}

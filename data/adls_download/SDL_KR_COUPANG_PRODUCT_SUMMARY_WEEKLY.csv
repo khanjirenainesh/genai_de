@@ -1,0 +1,51 @@
+CATEGORY_DEPTH1,CATEGORY_DEPTH2,CATEGORY_DEPTH3,ALL_BRAND,COUPANG_SKU_ID,COUPANG_SKU_NAME,RANKING,JNJ_PRODUCT_FLAG,RUN_ID,FILE_NAME,YEARMO
+Electronics,Mobile,Smartphones,Samsung,123456,Galaxy S21,-1,Yes,1,file_001.csv,202101
+Electronics,Mobile,Smartphones,Samsung,123456,Galaxy S21,2,Yes,1,file_002.csv,202101
+Home,Furniture,Chairs,Ikea,789012,Office Chair,9999999999,No,2,file_003.csv,202102
+Home,Furniture,Tables,Ikea,345678,Dining Table,3,No,2,file_004.csv,202102
+Fashion,Men,Shirts,Uniqlo,901234,Casual Shirt,0,Yes,3,file_005.csv,202103
+Fashion,Women,Dresses,Zara,567890,Summer Dress,1,No,3,file_006.csv,202103
+Beauty,Makeup,Lipstick,MAC,123457,Red Lipstick,9999999999,Yes,4,file_007.csv,202104
+Beauty,Skincare,Moisturizers,Olay,234567,Day Cream,-10,No,4,file_008.csv,202104
+Sports,Outdoor,Camping,Coleman,345678,Tent,3,Yes,5,file_009.csv,202105
+Sports,Fitness,Yoga,Lululemon,456789,Yoga Mat,2,No,5,file_010.csv,202105
+Automotive,Car Accessories,Seat Covers,Autofy,567890,Leather Seat Cover,1,Yes,6,file_011.csv,202106
+Automotive,Motorbike Accessories,Helmets,Steelbird,678901,Racer Helmet,0,No,6,file_012.csv,202106
+Books,Fiction,Novels,Penguin,789012,Mystery Novel,9999999999,Yes,7,file_013.csv,202107
+Books,Non-Fiction,Biographies,HarperCollins,890123,Inspirational Biography,-5,No,7,file_014.csv,202107
+Toys,Action Figures,Collectibles,Hasbro,901234,Superhero Figure,3,Yes,8,file_015.csv,202108
+Toys,Educational,Puzzles,Ravensburger,123456,3D Puzzle,4,No,8,file_016.csv,202108
+Electronics,Laptops,,Dell,234567,Inspiron Laptop,1,Yes,9,file_017.csv,202109
+Electronics,Laptops,Gaming,HP,345678,Pavilion Gaming,-2,No,9,file_018.csv,202109
+Kitchen,Appliances,Blenders,Philips,456789,Hand Blender,9999999999,Yes,10,file_019.csv,202110
+Kitchen,Cookware,Pans,Tefal,567890,Non-stick Pan,6,No,10,file_020.csv,202110
+Fashion,Men,Suits,Armani,678901,Formal Suit,0,Yes,11,file_021.csv,202111
+Fashion,Women,Blouses,H&M,789012,Silk Blouse,-3,No,11,file_022.csv,202111
+Beauty,Haircare,Shampoos,Pantene,890123,Anti-Dandruff Shampoo,2,Yes,12,file_023.csv,202112
+Beauty,Makeup,Foundation,Revlon,901234,Liquid Foundation,9999999999,No,12,file_024.csv,202112
+Sports,Indoor,Table Tennis,Stiga,123456,Ping Pong Paddle,7,Yes,13,file_025.csv,202201
+Sports,Outdoor,Cycling,Giant,234567,Mountain Bike,8,No,13,file_026.csv,202201
+Books,Fiction,Science Fiction,Tor,345678,Space Adventure,-2,Yes,14,file_027.csv,202202
+Books,Non-Fiction,Self-Help,Simon & Schuster,456789,Motivational Guide,9999999999,No,14,file_028.csv,202202
+Toys,Board Games,Strategy,Hasbro,567890,Chess Set,4,Yes,15,file_029.csv,202203
+Toys,Dolls,Barbie,Mattel,678901,Barbie Doll,5,No,15,file_030.csv,202203
+Electronics,Cameras,DSLR,Canon,789012,EOS Rebel,-1,Yes,16,file_031.csv,202204
+Electronics,Cameras,Mirrorless,Sony,890123,Alpha Series,9999999999,No,16,file_032.csv,202204
+Kitchen,Appliances,Ovens,Samsung,901234,Microwave Oven,2,Yes,17,file_033.csv,202205
+Kitchen,Utensils,Spoons,Prestige,234567,Stainless Spoon,-10,No,17,file_034.csv,202205
+Fashion,Kids,Shoes,Nike,345678,Kids Sneakers,9999999999,Yes,18,file_035.csv,202206
+Fashion,Kids,T-Shirts,Adidas,456789,Kids T-Shirt,0,No,18,file_036.csv,202206
+Beauty,Fragrances,Perfumes,Chanel,567890,No. 5,3,Yes,19,file_037.csv,202207
+Beauty,Skincare,Sunscreen,Neutrogena,678901,SPF 50,-5,No,19,file_038.csv,202207
+Sports,Water Sports,Swimming,Speedo,789012,Goggles,9999999999,Yes,20,file_039.csv,202208
+Sports,Winter Sports,Skiing,Rossignol,890123,Ski Boots,6,No,20,file_040.csv,202208
+Books,Children,Picture Books,Disney,901234,Fairy Tales,7,Yes,21,file_041.csv,202209
+Books,Education,Textbooks,Oxford,123456,Mathematics Textbook,-2,No,21,file_042.csv,202209
+Toys,Electronic,RC Cars,Hot Wheels,234567,Remote Control Car,8,Yes,22,file_043.csv,202210
+Toys,Construction,LEGO,LEGO,345678,LEGO Set,9,No,22,file_044.csv,202210
+Electronics,Audio,Headphones,Bose,456789,Noise Cancelling Headphones,9999999999,Yes,23,file_045.csv,202211
+Electronics,Audio,Speakers,JBL,567890,Bluetooth Speaker,10,No,23,file_046.csv,202211
+Kitchen,Storage,Containers,Tupperware,678901,Plastic Container Set,11,Yes,24,file_047.csv,202212
+Kitchen,Tableware,Plates,Corelle,789012,Dinner Plate Set,-10,No,24,file_048.csv,202212
+Fashion,Accessories,Watches,Rolex,890123,Luxury Watch,9999999999,Yes,25,file_049.csv,202301
+Fashion,Accessories,Bags,Louis Vuitton,901234,Designer Bag,0,No,25,file_050.csv,202301

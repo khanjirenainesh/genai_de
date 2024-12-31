@@ -1,0 +1,6 @@
+DIMENSION,RULEGROUPNAME,RULE_TYPE,RULENAME_SOURCEVALUE,RULE_DESCRIPTION,RULE_EXPRESSION,TARGET_VALUE,LOGICAL_OPERATOR,EXECUTION_ORDER
+Product,Discount Rules,-1,Discount 10%,Apply 10% discount,PRICE > 100,90,AND,1
+Product,Discount Rules,1,Discount 20%,Apply 20% discount,PRICE < 50,40,OR,1
+Product,Price Increase,1,Increase 5%,Price increase for demand,DEMAND > 100,105,AND,-5
+Product,Stock Check,1,Check Stock,Ensure stock availability,STOCK < 0,Notify,OR,3
+Product,Expiry Check,1,Check Expiry,Verify product expiry date,EXPIRY_DATE < MANUFACTURE_DATE,Flag,AND,2

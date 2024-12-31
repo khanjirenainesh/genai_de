@@ -1,0 +1,51 @@
+SOS_DATE,MERCHANDISER_NAME,SUPERVISOR_NAME,AREA,CHANNEL,ACCOUNT,STORE_ID,STORE_NAME,CATEGORY,AGENCY,BRAND,SIZE,RUN_ID,FILE_NAME,YEARMO
+2023-01-01,John Doe,Jane Smith,Area 1,Online,Acc1,S001,Store One,Electronics,Agency A,Brand X,Small,-1,file1.csv,202301
+2023-01-02,John Doe,Jane Smith,,Offline,Acc2,S002,Store Two,Groceries,Agency B,Brand Y,Medium,0,file2.csv,202302
+2023-01-03,Jim Beam,John Doe,Area 2,Retail,Acc3,S003,Store Three,Clothing,Agency C,Brand Z,Large,9999999999,,202303
+2023-01-04,Jane Smith,Jim Beam,Area 3,Wholesale,Acc4,S004,Store Four,Toys,Agency D,Brand W,Extra Large,1234567890,file4.csv,202304
+2023-01-05,Alex Johnson,Alex Johnson,Area 4,Online,Acc5,S005,Store Five,Furniture,Agency E,Brand V,XXL,2147483648,file5.csv,202305
+2023-01-06,Sam Wilson,Sam Wilson,Area 5,Retail,Acc6,S006,Store Six,Cosmetics,Agency F,Brand U,One Size,123,file6.csv,202306
+2023-01-07,Tony Stark,Bruce Wayne,Area 6,Wholesale,Acc7,S007,Store Seven,Automotive,Agency G,Brand T,,-999,file7.csv,202307
+2023-01-08,Bruce Wayne,Tony Stark,,Online,Acc8,S008,Store Eight,Books,Agency H,Brand S,Regular,456,file8.csv,999912
+2023-01-09,Clark Kent,Diana Prince,Area 7,Offline,Acc9,S009,Store Nine,Jewelry,Agency I,Brand R,Huge,321,file9.csv,202309
+2023-01-10,Diana Prince,Clark Kent,Area 8,Retail,Acc10,S010,Store Ten,Garden,Agency J,Brand Q,Mini,654,,202310
+2023-01-11,Peter Parker,,Area 9,Wholesale,Acc11,S011,Store Eleven,Pet Supplies,Agency K,Brand P,Petite,-321,file11.csv,202311
+2023-01-12,Bruce Banner,Peter Parker,Area 10,Online,Acc12,S012,Store Twelve,Sports,Agency L,Brand O,Giant,789,file12.csv,202312
+2023-01-13,Natasha Romanoff,Bruce Banner,Area 11,Offline,Acc13,S013,Store Thirteen,Music,Agency M,Brand N,Mega,987,file13.csv,202313
+2023-01-14,Steve Rogers,Natasha Romanoff,Area 12,Retail,Acc14,S014,Store Fourteen,Stationery,Agency N,Brand M,Ultra,654321,,202314
+2023-01-15,,Steve Rogers,Area 13,Wholesale,Acc15,S015,Store Fifteen,Toys,Agency O,Brand L,Jumbo,123456,file15.csv,202315
+2023-01-16,Thor Odinson,Loki Laufeyson,Area 14,Online,Acc16,S016,Store Sixteen,Electronics,Agency P,Brand K,Long,987654,file16.csv,202316
+2023-01-17,Loki Laufeyson,Thor Odinson,Area 15,Offline,Acc17,S017,Store Seventeen,Computers,Agency Q,Brand J,Short,4321,file17.csv,202317
+2023-01-18,Wanda Maximoff,Vision,,Retail,Acc18,S018,Store Eighteen,Books,Agency R,Brand I,Slim,2134,file18.csv,202318
+2023-01-19,Vision,Wanda Maximoff,Area 16,Wholesale,Acc19,S019,Store Nineteen,Clothing,Agency S,Brand H,Wide,-999999,file19.csv,202319
+2023-01-20,Scott Lang,Hope Van Dyne,Area 17,Online,Acc20,S020,Store Twenty,Furniture,Agency T,Brand G,Compact,123,file20.csv,202320
+2023-01-21,Hope Van Dyne,Scott Lang,Area 18,Offline,Acc21,S021,Store Twenty-One,Gardening,Agency U,Brand F,Tall,456,file21.csv,202321
+2023-01-22,,Hope Van Dyne,Area 19,Retail,Acc22,S022,Store Twenty-Two,Jewelry,Agency V,Brand E,Narrow,789,file22.csv,202322
+2023-01-23,Groot,Rocket Raccoon,Area 20,Wholesale,Acc23,S023,Store Twenty-Three,Sports,Agency W,Brand D,Thick,987,file23.csv,202323
+2023-01-24,Rocket Raccoon,Groot,Area 21,Online,Acc24,S024,Store Twenty-Four,Music,Agency X,Brand C,Thin,654,file24.csv,202324
+2023-01-25,Star-Lord,Gamora,Area 22,Offline,Acc25,S025,Store Twenty-Five,Automotive,Agency Y,Brand B,Heavy,321,file25.csv,202325
+2023-01-26,Gamora,Star-Lord,Area 23,Retail,Acc26,S026,Store Twenty-Six,Toys,Agency Z,Brand A,Light,654321,,202326
+2023-01-27,Drax,Nebula,Area 24,Wholesale,Acc27,S027,Store Twenty-Seven,Books,Agency AA,Brand AA,Flat,123456,file27.csv,202327
+2023-01-28,,Drax,Area 25,Online,Acc28,S028,Store Twenty-Eight,Clothing,Agency BB,Brand BB,Curved,987654,file28.csv,202328
+2023-01-29,Nebula,Star-Lord,Area 26,Offline,Acc29,S029,Store Twenty-Nine,Furniture,Agency CC,Brand CC,Bent,4321,file29.csv,202329
+2023-01-30,Thanos,Hela,Area 27,Retail,Acc30,S030,Store Thirty,Gardening,Agency DD,Brand DD,Round,2134,file30.csv,202330
+2023-01-31,Hela,Thanos,,Wholesale,Acc31,S031,Store Thirty-One,Jewelry,Agency EE,Brand EE,Triangular,-999999,file31.csv,202331
+2023-02-01,Odin,Frigga,Area 28,Online,Acc32,S032,Store Thirty-Two,Sports,Agency FF,Brand FF,Cylindrical,123,file32.csv,202332
+2023-02-02,Frigga,Odin,Area 29,Offline,Acc33,S033,Store Thirty-Three,Music,Agency GG,Brand GG,Square,456,file33.csv,202333
+2023-02-03,Heimdall,Loki,Area 30,Retail,Acc34,S034,Store Thirty-Four,Automotive,Agency HH,Brand HH,Rectangular,789,file34.csv,202334
+2023-02-04,Loki,Heimdall,Area 31,Wholesale,Acc35,S035,Store Thirty-Five,Toys,Agency II,Brand II,Oval,987,file35.csv,202335
+2023-02-05,,Loki,Area 32,Online,Acc36,S036,Store Thirty-Six,Books,Agency JJ,Brand JJ,Diamond,654,file36.csv,202336
+2023-02-06,Korg,Miek,Area 33,Offline,Acc37,S037,Store Thirty-Seven,Clothing,Agency KK,Brand KK,Star,321,file37.csv,202337
+2023-02-07,Miek,Korg,Area 34,Retail,Acc38,S038,Store Thirty-Eight,Furniture,Agency LL,Brand LL,Hexagonal,654321,,202338
+2023-02-08,Valkyrie,Thor,Area 35,Wholesale,Acc39,S039,Store Thirty-Nine,Gardening,Agency MM,Brand MM,Pentagonal,123456,file39.csv,202339
+2023-02-09,,Valkyrie,Area 36,Online,Acc40,S040,Store Forty,Jewelry,Agency NN,Brand NN,Octagonal,987654,file40.csv,202340
+2023-02-10,Shuri,T'Challa,Area 37,Offline,Acc41,S041,Store Forty-One,Sports,Agency OO,Brand OO,Nonagonal,4321,file41.csv,202341
+2023-02-11,T'Challa,Shuri,Area 38,Retail,Acc42,S042,Store Forty-Two,Music,Agency PP,Brand PP,Decagonal,2134,file42.csv,202342
+2023-02-12,Okoye,Nakia,,Wholesale,Acc43,S043,Store Forty-Three,Automotive,Agency QQ,Brand QQ,Dodecagonal,-999999,file43.csv,202343
+2023-02-13,Nakia,Okoye,Area 39,Online,Acc44,S044,Store Forty-Four,Toys,Agency RR,Brand RR,Tetragonal,123,file44.csv,202344
+2023-02-14,Killmonger,Mbaku,Area 40,Offline,Acc45,S045,Store Forty-Five,Books,Agency SS,Brand SS,Bipyramidal,456,file45.csv,202345
+2023-02-15,Mbaku,Killmonger,Area 41,Retail,Acc46,S046,Store Forty-Six,Clothing,Agency TT,Brand TT,Rhombic,789,file46.csv,202346
+2023-02-16,Doctor Strange,Wong,Area 42,Wholesale,Acc47,S047,Store Forty-Seven,Furniture,Agency UU,Brand UU,Heptagonal,987,file47.csv,202347
+2023-02-17,Wong,Doctor Strange,Area 43,Online,Acc48,S048,Store Forty-Eight,Gardening,Agency VV,Brand VV,Scalene,654,file48.csv,202348
+2023-02-18,The Ancient One,Kaecilius,,Offline,Acc49,S049,Store Forty-Nine,Jewelry,Agency WW,Brand WW,Cubic,321,file49.csv,202349
+2023-02-19,Kaecilius,The Ancient One,Area 44,Retail,Acc50,S050,Store Fifty,Sports,Agency XX,Brand XX,Spherical,654321,,202350

@@ -1,0 +1,51 @@
+ARTICLE_ID,ARTICLE_DESC,PRODUCT_EAN,SITE_ID,SITE_DESC,VENDOR,VENDOR_DESC,PRODUCT_SAP_ID,COST_PRICE,CROSS_SITE_STATUS,MONTH_13,MONTH_12,MONTH_11,MONTH_10,MONTH_09,MONTH_08,MONTH_07,MONTH_06,MONTH_05,MONTH_04,MONTH_03,MONTH_02,MONTH_01,NULL_COLOUMN,MTH_TOTAL_INVOICED_QTY,SOH_QTY,DC_SOO_QTY,SO_BACKORDER_QTY,FILE_NAME
+001,Negative cost price,1234567890123,100,Main Store,Vendor A,Primary Vendor,SAP001,-10.99,Active,0,0,0,0,0,0,0,0,0,0,0,0,0,,100,50,0,0,report_001.csv
+002,Duplicate ID,1234567890124,101,Secondary Store,Vendor B,Secondary Vendor,SAP002,5.00,Inactive,10,10,10,10,10,10,10,10,10,10,10,10,10,,200,-5,-1,0,report_001.csv
+003,Illogical quantity,1234567890125,102,Warehouse,Vendor C,Tertiary Vendor,SAP003,15.99,Active,5,5,5,5,5,5,5,5,5,5,5,5,5,,0,500,300,-10,report_002.csv
+004,Negative SOH,1234567890126,103,Outlet,Vendor D,Quaternary Vendor,SAP004,12.75,Inactive,0,0,0,0,0,0,0,0,0,0,0,0,0,,-150,0,0,0,report_003.csv
+005,Future year,1234567890127,104,Main Store,Vendor E,Vendor with future year,SAP005,20.00,Active,0,0,0,0,0,0,0,0,0,0,0,0,9999,,250,100,50,25,report_004.csv
+006,Illogical negative,1234567890128,105,Main Store,Vendor F,Vendor with negative values,SAP006,-1.00,Inactive,-10,-20,-30,-40,-50,-60,-70,-80,-90,-100,-110,-120,-130,,-200,-100,-50,-25,report_005.csv
+007,Duplicate ID,1234567890129,106,Secondary Store,Vendor G,Duplicate ID test,SAP007,8.50,Active,5,5,5,5,5,5,5,5,5,5,5,5,5,,300,150,75,30,report_005.csv
+008,Illogical values,1234567890130,107,Warehouse,Vendor H,Vendor with strange values,SAP008,15.50,Inactive,-15,-10,-5,0,5,10,15,20,25,30,35,40,45,,400,200,100,50,report_006.csv
+009,Negative cost,1234567890131,108,Outlet,Vendor I,Vendor with negative cost,SAP009,-9.99,Active,0,0,0,0,0,0,0,0,0,0,0,0,0,,500,250,125,60,report_007.csv
+010,Negative sales,1234567890132,109,Main Store,Vendor J,Vendor with negative sales,SAP010,11.25,Inactive,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,,-600,-300,-150,-70,report_008.csv
+011,High cost,1234567890133,110,Secondary Store,Vendor K,Vendor with high cost,SAP011,9999.99,Active,1000,900,800,700,600,500,400,300,200,100,0,-100,-200,,700,350,175,80,report_009.csv
+012,Negative price,1234567890134,111,Warehouse,Vendor L,Vendor with negative price,SAP012,-5.50,Inactive,300,250,200,150,100,50,0,-50,-100,-150,-200,-250,-300,,800,400,200,90,report_010.csv
+013,Negative backorder,1234567890135,112,Outlet,Vendor M,Vendor with negative backorder,SAP013,17.75,Active,0,0,0,0,0,0,0,0,0,0,0,0,0,,900,450,225,-100,report_011.csv
+014,Negative SOH,1234567890136,113,Main Store,Vendor N,Vendor with negative SOH,SAP014,22.00,Inactive,400,350,300,250,200,150,100,50,0,-50,-100,-150,-200,,1000,-500,-250,-110,report_012.csv
+015,Negative DC SOO,1234567890137,114,Secondary Store,Vendor O,Vendor with negative DC SOO,SAP015,10.00,Active,50,45,40,35,30,25,20,15,10,5,0,-5,-10,,1100,550,-300,-120,report_013.csv
+016,Negative total,1234567890138,115,Warehouse,Vendor P,Vendor with negative total,SAP016,-0.99,Inactive,0,0,0,0,0,0,0,0,0,0,0,0,0,,-1200,-600,-400,-130,report_014.csv
+017,Negative cost price,1234567890139,116,Outlet,Vendor Q,Vendor with negative cost price,SAP017,-20.99,Active,10,20,30,40,50,60,70,80,90,100,110,120,130,,1300,650,325,140,report_015.csv
+018,Negative sales,1234567890140,117,Main Store,Vendor R,Vendor with negative sales,SAP018,5.50,Inactive,-2,-4,-6,-8,-10,-12,-14,-16,-18,-20,-22,-24,-26,,-1400,-700,-350,-150,report_016.csv
+019,Negative backorder,1234567890141,118,Secondary Store,Vendor S,Vendor with negative backorder,SAP019,30.00,Active,0,0,0,0,0,0,0,0,0,0,0,0,0,,1500,750,375,-160,report_017.csv
+020,Negative SOH,1234567890142,119,Warehouse,Vendor T,Vendor with negative SOH,SAP020,12.50,Inactive,5,10,15,20,25,30,35,40,45,50,55,60,65,,1600,-800,-400,-170,report_018.csv
+021,Negative DC SOO,1234567890143,120,Outlet,Vendor U,Vendor with negative DC SOO,SAP021,7.75,Active,10,15,20,25,30,35,40,45,50,55,60,65,70,,1700,850,-450,-180,report_019.csv
+022,Negative total,1234567890144,121,Main Store,Vendor V,Vendor with negative total,SAP022,-15.00,Inactive,0,0,0,0,0,0,0,0,0,0,0,0,0,,-1800,-900,-500,-190,report_020.csv
+023,Negative cost price,1234567890145,122,Secondary Store,Vendor W,Vendor with negative cost price,SAP023,-25.99,Active,15,30,45,60,75,90,105,120,135,150,165,180,195,,1900,950,475,200,report_021.csv
+024,Negative sales,1234567890146,123,Warehouse,Vendor X,Vendor with negative sales,SAP024,3.50,Inactive,-3,-6,-9,-12,-15,-18,-21,-24,-27,-30,-33,-36,-39,,-2000,-1000,-550,-210,report_022.csv
+025,Negative backorder,1234567890147,124,Outlet,Vendor Y,Vendor with negative backorder,SAP025,27.00,Active,0,0,0,0,0,0,0,0,0,0,0,0,0,,2100,1050,525,-220,report_023.csv
+026,Negative SOH,1234567890148,125,Main Store,Vendor Z,Vendor with negative SOH,SAP026,18.50,Inactive,20,30,40,50,60,70,80,90,100,110,120,130,140,,2200,-1100,-600,-230,report_024.csv
+027,Negative DC SOO,1234567890149,126,Secondary Store,Vendor AA,Vendor with negative DC SOO,SAP027,6.00,Active,25,50,75,100,125,150,175,200,225,250,275,300,325,,2300,1150,-650,-240,report_025.csv
+028,Negative total,1234567890150,127,Warehouse,Vendor BB,Vendor with negative total,SAP028,-19.50,Inactive,0,0,0,0,0,0,0,0,0,0,0,0,0,,-2400,-1200,-700,-250,report_026.csv
+029,Negative cost price,1234567890151,128,Outlet,Vendor CC,Vendor with negative cost price,SAP029,-30.99,Active,30,60,90,120,150,180,210,240,270,300,330,360,390,,2500,1250,625,260,report_027.csv
+030,Negative sales,1234567890152,129,Main Store,Vendor DD,Vendor with negative sales,SAP030,2.75,Inactive,-4,-8,-12,-16,-20,-24,-28,-32,-36,-40,-44,-48,-52,,-2600,-1300,-750,-270,report_028.csv
+031,Negative backorder,1234567890153,130,Secondary Store,Vendor EE,Vendor with negative backorder,SAP031,32.00,Active,0,0,0,0,0,0,0,0,0,0,0,0,0,,2700,1350,675,-280,report_029.csv
+032,Negative SOH,1234567890154,131,Warehouse,Vendor FF,Vendor with negative SOH,SAP032,23.50,Inactive,10,20,30,40,50,60,70,80,90,100,110,120,130,,2800,-1400,-800,-290,report_030.csv
+033,Negative DC SOO,1234567890155,132,Outlet,Vendor GG,Vendor with negative DC SOO,SAP033,5.00,Active,15,25,35,45,55,65,75,85,95,105,115,125,135,,2900,1450,-850,-300,report_031.csv
+034,Negative total,1234567890156,133,Main Store,Vendor HH,Vendor with negative total,SAP034,-22.00,Inactive,0,0,0,0,0,0,0,0,0,0,0,0,0,,-3000,-1500,-900,-310,report_032.csv
+035,Negative cost price,1234567890157,134,Secondary Store,Vendor II,Vendor with negative cost price,SAP035,-35.99,Active,35,70,105,140,175,210,245,280,315,350,385,420,455,,3100,1550,775,320,report_033.csv
+036,Negative sales,1234567890158,135,Warehouse,Vendor JJ,Vendor with negative sales,SAP036,1.25,Inactive,-5,-10,-15,-20,-25,-30,-35,-40,-45,-50,-55,-60,-65,,-3200,-1600,-1000,-330,report_034.csv
+037,Negative backorder,1234567890159,136,Outlet,Vendor KK,Vendor with negative backorder,SAP037,33.00,Active,0,0,0,0,0,0,0,0,0,0,0,0,0,,3300,1650,825,-340,report_035.csv
+038,Negative SOH,1234567890160,137,Main Store,Vendor LL,Vendor with negative SOH,SAP038,24.75,Inactive,20,40,60,80,100,120,140,160,180,200,220,240,260,,3400,-1700,-1100,-350,report_036.csv
+039,Negative DC SOO,1234567890161,138,Secondary Store,Vendor MM,Vendor with negative DC SOO,SAP039,4.25,Active,30,60,90,120,150,180,210,240,270,300,330,360,390,,3500,1750,-1150,-360,report_037.csv
+040,Negative total,1234567890162,139,Warehouse,Vendor NN,Vendor with negative total,SAP040,-28.00,Inactive,0,0,0,0,0,0,0,0,0,0,0,0,0,,-3600,-1800,-1200,-370,report_038.csv
+041,Negative cost price,1234567890163,140,Outlet,Vendor OO,Vendor with negative cost price,SAP041,-40.99,Active,40,80,120,160,200,240,280,320,360,400,440,480,520,,3700,1850,925,380,report_039.csv
+042,Negative sales,1234567890164,141,Main Store,Vendor PP,Vendor with negative sales,SAP042,0.50,Inactive,-6,-12,-18,-24,-30,-36,-42,-48,-54,-60,-66,-72,-78,,-3800,-1900,-1300,-390,report_040.csv
+043,Negative backorder,1234567890165,142,Secondary Store,Vendor QQ,Vendor with negative backorder,SAP043,34.00,Active,0,0,0,0,0,0,0,0,0,0,0,0,0,,3900,1950,975,-400,report_041.csv
+044,Negative SOH,1234567890166,143,Warehouse,Vendor RR,Vendor with negative SOH,SAP044,26.25,Inactive,15,30,45,60,75,90,105,120,135,150,165,180,195,,4000,-2000,-1400,-410,report_042.csv
+045,Negative DC SOO,1234567890167,144,Outlet,Vendor SS,Vendor with negative DC SOO,SAP045,3.75,Active,20,40,60,80,100,120,140,160,180,200,220,240,260,,4100,2050,-1450,-420,report_043.csv
+046,Negative total,1234567890168,145,Main Store,Vendor TT,Vendor with negative total,SAP046,-25.00,Inactive,0,0,0,0,0,0,0,0,0,0,0,0,0,,-4200,-2100,-1500,-430,report_044.csv
+047,Negative cost price,1234567890169,146,Secondary Store,Vendor UU,Vendor with negative cost price,SAP047,-45.99,Active,45,90,135,180,225,270,315,360,405,450,495,540,585,,4300,2150,1075,440,report_045.csv
+048,Negative sales,1234567890170,147,Warehouse,Vendor VV,Vendor with negative sales,SAP048,0.01,Inactive,-7,-14,-21,-28,-35,-42,-49,-56,-63,-70,-77,-84,-91,,-4400,-2200,-1600,-450,report_046.csv
+049,Negative backorder,1234567890171,148,Outlet,Vendor WW,Vendor with negative backorder,SAP049,35.00,Active,0,0,0,0,0,0,0,0,0,0,0,0,0,,4500,2250,1125,-460,report_047.csv
+050,Negative SOH,1234567890172,149,Main Store,Vendor XX,Vendor with negative SOH,SAP050,28.75,Inactive,25,50,75,100,125,150,175,200,225,250,275,300,325,,4600,-2300,-1700,-470,report_048.csv

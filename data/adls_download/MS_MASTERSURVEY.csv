@@ -1,0 +1,51 @@
+REGION,FETCHEDDATETIME,FETCHEDSEQUENCE,AZUREFILE,AZUREDATETIME,MASTERSURVEYID,MASTERSURVEYNAME,MASTERSURVEYDESCRIPTION,CDL_DATETIME,CDL_SOURCE_FILE,LOAD_KEY
+North,2023-09-10 14:30:00,-1,file1.txt,2023-09-12 16:00:00,survey001,Annual Survey,Survey for the year,2023-09-01 10:00:00,source1.csv,load001
+South,2023-09-11 15:45:00,-10,file2.txt,2023-09-13 17:15:00,survey001,Monthly Survey,Survey for the month,2023-09-02 11:00:00,source2.csv,load002
+East,2023-09-12 12:00:00,0,file3.txt,2023-09-14 18:30:00,survey002,Quarterly Survey,Survey for the quarter,2023-09-03 12:00:00,source3.csv,load003
+West,2023-09-13 13:15:00,9999999999,file4.txt,2023-09-15 19:45:00,survey003,Biannual Survey,Survey for half-year,2023-09-04 13:00:00,source4.csv,load004
+Central,2023-09-14 14:30:00,1,file5.txt,2023-09-16 20:00:00,survey004,Weekly Survey,Survey for the week,2023-09-05 14:00:00,source5.csv,load005
+,2023-09-15 15:45:00,2,file6.txt,2023-09-17 21:15:00,survey005,Daily Survey,Survey for the day,2023-09-06 15:00:00,source6.csv,load006
+North,2023-09-16 16:00:00,3,file7.txt,2023-09-18 22:30:00,survey006,Test Survey,Survey for testing,2023-09-07 16:00:00,source7.csv,load007
+South,2023-09-17 17:15:00,4,file8.txt,2023-09-19 23:45:00,survey007,End of Year Survey,Survey for end of year,2023-09-08 17:00:00,source8.csv,load008
+East,2023-09-18 18:30:00,5,file9.txt,2023-09-20 23:00:00,survey008,Start of Year Survey,Survey for start of year,2023-09-09 18:00:00,source9.csv,load009
+West,2023-09-19 19:45:00,6,file10.txt,2023-09-21 00:15:00,survey009,Mid-Year Survey,Survey for mid-year,2023-09-10 19:00:00,source10.csv,load010
+Central,2023-09-20 20:00:00,-999,file11.txt,2023-09-22 01:30:00,survey010,Preliminary Survey,Survey for preliminary analysis,2023-09-11 20:00:00,source11.csv,load011
+,2023-09-21 21:15:00,8,file12.txt,2023-09-23 02:45:00,survey011,Final Survey,Survey for final report,2023-09-12 21:00:00,source12.csv,load012
+North,2023-09-22 22:30:00,9,file13.txt,2023-09-24 03:00:00,,Special Survey,Survey for special occasions,2023-09-13 22:00:00,source13.csv,load013
+South,2023-09-23 23:45:00,10,file14.txt,2023-09-25 04:15:00,survey012,,Survey without a name,2023-09-14 23:00:00,source14.csv,load014
+East,2023-09-24 00:00:00,11,file15.txt,2023-09-26 05:30:00,survey013,Incomplete Survey,,2023-09-15 00:00:00,source15.csv,load015
+West,2023-09-25 01:15:00,12,file16.txt,2023-09-27 06:45:00,survey014,Survey with no description, ,2023-09-16 01:00:00,source16.csv,load016
+Central,2023-09-26 02:30:00,13,file17.txt,2023-09-28 07:00:00,survey015,Survey with duplicate ID,Duplicate survey entry,2023-09-17 02:00:00,source17.csv,load017
+,2023-09-27 03:45:00,14,file18.txt,2023-09-29 08:15:00,survey016,Survey with missing region,No region specified,2023-09-18 03:00:00,source18.csv,load018
+North,2023-09-28 04:00:00,15,file19.txt,2023-09-30 09:30:00,survey017,Survey with future date,Dates in the future,2023-09-19 04:00:00,source19.csv,load019
+South,2023-09-29 05:15:00,16,file20.txt,2023-10-01 10:45:00,survey018,Survey with past date,Dates in the past,2023-09-20 05:00:00,source20.csv,load020
+East,2023-09-30 06:30:00,17,file21.txt,2023-10-02 11:00:00,survey019,Survey with invalid ID,ID does not exist,2023-09-21 06:00:00,source21.csv,load021
+West,2023-10-01 07:45:00,18,file22.txt,2023-10-03 12:15:00,survey020,Survey with no key,Missing load key,2023-09-22 07:00:00,source22.csv,load022
+Central,2023-10-02 08:00:00,19,file23.txt,2023-10-04 13:30:00,survey021,Survey with no file,Missing source file,2023-09-23 08:00:00,,load023
+,2023-10-03 09:15:00,20,file24.txt,2023-10-05 14:45:00,survey022,Survey with negative sequence,Negative sequence number,2023-09-24 09:00:00,source24.csv,load024
+North,2023-10-04 10:30:00,-1000,file25.txt,2023-10-06 15:00:00,survey023,Survey with repeat ID,Duplicate survey ID,2023-09-25 10:00:00,source25.csv,load025
+South,2023-10-05 11:45:00,22,file26.txt,2023-10-07 16:15:00,survey024,Survey with missing name,No survey name,2023-09-26 11:00:00,source26.csv,load026
+East,2023-10-06 12:00:00,23,file27.txt,2023-10-08 17:30:00,survey025,Survey with extra long name,Description exceeds character limit,2023-09-27 12:00:00,source27.csv,load027
+West,2023-10-07 13:15:00,24,file28.txt,2023-10-09 18:45:00,survey026,Survey with null ID,ID is null,2023-09-28 13:00:00,source28.csv,
+Central,2023-10-08 14:30:00,25,file29.txt,2023-10-10 19:00:00,survey027,,Empty survey name,2023-09-29 14:00:00,source29.csv,load029
+,2023-10-09 15:45:00,26,file30.txt,2023-10-11 20:15:00,survey028,Survey with null description,,2023-09-30 15:00:00,source30.csv,load030
+North,2023-10-10 16:00:00,27,file31.txt,2023-10-12 21:30:00,survey029,Survey with invalid description,This description is way too long and should be truncated because it is exceeding the character limit,2023-10-01 16:00:00,source31.csv,load031
+South,2023-10-11 17:15:00,28,file32.txt,2023-10-13 22:45:00,survey030,Survey with no datetime,Missing CDL datetime,,source32.csv,load032
+East,2023-10-12 18:30:00,29,file33.txt,2023-10-14 23:00:00,survey031,Survey with invalid sequence,Sequence is not logical,2023-10-02 18:00:00,source33.csv,load033
+West,2023-10-13 19:45:00,30,file34.txt,2023-10-15 00:15:00,survey032,Survey with null file,Azure file is null,2023-10-03 19:00:00,,load034
+Central,2023-10-14 20:00:00,31,file35.txt,2023-10-16 01:30:00,survey033,Survey with no region,Region is missing,2023-10-04 20:00:00,source35.csv,load035
+,2023-10-15 21:15:00,32,file36.txt,2023-10-17 02:45:00,survey034,Survey with duplicate key,Duplicate load key,2023-10-05 21:00:00,source36.csv,load035
+North,2023-10-16 22:30:00,33,file37.txt,2023-10-18 03:00:00,survey035,Survey with missing datetime,Azure datetime is missing,2023-10-06 22:00:00,source37.csv,load037
+South,2023-10-17 23:45:00,34,file38.txt,2023-10-19 04:15:00,survey036,Survey with invalid file,File name is incorrect,2023-10-07 23:00:00,source38.csv,load038
+East,2023-10-18 00:00:00,35,file39.txt,2023-10-20 05:30:00,survey037,Survey with missing description,,2023-10-08 00:00:00,source39.csv,load039
+West,2023-10-19 01:15:00,36,file40.txt,2023-10-21 06:45:00,survey038,Survey with invalid datetime,Datetime is not logical,2023-10-09 01:00:00,source40.csv,load040
+Central,2023-10-20 02:30:00,37,file41.txt,2023-10-22 07:00:00,survey039,Survey with invalid region,Region is not logical,2023-10-10 02:00:00,source41.csv,load041
+,2023-10-21 03:45:00,38,file42.txt,2023-10-23 08:15:00,survey040,Survey with invalid key,Key is not logical,2023-10-11 03:00:00,source42.csv,load042
+North,2023-10-22 04:00:00,39,file43.txt,2023-10-24 09:30:00,survey041,Survey with invalid name,Name is not logical,2023-10-12 04:00:00,source43.csv,load043
+South,2023-10-23 05:15:00,40,file44.txt,2023-10-25 10:45:00,survey042,Survey with invalid description,Description is not logical,2023-10-13 05:00:00,source44.csv,load044
+East,2023-10-24 06:30:00,41,file45.txt,2023-10-26 11:00:00,survey043,Survey with invalid CDL,CDL is not logical,,source45.csv,load045
+West,2023-10-25 07:45:00,42,file46.txt,2023-10-27 12:15:00,survey044,Survey with invalid Azure file,Azure file is not logical,2023-10-14 07:00:00,source46.csv,load046
+Central,2023-10-26 08:00:00,43,file47.txt,2023-10-28 13:30:00,survey045,Survey with invalid Azure datetime,Azure datetime is not logical,2023-10-15 08:00:00,source47.csv,load047
+,2023-10-27 09:15:00,44,file48.txt,2023-10-29 14:45:00,survey046,Survey with missing CDL file,CDL file is missing,2023-10-16 09:00:00,,load048
+North,2023-10-28 10:30:00,45,file49.txt,2023-10-30 15:00:00,survey047,Survey with extra long key,Key is too long,2023-10-17 10:00:00,source49.csv,load049
+South,2023-10-29 11:45:00,46,file50.txt,2023-10-31 16:15:00,survey048,Survey with invalid length,Length exceeds limit,2023-10-18 11:00:00,source50.csv,load050

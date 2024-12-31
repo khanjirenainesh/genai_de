@@ -1,0 +1,51 @@
+HASHKEY,ROUTE_ID,ROUTE_NAME,ROUTE_DESC,IS_ACTIVE,ROUTESALE,SALEUNIT,ROUTE_CODE,DESCRIPTION,LAST_UPDATED_DATE,FILE_UPLOAD_DATE,FILENAME,RUN_ID,CRT_DTTM
+12345,R001,RouteA,This is a test route,yes,1000,500,RC001,Test description,2023-01-01,2023-01-01,file1.txt,RUN10001,2023-01-01 10:00:00
+12345,R002,RouteB,Another test route,no,-2000,300,RC002,Another description,2023-01-02,2023-01-02,file2.txt,RUN10002,2023-01-02 11:00:00
+12346,R003,RouteC,Route with a negative sale,yes,-500,-100,RC003,Negative sale,2023-01-03,2023-01-03,file3.txt,RUN10003,2023-01-03 12:00:00
+12347,R004,RouteD,Route with a future date,no,3000,1000,RC004,Future date,2025-01-01,2025-01-01,file4.txt,RUN10004,2025-01-01 13:00:00
+,R005,RouteE,,yes,0,0,RC005,,2023-01-05,2023-01-05,file5.txt,RUN10005,2023-01-05 14:00:00
+12348,R006,RouteF,Route with duplicate ID,no,1500,750,RC006,Duplicate ID,2023-01-06,2023-01-06,file6.txt,RUN10001,2023-01-06 15:00:00
+12349,R007,RouteG,Route with long name,yes,2500,1250,RC007,Long name,2023-01-07,2023-01-07,file7.txt,RUN10007,2023-01-07 16:00:00
+12350,R008,RouteH,Route with a long description,no,3500,1750,RC008,Long description,2023-01-08,2023-01-08,file8.txt,RUN10008,2023-01-08 17:00:00
+12351,R009,RouteI,Route with illogical sales unit,yes,1000,2000,RC009,Illogical sales,2023-01-09,2023-01-09,file9.txt,RUN10009,2023-01-09 18:00:00
+12352,R010,RouteJ,Route with inconsistent logic,no,2000,1500,RC010,Inconsistent logic,2023-01-10,2023-01-10,file10.txt,RUN10010,2023-01-10 19:00:00
+12353,R011,RouteK,Route with negative sales,yes,-3000,-1500,RC011,Negative sales,2023-01-11,2023-01-11,file11.txt,RUN10011,2023-01-11 20:00:00
+12354,R012,RouteL,Route with missing values,,,,RC012,,2023-01-12,2023-01-12,file12.txt,RUN10012,2023-01-12 21:00:00
+12355,R013,RouteM,Route with logical inconsistency,no,4000,2000,RC013,Logical inconsistency,2023-01-13,2023-01-13,file13.txt,RUN10013,2023-01-13 22:00:00
+12356,R014,RouteN,Route with duplicate hashkey,yes,5000,2500,RC014,Duplicate hashkey,2023-01-14,2023-01-14,file14.txt,RUN10014,2023-01-14 23:00:00
+12356,R015,RouteO,Another route with duplicate hashkey,no,6000,3000,RC015,Duplicate hashkey,2023-01-15,2023-01-15,file15.txt,RUN10015,2023-01-15 00:00:00
+12357,R016,RouteP,Route with empty fields,,,,RC016,,2023-01-16,2023-01-16,file16.txt,RUN10016,2023-01-16 01:00:00
+12358,R017,RouteQ,Route with future run ID,yes,7000,3500,RC017,Future run ID,2023-01-17,2023-01-17,file17.txt,RUN10017,2023-01-17 02:00:00
+12359,R018,RouteR,Route with invalid sales,no,-8000,-4000,RC018,Invalid sales,2023-01-18,2023-01-18,file18.txt,RUN10018,2023-01-18 03:00:00
+12360,R019,RouteS,Route with empty route ID,yes,9000,4500,RC019,Empty route ID,2023-01-19,2023-01-19,file19.txt,,2023-01-19 04:00:00
+12361,R020,RouteT,Route with all fields empty,,,,,,2023-01-20,2023-01-20,file20.txt,RUN10020,2023-01-20 05:00:00
+12362,R021,RouteU,Route with duplicate route code,no,10000,5000,RC021,Duplicate route code,2023-01-21,2023-01-21,file21.txt,RUN10021,2023-01-21 06:00:00
+12363,R022,RouteV,Route with future last updated date,yes,11000,5500,RC022,Future last updated date,2025-01-22,2023-01-22,file22.txt,RUN10022,2023-01-22 07:00:00
+12364,R023,RouteW,Route with negative sales unit,no,12000,-6000,RC023,Negative sales unit,2023-01-23,2023-01-23,file23.txt,RUN10023,2023-01-23 08:00:00
+12365,R024,RouteX,Route with future file upload date,yes,13000,6500,RC024,Future file upload date,2023-01-24,2025-01-24,file24.txt,RUN10024,2023-01-24 09:00:00
+12366,R025,RouteY,Route with all fields correct,no,14000,7000,RC025,All correct,2023-01-25,2023-01-25,file25.txt,RUN10025,2023-01-25 10:00:00
+12367,R026,RouteZ,Route with duplicate filename,yes,15000,7500,RC026,Duplicate filename,2023-01-26,2023-01-26,file25.txt,RUN10026,2023-01-26 11:00:00
+12368,R027,RouteAA,Route with empty route name,no,16000,8000,RC027,,2023-01-27,2023-01-27,file27.txt,RUN10027,2023-01-27 12:00:00
+12369,R028,RouteBB,Route with empty description,yes,17000,8500,RC028,,2023-01-28,2023-01-28,file28.txt,RUN10028,2023-01-28 13:00:00
+12370,R029,RouteCC,Route with empty filename,no,18000,9000,RC029,Empty filename,2023-01-29,2023-01-29,,RUN10029,2023-01-29 14:00:00
+12371,R030,RouteDD,Route with inconsistent sales,yes,20000,9500,RC030,Inconsistent sales,2023-01-30,2023-01-30,file30.txt,RUN10030,2023-01-30 15:00:00
+12372,R031,RouteEE,Route with future creation time,no,21000,10500,RC031,Future creation time,2023-01-31,2023-01-31,file31.txt,RUN10031,2025-01-31 16:00:00
+12373,R032,RouteFF,Route with negative route sale,yes,-22000,11000,RC032,Negative route sale,2023-02-01,2023-02-01,file32.txt,RUN10032,2023-02-01 17:00:00
+12374,R033,RouteGG,Route with empty is_active,,23000,11500,RC033,Empty is_active,2023-02-02,2023-02-02,file33.txt,RUN10033,2023-02-02 18:00:00
+12375,R034,RouteHH,Route with future last updated,no,24000,12000,RC034,Future last updated,2025-02-03,2023-02-03,file34.txt,RUN10034,2023-02-03 19:00:00
+12376,R035,RouteII,Route with duplicate route name,yes,25000,12500,RC035,Duplicate route name,2023-02-04,2023-02-04,file35.txt,RUN10035,2023-02-04 20:00:00
+12377,R036,RouteJJ,Route with empty route description,no,26000,13000,RC036,,2023-02-05,2023-02-05,file36.txt,RUN10036,2023-02-05 21:00:00
+12378,R037,RouteKK,Route with logical error,yes,27000,13500,RC037,Logical error,2023-02-06,2023-02-06,file37.txt,RUN10037,2023-02-06 22:00:00
+12379,R038,RouteLL,Route with empty route code,no,28000,14000,,Empty route code,2023-02-07,2023-02-07,file38.txt,RUN10038,2023-02-07 23:00:00
+12380,R039,RouteMM,Route with negative route ID,yes,29000,14500,RC039,Negative route ID,2023-02-08,2023-02-08,file39.txt,RUN10039,2023-02-08 00:00:00
+12381,R040,RouteNN,Route with all fields missing,,,,,,2023-02-09,2023-02-09,,,2023-02-09 01:00:00
+12382,R041,RouteOO,Route with duplicate route sale,no,30000,15000,RC041,Duplicate route sale,2023-02-10,2023-02-10,file41.txt,RUN10041,2023-02-10 02:00:00
+12383,R042,RoutePP,Route with missing is_active,,31000,15500,RC042,Missing is_active,2023-02-11,2023-02-11,file42.txt,RUN10042,2023-02-11 03:00:00
+12384,R043,RouteQQ,Route with empty sale unit,yes,32000,,RC043,Empty sale unit,2023-02-12,2023-02-12,file43.txt,RUN10043,2023-02-12 04:00:00
+12385,R044,RouteRR,Route with inconsistent data,no,33000,16500,RC044,Inconsistent data,2023-02-13,2023-02-13,file44.txt,RUN10044,2023-02-13 05:00:00
+12386,R045,RouteSS,Route with future run ID,yes,34000,17000,RC045,Future run ID,2023-02-14,2023-02-14,file45.txt,RUN10045,2023-02-14 06:00:00
+12387,R046,RouteTT,Route with duplicate filename,no,35000,17500,RC046,Duplicate filename,2023-02-15,2023-02-15,file45.txt,RUN10046,2023-02-15 07:00:00
+12388,R047,RouteUU,Route with empty run ID,yes,36000,18000,RC047,Empty run ID,2023-02-16,2023-02-16,file47.txt,,2023-02-16 08:00:00
+12389,R048,RouteVV,Route with duplicate route code,no,37000,18500,RC047,Duplicate route code,2023-02-17,2023-02-17,file48.txt,RUN10048,2023-02-17 09:00:00
+12390,R049,RouteWW,Route with empty last updated date,yes,38000,19000,RC049,Empty last updated date,,2023-02-18,file49.txt,RUN10049,2023-02-18 10:00:00
+12391,R050,RouteXX,Route with empty filename,no,39000,19500,RC050,Empty filename,2023-02-19,2023-02-19,,RUN10050,2023-02-19 11:00:00

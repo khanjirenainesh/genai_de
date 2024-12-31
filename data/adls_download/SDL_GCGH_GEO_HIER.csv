@@ -1,0 +1,52 @@
+REGION,CLUSTER,SUBCLUSTER,MARKET,COUNTRY_CODE_ISO2,COUNTRY_CODE_ISO3,MARKET_TYPE,CDL_DATETIME,CDL_SOURCE_FILE,LOAD_KEY
+North,Alpha,A1,USA,US,USA,Retail,2023-01-01 12:00:00,source1,key1
+North,Alpha,A1,USA,US,USA,Retail,2023-01-01 12:00:00,source1,key1
+South,Beta,,Canada,,CAN,Wholesale,2023-01-02 13:00:00,source2,key2
+,Gamma,G1,Mexico,MX,,Retail,2023-01-03 14:00:00,source3,key3
+East,,E1,Brazil,BR,BRA,,2023-01-04 15:00:00,source4,key4
+West,Delta,D1,,DE,DEU,Retail,2023-01-05 16:00:00,source5,key5
+Central,Epsilon,E2,Argentina,AR,ARG,Wholesale,2023-01-06 17:00:00,source6,key6
+North,Zeta,Z1,Chile,CL,CHL,Retail,2023-01-07 18:00:00,source7,key7
+South,Eta,E1,Peru,PE,PER,Wholesale,2023-01-08 19:00:00,source8,key8
+East,Theta,T1,Colombia,CO,COL,Retail,2023-01-09 20:00:00,source9,key9
+West,Iota,I1,Venezuela,VE,VEN,Wholesale,2023-01-10 21:00:00,source10,key10
+Central,Kappa,K1,Uruguay,UY,URY,Retail,2023-01-11 22:00:00,source11,key11
+North,Lambda,L1,Paraguay,PY,PRY,Wholesale,2023-01-12 23:00:00,source12,key12
+South,Mu,M1,Bolivia,BO,BOL,Retail,2023-01-13 00:00:00,source13,key13
+East,Nu,N1,Ecuador,EC,ECU,Wholesale,2023-01-14 01:00:00,source14,key14
+West,Xi,X1,Guyana,GY,GUY,Retail,2023-01-15 02:00:00,source15,key15
+Central,Omicron,O1,Suriname,SR,SUR,Wholesale,2023-01-16 03:00:00,source16,key16
+North,Pi,P1,French Guiana,GF,GUF,Retail,2023-01-17 04:00:00,source17,key17
+South,Rho,R1,Falkland Islands,FK,FLK,Wholesale,2023-01-18 05:00:00,source18,key18
+East,Sigma,S1,Greenland,GL,GRL,Retail,2023-01-19 06:00:00,source19,key19
+West,Tau,T1,Bermuda,BM,BMU,Wholesale,2023-01-20 07:00:00,source20,key20
+Central,Upsilon,U1,St. Pierre and Miquelon,PM,SPM,Retail,2023-01-21 08:00:00,source21,key21
+North,Phi,P1,Alaska,AK,AL,Wholesale,2023-01-22 09:00:00,source22,key22
+South,Chi,C1,Hawaii,HI,HAW,Retail,2023-01-23 10:00:00,source23,key23
+East,Psi,P1,Puerto Rico,PR,PRI,Wholesale,2023-01-24 11:00:00,source24,key24
+West,Omega,O1,Guam,GU,GUM,Retail,2023-01-25 12:00:00,source25,key25
+Central,Alpha,A2,American Samoa,AS,ASM,Wholesale,2023-01-26 13:00:00,source26,key26
+North,Beta,B2,Northern Mariana Islands,MP,MNP,Retail,2023-01-27 14:00:00,source27,key27
+South,Gamma,G2,U.S. Virgin Islands,VI,VIR,Wholesale,2023-01-28 15:00:00,source28,key28
+East,Delta,D2,Antarctica,AQ,ATA,Retail,2023-01-29 16:00:00,source29,key29
+West,Epsilon,E2,Newfoundland,NF,NFL,Wholesale,2023-01-30 17:00:00,source30,key30
+Central,Zeta,Z2,Labrador,LB,LAB,Retail,2023-01-31 18:00:00,source31,key31
+North,Eta,E2,Greenland,GL,GRL,Wholesale,2023-02-01 19:00:00,source32,key32
+South,Theta,T2,Iceland,IS,ISL,Retail,2023-02-02 20:00:00,source33,key33
+East,Iota,I2,Norway,NO,NOR,Wholesale,2023-02-03 21:00:00,source34,key34
+West,Kappa,K2,Sweden,SE,SWE,Retail,2023-02-04 22:00:00,source35,key35
+Central,Lambda,L2,Finland,FI,FIN,Wholesale,2023-02-05 23:00:00,source36,key36
+North,Mu,M2,Denmark,DK,DNK,Retail,2023-02-06 00:00:00,source37,key37
+South,Nu,N2,Netherlands,NL,NLD,Wholesale,2023-02-07 01:00:00,source38,key38
+East,Xi,X2,Belgium,BE,BEL,Retail,2023-02-08 02:00:00,source39,key39
+West,Omicron,O2,Luxembourg,LU,LUX,Wholesale,2023-02-09 03:00:00,source40,key40
+Central,Pi,P2,France,FR,FRA,Retail,2023-02-10 04:00:00,source41,key41
+North,Rho,R2,Germany,DE,DEU,Wholesale,2023-02-11 05:00:00,source42,key42
+South,Sigma,S2,Switzerland,CH,CHE,Retail,2023-02-12 06:00:00,source43,key43
+East,Tau,T2,Austria,AT,AUT,Wholesale,2023-02-13 07:00:00,source44,key44
+West,Upsilon,U2,Liechtenstein,LI,LIE,Retail,2023-02-14 08:00:00,source45,key45
+Central,Phi,P2,Monaco,MC,MCO,Wholesale,2023-02-15 09:00:00,source46,key46
+North,Chi,C2,San Marino,SM,SMR,Retail,2023-02-16 10:00:00,source47,key47
+South,Psi,P2,Vatican City,VA,VAT,Wholesale,2023-02-17 11:00:00,source48,key48
+East,Omega,O2,Andorra,AD,AND,Retail,2023-02-18 12:00:00,source49,key49
+West,Alpha,A3,Gibraltar,GI,GIB,Wholesale,2023-02-19 13:00:00,source50,key50

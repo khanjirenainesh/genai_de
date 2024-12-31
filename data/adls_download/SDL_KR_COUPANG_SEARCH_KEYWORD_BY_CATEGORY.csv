@@ -1,0 +1,51 @@
+BY_SEARCH_KEYWORD,BY_PRODUCT_RANKING,CATEGORY_DEPTH1,CATEGORY_DEPTH2,CATEGORY_DEPTH3,RANKING,SEARCH_KEYWORD,PRODUCT_RANKING,PRODUCT_NAME,JNJ_PRODUCT_FLAG,RUN_ID,FILE_NAME,YEARMO,DATA_GRANULARITY
+phone,1,Electronics,Mobile,Smartphones,-5,galaxy,1,Galaxy S20,Y,-123,data1.json,202113,Monthly
+phone,2,Electronics,Mobile,Smartphones,-5,galaxy,2,Galaxy S21,Y,-123,data2.json,202113,Monthly
+laptop,3,Electronics,Computers,Laptops,-1,macbook,1,MacBook Pro,N,456,data3.json,202199,Monthly
+laptop,4,Electronics,Computers,Laptops,-1,macbook,2,MacBook Air,N,456,data4.json,202199,Monthly
+headphones,5,Electronics,Audio,Headphones,3,bose,1,Bose QC35,Y,789,data5.json,202013,Monthly
+headphones,6,Electronics,Audio,Headphones,3,bose,2,Bose QC45,Y,789,data6.json,202013,Monthly
+television,7,Electronics,TV & Video,Televisions,5,samsung,1,Samsung QLED,N,-101,data7.json,202000,Weekly
+television,8,Electronics,TV & Video,Televisions,5,samsung,2,Samsung LED,N,-101,data8.json,202000,Weekly
+camera,9,Electronics,Cameras,Digital Cameras,10,canon,-1,Canon EOS R,Y,321,data9.json,202001,Weekly
+camera,10,Electronics,Cameras,Digital Cameras,10,canon,-1,Canon EOS M,Y,321,data10.json,202001,Weekly
+tablet,11,Electronics,Tablets,iPads,7,ipad,1,iPad Pro,N,654,data11.json,202200,Weekly
+tablet,12,Electronics,Tablets,iPads,7,ipad,2,iPad Air,N,654,data12.json,202200,Weekly
+watch,13,Electronics,Wearables,Smartwatches,8,apple watch,1,Apple Watch Series 6,Y,987,data13.json,202399,Weekly
+watch,14,Electronics,Wearables,Smartwatches,8,apple watch,2,Apple Watch SE,Y,987,data14.json,202399,Weekly
+game,15,Electronics,Gaming,Consoles,2,playstation,1,PlayStation 5,N,-202,data15.json,202500,Daily
+game,16,Electronics,Gaming,Consoles,2,playstation,2,PlayStation 4,N,-202,data16.json,202500,Daily
+router,17,Electronics,Networking,Routers,12,netgear,1,Netgear Nighthawk,Y,135,data17.json,202011,Daily
+router,18,Electronics,Networking,Routers,12,netgear,2,Netgear Orbi,Y,135,data18.json,202011,Daily
+printer,19,Electronics,Office,Printers,11,hp printer,-3,HP LaserJet,N,246,data19.json,202111,Daily
+printer,20,Electronics,Office,Printers,11,hp printer,-3,HP DeskJet,N,246,data20.json,202111,Daily
+drone,21,Electronics,Drones,Quadcopters,15,dji,1,DJI Mavic Air,Y,357,data21.json,202301,Daily
+drone,22,Electronics,Drones,Quadcopters,15,dji,2,DJI Phantom,Y,357,data22.json,202301,Daily
+monitor,23,Electronics,Computers,Monitors,20,lg monitor,-4,LG UltraWide,N,468,data23.json,202009,Daily
+monitor,24,Electronics,Computers,Monitors,20,lg monitor,-4,LG 4K Monitor,N,468,data24.json,202009,Daily
+projector,25,Electronics,TV & Video,Projectors,14,epson projector,1,Epson Home Cinema,Y,-303,data25.json,202112,Monthly
+projector,26,Electronics,TV & Video,Projectors,14,epson projector,2,Epson 4K,Y,-303,data26.json,202112,Monthly
+vacuum,27,Home Appliances,Cleaning Appliances,Vacuums,13,dyson vacuum,-2,Dyson V11,N,579,data27.json,202203,Monthly
+vacuum,28,Home Appliances,Cleaning Appliances,Vacuums,13,dyson vacuum,-2,Dyson V10,N,579,data28.json,202203,Monthly
+microwave,29,Home Appliances,Kitchen Appliances,Microwaves,9,panasonic microwave,1,Panasonic Inverter,Y,680,data29.json,202005,Monthly
+microwave,30,Home Appliances,Kitchen Appliances,Microwaves,9,panasonic microwave,2,Panasonic Compact,Y,680,data30.json,202005,Monthly
+fridge,31,Home Appliances,Kitchen Appliances,Refrigerators,6,lg fridge,1,LG InstaView,N,-404,data31.json,202222,Monthly
+fridge,32,Home Appliances,Kitchen Appliances,Refrigerators,6,lg fridge,2,LG French Door,N,-404,data32.json,202222,Monthly
+oven,33,Home Appliances,Cooking Appliances,Ovens,18,samsung oven,1,Samsung Flex Duo,Y,791,data33.json,202214,Monthly
+oven,34,Home Appliances,Cooking Appliances,Ovens,18,samsung oven,2,Samsung Smart Oven,Y,791,data34.json,202214,Monthly
+washer,35,Home Appliances,Laundry Appliances,Washers,17,bosch washer,-5,Bosch Front Load,N,902,data35.json,202302,Monthly
+washer,36,Home Appliances,Laundry Appliances,Washers,17,bosch washer,-5,Bosch Top Load,N,902,data36.json,202302,Monthly
+dryer,37,Home Appliances,Laundry Appliances,Dryers,16,samsung dryer,1,Samsung Heat Pump,Y,-505,data37.json,202413,Monthly
+dryer,38,Home Appliances,Laundry Appliances,Dryers,16,samsung dryer,2,Samsung Electric Dryer,Y,-505,data38.json,202413,Monthly
+coffee maker,39,Home Appliances,Kitchen Appliances,Coffee Makers,19,keurig,-4,Keurig K-Elite,N,103,data39.json,202106,Monthly
+coffee maker,40,Home Appliances,Kitchen Appliances,Coffee Makers,19,keurig,-4,Keurig K-Mini,N,103,data40.json,202106,Monthly
+air conditioner,41,Home Appliances,Climate Control,Air Conditioners,4,whirlpool ac,1,Whirlpool Split AC,Y,204,data41.json,202305,Monthly
+air conditioner,42,Home Appliances,Climate Control,Air Conditioners,4,whirlpool ac,2,Whirlpool Window AC,Y,204,data42.json,202305,Monthly
+heater,43,Home Appliances,Climate Control,Heaters,21,dyson heater,-6,Dyson Hot + Cool,N,305,data43.json,202208,Monthly
+heater,44,Home Appliances,Climate Control,Heaters,21,dyson heater,-6,Dyson Pure Hot+Cool,N,305,data44.json,202208,Monthly
+fan,45,Home Appliances,Climate Control,Fans,22,honeywell fan,1,Honeywell TurboForce,Y,-606,data45.json,202407,Monthly
+fan,46,Home Appliances,Climate Control,Fans,22,honeywell fan,2,Honeywell QuietSet,Y,-606,data46.json,202407,Monthly
+blender,47,Home Appliances,Kitchen Appliances,Blenders,23,vitamix,1,Vitamix 5200,N,707,data47.json,202004,Monthly
+blender,48,Home Appliances,Kitchen Appliances,Blenders,23,vitamix,2,Vitamix A3500,N,707,data48.json,202004,Monthly
+toaster,49,Home Appliances,Kitchen Appliances,Toasters,24,breville toaster,-5,Breville Smart Toaster,Y,808,data49.json,202107,Monthly
+toaster,50,Home Appliances,Kitchen Appliances,Toasters,24,breville toaster,-5,Breville Die-Cast Toaster,Y,808,data50.json,202107,Monthly

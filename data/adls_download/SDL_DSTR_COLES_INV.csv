@@ -1,0 +1,51 @@
+VENDOR,VENDOR_NAME,DC_STATE_SHRT_DESC,DC_STATE_DESC,DC,DC_DESC,CATEGORY,CATEGORY_DESC,ORDER_ITEM,ORDER_ITEM_DESC,EAN,INV_DATE,CLOSING_SOH_NIC,CLOSING_SOH_QTY_CTNS,CLOSING_SOH_QTY_OCTNS,CLOSING_SOH_QTY_UNIT,DC_DAYS_ON_HAND,FILE_NAME
+12345678901234567890123456789012345678901234567890,Vendor A,CA,California,DC01,Distribution Center One,Electronics,Consumer Electronics,1001,Smartphone,ABC123,2023-01-01,-10,5,5,10,30,file1.csv
+12345678901234567890123456789012345678901234567890,Vendor A,TX,Texas,DC02,Distribution Center Two,Clothing,Men's Apparel,1002,T-Shirt,DEF456,2023-01-02,15,-1,8,20,15,file2.csv
+124,Vendor B,NY,New York,DC03,Distribution Center Three,Furniture,Living Room Furniture,1003,Sofa,GHI789,2023-01-03,5,2,-5,3,-10,file3.csv
+125,Vendor C,FL,Florida,DC04,Distribution Center Four,Toys,Children's Toys,1004,Action Figure,JKL012,2023-01-04,8,0,0,-2,0,file4.csv
+126,Vendor D,IL,Illinois,DC05,Distribution Center Five,Books,Fiction Books,1005,Novel,MNO345,2023-01-05,0,0,0,0,9999,file5.csv
+127,Vendor E,WA,Washington,DC06,Distribution Center Six,Food,Snacks,1006,Chips,PQR678,2023-01-06,-20,-10,-5,-1,-50,file6.csv
+128,Vendor F,NV,Nevada,DC07,Distribution Center Seven,Sports,Outdoor Sports Equipment,1007,Tent,STU901,2023-01-07,50,5,10,15,5,file7.csv
+129,Vendor G,OR,Oregon,DC08,Distribution Center Eight,Garden,Garden Tools,1008,Lawn Mower,VWX234,2023-01-08,5,5,5,5,0,file8.csv
+130,Vendor H,AZ,Arizona,DC09,Distribution Center Nine,Automotive,Car Accessories,1009,Car Charger,YZA567,2023-01-09,10,10,10,10,10,file9.csv
+131,Vendor I,CO,Colorado,DC10,Distribution Center Ten,Office,Office Supplies,1010,Desk,BCD890,2023-01-10,20,20,20,20,20,file10.csv
+132,Vendor J,MI,Michigan,DC11,Distribution Center Eleven,Health,Health and Wellness,1011,Vitamins,EFG123,2023-01-11,30,30,30,30,30,file11.csv
+133,Vendor K,NC,North Carolina,DC12,Distribution Center Twelve,Beauty,Cosmetics,1012,Lipstick,HIJ456,2023-01-12,40,40,40,40,40,file12.csv
+134,Vendor L,GA,Georgia,DC13,Distribution Center Thirteen,Pets,Pet Supplies,1013,Dog Food,KLM789,2023-01-13,50,50,50,50,50,file13.csv
+135,Vendor M,VA,Virginia,DC14,Distribution Center Fourteen,Home,Home Decor,1014,Curtains,NOP012,2023-01-14,60,60,60,60,60,file14.csv
+136,Vendor N,OH,Ohio,DC15,Distribution Center Fifteen,Tools,Hand Tools,1015,Hammer,QRS345,2023-01-15,70,70,70,70,70,file15.csv
+137,Vendor O,PA,Pennsylvania,DC16,Distribution Center Sixteen,Music,Musical Instruments,1016,Guitar,TUV678,2023-01-16,80,80,80,80,80,file16.csv
+138,Vendor P,IN,Indiana,DC17,Distribution Center Seventeen,Jewelry,Fine Jewelry,1017,Necklace,WXY901,2023-01-17,90,90,90,90,90,file17.csv
+139,Vendor Q,TN,Tennessee,DC18,Distribution Center Eighteen,Stationery,School Supplies,1018,Notebook,ZAB234,2023-01-18,100,100,100,100,100,file18.csv
+140,Vendor R,KY,Kentucky,DC19,Distribution Center Nineteen,Photography,Cameras and Accessories,1019,Camera,CDE567,2023-01-19,110,110,110,110,110,file19.csv
+141,Vendor S,MO,Missouri,DC20,Distribution Center Twenty,Games,Board Games,1020,Checkers,FGH890,2023-01-20,120,120,120,120,120,file20.csv
+142,Vendor T,WI,Wisconsin,DC21,Distribution Center Twenty-One,Crafts,Art Supplies,1021,Paint,IJK123,2023-01-21,130,130,130,130,130,file21.csv
+143,Vendor U,MN,Minnesota,DC22,Distribution Center Twenty-Two,Footwear,Shoes,1022,Running Shoes,LMN456,2023-01-22,140,140,140,140,140,file22.csv
+144,Vendor V,MA,Massachusetts,DC23,Distribution Center Twenty-Three,Beverages,Soft Drinks,1023,Soda,OPQ789,2023-01-23,150,150,150,150,150,file23.csv
+145,Vendor W,LA,Louisiana,DC24,Distribution Center Twenty-Four,Groceries,Organic Foods,1024,Organic Apple,RST012,2023-01-24,160,160,160,160,160,file24.csv
+146,Vendor X,IA,Iowa,DC25,Distribution Center Twenty-Five,Cleaning,Cleaning Supplies,1025,Detergent,UVW345,2023-01-25,170,170,170,170,170,file25.csv
+147,Vendor Y,KS,Kansas,DC26,Distribution Center Twenty-Six,Lighting,Light Bulbs,1026,LED Bulb,XYZ678,2023-01-26,180,180,180,180,180,file26.csv
+148,Vendor Z,OK,Oklahoma,DC27,Distribution Center Twenty-Seven,Outdoor,Patio Furniture,1027,Patio Set,ABC901,2023-01-27,190,190,190,190,190,file27.csv
+149,Vendor AA,NM,New Mexico,DC28,Distribution Center Twenty-Eight,Kitchen,Cookware,1028,Frying Pan,DEF234,2023-01-28,200,200,200,200,200,file28.csv
+150,Vendor AB,AL,Alabama,DC29,Distribution Center Twenty-Nine,Fitness,Gym Equipment,1029,Dumbbell,GHI567,2023-01-29,210,210,210,210,210,file29.csv
+151,Vendor AC,AR,Arkansas,DC30,Distribution Center Thirty,Travel,Luggage,1030,Suitcase,JKL890,2023-01-30,220,220,220,220,220,file30.csv
+152,Vendor AD,MS,Mississippi,DC31,Distribution Center Thirty-One,Digital,Smart Home Devices,1031,Smart Speaker,MNO123,2023-01-31,230,230,230,230,230,file31.csv
+153,Vendor AE,SC,South Carolina,DC32,Distribution Center Thirty-Two,Luxury,Designer Wear,1032,Designer Bag,PQR456,2023-02-01,240,240,240,240,240,file32.csv
+154,Vendor AF,MD,Maryland,DC33,Distribution Center Thirty-Three,Baby,Baby Products,1033,Baby Stroller,STU789,2023-02-02,250,250,250,250,250,file33.csv
+155,Vendor AG,WV,West Virginia,DC34,Distribution Center Thirty-Four,Seasonal,Holiday Decorations,1034,Christmas Tree,VWX012,2023-02-03,260,260,260,260,260,file34.csv
+156,Vendor AH,CT,Connecticut,DC35,Distribution Center Thirty-Five,Novelty,Gifts,1035,Gift Basket,YZA345,2023-02-04,270,270,270,270,270,file35.csv
+157,Vendor AI,NH,New Hampshire,DC36,Distribution Center Thirty-Six,Eco-Friendly,Sustainable Products,1036,Reusable Bag,BCD678,2023-02-05,280,280,280,280,280,file36.csv
+158,Vendor AJ,VT,Vermont,DC37,Distribution Center Thirty-Seven,DIY,Craft Kits,1037,Knitting Kit,EFG901,2023-02-06,290,290,290,290,290,file37.csv
+159,Vendor AK,AK,Alaska,DC38,Distribution Center Thirty-Eight,Luxury,High-End Accessories,1038,Luxury Watch,HIJ234,2023-02-07,300,300,300,300,300,file38.csv
+160,Vendor AL,HI,Hawaii,DC39,Distribution Center Thirty-Nine,Adventure,Outdoor Activities,1039,Camping Gear,KLM567,2023-02-08,310,310,310,310,310,file39.csv
+161,Vendor AM,ND,North Dakota,DC40,Distribution Center Forty,Gardening,Plants,1040,Succulent,NOP890,2023-02-09,320,320,320,320,320,file40.csv
+162,Vendor AN,SD,South Dakota,DC41,Distribution Center Forty-One,Baking,Baking Supplies,1041,Baking Sheet,QRS123,2023-02-10,330,330,330,330,330,file41.csv
+163,Vendor AO,DE,Delaware,DC42,Distribution Center Forty-Two,Tech,Gadgets,1042,Smartphone,TUV456,2023-02-11,340,340,340,340,340,file42.csv
+164,Vendor AP,MT,Montana,DC43,Distribution Center Forty-Three,Wearable,Fitness Trackers,1043,Fitbit,VWX789,2023-02-12,350,350,350,350,350,file43.csv
+165,Vendor AQ,RI,Rhode Island,DC44,Distribution Center Forty-Four,Beauty,Skincare,1044,Face Cream,YZA012,2023-02-13,360,360,360,360,360,file44.csv
+166,Vendor AR,ME,Maine,DC45,Distribution Center Forty-Five,Photography,Accessories,1045,Tripod,BCD345,2023-02-14,370,370,370,370,370,file45.csv
+167,Vendor AS,WY,Wyoming,DC46,Distribution Center Forty-Six,Fashion,Accessories,1046,Belt,EFG678,2023-02-15,380,380,380,380,380,file46.csv
+168,Vendor AT,ID,Idaho,DC47,Distribution Center Forty-Seven,Personal Care,Grooming,1047,Shaving Kit,HIJ901,2023-02-16,390,390,390,390,390,file47.csv
+169,Vendor AU,UT,Utah,DC48,Distribution Center Forty-Eight,Home Improvement,Building Materials,1048,Lumber,KLM234,2023-02-17,400,400,400,400,400,file48.csv
+170,Vendor AV,NE,Nebraska,DC49,Distribution Center Forty-Nine,Electronics,Audio,1049,Speakers,NOP567,2023-02-18,410,410,410,410,410,file49.csv
+171,Vendor AW,NV,Nevada,DC50,Distribution Center Fifty,Automotive,Car Care,1050,Car Wax,QRS890,2023-02-19,420,420,420,420,420,file50.csv

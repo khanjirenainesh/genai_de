@@ -1,0 +1,51 @@
+CATEGORY_DEPTH1,CATEGORY_DEPTH2,CATEGORY_DEPTH3,ALL_BRAND,COUPANG_SKU_ID,COUPANG_SKU_NAME,RANKING,JNJ_PRODUCT_FLAG,RUN_ID,FILE_NAME,YEARMO
+,Electronics,Mobiles,BrandA,SKU123,Smartphone,-5,Y,-1,file1.txt,202301
+Home,,Furniture,BrandB,SKU124,Table,0,N,2,file2.txt,202302
+Fashion,Men,,BrandC,SKU125,Jacket,9999,Y,3,file3.txt,202303
+Beauty,Makeup,Lipstick,BrandD,SKU126,Lipstick,1,N,4,file4.txt,202304
+Sports,Outdoor,Tents,,SKU127,Tent,2,Y,-5,file5.txt,202305
+Automotive,Parts,,BrandE,SKU128,Brake Pad,3,N,6,file6.txt,202306
+Books,Fiction,Novels,BrandF,SKU129,Novel,4,Y,7,file7.txt,202307
+Toys,Educational,,BrandG,SKU130,Puzzle,5,N,8,file8.txt,202308
+Health,Supplements,Vitamins,BrandH,SKU131,Vitamin C,6,Y,-9,file9.txt,202309
+Music,Instruments,Guitars,BrandI,SKU132,Guitar,7,N,10,file10.txt,202310
+Games,Video Games,,,SKU133,Video Game,8,Y,11,file11.txt,202311
+Electronics,Mobiles,Tablets,BrandJ,SKU134,Tablet,9,N,12,file12.txt,202312
+Furniture,Living Room,,BrandK,SKU135,Sofa,10,Y,13,file13.txt,202313
+Clothing,Women,Dresses,BrandL,SKU136,Dress,11,N,14,file14.txt,202314
+,Home Appliances,Kitchen,BrandM,SKU137,Blender,12,Y,15,file15.txt,202315
+Beauty,Skincare,,BrandN,SKU138,Moisturizer,13,N,16,file16.txt,202316
+Sports,Indoor,Yoga,BrandO,SKU139,Yoga Mat,14,Y,-17,file17.txt,202317
+Automotive,Accessories,,BrandP,SKU140,Car Cover,15,N,18,file18.txt,202318
+Books,Non-Fiction,Biographies,BrandQ,SKU141,Biography,16,Y,19,file19.txt,202319
+Toys,Action Figures,,BrandR,SKU142,Action Figure,17,N,20,file20.txt,202320
+Health,Equipment,Weights,BrandS,SKU143,Dumbbell,18,Y,21,file21.txt,202321
+Music,Accessories,Microphones,BrandT,SKU144,Microphone,19,N,22,file22.txt,202322
+Games,Board Games,,BrandU,SKU145,Chess,20,Y,-23,file23.txt,202323
+Electronics,Wearables,Smart Watches,BrandV,SKU146,Smart Watch,21,N,24,file24.txt,202324
+Furniture,Office,,BrandW,SKU147,Office Chair,22,Y,25,file25.txt,202325
+Clothing,Kids,T-Shirts,BrandX,SKU148,T-Shirt,23,N,26,file26.txt,202326
+Home Appliances,Laundry,,BrandY,SKU149,Washing Machine,24,Y,27,file27.txt,202327
+Beauty,Haircare,Shampoo,BrandZ,SKU150,Shampoo,25,N,-28,file28.txt,202328
+Sports,Water Sports,,BrandAA,SKU151,Swimwear,26,Y,29,file29.txt,202329
+Automotive,Tools,Jacks,BrandBB,SKU152,Car Jack,27,N,30,file30.txt,202330
+Books,Children,,BrandCC,SKU153,Children's Book,28,Y,31,file31.txt,202331
+Toys,Plush Toys,,BrandDD,SKU154,Teddy Bear,29,N,-32,file32.txt,202332
+Health,Personal Care,,BrandEE,SKU155,Toothbrush,30,Y,33,file33.txt,202333
+Music,Vinyls,Records,BrandFF,SKU156,Vinyl Record,31,N,34,file34.txt,202334
+Games,Card Games,,BrandGG,SKU157,Playing Cards,32,Y,35,file35.txt,202335
+Electronics,Audio,Headphones,BrandHH,SKU158,Headphones,33,,36,file36.txt,202336
+Furniture,Dining,,BrandII,SKU159,Dining Table,34,Y,-37,file37.txt,202337
+Clothing,Men,Shirts,BrandJJ,SKU160,Shirt,35,N,38,file38.txt,202338
+Home Appliances,Heating,,BrandKK,SKU161,Heater,36,Y,39,file39.txt,202339
+Beauty,Perfume,,BrandLL,SKU162,Perfume,37,N,40,file40.txt,202340
+Sports,Fitness,Gym Equipment,BrandMM,SKU163,Treadmill,38,Y,-41,file41.txt,202341
+Automotive,Electronics,,BrandNN,SKU164,GPS,39,N,42,file42.txt,202342
+Books,Science,,BrandOO,SKU165,Science Book,40,Y,43,file43.txt,202343
+Toys,Dolls,,BrandPP,SKU166,Doll,41,N,44,file44.txt,202344
+Health,Medical Supplies,,BrandQQ,SKU167,Bandages,42,Y,-45,file45.txt,202345
+Music,Sheet Music,,BrandRR,SKU168,Piano Sheet,43,N,46,file46.txt,202346
+Games,Puzzles,,BrandSS,SKU169,Jigsaw Puzzle,44,Y,47,file47.txt,202347
+Electronics,Computers,,BrandTT,SKU170,Laptop,45,N,48,file48.txt,202348
+Furniture,Bedroom,,BrandUU,SKU171,Bed,46,Y,-49,file49.txt,202349
+Clothing,Women,Skirts,BrandVV,SKU172,Skirt,47,N,50,file50.txt,202350

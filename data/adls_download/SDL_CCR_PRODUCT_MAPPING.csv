@@ -1,0 +1,53 @@
+DIMENSION,RULEGROUPNAME,RULE_TYPE,RULENAME_SOURCEVALUE,RULE_DESCRIPTION,RULE_EXPRESSION,TARGET_VALUE,LOGICAL_OPERATOR,EXECUTION_ORDER
+Sales,Group1,TypeA,Rule1,Negative execution order,Exp1,Value1,AND,-5
+Sales,Group1,TypeA,Rule1,Duplicate rule,Exp1,Value1,AND,1
+Finance,Group2,TypeB,Rule2,Negative target value,Exp2,-100,OR,2
+HR,Group3,TypeC,Rule3,Illogical operator,Exp3,Value3,XYZ,3
+IT,Group4,TypeD,Rule4,Empty rule expression,,Value4,AND,4
+Marketing,Group5,TypeE,Rule5,Empty dimension,Exp5,Value5,OR,5
+Operations,Group6,TypeF,Rule6,Negative dimension,Exp6,Value6,AND,-6
+Logistics,Group7,TypeG,Rule7,Missing target value,Exp7,,OR,7
+Procurement,Group8,TypeH,Rule8,Empty rule name,Exp8,Value8,AND,8
+Compliance,Group9,TypeI,Rule9,Logical inconsistency,Exp9,Value9,AND,9999
+Sales,Group1,TypeA,Rule1,Duplicate entry,Exp1,Value1,AND,1
+HR,Group3,TypeC,Rule3,Empty description,Exp3,Value3,OR,3
+Finance,Group2,TypeB,Rule2,Negative order,Exp2,Value2,AND,-2
+IT,Group4,TypeD,Rule4,Empty expression,,Value4,AND,4
+Marketing,Group5,TypeE,Rule5,Empty rule type,Exp5,Value5,OR,5
+Operations,Group6,TypeF,Rule6,Missing dimension,Exp6,Value6,AND,6
+Logistics,Group7,TypeG,Rule7,Negative target,Exp7,-50,OR,7
+Procurement,Group8,TypeH,Rule8,Empty operator,Exp8,Value8,,8
+Compliance,Group9,TypeI,Rule9,Illogical order,Exp9,Value9,AND,10000
+Sales,Group10,TypeJ,Rule10,Empty group name,Exp10,Value10,AND,10
+HR,Group11,TypeK,Rule11,Negative operator,Exp11,Value11,-AND,11
+Finance,Group12,TypeL,Rule12,Duplicate execution order,Exp12,Value12,OR,1
+IT,Group13,TypeM,Rule13,Empty rule description,Exp13,Value13,AND,13
+Marketing,Group14,TypeN,Rule14,Illogical expression,9999,Value14,OR,14
+Operations,Group15,TypeO,Rule15,Empty target value,Exp15,,AND,15
+Logistics,Group16,TypeP,Rule16,Missing rule name,Exp16,Value16,OR,16
+Procurement,Group17,TypeQ,Rule17,Negative execution order,Exp17,Value17,AND,-17
+Compliance,Group18,TypeR,Rule18,Duplicate rule,Exp18,Value18,OR,1
+Sales,Group19,TypeS,Rule19,Negative value,Exp19,-1,AND,19
+HR,Group20,TypeT,Rule20,Empty logical operator,Exp20,Value20,,20
+Finance,Group21,TypeU,Rule21,Negative dimension,Exp21,Value21,OR,-21
+IT,Group22,TypeV,Rule22,Empty execution order,Exp22,Value22,AND,
+Marketing,Group23,TypeW,Rule23,Illogical order,Exp23,Value23,OR,9999
+Operations,Group24,TypeX,Rule24,Empty rule type,Exp24,Value24,AND,24
+Logistics,Group25,TypeY,Rule25,Negative target value,Exp25,-100,OR,25
+Procurement,Group26,TypeZ,Rule26,Missing rule group name,Exp26,Value26,AND,26
+Compliance,Group27,TypeAA,Rule27,Empty rule expression,,Value27,OR,27
+Sales,Group28,TypeAB,Rule28,Illogical target value,Exp28,9999,AND,28
+HR,Group29,TypeAC,Rule29,Empty rule name,Exp29,Value29,OR,29
+Finance,Group30,TypeAD,Rule30,Negative logical operator,Exp30,Value30,-OR,30
+IT,Group31,TypeAE,Rule31,Empty description,Exp31,Value31,AND,31
+Marketing,Group32,TypeAF,Rule32,Empty dimension,Exp32,Value32,OR,32
+Operations,Group33,TypeAG,Rule33,Negative execution order,Exp33,Value33,AND,-33
+Logistics,Group34,TypeAH,Rule34,Duplicate rule name,Exp34,Value34,AND,34
+Procurement,Group35,TypeAI,Rule35,Negative target value,Exp35,-50,OR,35
+Compliance,Group36,TypeAJ,Rule36,Empty group name,Exp36,Value36,AND,36
+Sales,Group37,TypeAK,Rule37,Negative execution order,Exp37,Value37,OR,-37
+HR,Group38,TypeAL,Rule38,Illogical logical operator,Exp38,Value38,XYZ,38
+Finance,Group39,TypeAM,Rule39,Empty rule expression,,Value39,AND,39
+IT,Group40,TypeAN,Rule40,Missing logical operator,Exp40,Value40,,40
+Marketing,Group41,TypeAO,Rule41,Negative execution order,Exp41,Value41,AND,-41
+Operations,Group42,TypeAP,Rule42,Duplicate rule,Exp42,Value42,OR,1

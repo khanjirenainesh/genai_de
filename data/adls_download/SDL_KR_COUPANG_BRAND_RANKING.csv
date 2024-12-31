@@ -1,0 +1,51 @@
+CATEGORY_DEPTH1,CATEGORY_DEPTH2,CATEGORY_DEPTH3,RANKING,BRAND,JNJ_BRAND,RANK_CHANGE,RUN_ID,FILE_NAME,YEARMO,DATA_GRANULARITY
+Electronics,Mobile,Smartphones,1,BrandA,JnJ1,+3,-100,file1.csv,202301,monthly
+Home,Kitchen,Blenders,2,BrandB,JnJ2,+5,-101,file2.csv,202302,monthly
+Fashion,Men,Shirts,3,BrandC,JnJ3,+1,1000,file3.csv,202303,monthly
+Beauty,Skincare,Moisturizers,4,BrandD,JnJ4,-2,1000,file4.csv,202304,monthly
+Sports,Outdoor,Camping,5,BrandE,JnJ5,0,1001,file5.csv,202305,monthly
+Toys,Action Figures,Superheroes,6,BrandF,JnJ6,+10,1002,file6.csv,202306,monthly
+Books,Fiction,Mystery,7,BrandG,JnJ7,-5,1002,file7.csv,202307,monthly
+Automotive,Parts,Engine,8,BrandH,JnJ8,+2,1003,file8.csv,202308,monthly
+Garden,Plants,Flowers,9,BrandI,JnJ9,-1,1003,file9.csv,202309,monthly
+Food,Snacks,Chips,10,BrandJ,JnJ10,+4,1004,file10.csv,202310,monthly
+Electronics,Mobile,Smartphones,-1,BrandK,JnJ11,-7,1005,file11.csv,202311,monthly
+Home,Kitchen,Blenders,abc,BrandL,JnJ12,+3,1006,file12.csv,202312,monthly
+Fashion,Men,Shirts,50,BrandM,,-3,1007,file13.csv,202301,monthly
+Beauty,Skincare,Moisturizers,100,BrandN,JnJ14,,1008,file14.csv,202302,monthly
+Sports,Outdoor,Camping,,BrandO,JnJ15,+9,1009,file15.csv,202303,monthly
+Toys,Action Figures,Superheroes,99,,JnJ16,++,1010,file16.csv,202304,monthly
+Books,Fiction,Mystery,101,BrandQ,JnJ17,--,1011,file17.csv,202305,monthly
+Automotive,Parts,Engine,A1,BrandR,JnJ18,5,1012,file18.csv,202306,monthly
+Garden,Plants,Flowers,11,BrandS,JnJ19,2,1013,file19.csv,202307,monthly
+Food,Snacks,Chips,12,BrandT,JnJ20,-10,1014,file20.csv,202308,monthly
+Electronics,Mobile,Smartphones,13,BrandU,JnJ21,+15,1015,file21.csv,202309,monthly
+Home,Kitchen,Blenders,14,BrandV,JnJ22,-20,1016,file22.csv,202310,monthly
+Fashion,Men,Shirts,15,BrandW,JnJ23,+25,1017,file23.csv,202311,monthly
+Beauty,Skincare,Moisturizers,16,BrandX,JnJ24,-30,1018,file24.csv,202312,monthly
+Sports,Outdoor,Camping,17,BrandY,JnJ25,+35,1019,file25.csv,202301,monthly
+Toys,Action Figures,Superheroes,18,BrandZ,JnJ26,-40,1020,file26.csv,202302,monthly
+Books,Fiction,Mystery,19,BrandAA,JnJ27,+45,1021,file27.csv,202303,monthly
+Automotive,Parts,Engine,20,BrandBB,JnJ28,-50,1022,file28.csv,202304,monthly
+Garden,Plants,Flowers,21,BrandCC,JnJ29,+55,1023,file29.csv,202305,monthly
+Food,Snacks,Chips,22,BrandDD,JnJ30,-60,1024,file30.csv,202306,monthly
+Electronics,Mobile,Smartphones,23,BrandEE,JnJ31,+65,1025,file31.csv,202307,monthly
+Home,Kitchen,Blenders,24,BrandFF,JnJ32,-70,1026,file32.csv,202308,monthly
+Fashion,Men,Shirts,25,BrandGG,JnJ33,+75,1027,file33.csv,202309,monthly
+Beauty,Skincare,Moisturizers,26,BrandHH,JnJ34,-80,1028,file34.csv,202310,monthly
+Sports,Outdoor,Camping,27,BrandII,JnJ35,+85,1029,file35.csv,202311,monthly
+Toys,Action Figures,Superheroes,28,BrandJJ,JnJ36,-90,1030,file36.csv,202312,monthly
+Books,Fiction,Mystery,29,BrandKK,JnJ37,+95,1031,file37.csv,202301,monthly
+Automotive,Parts,Engine,30,BrandLL,JnJ38,-100,1032,file38.csv,202302,monthly
+Garden,Plants,Flowers,31,BrandMM,JnJ39,+105,1033,file39.csv,202303,monthly
+Food,Snacks,Chips,32,BrandNN,JnJ40,-110,1034,file40.csv,202304,monthly
+Electronics,Mobile,Smartphones,33,BrandOO,JnJ41,+115,1035,file41.csv,202305,monthly
+Home,Kitchen,Blenders,34,BrandPP,JnJ42,-120,1036,file42.csv,202306,monthly
+Fashion,Men,Shirts,35,BrandQQ,JnJ43,+125,1037,file43.csv,202307,monthly
+Beauty,Skincare,Moisturizers,36,BrandRR,JnJ44,-130,1038,file44.csv,202308,monthly
+Sports,Outdoor,Camping,37,BrandSS,JnJ45,+135,1039,file45.csv,202309,monthly
+Toys,Action Figures,Superheroes,38,BrandTT,JnJ46,-140,1040,file46.csv,202310,monthly
+Books,Fiction,Mystery,39,BrandUU,JnJ47,+145,1041,file47.csv,202311,monthly
+Automotive,Parts,Engine,40,BrandVV,JnJ48,-150,1042,file48.csv,202312,monthly
+Garden,Plants,Flowers,41,BrandWW,JnJ49,+155,1043,file49.csv,202301,monthly
+Food,Snacks,Chips,42,BrandXX,JnJ50,-160,1044,file50.csv,202302,monthly

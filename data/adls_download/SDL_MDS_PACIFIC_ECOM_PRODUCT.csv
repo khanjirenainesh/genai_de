@@ -1,0 +1,52 @@
+ID,MUID,VERSIONNAME,VERSIONNUMBER,VERSION_ID,VERSIONFLAG,NAME,CODE,CHANGETRACKINGMASK,DATASET,CUST_ATTR_1,CUST_ATTR_2,UPC,SKU_NAME,PROD_ATTR_1,PROD_ATTR_2,PROD_ATTR_3,ENTERDATETIME,ENTERUSERNAME,ENTERVERSIONNUMBER,LASTCHGDATETIME,LASTCHGUSERNAME,LASTCHGVERSIONNUMBER,VALIDATIONSTATUS
+1,123,,-1,100,active,Product A,001,5,dataset1,color,size,123456789012,SKU001,material,,weight,2023-01-01 10:00:00,user1,1,2023-01-01 11:00:00,user2,2,validated
+1,456,v1,2,100,inactive,Product B,002,10,dataset2,style,pattern,987654321098,SKU002,brand,origin,,2023-01-02 12:00:00,user3,3,2023-01-02 13:00:00,user4,-5,pending
+2,123,v2,3,101,pending,Product C,,-15,dataset3,usage,,111111111111,SKU003,category,type,dimension,2023-01-03 14:00:00,user5,4,2023-01-03 15:00:00,,6,
+3,789,v3,-7,102,,Product D,004,20,dataset4,temperature,pressure,,SKU004,,volume,speed,2023-01-04 16:00:00,user6,5,2023-01-04 17:00:00,user7,8,in_progress
+4,101,,5,103,archived,Product E,005,25,dataset5,,density,222222222222,SKU005,quality,rating,feedback,2023-01-05 18:00:00,user8,-9,2023-01-05 19:00:00,,10,approved
+5,202,v4,6,104,approved,,006,30,dataset6,height,,333333333333,SKU006,weight,length,width,2023-01-06 20:00:00,user9,7,2023-01-06 21:00:00,user10,11,rejected
+6,303,v5,-11,105,rejected,Product F,,35,dataset7,depth,surface,444444444444,SKU007,texture,flavor,,2023-01-07 22:00:00,user11,8,2023-01-07 23:00:00,user12,12,in_review
+7,404,,9,106,in_review,Product G,007,-40,dataset8,aroma,taste,555555555555,SKU008,sound,,sensation,2023-01-08 10:00:00,user13,9,2023-01-08 11:00:00,user14,13,draft
+8,505,v6,10,107,draft,Product H,008,45,,brightness,contrast,666666666666,SKU009,sharpness,clarity,definition,2023-01-09 12:00:00,user15,10,2023-01-09 13:00:00,user16,-14,
+9,606,v7,-15,108,submitted,,009,50,dataset10,,saturation,777777777777,SKU010,tone,note,pitch,2023-01-10 14:00:00,user17,11,2023-01-10 15:00:00,,15,finalized
+10,707,,12,109,finalized,Product I,010,-55,dataset11,frequency,amplitude,888888888888,,vibration,oscillation,resonance,2023-01-11 16:00:00,user18,12,2023-01-11 17:00:00,user19,16,archived
+11,808,v8,13,110,archived,Product J,,60,dataset12,velocity,acceleration,999999999999,SKU012,force,energy,,2023-01-12 18:00:00,user20,-17,2023-01-12 19:00:00,,17,active
+12,909,,-18,111,active,Product K,012,65,dataset13,momentum,impulse,000000000000,SKU013,,torque,rotation,2023-01-13 20:00:00,user21,14,2023-01-13 21:00:00,user22,18,inactive
+13,010,v9,15,112,,Product L,013,-70,dataset14,power,work,111111111111,SKU014,potential,kinetic,thermal,2023-01-14 22:00:00,user23,15,2023-01-14 23:00:00,user24,19,
+14,111,v10,16,113,inactive,,014,75,dataset15,charge,,222222222222,SKU015,current,voltage,resistance,2023-01-15 10:00:00,,-20,2023-01-15 11:00:00,user25,20,pending
+15,212,,17,114,pending,Product M,015,80,,capacitance,inductance,333333333333,SKU016,magnetism,flux,,2023-01-16 12:00:00,user26,16,2023-01-16 13:00:00,user27,-21,approved
+16,313,v11,-22,115,approved,Product N,,85,dataset17,conduction,insulation,444444444444,SKU017,transmission,reflection,refraction,2023-01-17 14:00:00,user28,17,2023-01-17 15:00:00,,21,rejected
+17,,,18,116,rejected,Product O,017,-90,dataset18,absorption,emission,555555555555,SKU018,scattering,,diffusion,2023-01-18 16:00:00,user29,18,2023-01-18 17:00:00,user30,22,in_review
+18,515,v12,-23,117,in_review,Product P,,95,dataset19,polarization,frequency,666666666666,SKU019,amplitude,phase,,2023-01-19 18:00:00,user31,19,2023-01-19 19:00:00,,23,draft
+19,616,,20,118,draft,Product Q,019,-100,dataset20,modulation,demodulation,777777777777,,encoding,decoding,compression,2023-01-20 20:00:00,user32,-24,2023-01-20 21:00:00,user33,24,
+20,,v13,21,119,submitted,,020,105,dataset21,synchronization,,888888888888,SKU021,asynchronization,timing,clocking,2023-01-21 22:00:00,user34,20,2023-01-21 23:00:00,user35,25,submitted
+21,818,,22,120,submitted,Product S,021,110,,parity,redundancy,999999999999,SKU022,error,correction,recovery,2023-01-22 10:00:00,user36,-26,2023-01-22 11:00:00,,26,finalized
+22,919,v14,23,121,finalized,Product T,,115,dataset23,authentication,authorization,000000000000,SKU023,encryption,,decryption,2023-01-23 12:00:00,user37,21,2023-01-23 13:00:00,user38,27,archived
+23,,,-28,122,archived,Product U,023,120,dataset24,hashing,salting,111111111111,SKU024,signing,verifying,,2023-01-24 14:00:00,user39,22,2023-01-24 15:00:00,,28,active
+24,020,v15,25,123,,,024,-125,dataset25,compression,decompression,222222222222,SKU025,encoding,decoding,parsing,2023-01-25 16:00:00,user40,23,2023-01-25 17:00:00,user41,29,inactive
+25,121,v16,-26,124,inactive,Product V,,130,dataset26,rendering,shading,333333333333,SKU026,texturing,lighting,,2023-01-26 18:00:00,user42,24,2023-01-26 19:00:00,,30,pending
+26,,,27,125,pending,Product W,026,135,,modeling,animating,444444444444,SKU027,rigging,skinning,morphing,2023-01-27 20:00:00,user43,25,2023-01-27 21:00:00,user44,31,approved
+27,323,v17,-28,126,approved,Product X,,140,dataset28,baking,texturing,555555555555,SKU028,,rendering,compositing,2023-01-28 22:00:00,,26,2023-01-28 23:00:00,user45,32,rejected
+28,,,29,127,rejected,Product Y,028,145,dataset29,simulation,visualization,666666666666,,data,analysis,interpretation,2023-01-29 10:00:00,user46,27,2023-01-29 11:00:00,user47,33,in_review
+29,424,v18,-30,128,in_review,,,150,dataset30,,processing,777777777777,SKU030,rendering,visualization,animation,2023-01-30 12:00:00,user48,28,2023-01-30 13:00:00,user49,34,draft
+30,525,,31,129,draft,Product Z,030,-155,,rendering,modeling,888888888888,SKU031,texturing,shading,lighting,2023-01-31 14:00:00,user50,29,2023-01-31 15:00:00,user51,35,submitted
+31,,v19,32,130,submitted,Product AA,031,160,dataset32,rendering,,999999999999,SKU032,animation,compositing,simulation,2023-02-01 10:00:00,user52,-31,2023-02-01 11:00:00,user53,36,finalized
+32,626,,-33,131,finalized,,032,165,dataset33,rendering,compositing,000000000000,SKU033,baking,shading,,2023-02-02 12:00:00,user54,30,2023-02-02 13:00:00,user55,37,archived
+33,,v20,34,132,archived,Product BB,,170,,rendering,modeling,111111111111,SKU034,texturing,,shading,2023-02-03 14:00:00,user56,31,2023-02-03 15:00:00,user57,38,active
+34,727,,35,133,,Product CC,034,-175,dataset35,rendering,animation,222222222222,SKU035,compositing,simulation,,2023-02-04 16:00:00,user58,32,2023-02-04 17:00:00,user59,39,inactive
+35,,v21,-36,134,inactive,,035,180,dataset36,,processing,333333333333,SKU036,rendering,visualization,animation,2023-02-05 18:00:00,user60,33,2023-02-05 19:00:00,user61,40,pending
+36,828,,37,135,pending,Product DD,,-185,dataset37,rendering,texturing,444444444444,SKU037,shading,,lighting,2023-02-06 10:00:00,user62,34,2023-02-06 11:00:00,user63,41,approved
+37,,v22,-38,136,approved,Product EE,037,190,,rendering,modeling,555555555555,SKU038,texturing,animation,,2023-02-07 12:00:00,user64,35,2023-02-07 13:00:00,user65,42,rejected
+38,929,,39,137,rejected,,038,-195,dataset39,rendering,compositing,666666666666,,baking,shading,lighting,2023-02-08 14:00:00,user66,36,2023-02-08 15:00:00,user67,43,in_review
+39,,v23,40,138,in_review,Product FF,039,200,dataset40,rendering,,777777777777,SKU040,animation,compositing,simulation,2023-02-09 16:00:00,user68,-39,2023-02-09 17:00:00,user69,44,draft
+40,030,,-41,139,draft,,,205,dataset41,rendering,modeling,888888888888,SKU041,texturing,shading,,2023-02-10 18:00:00,user70,37,2023-02-10 19:00:00,user71,45,submitted
+41,,v24,42,140,submitted,Product GG,041,-210,dataset42,,texturing,999999999999,SKU042,animation,compositing,simulation,2023-02-11 10:00:00,user72,38,2023-02-11 11:00:00,user73,46,finalized
+42,131,,-43,141,finalized,,042,215,,rendering,modeling,000000000000,SKU043,texturing,shading,lighting,2023-02-12 12:00:00,user74,39,2023-02-12 13:00:00,user75,47,archived
+43,,v25,44,142,archived,Product HH,,-220,dataset44,rendering,modeling,111111111111,SKU044,texturing,,shading,2023-02-13 14:00:00,user76,40,2023-02-13 15:00:00,user77,48,active
+44,232,,45,143,,Product II,044,225,dataset45,rendering,animation,222222222222,SKU045,compositing,simulation,,2023-02-14 16:00:00,user78,-41,2023-02-14 17:00:00,user79,49,inactive
+45,,v26,-46,144,inactive,,045,230,dataset46,,processing,333333333333,SKU046,rendering,visualization,animation,2023-02-15 18:00:00,user80,42,2023-02-15 19:00:00,,50,pending
+46,333,,47,145,pending,Product JJ,,-235,dataset47,rendering,texturing,444444444444,SKU047,shading,,lighting,2023-02-16 10:00:00,user81,43,2023-02-16 11:00:00,user82,51,approved
+47,,v27,-48,146,approved,Product KK,047,240,,rendering,modeling,555555555555,SKU048,texturing,animation,,2023-02-17 12:00:00,user83,44,2023-02-17 13:00:00,user84,52,rejected
+48,434,,49,147,rejected,,048,-245,dataset49,rendering,compositing,666666666666,,baking,shading,lighting,2023-02-18 14:00:00,user85,45,2023-02-18 15:00:00,user86,53,in_review
+49,,v28,50,148,in_review,Product LL,049,250,dataset50,rendering,,777777777777,SKU050,animation,compositing,simulation,2023-02-19 16:00:00,user87,-47,2023-02-19 17:00:00,user88,54,draft
+50,535,,-51,149,draft,,,255,dataset51,rendering,modeling,888888888888,SKU051,texturing,shading,,2023-02-20 18:00:00,user89,46,2023-02-20 19:00:00,user90,55,submitted
