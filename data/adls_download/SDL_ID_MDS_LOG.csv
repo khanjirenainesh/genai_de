@@ -1,0 +1,50 @@
+STATUS,RESULT,JOB_NAME,QUERY,CRTD_DTTM
+Completed,Negative result for test,JobA,SELECT * FROM table WHERE id=-1,2023-01-01 12:00:00
+Failed,Unexpected null value encountered,JobB,INSERT INTO table VALUES (null),2023-01-02 12:00:00
+Running,"Job started, but no progress",JobC,BEGIN TRANSACTION,2023-01-03 12:00:00
+Completed,Duplicate entry found,JobD,"INSERT INTO table VALUES (1, 1)",2023-01-04 12:00:00
+Failed,,JobE,DELETE FROM table WHERE id=10000,2023-01-05 12:00:00
+,Successful operation,JobF,UPDATE table SET column='value',2023-01-06 12:00:00
+Failed,Logic error in query,JobG,SELECT * FROM table WHERE year>9999,2023-01-07 12:00:00
+Completed,Negative value processed,JobH,UPDATE table SET amount=-100,2023-01-08 12:00:00
+Running,Running with no output,JobI,WAITFOR DELAY '00:00:10',2023-01-09 12:00:00
+Completed,Operation completed with warnings,JobJ,SELECT * FROM table,2023-01-10 12:00:00
+Failed,Constraint violation,JobK,"INSERT INTO table (id) VALUES (1), (1)",2023-01-11 12:00:00
+Completed,Incorrect data type,JobL,UPDATE table SET column='text' WHERE id=2,2023-01-12 12:00:00
+Failed,Job failed due to timeout,JobM,SELECT * FROM table WAITFOR DELAY '00:05:00',2023-01-13 12:00:00
+Completed,Data processed with errors,JobN,UPDATE table SET date='2024-02-30',2023-01-14 12:00:00
+Running,Job running with high load,JobO,SELECT * FROM table WHERE load>1000,2023-01-15 12:00:00
+Failed,Arithmetic overflow,JobP,SELECT id FROM table WHERE value > 9999999999,2023-01-16 12:00:00
+Completed,,JobQ,SELECT * FROM table WHERE id<0,2023-01-17 12:00:00
+,Unknown error occurred,JobR,SELECT * FROM invalid_table,2023-01-18 12:00:00
+Running,Job running without error,JobS,SELECT 1,2023-01-19 12:00:00
+Completed,Finished with missing data,JobT,"INSERT INTO table VALUES (null, 'data')",2023-01-20 12:00:00
+Failed,Invalid format in data,JobU,UPDATE table SET date='invalid-date',2023-01-21 12:00:00
+Completed,Results inconsistent,JobV,SELECT * FROM table WHERE result='pass' AND result='fail',2023-01-22 12:00:00
+Running,Job running slowly,JobW,SELECT * FROM table WHERE slow=1,2023-01-23 12:00:00
+Completed,Negative ID processed,JobX,DELETE FROM table WHERE id=-5,2023-01-24 12:00:00
+Failed,Reference not found,JobY,SELECT * FROM table WHERE ref_id=0,2023-01-25 12:00:00
+Completed,Operation completed with delay,JobZ,SELECT * FROM table WAITFOR DELAY '00:00:05',2023-01-26 12:00:00
+Failed,Syntax error in query,JobAA,SELECT FROM table,2023-01-27 12:00:00
+Completed,Data updated with wrong format,JobAB,UPDATE table SET column=12345,2023-01-28 12:00:00
+Running,Job running with no log,JobAC,EXECUTE sp_run,2023-01-29 12:00:00
+Completed,Negative balance updated,JobAD,UPDATE table SET balance=-500,2023-01-30 12:00:00
+Failed,Permission denied,JobAE,DROP DATABASE db,2023-01-31 12:00:00
+Completed,Operation with mixed results,JobAF,SELECT * FROM table WHERE status='ok' OR status='fail',2023-02-01 12:00:00
+Running,High memory usage,JobAG,SELECT * FROM table WHERE memory>10000,2023-02-02 12:00:00
+Completed,Data processed incorrectly,JobAH,UPDATE table SET column='incorrect',2023-02-03 12:00:00
+Failed,Negative ID not allowed,JobAI,SELECT * FROM table WHERE id=-20,2023-02-04 12:00:00
+Completed,Results inconsistent with input,JobAJ,SELECT * FROM table WHERE input='A' AND output='B',2023-02-05 12:00:00
+Running,Long-running job,JobAK,SELECT * FROM table WHERE time>24,2023-02-06 12:00:00
+Completed,Data mismatched with schema,JobAL,"INSERT INTO table (id, name) VALUES ('name', 1)",2023-02-07 12:00:00
+Failed,Data type mismatch,JobAM,"INSERT INTO table (id, name) VALUES (1, 123)",2023-02-08 12:00:00
+Completed,Negative quantity updated,JobAN,UPDATE table SET quantity=-10,2023-02-09 12:00:00
+Running,Job running with no output,JobAO,EXEC sp_execute,2023-02-10 12:00:00
+Completed,Positive result with negative input,JobAP,INSERT INTO table (result) VALUES ('positive'),2023-02-11 12:00:00
+Failed,Operation failed due to unknown reason,JobAQ,UPDATE table SET unknown='unknown',2023-02-12 12:00:00
+Completed,Job completed with negative feedback,JobAR,SELECT * FROM table WHERE feedback='negative',2023-02-13 12:00:00
+Running,Job running with errors,JobAS,EXEC sp_run_errors,2023-02-14 12:00:00
+Completed,Negative impact recorded,JobAT,UPDATE table SET impact='negative',2023-02-15 12:00:00
+Failed,Invalid operation attempted,JobAU,ALTER TABLE table DROP COLUMN column,2023-02-16 12:00:00
+Completed,Unexpected value processed,JobAV,SELECT * FROM table WHERE value='unexpected',2023-02-17 12:00:00
+Running,Job running with incorrect parameters,JobAW,EXEC sp_run_incorrect,2023-02-18 12:00:00

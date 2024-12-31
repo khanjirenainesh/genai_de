@@ -1,0 +1,53 @@
+PFC,SKUNAME,NEC1_DESC,NEC2_DESC,NEC3_DESC,BRAND,OWNER,MANUFACTURER,CATEGORY,MAT_YEAR,PERIODID,SALES_ONLINE,UNIT_ONLINE,WEEK_END,FILE_NAME,CRT_DTTM
+123456,,Electronics,Mobile,Smartphone,BrandA,OwnerA,MfgA,Gadgets,2025,P01,-500,50,2023-01-05,file1.csv,2023-01-01 10:00:00
+123456,PhoneX,Electronics,Mobile,Smartphone,BrandA,OwnerA,MfgA,Gadgets,2025,P01,1000,-20,2023-01-05,file2.csv,2023-01-01 11:00:00
+654321,LaptopY,Electronics,Computers,Laptop,BrandB,OwnerB,MfgB,,2025,P02,1500,30,2023-01-12,file3.csv,2023-01-02 10:00:00
+654321,LaptopY,Electronics,Computers,Laptop,BrandB,OwnerB,MfgB,Computers,99999,P02,1500,30,2023-01-12,file3.csv,2023-01-02 10:00:00
+789012,TabletZ,Electronics,Tablets,Tablet,BrandC,OwnerC,MfgC,Tablets,2026,P03,2000,-10,2023-01-19,file4.csv,2023-01-03 10:00:00
+789012,TabletZ,Electronics,Tablets,Tablet,BrandC,OwnerC,MfgC,Tablets,2026,,2000,40,2023-01-19,file5.csv,2023-01-03 11:00:00
+345678,GadgetW,Electronics,Gadgets,Wearable,BrandD,OwnerD,MfgD,Wearables,2027,P04,3000,60,2023-01-26,file6.csv,2023-01-04 10:00:00
+345678,GadgetW,Electronics,Gadgets,Wearable,BrandD,OwnerD,MfgD,Wearables,2027,P04,3000,,2023-01-26,file7.csv,2023-01-04 11:00:00
+901234,AccessoryV,Electronics,Accessories,Charger,BrandE,OwnerE,MfgE,Accessories,2028,P05,-1200,25,2023-02-02,file8.csv,2023-01-05 10:00:00
+901234,AccessoryV,Electronics,Accessories,Charger,BrandE,OwnerE,MfgE,Accessories,2028,P05,1200,-25,2023-02-02,file9.csv,2023-01-05 11:00:00
+567890,SpeakerU,Electronics,Audio,Speaker,BrandF,OwnerF,MfgF,Audio,,P06,2500,70,2023-02-09,file10.csv,2023-01-06 10:00:00
+567890,SpeakerU,Electronics,Audio,Speaker,BrandF,OwnerF,MfgF,Audio,2029,P06,-2500,70,2023-02-09,file11.csv,2023-01-06 11:00:00
+234567,HeadphonesT,Electronics,Audio,Headphones,BrandG,OwnerG,MfgG,Audio,2030,P07,1800,-35,2023-02-16,file12.csv,2023-01-07 10:00:00
+234567,HeadphonesT,Electronics,Audio,Headphones,BrandG,OwnerG,MfgG,Audio,2030,,1800,35,2023-02-16,file13.csv,2023-01-07 11:00:00
+345678,CameraR,Electronics,Photography,Camera,BrandH,OwnerH,MfgH,Photography,9999,P08,4200,-50,2023-02-23,file14.csv,2023-01-08 10:00:00
+345678,CameraR,Electronics,Photography,Camera,BrandH,OwnerH,MfgH,Photography,9999,P08,4200,50,2023-02-23,file15.csv,2023-01-08 11:00:00
+678901,ConsoleQ,Electronics,Gaming,Console,BrandI,OwnerI,MfgI,Gaming,2031,P09,-3500,60,2023-03-02,file16.csv,2023-01-09 10:00:00
+678901,ConsoleQ,Electronics,Gaming,Console,BrandI,OwnerI,MfgI,Gaming,2031,P09,3500,,2023-03-02,file17.csv,2023-01-09 11:00:00
+890123,MonitorP,Electronics,Displays,Monitor,BrandJ,OwnerJ,MfgJ,Displays,2032,P10,2700,-45,2023-03-09,file18.csv,2023-01-10 10:00:00
+890123,MonitorP,Electronics,Displays,Monitor,BrandJ,OwnerJ,MfgJ,Displays,2032,,2700,45,2023-03-09,file19.csv,2023-01-10 11:00:00
+112233,RouterO,Electronics,Networking,Router,BrandK,OwnerK,MfgK,Networking,2033,P11,-600,15,2023-03-16,file20.csv,2023-01-11 10:00:00
+112233,RouterO,Electronics,Networking,Router,BrandK,OwnerK,MfgK,Networking,2033,P11,600,-15,2023-03-16,file21.csv,2023-01-11 11:00:00
+334455,MouseN,Electronics,Peripherals,Mouse,BrandL,OwnerL,MfgL,Peripherals,2034,P12,900,-20,2023-03-23,file22.csv,2023-01-12 10:00:00
+334455,MouseN,Electronics,Peripherals,Mouse,BrandL,OwnerL,MfgL,Peripherals,2034,P12,900,,2023-03-23,file23.csv,2023-01-12 11:00:00
+556677,KeyboardM,Electronics,Peripherals,Keyboard,BrandM,OwnerM,MfgM,Peripherals,2035,P13,-1100,25,2023-03-30,file24.csv,2023-01-13 10:00:00
+556677,KeyboardM,Electronics,Peripherals,Keyboard,BrandM,OwnerM,MfgM,Peripherals,2035,P13,1100,,2023-03-30,file25.csv,2023-01-13 11:00:00
+778899,TVL,Electronics,Home Entertainment,Television,BrandN,OwnerN,MfgN,Home Entertainment,9998,P14,-5000,10,2023-04-06,file26.csv,2023-01-14 10:00:00
+778899,TVL,Electronics,Home Entertainment,Television,BrandN,OwnerN,MfgN,Home Entertainment,9998,P14,5000,10,2023-04-06,file27.csv,2023-01-14 11:00:00
+890987,FridgeK,Appliances,Kitchen,Refrigerator,BrandO,OwnerO,MfgO,Kitchen,2036,P15,-6000,5,2023-04-13,file28.csv,2023-01-15 10:00:00
+890987,FridgeK,Appliances,Kitchen,Refrigerator,BrandO,OwnerO,MfgO,Kitchen,2036,P15,6000,,2023-04-13,file29.csv,2023-01-15 11:00:00
+908070,WasherJ,Appliances,Home,Washing Machine,BrandP,OwnerP,MfgP,Home Appliances,2037,P16,-7000,15,2023-04-20,file30.csv,2023-01-16 10:00:00
+908070,WasherJ,Appliances,Home,Washing Machine,BrandP,OwnerP,MfgP,Home Appliances,2037,P16,7000,-15,2023-04-20,file31.csv,2023-01-16 11:00:00
+102938,OvenI,Appliances,Kitchen,Oven,BrandQ,OwnerQ,MfgQ,Kitchen,2038,P17,-8000,8,2023-04-27,file32.csv,2023-01-17 10:00:00
+102938,OvenI,Appliances,Kitchen,Oven,BrandQ,OwnerQ,MfgQ,Kitchen,2038,P17,8000,,2023-04-27,file33.csv,2023-01-17 11:00:00
+112233,DryerH,Appliances,Home,Dryer,BrandR,OwnerR,MfgR,Home Appliances,2039,P18,-9000,12,2023-05-04,file34.csv,2023-01-18 10:00:00
+112233,DryerH,Appliances,Home,Dryer,BrandR,OwnerR,MfgR,Home Appliances,2039,P18,9000,-12,2023-05-04,file35.csv,2023-01-18 11:00:00
+223344,VacuumG,Appliances,Home,Vacuum Cleaner,BrandS,OwnerS,MfgS,Home Appliances,2040,P19,-3000,18,2023-05-11,file36.csv,2023-01-19 10:00:00
+223344,VacuumG,Appliances,Home,Vacuum Cleaner,BrandS,OwnerS,MfgS,Home Appliances,2040,P19,3000,-18,2023-05-11,file37.csv,2023-01-19 11:00:00
+334455,IronF,Appliances,Home,Iron,BrandT,OwnerT,MfgT,Home Appliances,2041,P20,-4000,20,2023-05-18,file38.csv,2023-01-20 10:00:00
+334455,IronF,Appliances,Home,Iron,BrandT,OwnerT,MfgT,Home Appliances,2041,P20,4000,-20,2023-05-18,file39.csv,2023-01-20 11:00:00
+445566,FanE,Appliances,Home,Fan,BrandU,OwnerU,MfgU,Home Appliances,2042,P21,-500,5,2023-05-25,file40.csv,2023-01-21 10:00:00
+445566,FanE,Appliances,Home,Fan,BrandU,OwnerU,MfgU,Home Appliances,2042,P21,500,-5,2023-05-25,file41.csv,2023-01-21 11:00:00
+556677,HeaterD,Appliances,Home,Heater,BrandV,OwnerV,MfgV,Home Appliances,2043,P22,-600,6,2023-06-01,file42.csv,2023-01-22 10:00:00
+556677,HeaterD,Appliances,Home,Heater,BrandV,OwnerV,MfgV,Home Appliances,2043,P22,600,-6,2023-06-01,file43.csv,2023-01-22 11:00:00
+667788,LampC,Appliances,Home,Lamp,BrandW,OwnerW,MfgW,Home Appliances,2044,P23,-700,7,2023-06-08,file44.csv,2023-01-23 10:00:00
+667788,LampC,Appliances,Home,Lamp,BrandW,OwnerW,MfgW,Home Appliances,2044,P23,700,-7,2023-06-08,file45.csv,2023-01-23 11:00:00
+778899,MixerB,Appliances,Kitchen,Mixer,BrandX,OwnerX,MfgX,Kitchen,2045,P24,-800,8,2023-06-15,file46.csv,2023-01-24 10:00:00
+778899,MixerB,Appliances,Kitchen,Mixer,BrandX,OwnerX,MfgX,Kitchen,2045,P24,800,-8,2023-06-15,file47.csv,2023-01-24 11:00:00
+889900,GrillA,Appliances,Kitchen,Grill,BrandY,OwnerY,MfgY,Kitchen,2046,P25,-900,9,2023-06-22,file48.csv,2023-01-25 10:00:00
+889900,GrillA,Appliances,Kitchen,Grill,BrandY,OwnerY,MfgY,Kitchen,2046,P25,900,-9,2023-06-22,file49.csv,2023-01-25 11:00:00
+990011,BlenderZ,Appliances,Kitchen,Blender,BrandZ,OwnerZ,MfgZ,Kitchen,2047,P26,-1000,10,2023-06-29,file50.csv,2023-01-26 10:00:00
+990011,BlenderZ,Appliances,Kitchen,Blender,BrandZ,OwnerZ,MfgZ,Kitchen,2047,P26,1000,-10,2023-06-29,file51.csv,2023-01-26 11:00:00

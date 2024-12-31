@@ -1,0 +1,51 @@
+CIW_CTGRY,CIW_BUCKT1,CIW_BUCKT2,BRAVO_CD1,BRAVO_DESC1,BRAVO_CD2,BRAVO_DESC2,ACCT_TYPE,ACCT_NUM,ACCT_DESC,ACCT_TYPE1,CDL_DTTM,CURR_DT,FILE_NAME
+A,Bucket1,Bucket2,123,Description,123,Description,Savings,001,Primary Account,,2023-01-01 00:00:00,2023-09-01 12:00:00,file1.csv
+B,Bucket1,Bucket2,124,,124,,Checking,001,Secondary Account,Checking,2023-02-01 00:00:00,2023-09-02 12:00:00,file2.csv
+C,,,125,Description,125,Description,Loan,002,Loan Account,Loan,2023-03-01 00:00:00,2023-09-03 12:00:00,file3.csv
+D,Bucket1,Bucket2,126,Description,126,Description,,003,,Investment,2023-04-01 00:00:00,2023-09-04 12:00:00,file4.csv
+,Bucket1,Bucket2,127,Description,127,Description,Credit,004,Credit Account,Credit,2023-05-01 00:00:00,2023-09-05 12:00:00,file5.csv
+F,Bucket1,Bucket2,128,Description,128,Description,Mortgage,005,Mortgage Account,,2023-06-01 00:00:00,2023-09-06 12:00:00,file6.csv
+G,,Bucket2,129,,129,,Savings,006,Primary Savings,Savings,2023-07-01 00:00:00,2023-09-07 12:00:00,file7.csv
+H,Bucket1,,130,Description,130,Description,,007,Investment Account,Investment,2023-08-01 00:00:00,2023-09-08 12:00:00,file8.csv
+I,Bucket1,Bucket2,131,Description,131,Description,Loan,008,Personal Loan,,2023-09-01 00:00:00,2023-09-09 12:00:00,file9.csv
+J,,Bucket2,132,Description,132,,Credit,009,Credit Card,Credit,2023-10-01 00:00:00,2023-09-10 12:00:00,file10.csv
+K,Bucket1,,133,Description,133,Description,Mortgage,010,Home Loan,,2023-11-01 00:00:00,2023-09-11 12:00:00,file11.csv
+L,Bucket1,Bucket2,134,,134,Description,Savings,011,Main Savings,Savings,2023-12-01 00:00:00,2023-09-12 12:00:00,file12.csv
+M,Bucket1,Bucket2,135,Description,,,Checking,012,Main Checking,Checking,2023-01-01 00:00:00,2023-09-13 12:00:00,file13.csv
+,Bucket1,Bucket2,,Description,136,Description,Loan,013,Car Loan,Loan,2023-02-01 00:00:00,2023-09-14 12:00:00,file14.csv
+O,,,137,Description,137,Description,,014,Investment Account,Investment,2023-03-01 00:00:00,2023-09-15 12:00:00,file15.csv
+P,Bucket1,Bucket2,138,Description,138,Description,Credit,015,Credit Account,,2023-04-01 00:00:00,2023-09-16 12:00:00,file16.csv
+Q,Bucket1,,139,Description,139,Description,Savings,016,Savings Account,Savings,2023-05-01 00:00:00,2023-09-17 12:00:00,file17.csv
+,Bucket1,Bucket2,140,Description,,Description,Checking,017,Checking Account,Checking,2023-06-01 00:00:00,2023-09-18 12:00:00,file18.csv
+S,,Bucket2,141,Description,141,Description,Loan,018,Loan Account,,2023-07-01 00:00:00,2023-09-19 12:00:00,file19.csv
+T,Bucket1,Bucket2,142,Description,142,,Investment,019,Investment Account,Investment,2023-08-01 00:00:00,2023-09-20 12:00:00,file20.csv
+U,Bucket1,Bucket2,143,Description,143,Description,Credit,020,Credit Card,,2023-09-01 00:00:00,2023-09-21 12:00:00,file21.csv
+V,,Bucket2,144,Description,144,Description,Mortgage,021,Mortgage Account,Mortgage,2023-10-01 00:00:00,2023-09-22 12:00:00,file22.csv
+W,Bucket1,,145,Description,145,Description,Savings,022,Main Savings,,2023-11-01 00:00:00,2023-09-23 12:00:00,file23.csv
+X,Bucket1,Bucket2,,Description,146,Description,Checking,023,Checking Account,Checking,2023-12-01 00:00:00,2023-09-24 12:00:00,file24.csv
+Y,Bucket1,Bucket2,147,,147,Description,Loan,024,Loan Account,,2023-01-01 00:00:00,2023-09-25 12:00:00,file25.csv
+Z,,Bucket2,148,Description,148,Description,Investment,025,Investment Account,Investment,2023-02-01 00:00:00,2023-09-26 12:00:00,file26.csv
+AA,Bucket1,,149,Description,149,,Credit,026,Credit Account,Credit,2023-03-01 00:00:00,2023-09-27 12:00:00,file27.csv
+BB,Bucket1,Bucket2,150,Description,150,Description,,027,Mortgage Account,Mortgage,2023-04-01 00:00:00,2023-09-28 12:00:00,file28.csv
+CC,,Bucket2,151,,151,Description,Savings,028,Main Savings,Savings,2023-05-01 00:00:00,2023-09-29 12:00:00,file29.csv
+DD,Bucket1,,152,Description,152,Description,Checking,029,Checking Account,Checking,2023-06-01 00:00:00,2023-09-30 12:00:00,file30.csv
+EE,Bucket1,Bucket2,153,Description,153,Description,Loan,030,,,2023-07-01 00:00:00,2023-10-01 12:00:00,file31.csv
+FF,,Bucket2,154,,154,Description,Investment,031,Investment Account,Investment,2023-08-01 00:00:00,2023-10-02 12:00:00,file32.csv
+GG,Bucket1,,155,Description,155,Description,Credit,032,Credit Card,Credit,2023-09-01 00:00:00,2023-10-03 12:00:00,file33.csv
+HH,Bucket1,Bucket2,156,Description,156,Description,Mortgage,033,,Mortgage,2023-10-01 00:00:00,2023-10-04 12:00:00,file34.csv
+II,,Bucket2,157,Description,,Description,Savings,034,Main Savings,Savings,2023-11-01 00:00:00,2023-10-05 12:00:00,file35.csv
+JJ,Bucket1,,158,Description,158,Description,Checking,035,Checking Account,,2023-12-01 00:00:00,2023-10-06 12:00:00,file36.csv
+KK,Bucket1,Bucket2,159,,159,Description,Loan,036,Loan Account,Loan,2023-01-01 00:00:00,2023-10-07 12:00:00,file37.csv
+LL,,Bucket2,160,Description,160,Description,Investment,037,,Investment,2023-02-01 00:00:00,2023-10-08 12:00:00,file38.csv
+MM,Bucket1,,161,Description,161,Description,Credit,038,Credit Card,Credit,2023-03-01 00:00:00,2023-10-09 12:00:00,file39.csv
+NN,Bucket1,Bucket2,162,Description,162,,Mortgage,039,Mortgage Account,Mortgage,2023-04-01 00:00:00,2023-10-10 12:00:00,file40.csv
+OO,,Bucket2,163,Description,163,Description,Savings,040,Main Savings,,2023-05-01 00:00:00,2023-10-11 12:00:00,file41.csv
+PP,Bucket1,,164,Description,164,Description,Checking,041,Checking Account,Checking,2023-06-01 00:00:00,2023-10-12 12:00:00,file42.csv
+QQ,Bucket1,Bucket2,165,Description,,,Loan,042,Loan Account,Loan,2023-07-01 00:00:00,2023-10-13 12:00:00,file43.csv
+RR,,Bucket2,166,Description,166,Description,Investment,043,Investment Account,,2023-08-01 00:00:00,2023-10-14 12:00:00,file44.csv
+SS,Bucket1,,167,Description,167,,Credit,044,Credit Card,Credit,2023-09-01 00:00:00,2023-10-15 12:00:00,file45.csv
+TT,Bucket1,Bucket2,168,,168,Description,Mortgage,045,Mortgage Account,,2023-10-01 00:00:00,2023-10-16 12:00:00,file46.csv
+UU,,Bucket2,169,Description,169,Description,Savings,046,Main Savings,Savings,2023-11-01 00:00:00,2023-10-17 12:00:00,file47.csv
+VV,Bucket1,,170,Description,170,Description,Checking,047,Checking Account,Checking,2023-12-01 00:00:00,2023-10-18 12:00:00,file48.csv
+WW,Bucket1,Bucket2,171,Description,171,,Loan,048,Loan Account,,2023-01-01 00:00:00,2023-10-19 12:00:00,file49.csv
+XX,,Bucket2,172,Description,172,Description,Investment,049,,Investment,2023-02-01 00:00:00,2023-10-20 12:00:00,file50.csv

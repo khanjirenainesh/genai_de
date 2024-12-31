@@ -1,0 +1,49 @@
+STATUS,RESULT,JOB_NAME,QUERY,CRTD_DTTM
+Complete,Success,DataLoad,SELECT * FROM table,2023-01-01 12:00:00
+Failed,Error: Invalid Input,DataLoad,INSERT INTO table VALUES,2023-01-02 13:00:00
+Complete,Negative values found,DataLoad,UPDATE table SET value = -1,2023-01-03 14:00:00
+Failed,Duplicate entry,DataLoad,"INSERT INTO table VALUES (1, 'duplicate')",2023-01-04 15:00:00
+Complete,Success,DataLoad,SELECT * FROM table WHERE year > 9999,2023-01-05 16:00:00
+Failed,Invalid date range,DataLoad,SELECT * FROM table WHERE start_date > end_date,2023-01-06 17:00:00
+Complete,,DataLoad,SELECT * FROM table WHERE age < 0,2023-01-07 18:00:00
+Failed,Missing values in mandatory fields,DataLoad,UPDATE table SET name = NULL,2023-01-08 19:00:00
+Complete,Logical inconsistency detected,DataLoad,SELECT * FROM table WHERE salary < 0,2023-01-09 20:00:00
+,Partial success,DataLoad,SELECT * FROM table WHERE id IS NOT NULL,2023-01-10 21:00:00
+Complete,Invalid age value,DataLoad,UPDATE table SET age = -5,2023-01-11 22:00:00
+Failed,Duplicate detected,DataLoad,"INSERT INTO table VALUES (2, 'duplicate')",2023-01-12 23:00:00
+Complete,Success with warnings,DataLoad,SELECT * FROM table WHERE year = 10000,2023-01-13 00:00:00
+Failed,End date before start date,DataLoad,SELECT * FROM table WHERE start_date > end_date,2023-01-14 01:00:00
+Complete,Negative balance,DataLoad,UPDATE table SET balance = -100,2023-01-15 02:00:00
+Failed,Missing mandatory field,DataLoad,UPDATE table SET address = NULL,2023-01-16 03:00:00
+Complete,Logical error,DataLoad,SELECT * FROM table WHERE weight < 0,2023-01-17 04:00:00
+Failed,Missing data,DataLoad,"INSERT INTO table VALUES (NULL, 'missing')",2023-01-18 05:00:00
+Complete,Negative value found,DataLoad,UPDATE table SET height = -5,2023-01-19 06:00:00
+Failed,Duplicate ID,DataLoad,"INSERT INTO table VALUES (3, 'duplicate')",2023-01-20 07:00:00
+Complete,Success,DataLoad,SELECT * FROM table WHERE year > 9999,2023-01-21 08:00:00
+Failed,Invalid date logic,DataLoad,SELECT * FROM table WHERE start_date > end_date,2023-01-22 09:00:00
+Complete,Negative cost,DataLoad,UPDATE table SET cost = -200,2023-01-23 10:00:00
+Failed,Missing required information,DataLoad,UPDATE table SET email = NULL,2023-01-24 11:00:00
+Complete,Logical inconsistency,DataLoad,SELECT * FROM table WHERE temperature < 0,2023-01-25 12:00:00
+Failed,Missing values,DataLoad,"INSERT INTO table VALUES (NULL, 'missing')",2023-01-26 13:00:00
+Complete,Negative price,DataLoad,UPDATE table SET price = -50,2023-01-27 14:00:00
+Failed,Duplicate value,DataLoad,"INSERT INTO table VALUES (4, 'duplicate')",2023-01-28 15:00:00
+Complete,Success,DataLoad,SELECT * FROM table WHERE year > 9999,2023-01-29 16:00:00
+Failed,Invalid logic in date,DataLoad,SELECT * FROM table WHERE start_date > end_date,2023-01-30 17:00:00
+Complete,Negative profit,DataLoad,UPDATE table SET profit = -300,2023-01-31 18:00:00
+,Missing mandatory data,DataLoad,UPDATE table SET phone = NULL,2023-02-01 19:00:00
+Complete,Logical error found,DataLoad,SELECT * FROM table WHERE speed < 0,2023-02-02 20:00:00
+Failed,Data missing,DataLoad,"INSERT INTO table VALUES (NULL, 'missing')",2023-02-03 21:00:00
+Complete,Negative rate,DataLoad,UPDATE table SET rate = -10,2023-02-04 22:00:00
+Failed,ID already exists,DataLoad,"INSERT INTO table VALUES (5, 'duplicate')",2023-02-05 23:00:00
+Complete,Success,DataLoad,SELECT * FROM table WHERE year > 9999,2023-02-06 00:00:00
+Failed,End before start,DataLoad,SELECT * FROM table WHERE start_date > end_date,2023-02-07 01:00:00
+Complete,Negative income,DataLoad,UPDATE table SET income = -400,2023-02-08 02:00:00
+Failed,Mandatory field missing,DataLoad,UPDATE table SET zipcode = NULL,2023-02-09 03:00:00
+Complete,Logical inconsistency detected,DataLoad,SELECT * FROM table WHERE volume < 0,2023-02-10 04:00:00
+Failed,Values missing,DataLoad,"INSERT INTO table VALUES (NULL, 'missing')",2023-02-11 05:00:00
+Complete,Negative value entered,DataLoad,UPDATE table SET amount = -75,2023-02-12 06:00:00
+Failed,Duplicate detected,DataLoad,"INSERT INTO table VALUES (6, 'duplicate')",2023-02-13 07:00:00
+Complete,Success,DataLoad,SELECT * FROM table WHERE year > 9999,2023-02-14 08:00:00
+Failed,Start date is after end date,DataLoad,SELECT * FROM table WHERE start_date > end_date,2023-02-15 09:00:00
+Complete,Negative interest,DataLoad,UPDATE table SET interest = -20,2023-02-16 10:00:00
+Failed,Required field missing,DataLoad,UPDATE table SET username = NULL,2023-02-17 11:00:00

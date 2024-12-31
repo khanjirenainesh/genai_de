@@ -1,0 +1,51 @@
+ID,CDATE,RETAIL,RETAILNAME,RETAILBRANCH,RETAILPROVINCE,JJSKUBARCODE,JJSKUNAME,JJCORE,DISTRIBUTION,STATUS,RUN_ID,FILE_NAME,YEARMO
+1,2023-05-12,Walmart,,Branch 1,California,1234567890123,Product A,Core A,USA,Active,-1,file1.txt,2023-05
+1,2023-05-12,Walmart,Walmart Main,Branch 1,California,,Product A,Core A,USA,Active,100,,2023-05
+3,2023-05-12,,Target,Branch 2,California,9876543210987,Product B,Core B,USA,Inactive,100,file3.txt,2023-05
+4,2023-05-12,Target,Target Main,,Texas,1234567890123,Product A,Core A,USA,Active,-5,file4.txt,2023-05
+5,2023-05-12,BestBuy,BestBuy Main,Branch 3,Florida,1234567890123,,Core A,USA,Active,200,file5.txt,9999-12
+5,2023-05-12,BestBuy,BestBuy Main,Branch 3,Florida,9876543210987,Product C,Core C,USA,Inactive,0,file6.txt,2023-05
+7,2023-05-12,Amazon,Amazon HQ,Branch 4,,1234567890123,Product D,Core D,USA,Active,300,file7.txt,2023-05
+8,2023-05-12,Amazon,,Branch 4,Washington,1234567890123,Product D,Core D,USA,Active,300,file8.txt,2023-05
+9,2023-05-12,Costco,Costco Central,Branch 5,Oregon,9876543210987,Product E,Core E,USA,Inactive,400,file9.txt,2023-05
+9,2023-05-12,Costco,Costco Central,Branch 5,Oregon,9876543210987,Product E,Core E,USA,Inactive,400,file10.txt,2023-05
+11,2023-05-12,Kroger,Kroger HQ,Branch 6,Ohio,0000000000000,Product F,Core F,USA,Active,500,file11.txt,2023-05
+12,2023-05-12,Kroger,Kroger HQ,Branch 6,,1234567890123,Product F,Core F,USA,Active,-10,file12.txt,2023-05
+13,2023-05-12,Walmart,Walmart North,Branch 7,New York,,Product G,Core G,USA,Inactive,600,file13.txt,2023-05
+13,2023-05-12,Walmart,Walmart North,Branch 7,New York,9876543210987,Product G,Core G,USA,Inactive,600,file14.txt,2023-05
+15,2023-05-12,Target,,Branch 8,Illinois,1234567890123,Product H,Core H,USA,Active,700,file15.txt,2023-05
+16,2023-05-12,Target,Target South,,Illinois,1234567890123,Product H,Core H,USA,Active,700,file16.txt,2023-05
+17,2023-05-12,Amazon,Amazon East,Branch 9,Virginia,0000000000000,Product I,Core I,USA,Inactive,800,file17.txt,2023-05
+18,2023-05-12,Amazon,Amazon East,Branch 9,Virginia,,Product I,Core I,USA,Inactive,800,file18.txt,2023-05
+19,2023-05-12,Costco,Costco South,Branch 10,Georgia,9876543210987,,Core J,USA,Active,900,file19.txt,2023-05
+20,2023-05-12,Costco,Costco South,Branch 10,,9876543210987,Product J,Core J,USA,Active,900,file20.txt,2023-05
+21,2023-05-12,Kroger,Kroger East,Branch 11,North Carolina,0000000000000,Product K,Core K,USA,Inactive,1000,file21.txt,2023-05
+22,2023-05-12,Kroger,Kroger East,Branch 11,North Carolina,,Product K,Core K,USA,Inactive,1000,file22.txt,2023-05
+23,2023-05-12,Walmart,Walmart East,Branch 12,South Carolina,1234567890123,Product L,Core L,USA,Active,1100,file23.txt,2023-05
+24,2023-05-12,Walmart,,Branch 12,South Carolina,1234567890123,Product L,,USA,Active,1100,file24.txt,2023-05
+25,2023-05-12,Target,Target West,Branch 13,Nevada,9876543210987,Product M,Core M,USA,Inactive,1200,file25.txt,2023-05
+26,2023-05-12,Target,Target West,Branch 13,Nevada,,Product M,Core M,USA,Inactive,1200,file26.txt,2023-05
+27,2023-05-12,Amazon,Amazon West,Branch 14,Arizona,9876543210987,Product N,Core N,USA,Active,1300,file27.txt,2023-05
+28,2023-05-12,Amazon,Amazon West,Branch 14,Arizona,9876543210987,,Core N,USA,Active,1300,file28.txt,2023-05
+29,2023-05-12,Costco,Costco West,Branch 15,Utah,,Product O,Core O,USA,Inactive,1400,file29.txt,2023-05
+30,2023-05-12,Costco,Costco West,Branch 15,Utah,,Product O,Core O,USA,Inactive,1400,file30.txt,2023-05
+31,2023-05-12,Kroger,Kroger Central,Branch 16,Colorado,1234567890123,Product P,Core P,USA,Active,1500,file31.txt,2023-05
+32,2023-05-12,,Kroger Central,Branch 16,Colorado,1234567890123,Product P,Core P,USA,Active,1500,file32.txt,2023-05
+33,2023-05-12,Walmart,Walmart Central,Branch 17,Kansas,9876543210987,Product Q,Core Q,USA,Inactive,1600,file33.txt,2023-05
+34,2023-05-12,Walmart,Walmart Central,Branch 17,,9876543210987,Product Q,Core Q,USA,Inactive,1600,file34.txt,2023-05
+35,2023-05-12,Target,Target Central,Branch 18,Nebraska,1234567890123,Product R,Core R,USA,Active,1700,file35.txt,2023-05
+36,2023-05-12,Target,,Branch 18,Nebraska,1234567890123,Product R,Core R,USA,Active,1700,file36.txt,2023-05
+37,2023-05-12,Amazon,Amazon Central,Branch 19,Missouri,9876543210987,Product S,Core S,USA,Inactive,1800,file37.txt,2023-05
+38,2023-05-12,Amazon,Amazon Central,Branch 19,Missouri,,Product S,Core S,USA,Inactive,1800,file38.txt,2023-05
+39,2023-05-12,Costco,Costco Central,Branch 20,Minnesota,9876543210987,Product T,Core T,USA,Active,1900,file39.txt,2023-05
+40,2023-05-12,Costco,,Branch 20,Minnesota,9876543210987,Product T,Core T,USA,Active,1900,file40.txt,2023-05
+41,2023-05-12,Kroger,Kroger West,,Arkansas,1234567890123,Product U,Core U,USA,Inactive,2000,file41.txt,2023-05
+42,2023-05-12,Kroger,Kroger West,Branch 21,Arkansas,,Product U,Core U,USA,Inactive,2000,file42.txt,2023-05
+43,2023-05-12,Walmart,Walmart West,Branch 22,New Mexico,9876543210987,Product V,Core V,USA,Active,2100,file43.txt,2023-05
+44,2023-05-12,Walmart,Walmart West,Branch 22,New Mexico,9876543210987,,Core V,USA,Active,2100,file44.txt,2023-05
+45,2023-05-12,Target,Target West,Branch 23,New Mexico,1234567890123,Product W,Core W,USA,Inactive,2200,file45.txt,2023-05
+46,2023-05-12,Target,,Branch 23,New Mexico,1234567890123,Product W,Core W,USA,Inactive,2200,file46.txt,2023-05
+47,2023-05-12,Amazon,Amazon North,Branch 24,Michigan,,Product X,Core X,USA,Active,2300,file47.txt,2023-05
+48,2023-05-12,Amazon,Amazon North,Branch 24,Michigan,1234567890123,,Core X,USA,Active,2300,file48.txt,2023-05
+49,2023-05-12,Costco,Costco North,Branch 25,,9876543210987,Product Y,Core Y,USA,Inactive,2400,file49.txt,2023-05
+50,2023-05-12,Costco,Costco North,Branch 25,Indiana,9876543210987,,Core Y,USA,Inactive,2400,file50.txt,2023-05

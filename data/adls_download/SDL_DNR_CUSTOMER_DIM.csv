@@ -1,0 +1,51 @@
+GRCUST,CUST_ID,CUSTNAME,CUSTADD,CUSTCITY,PSTLZ
+12345,CUST001,John Doe,123 Elm Street,Metropolis,00000
+12345,CUST001,Jane Doe,456 Oak Street,Gotham,11111
+54321,CUST002,Alice Smith,789 Pine Street,Star City,22222
+54321,CUST002,Bob Smith,101 Maple Avenue,Central City,33333
+67890,CUST003,Charlie Brown,202 Birch Lane,Coast City,44444
+,CUST004,Debbie Downer,303 Cedar Road,Bludhaven,55555
+99999,,Eve White,404 Spruce Avenue,Ivy Town,66666
+11111,CUST005,,505 Willow Street,Fawcett City,77777
+22222,CUST006,Frank Black,,Smallville,88888
+33333,CUST007,Grace Green,606 Poplar Court,,99999
+44444,CUST008,Hank Hill,707 Ash Drive,Springfield,
+55555,CUST009,Ivy Blue,808 Chestnut Trail,Riverdale,00000
+55555,CUST009,Jack Black,909 Redwood Street,Bedrock,11111
+66666,CUST010,Kelly Green,1010 Fir Avenue,Derry,22222
+77777,CUST011,Liam White,1111 Hemlock Road,Hill Valley,33333
+88888,CUST012,Mia Brown,1212 Magnolia Blvd,Sunnydale,44444
+99999,CUST013,Noah Black,1313 Palm Street,Hogsmeade,55555
+00001,CUST014,Olivia Green,1414 Cypress Avenue,Mystic Falls,66666
+00002,CUST015,Paul White,1515 Alder Road,Storybrooke,77777
+00003,CUST016,Quinn Black,1616 Juniper Lane,Twin Peaks,88888
+00004,CUST017,Ruby Red,1717 Laurel Street,Cabot Cove,99999
+00005,CUST018,Sam Green,1818 Sycamore Drive,Arlen,00000
+00006,CUST019,Tina Blue,1919 Dogwood Trail,South Park,11111
+00007,CUST020,Uma Black,2020 Beech Avenue,Glenoak,22222
+00008,CUST021,Vera White,2121 Elm Terrace,Lanford,33333
+00009,CUST022,Will Brown,2222 Larch Road,Mayberry,44444
+00010,CUST023,Xena Black,2323 Pine Circle,Hickory,55555
+00011,CUST024,Yuri Green,2424 Maple Lane,Springfield,66666
+00012,CUST025,Zane Blue,2525 Birch Street,Anytown,77777
+00013,CUST026,Aiden Red,2626 Oak Avenue,New Town,88888
+00014,CUST027,Bella White,2727 Cedar Court,Old City,99999
+00015,CUST028,Caleb Black,2828 Spruce Drive,Futureville,00000
+00016,CUST029,Daisy Green,2929 Willow Lane,Pastown,11111
+00017,CUST030,Ethan Blue,3030 Poplar Road,Nowhereland,22222
+00018,CUST031,Fiona White,3131 Hemlock Avenue,Someplace,33333
+00019,CUST032,Graham Black,3232 Fir Trail,Anyplace,44444
+00020,CUST033,Holly Green,3333 Redwood Blvd,Somewhere,55555
+00021,CUST034,Ian Blue,3434 Palm Drive,Everytown,66666
+00022,CUST035,Jade White,3535 Cypress Street,Everywhere,77777
+00023,CUST036,Kyle Black,3636 Alder Avenue,Nowhere,88888
+00024,CUST037,Lara Green,3737 Juniper Court,Nowheretown,99999
+00025,CUST038,Max Blue,3838 Laurel Lane,Another Place,00000
+00026,CUST039,Nina White,3939 Sycamore Road,Another Town,11111
+00027,CUST040,Oscar Black,4040 Dogwood Avenue,Another City,22222
+00028,CUST041,Piper Green,4141 Beech Street,Any City,33333
+00029,CUST042,Quincy Blue,4242 Elm Road,Any Town,44444
+00030,CUST043,Riley White,4343 Larch Avenue,Any City,55555
+00031,CUST044,Sophie Black,4444 Pine Trail,Any Place,66666
+00032,CUST045,Tom Green,4545 Maple Boulevard,Any Where,77777
+00033,CUST046,Uma Blue,4646 Birch Avenue,Any Spot,88888

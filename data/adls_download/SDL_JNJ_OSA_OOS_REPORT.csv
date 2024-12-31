@@ -1,0 +1,51 @@
+OSA_OOS_DATE,WEEK,EMP_ADDRESS_PC,PC_NAME,EMP_ADDRESS_SUPERVISOR,SUPERVISOR_NAME,AREA,CHANNEL,ACCOUNT,STORE_ID,STORE_NAME,SHOP_TYPE,BRAND,CATEGORY,BARCODE,SKU,MSL_PRICE_TAG,OOS,OOS_REASON,RUN_ID,FILE_NAME,YEARMO
+2023-01-01 10:00:00,53,12345,Central,ABCDE,John Doe,North,Retail,Account1,Store123,SuperMart,Hypermarket,BrandX,Electronics,111222333444,SKU123,Yes,No,,-1,file1.txt,202301
+2023-01-01 10:00:00,01,67890,East,12345,Jane Smith,East,Wholesale,Account2,Store456,MegaStore,Supermarket,BrandY,Groceries,555666777888,SKU456,No,Yes,High Demand,-2,file2.txt,202302
+2023-01-01 10:00:00,02,ABCDE,West,67890,Alice Johnson,West,Online,Account3,Store789,ShopEasy,Convenience,BrandZ,Clothing,999000111222,SKU789,Yes,No,Supplier Delay,-3,file3.txt,202303
+2023-01-01 10:00:00,03,54321,Central,ABCDE,Bob Brown,South,Direct,Account4,Store012,MartHub,Warehouse,BrandA,Furniture,123456789012,SKU012,No,Yes,Low Stock,-4,file4.txt,202304
+2023-01-01 10:00:00,04,98765,East,54321,Charlie Davis,Central,Retail,Account5,Store345,QuickShop,Department Store,BrandB,Automotive,234567890123,SKU345,Yes,No,Distribution Issue,-5,file5.txt,202305
+2023-01-01 10:00:00,05,11223,West,98765,Dana White,East,Wholesale,Account6,Store678,ExpressMart,Mall,BrandC,Toys,345678901234,SKU678,No,Yes,System Error,-6,file6.txt,202306
+2023-01-01 10:00:00,06,44556,Central,11223,Edward Green,West,Online,Account7,Store901,ValueStore,Franchise,BrandD,Sports,456789012345,SKU901,Yes,No,Unexpected Demand,-7,file7.txt,202307
+2023-01-01 10:00:00,07,77889,East,44556,Fiona Black,South,Direct,Account8,Store234,SuperValue,Boutique,BrandE,Books,567890123456,SKU234,No,Yes,Inventory Count Error,-8,file8.txt,202308
+2023-01-01 10:00:00,08,99000,West,77889,George White,Central,Retail,Account9,Store567,MegaDeals,Pop-up,BrandF,Music,678901234567,SKU567,Yes,No,Supplier Shortage,-9,file9.txt,202309
+2023-01-01 10:00:00,09,12321,Central,99000,Hannah Grey,East,Wholesale,Account10,Store890,BestBuy,Discount Store,BrandG,Art,789012345678,SKU890,No,Yes,Seasonal Demand,-10,file10.txt,202310
+2023-01-01 10:00:00,10,23232,East,12321,Ian Brown,West,Online,Account11,Store013,QuickBuy,Specialty,BrandH,Jewelry,890123456789,SKU013,Yes,No,Holiday Rush,-11,file11.txt,202311
+2023-01-01 10:00:00,11,34343,West,23232,Jack Black,South,Direct,Account12,Store246,ShopSmart,Outlet,BrandI,Beauty,901234567890,SKU246,No,Yes,Unexpected Closure,-12,file12.txt,202312
+2023-01-01 10:00:00,12,45454,Central,34343,Kelly Grey,Central,Retail,Account13,Store579,ValueMart,Flagship,BrandJ,Office Supplies,012345678901,SKU579,Yes,No,Delayed Shipment,-13,file13.txt,202401
+2023-01-01 10:00:00,13,56565,East,45454,Liam Green,East,Wholesale,Account14,Store802,ShopMore,Co-op,BrandK,Garden,123456789012,SKU802,No,Yes,Infrastructure Issue,-14,file14.txt,202402
+2023-01-01 10:00:00,14,67676,West,56565,Mia Blue,West,Online,Account15,Store035,StoreMax,Warehouse Club,BrandL,Health,234567890123,SKU035,Yes,No,Pricing Error,-15,file15.txt,202403
+2023-01-01 10:00:00,15,78787,Central,67676,Noah White,South,Direct,Account16,Store268,BestShop,Vending,BrandM,Computers,345678901234,SKU268,No,Yes,Overstock,-16,file16.txt,202404
+2023-01-01 10:00:00,16,89898,East,78787,Olivia Grey,Central,Retail,Account17,Store491,QuickMart,Mobile,BrandN,Kitchen,456789012345,SKU491,Yes,No,Product Recall,-17,file17.txt,202405
+2023-01-01 10:00:00,17,90909,West,89898,Paul Black,East,Wholesale,Account18,Store714,ShopQuick,Travel,BrandO,Appliances,567890123456,SKU714,No,Yes,Policy Change,-18,file18.txt,202406
+2023-01-01 10:00:00,18,10101,Central,90909,Quinn Green,West,Online,Account19,Store037,MaxShop,Hypermarket,BrandP,Toys,678901234567,SKU037,Yes,No,System Upgrade,-19,file19.txt,202407
+2023-01-01 10:00:00,19,21212,East,10101,Riley Blue,South,Direct,Account20,Store260,BuyMore,Supermarket,BrandQ,Books,789012345678,SKU260,No,Yes,Weather Conditions,-20,file20.txt,202408
+2023-01-01 10:00:00,20,32323,West,21212,Sam Brown,Central,Retail,Account21,Store483,MegaMart,Convenience,BrandR,Clothing,890123456789,SKU483,Yes,No,New Launch,-21,file21.txt,202409
+2023-01-01 10:00:00,21,43434,Central,32323,Tina Grey,East,Wholesale,Account22,Store706,QuickDeals,Department Store,BrandS,Sports,901234567890,SKU706,No,Yes,Promotional Event,-22,file22.txt,202410
+2023-01-01 10:00:00,22,54545,East,43434,Uma Black,West,Online,Account23,Store029,ShopMax,Warehouse,BrandT,Electronics,012345678901,SKU029,Yes,No,Supply Chain Disruption,-23,file23.txt,202411
+2023-01-01 10:00:00,23,65656,West,54545,Victor Brown,South,Direct,Account24,Store252,BuyNow,Franchise,BrandU,Groceries,123456789012,SKU252,No,Yes,Unexpected Surge,-24,file24.txt,202412
+2023-01-01 10:00:00,24,76767,Central,65656,Wendy Grey,Central,Retail,Account25,Store475,MegaDeals,Boutique,BrandV,Automotive,234567890123,SKU475,Yes,No,Supplier Bankruptcy,-25,file25.txt,202501
+2023-01-01 10:00:00,25,87878,East,76767,Xander White,East,Wholesale,Account26,Store698,EasyShop,Mall,BrandW,Furniture,345678901234,SKU698,No,Yes,Market Fluctuation,-26,file26.txt,202502
+2023-01-01 10:00:00,26,98989,West,87878,Yara Green,West,Online,Account27,Store921,QuickShop,Outlet,BrandX,Beauty,456789012345,SKU921,Yes,No,Product Launch,-27,file27.txt,202503
+2023-01-01 10:00:00,27,09090,Central,98989,Zane Black,South,Direct,Account28,Store144,MegaStore,Flagship,BrandY,Health,567890123456,SKU144,No,Yes,Closure,-28,file28.txt,202504
+2023-01-01 10:00:00,28,12121,East,09090,Aaron White,Central,Retail,Account29,Store367,QuickBuy,Co-op,BrandZ,Office Supplies,678901234567,SKU367,Yes,No,Supply Chain Issue,-29,file29.txt,202505
+2023-01-01 10:00:00,29,23232,West,12121,Beth Grey,East,Wholesale,Account30,Store590,ShopSmart,Specialty,BrandA,Garden,789012345678,SKU590,No,Yes,Product Issue,-30,file30.txt,202506
+2023-01-01 10:00:00,30,34343,Central,23232,Cathy Blue,West,Online,Account31,Store813,ValueStore,Travel,BrandB,Appliances,890123456789,SKU813,Yes,No,Demand Surge,-31,file31.txt,202507
+2023-01-01 10:00:00,31,45454,East,34343,Drew Green,South,Direct,Account32,Store036,EasyShop,Mobile,BrandC,Toys,901234567890,SKU036,No,Yes,Seasonal Variation,-32,file32.txt,202508
+2023-01-01 10:00:00,32,56565,West,45454,Ella White,Central,Retail,Account33,Store259,QuickMart,Warehouse Club,BrandD,Books,012345678901,SKU259,Yes,No,Supplier Delay,-33,file33.txt,202509
+2023-01-01 10:00:00,33,67676,Central,56565,Fred Black,East,Wholesale,Account34,Store482,MegaStore,Vending,BrandE,Clothing,123456789012,SKU482,No,Yes,Stock Error,-34,file34.txt,202510
+2023-01-01 10:00:00,34,78787,East,67676,Gina Grey,West,Online,Account35,Store705,BuyNow,Outlet,BrandF,Sports,234567890123,SKU705,Yes,No,System Crash,-35,file35.txt,202511
+2023-01-01 10:00:00,35,89898,West,78787,Hugh Green,South,Direct,Account36,Store028,ShopQuick,Flagship,BrandG,Art,345678901234,SKU028,No,Yes,Market Change,-36,file36.txt,202512
+2023-01-01 10:00:00,36,90909,Central,89898,Ivy Blue,Central,Retail,Account37,Store251,QuickDeals,Co-op,BrandH,Music,456789012345,SKU251,Yes,No,Promotional Campaign,-37,file37.txt,202601
+2023-01-01 10:00:00,37,01010,East,90909,Jack White,East,Wholesale,Account38,Store474,MegaDeals,Specialty,BrandI,Jewelry,567890123456,SKU474,No,Yes,Overstock,-38,file38.txt,202602
+2023-01-01 10:00:00,38,12121,West,01010,Kate Black,West,Online,Account39,Store697,EasyShop,Travel,BrandJ,Automotive,678901234567,SKU697,Yes,No,Policy Change,-39,file39.txt,202603
+2023-01-01 10:00:00,39,23232,Central,12121,Liam Brown,South,Direct,Account40,Store920,QuickShop,Mobile,BrandK,Kitchen,789012345678,SKU920,No,Yes,Distribution Error,-40,file40.txt,202604
+2023-01-01 10:00:00,40,34343,Central,23232,Mona Green,Central,Retail,Account41,Store143,MegaStore,Warehouse Club,BrandL,Health,890123456789,SKU143,Yes,No,Supplier Issue,-41,file41.txt,202605
+2023-01-01 10:00:00,41,45454,East,34343,Nina Blue,East,Wholesale,Account42,Store366,QuickBuy,Vending,BrandM,Office Supplies,901234567890,SKU366,No,Yes,Unexpected Demand,-42,file42.txt,202606
+2023-01-01 10:00:00,42,56565,West,45454,Oscar White,West,Online,Account43,Store589,ShopSmart,Outlet,BrandN,Garden,012345678901,SKU589,Yes,No,Inventory Error,-43,file43.txt,202607
+2023-01-01 10:00:00,43,67676,Central,56565,Pam Black,South,Direct,Account44,Store812,ValueStore,Flagship,BrandO,Appliances,123456789012,SKU812,No,Yes,Logistics Issue,-44,file44.txt,202608
+2023-01-01 10:00:00,44,78787,East,67676,Quincy Grey,Central,Retail,Account45,Store035,MegaStore,Co-op,BrandP,Toys,234567890123,SKU035,Yes,No,System Upgrade,-45,file45.txt,202609
+2023-01-01 10:00:00,45,89898,West,78787,Ruth Green,East,Wholesale,Account46,Store258,BuyNow,Specialty,BrandQ,Books,345678901234,SKU258,No,Yes,Supply Chain Disruption,-46,file46.txt,202610
+2023-01-01 10:00:00,46,90909,Central,89898,Steve Blue,West,Online,Account47,Store481,QuickDeals,Travel,BrandR,Clothing,456789012345,SKU481,Yes,No,Product Recall,-47,file47.txt,202611
+2023-01-01 10:00:00,47,02020,East,90909,Tom White,South,Direct,Account48,Store704,MegaDeals,Mobile,BrandS,Sports,567890123456,SKU704,No,Yes,Market Fluctuation,-48,file48.txt,202612
+2023-01-01 10:00:00,48,13131,West,02020,Uma Black,Central,Retail,Account49,Store027,EasyShop,Warehouse Club,BrandT,Beauty,678901234567,SKU027,Yes,No,Resource Limitation,-49,file49.txt,202701
+2023-01-01 10:00:00,49,24242,Central,13131,Vera Grey,East,Wholesale,Account50,Store250,ShopSmart,Vending,BrandU,Appliances,789012345678,SKU250,No,Yes,Unexpected Demand,-50,file50.txt,202702

@@ -1,0 +1,51 @@
+REGION,FETCHEDDATETIME,FETCHEDSEQUENCE,AZUREFILE,AZUREDATETIME,PRODUCTTRANSLATIONID,REMOTEKEY,PRODUCTTRANSLATIONNAME,PRODUCTID,EANNUMBER,LANGUAGE,CDL_DATETIME,CDL_SOURCE_FILE,LOAD_KEY
+Europe,2023-10-01 12:00:00,-1,file1.txt,2023-10-01 12:00:00,123,remote123,Test Product,prod1,ean123456789012,EN,2023-10-01 12:00:00,source1.txt,load1
+Asia,2023-10-02 13:00:00,2,file2.txt,2023-10-02 13:00:00,123,remote124,Another Product,prod2,ean987654321098,FR,2023-10-02 13:00:00,source2.txt,load2
+America,2023-10-03 14:00:00,3,file3.txt,2023-10-03 14:00:00,125,remote125,Sample Product,prod3,,ES,2023-10-03 14:00:00,source3.txt,load3
+Africa,2023-10-04 15:00:00,4,file4.txt,2023-10-04 15:00:00,126,remote126,Example Product,prod4,ean123,DE,2023-10-04 15:00:00,source4.txt,load4
+Australia,2023-10-05 16:00:00,5,file5.txt,2023-10-05 16:00:00,127,remote127,,prod5,ean456,IT,2023-10-05 16:00:00,source5.txt,load5
+Europe,2023-10-06 17:00:00,6,file6.txt,2023-10-06 17:00:00,128,remote128,Test Product,prod6,ean789,PT,2023-10-06 17:00:00,source6.txt,load6
+Asia,2023-10-07 18:00:00,7,file7.txt,2023-10-07 18:00:00,129,remote129,Another Product,prod7,ean012,ZH,2023-10-07 18:00:00,source7.txt,load7
+America,2023-10-08 19:00:00,8,file8.txt,2023-10-08 19:00:00,130,remote130,Sample Product,,ean345,JA,2023-10-08 19:00:00,source8.txt,load8
+Africa,2023-10-09 20:00:00,9,file9.txt,2023-10-09 20:00:00,131,remote131,Example Product,prod9,ean678,RU,2023-10-09 20:00:00,source9.txt,load9
+Australia,2023-10-10 21:00:00,10,file10.txt,2023-10-10 21:00:00,132,remote132,New Product,prod10,ean901,,2023-10-10 21:00:00,source10.txt,load10
+Europe,2023-10-11 22:00:00,-11,file11.txt,2023-10-11 22:00:00,133,remote133,Test Product,prod11,ean234,EN,2023-10-11 22:00:00,source11.txt,load11
+Asia,2023-10-12 23:00:00,12,file12.txt,2023-10-12 23:00:00,134,remote134,Another Product,prod12,ean567,FR,2023-10-12 23:00:00,source12.txt,load12
+America,2023-10-13 00:00:00,13,file13.txt,2023-10-13 00:00:00,135,remote135,Sample Product,prod13,ean890,ES,2023-10-13 00:00:00,source13.txt,load13
+Africa,2023-10-14 01:00:00,14,file14.txt,2023-10-14 01:00:00,136,remote136,,prod14,ean123,DE,2023-10-14 01:00:00,source14.txt,load14
+Australia,2023-10-15 02:00:00,15,file15.txt,2023-10-15 02:00:00,137,remote137,New Product,prod15,ean456,IT,2023-10-15 02:00:00,source15.txt,load15
+Europe,2023-10-16 03:00:00,16,file16.txt,2023-10-16 03:00:00,138,remote138,Test Product,prod16,ean789,PT,2023-10-16 03:00:00,source16.txt,load16
+Asia,2023-10-17 04:00:00,17,file17.txt,2023-10-17 04:00:00,139,remote139,Another Product,prod17,ean012,ZH,2023-10-17 04:00:00,source17.txt,load17
+America,2023-10-18 05:00:00,18,file18.txt,2023-10-18 05:00:00,140,remote140,Sample Product,prod18,ean345,JA,2023-10-18 05:00:00,source18.txt,load18
+Africa,2023-10-19 06:00:00,19,file19.txt,2023-10-19 06:00:00,141,remote141,Example Product,prod19,ean678,RU,2023-10-19 06:00:00,source19.txt,load19
+Australia,2023-10-20 07:00:00,20,file20.txt,2023-10-20 07:00:00,142,remote142,New Product,,ean901,,2023-10-20 07:00:00,source20.txt,load20
+Europe,2023-10-21 08:00:00,21,file21.txt,2023-10-21 08:00:00,143,remote143,Test Product,prod21,ean234,EN,2023-10-21 08:00:00,source21.txt,load21
+Asia,2023-10-22 09:00:00,22,file22.txt,2023-10-22 09:00:00,144,remote144,Another Product,prod22,ean567,FR,2023-10-22 09:00:00,source22.txt,load22
+America,2023-10-23 10:00:00,23,file23.txt,2023-10-23 10:00:00,145,remote145,Sample Product,prod23,ean890,ES,2023-10-23 10:00:00,source23.txt,load23
+Africa,2023-10-24 11:00:00,24,file24.txt,2023-10-24 11:00:00,146,remote146,Example Product,prod24,ean123,DE,2023-10-24 11:00:00,source24.txt,load24
+Australia,2023-10-25 12:00:00,25,file25.txt,2023-10-25 12:00:00,147,remote147,New Product,prod25,ean456,IT,2023-10-25 12:00:00,source25.txt,load25
+Europe,2023-10-26 13:00:00,26,file26.txt,2023-10-26 13:00:00,148,remote148,Test Product,prod26,ean789,PT,2023-10-26 13:00:00,source26.txt,load26
+Asia,2023-10-27 14:00:00,27,file27.txt,2023-10-27 14:00:00,149,remote149,Another Product,prod27,ean012,ZH,2023-10-27 14:00:00,source27.txt,load27
+America,2023-10-28 15:00:00,28,file28.txt,2023-10-28 15:00:00,150,remote150,Sample Product,,ean345,JA,2023-10-28 15:00:00,source28.txt,load28
+Africa,2023-10-29 16:00:00,29,file29.txt,2023-10-29 16:00:00,151,remote151,Example Product,prod29,ean678,RU,2023-10-29 16:00:00,source29.txt,load29
+Australia,2023-10-30 17:00:00,30,file30.txt,2023-10-30 17:00:00,152,remote152,New Product,prod30,ean901,,2023-10-30 17:00:00,source30.txt,load30
+Europe,2023-10-31 18:00:00,31,file31.txt,2023-10-31 18:00:00,153,remote153,Test Product,prod31,ean234,EN,2023-10-31 18:00:00,source31.txt,load31
+Asia,2023-11-01 19:00:00,-32,file32.txt,2023-11-01 19:00:00,154,remote154,Another Product,prod32,ean567,FR,2023-11-01 19:00:00,source32.txt,load32
+America,2023-11-02 20:00:00,33,file33.txt,2023-11-02 20:00:00,155,remote155,Sample Product,prod33,ean890,ES,2023-11-02 20:00:00,source33.txt,load33
+Africa,2023-11-03 21:00:00,34,file34.txt,2023-11-03 21:00:00,156,remote156,Example Product,prod34,ean123,DE,2023-11-03 21:00:00,source34.txt,load34
+Australia,2023-11-04 22:00:00,35,file35.txt,2023-11-04 22:00:00,157,remote157,,prod35,ean456,IT,2023-11-04 22:00:00,source35.txt,load35
+Europe,2023-11-05 23:00:00,36,file36.txt,2023-11-05 23:00:00,158,remote158,Test Product,prod36,ean789,PT,2023-11-05 23:00:00,source36.txt,load36
+Asia,2023-11-06 00:00:00,37,file37.txt,2023-11-06 00:00:00,159,remote159,Another Product,prod37,ean012,ZH,2023-11-06 00:00:00,source37.txt,load37
+America,2023-11-07 01:00:00,38,file38.txt,2023-11-07 01:00:00,160,remote160,Sample Product,prod38,ean345,JA,2023-11-07 01:00:00,source38.txt,load38
+Africa,2023-11-08 02:00:00,39,file39.txt,2023-11-08 02:00:00,161,remote161,Example Product,prod39,ean678,RU,2023-11-08 02:00:00,source39.txt,load39
+Australia,2023-11-09 03:00:00,40,file40.txt,2023-11-09 03:00:00,162,remote162,New Product,prod40,ean901,,2023-11-09 03:00:00,source40.txt,load40
+Europe,2023-11-10 04:00:00,41,file41.txt,2023-11-10 04:00:00,163,remote163,Test Product,prod41,ean234,EN,2023-11-10 04:00:00,source41.txt,load41
+Asia,2023-11-11 05:00:00,42,file42.txt,2023-11-11 05:00:00,164,remote164,Another Product,prod42,ean567,FR,2023-11-11 05:00:00,source42.txt,load42
+America,2023-11-12 06:00:00,43,file43.txt,2023-11-12 06:00:00,165,remote165,Sample Product,prod43,ean890,ES,2023-11-12 06:00:00,source43.txt,load43
+Africa,2023-11-13 07:00:00,44,file44.txt,2023-11-13 07:00:00,166,remote166,Example Product,prod44,ean123,DE,2023-11-13 07:00:00,source44.txt,load44
+Australia,2023-11-14 08:00:00,45,file45.txt,2023-11-14 08:00:00,167,remote167,New Product,prod45,ean456,IT,2023-11-14 08:00:00,source45.txt,load45
+Europe,2023-11-15 09:00:00,46,file46.txt,2023-11-15 09:00:00,168,remote168,Test Product,prod46,ean789,PT,2023-11-15 09:00:00,source46.txt,load46
+Asia,2023-11-16 10:00:00,47,file47.txt,2023-11-16 10:00:00,169,remote169,Another Product,prod47,ean012,ZH,2023-11-16 10:00:00,source47.txt,load47
+America,2023-11-17 11:00:00,48,file48.txt,2023-11-17 11:00:00,170,remote170,Sample Product,prod48,ean345,JA,2023-11-17 11:00:00,source48.txt,load48
+Africa,2023-11-18 12:00:00,49,file49.txt,2023-11-18 12:00:00,171,remote171,Example Product,prod49,ean678,RU,2023-11-18 12:00:00,source49.txt,load49
+Australia,2023-11-19 13:00:00,50,file50.txt,2023-11-19 13:00:00,172,remote172,New Product,prod50,ean901,,2023-11-19 13:00:00,source50.txt,load50

@@ -1,0 +1,51 @@
+ARTICLE,ARTICLE_DESC,CATEGORY,SOH_STORES,SOH_DC,POS_CUST,YEARMONTH,RUN_ID,CRTD_DTTM,FILENAME
+A123,Item Description,Electronics,-10,50,Customer1,202309,1,2023-10-01 12:00:00,file1.csv
+A123,Another Item,Home,20,-5,Customer2,202310,2,2023-10-01 12:05:00,file2.csv
+B456,,Toys,30,40,,202308,3,2023-10-01 12:10:00,file3.csv
+C789,A very long description that exceeds the normal length allowed for an article description,Clothing,5,15,Customer3,202311,4,2023-10-01 12:15:00,file4.csv
+D012,Item Desc,Sports,0,0,Customer4,202312,5,2023-10-01 12:20:00,file5.csv
+E345,Sample Item,Books,10,50,Customer5,202307,6,2023-10-01 12:25:00,file6.csv
+F678,Another Sample,Garden,-1,-1,Customer6,202306,7,2023-10-01 12:30:00,file7.csv
+G901,More Items,Toys,100,100,Customer7,202305,8,2023-10-01 12:35:00,file8.csv
+H234,Item Desc,,10,10,Customer8,202304,9,2023-10-01 12:40:00,file9.csv
+I567,Item Description,Electronics,20,30,Customer9,202303,10,2023-10-01 12:45:00,file10.csv
+J890,Another Item,Home,0,0,Customer10,202302,11,2023-10-01 12:50:00,file11.csv
+K123,,Toys,50,50,,202301,12,2023-10-01 12:55:00,file12.csv
+L456,A very long description that exceeds the normal length allowed for an article description,Clothing,5,15,Customer11,202212,13,2023-10-01 13:00:00,file13.csv
+M789,Item Desc,Sports,0,0,Customer12,202211,14,2023-10-01 13:05:00,file14.csv
+N012,Sample Item,Books,10,50,Customer13,202210,15,2023-10-01 13:10:00,file15.csv
+O345,Another Sample,Garden,-1,-1,Customer14,202209,16,2023-10-01 13:15:00,file16.csv
+P678,More Items,Toys,100,100,Customer15,202208,17,2023-10-01 13:20:00,file17.csv
+Q901,Item Desc,,10,10,Customer16,202207,18,2023-10-01 13:25:00,file18.csv
+R234,Item Description,Electronics,20,30,Customer17,202206,19,2023-10-01 13:30:00,file19.csv
+S567,Another Item,Home,0,0,Customer18,202205,20,2023-10-01 13:35:00,file20.csv
+T890,,Toys,50,50,,202204,21,2023-10-01 13:40:00,file21.csv
+U123,A very long description that exceeds the normal length allowed for an article description,Clothing,5,15,Customer19,202203,22,2023-10-01 13:45:00,file22.csv
+V456,Item Desc,Sports,0,0,Customer20,202202,23,2023-10-01 13:50:00,file23.csv
+W789,Sample Item,Books,10,50,Customer21,202201,24,2023-10-01 13:55:00,file24.csv
+X012,Another Sample,Garden,-1,-1,Customer22,202112,25,2023-10-01 14:00:00,file25.csv
+Y345,More Items,Toys,100,100,Customer23,202111,26,2023-10-01 14:05:00,file26.csv
+Z678,Item Desc,,10,10,Customer24,202110,27,2023-10-01 14:10:00,file27.csv
+AA901,Item Description,Electronics,20,30,Customer25,202109,28,2023-10-01 14:15:00,file28.csv
+BB234,Another Item,Home,0,0,Customer26,202108,29,2023-10-01 14:20:00,file29.csv
+CC567,,Toys,50,50,,202107,30,2023-10-01 14:25:00,file30.csv
+DD890,A very long description that exceeds the normal length allowed for an article description,Clothing,5,15,Customer27,202106,31,2023-10-01 14:30:00,file31.csv
+EE123,Item Desc,Sports,0,0,Customer28,202105,32,2023-10-01 14:35:00,file32.csv
+FF456,Sample Item,Books,10,50,Customer29,202104,33,2023-10-01 14:40:00,file33.csv
+GG789,Another Sample,Garden,-1,-1,Customer30,202103,34,2023-10-01 14:45:00,file34.csv
+HH012,More Items,Toys,100,100,Customer31,202102,35,2023-10-01 14:50:00,file35.csv
+II345,Item Desc,,10,10,Customer32,202101,36,2023-10-01 14:55:00,file36.csv
+JJ678,Item Description,Electronics,20,30,Customer33,202012,37,2023-10-01 15:00:00,file37.csv
+KK901,Another Item,Home,0,0,Customer34,202011,38,2023-10-01 15:05:00,file38.csv
+LL234,,Toys,50,50,,202010,39,2023-10-01 15:10:00,file39.csv
+MM567,A very long description that exceeds the normal length allowed for an article description,Clothing,5,15,Customer35,202009,40,2023-10-01 15:15:00,file40.csv
+NN890,Item Desc,Sports,0,0,Customer36,202008,41,2023-10-01 15:20:00,file41.csv
+OO123,Sample Item,Books,10,50,Customer37,202007,42,2023-10-01 15:25:00,file42.csv
+PP456,Another Sample,Garden,-1,-1,Customer38,202006,43,2023-10-01 15:30:00,file43.csv
+QQ789,More Items,Toys,100,100,Customer39,202005,44,2023-10-01 15:35:00,file44.csv
+RR012,Item Desc,,10,10,Customer40,202004,45,2023-10-01 15:40:00,file45.csv
+SS345,Item Description,Electronics,20,30,Customer41,202003,46,2023-10-01 15:45:00,file46.csv
+TT678,Another Item,Home,0,0,Customer42,202002,47,2023-10-01 15:50:00,file47.csv
+UU901,,Toys,50,50,,202001,48,2023-10-01 15:55:00,file48.csv
+VV234,A very long description that exceeds the normal length allowed for an article description,Clothing,5,15,Customer43,201912,49,2023-10-01 16:00:00,file49.csv
+WW567,Item Desc,Sports,0,0,Customer44,201911,50,2023-10-01 16:05:00,file50.csv

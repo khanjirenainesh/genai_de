@@ -1,0 +1,51 @@
+ID,MUID,VERSIONNAME,VERSIONNUMBER,VERSION_ID,VERSIONFLAG,NAME,CODE,CHANGETRACKINGMASK,BARCODE,JNJ_SAP_CODE,FRANCHISE,CATEGORY,SUB_CATEGORY,SUB_BRAND,BASE_BUNDLE,SIZE,PRODUCT_NAME,ENTERDATETIME,ENTERUSERNAME,ENTERVERSIONNUMBER,LASTCHGDATETIME,LASTCHGUSERNAME,LASTCHGVERSIONNUMBER,VALIDATIONSTATUS
+-1,123,Negative Version,-10,1,Active,Product A,A123,-5,123456789012,111,Health,Medicine,Cold,BrandX,Standard,Small,Product A,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+2,,Duplicate ID,2,2,Active,Product B,B123,3,123456789012,112,Beauty,Skincare,Moisturizer,BrandY,Deluxe,Medium,Product B,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+3,345,Missing MUID,3,3,Active,Product C,C123,4,123456789012,113,Food,Snacks,Chips,BrandZ,Basic,Large,Product C,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+4,456,Illogical Version,4,4,,Product D,D123,5,-123456789012,114,Tech,Gadgets,Phones,BrandA,Pro,X-Large,Product D,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+5,567,Logical Inconsistency,5,5,Inactive,Product E,E123,6,123456789012,-115,Auto,Cars,SUV,BrandB,Standard,Large,Product E,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+6,678,Future Year,6,6,Active,Product F,F123,7,123456789012,116,Fashion,Clothing,Shirts,BrandC,Premium,Medium,Product F,9999-12-31 23:59:59,user1,1,2023-01-02 11:00:00,user2,2,Valid
+7,789,Negative Change Tracking,7,7,Inactive,Product G,G123,-8,123456789012,117,Home,Furniture,Chairs,BrandD,Basic,Small,Product G,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+8,890,Zero SAP Code,8,8,Active,Product H,H123,9,123456789012,0,Sports,Equipment,Balls,BrandE,Advanced,X-Large,Product H,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+9,901,Empty Name,9,9,Inactive,,I123,10,123456789012,118,Travel,Luggage,Suitcases,BrandF,Deluxe,Medium,Product I,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+10,012,Negative Version Number,-10,10,Active,Product J,J123,11,123456789012,119,Education,Books,Novels,BrandG,Standard,Large,Product J,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+11,123,Duplicate MUID,11,11,Active,Product K,K123,12,123456789012,120,Health,Supplements,Vitamins,BrandH,Premium,Medium,Product K,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+12,134,Negative Mask,12,12,Inactive,Product L,L123,-13,123456789012,121,Beauty,Makeup,Lipstick,BrandI,Advanced,Small,Product L,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+13,145,Future Change Date,13,13,Active,Product M,M123,14,123456789012,122,Food,Beverages,Juice,BrandJ,Deluxe,X-Large,Product M,2023-01-01 10:00:00,user1,1,9999-12-31 23:59:59,user2,2,Valid
+14,156,Empty Code,14,14,Inactive,Product N,,15,123456789012,123,Tech,Computers,Laptops,BrandK,Pro,Large,Product N,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+15,167,Negative Barcode,15,15,Active,Product O,O123,16,-123456789012,124,Auto,Bikes,Mountain,BrandL,Standard,Medium,Product O,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+16,178,Duplicate Code,16,16,Inactive,Product P,A123,17,123456789012,125,Fashion,Footwear,Shoes,BrandM,Basic,Small,Product P,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+17,189,Negative Version ID,17,-17,Active,Product Q,Q123,18,123456789012,126,Home,Decor,Paintings,BrandN,Premium,Large,Product Q,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+18,190,Empty Franchise,18,18,Inactive,Product R,R123,19,123456789012,127,,Kitchen,Appliances,BrandO,Deluxe,X-Large,Product R,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+19,201,Negative JNJ Code,19,19,Active,Product S,S123,20,123456789012,-128,Sports,Fitness,Weights,BrandP,Advanced,Medium,Product S,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+20,212,Empty Category,20,20,Inactive,Product T,T123,21,123456789012,129,Travel,,Backpacks,BrandQ,Pro,Small,Product T,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+21,223,Negative Product Name,21,21,Active,Product U,U123,22,123456789012,130,Education,Online Courses,Programming,BrandR,Standard,Large,,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+22,234,Negative Enter Version,22,22,Inactive,Product V,V123,23,123456789012,131,Health,Medical Supplies,Bandages,BrandS,Premium,Medium,Product V,2023-01-01 10:00:00,user1,-1,2023-01-02 11:00:00,user2,2,Valid
+23,245,Missing Last Change User,23,23,Active,Product W,W123,24,123456789012,132,Beauty,Hair Care,Shampoo,BrandT,Advanced,Small,Product W,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,,2,Valid
+24,256,Negative Last Change Version,24,24,Inactive,Product X,X123,25,123456789012,133,Food,Desserts,Cakes,BrandU,Deluxe,X-Large,Product X,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,-2,Valid
+25,267,Empty Sub Category,25,25,Active,Product Y,Y123,26,123456789012,134,Tech,Accessories,,BrandV,Pro,Large,Product Y,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+26,278,Negative Enter User,26,26,Inactive,Product Z,Z123,27,123456789012,135,Auto,Parts,Engines,BrandW,Standard,Medium,Product Z,2023-01-01 10:00:00,,1,2023-01-02 11:00:00,user2,2,Valid
+27,289,Negative Size,27,27,Active,Product AA,AA123,28,123456789012,136,Fashion,Accessories,Watches,BrandX,Premium,,Product AA,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+28,290,Negative Validation Status,28,28,Inactive,Product AB,AB123,29,123456789012,137,Home,Lighting,Lamps,BrandY,Advanced,Small,Product AB,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,
+29,301,Empty Sub Brand,29,29,Active,Product AC,AC123,30,123456789012,138,Kitchen,Cookware,Pots,,Deluxe,X-Large,Product AC,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+30,312,Invalid Year,30,30,Inactive,Product AD,AD123,31,123456789012,139,Travel,Tickets,Flights,BrandZ,Pro,Large,Product AD,10000-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+31,323,Negative Product Code,31,31,Active,Product AE,,32,123456789012,140,Education,Stationery,Pens,BrandA,Standard,Medium,Product AE,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+32,334,Negative Franchise,32,32,Inactive,Product AF,AF123,33,123456789012,141,,Health,Supplements,BrandB,Premium,Small,Product AF,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+33,345,Negative Category,33,33,Active,Product AG,AG123,34,123456789012,142,Beauty,,Skincare,BrandC,Advanced,X-Large,Product AG,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+34,356,Negative Product Name,34,34,Inactive,,AH123,35,123456789012,143,Food,Snacks,Chips,BrandD,Deluxe,Large,Product AH,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+35,367,Negative Enter Version,35,35,Active,Product AI,AI123,36,123456789012,144,Tech,Gadgets,Phones,BrandE,Pro,Medium,Product AI,2023-01-01 10:00:00,user1,-1,2023-01-02 11:00:00,user2,2,Valid
+36,378,Missing Last Change User,36,36,Inactive,Product AJ,AJ123,37,123456789012,145,Auto,Cars,SUV,BrandF,Standard,Small,Product AJ,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,,2,Valid
+37,389,Negative Last Change Version,37,37,Active,Product AK,AK123,38,123456789012,146,Fashion,Clothing,Shirts,BrandG,Premium,X-Large,Product AK,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,-2,Valid
+38,390,Empty Sub Category,38,38,Inactive,Product AL,AL123,39,123456789012,147,Home,Furniture,,BrandH,Advanced,Large,Product AL,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+39,401,Negative Enter User,39,39,Active,Product AM,AM123,40,123456789012,148,Sports,Equipment,Balls,BrandI,Pro,Medium,Product AM,2023-01-01 10:00:00,,1,2023-01-02 11:00:00,user2,2,Valid
+40,412,Negative Size,40,40,Inactive,Product AN,AN123,41,123456789012,149,Travel,Luggage,Suitcases,BrandJ,Standard,,Product AN,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+41,423,Negative Validation Status,41,41,Active,Product AO,AO123,42,123456789012,150,Education,Books,Novels,BrandK,Premium,Small,Product AO,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,
+42,434,Empty Sub Brand,42,42,Inactive,Product AP,AP123,43,123456789012,151,Health,Medicine,Cold,,Advanced,Large,Product AP,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+43,445,Invalid Year,43,43,Active,Product AQ,AQ123,44,123456789012,152,Beauty,Skincare,Moisturizer,BrandL,Deluxe,X-Large,Product AQ,10000-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+44,456,Negative Product Code,44,44,Inactive,Product AR,,45,123456789012,153,Food,Beverages,Juice,BrandM,Pro,Medium,Product AR,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+45,467,Negative Franchise,45,45,Active,Product AS,AS123,46,123456789012,154,,Fashion,Clothing,BrandN,Standard,Large,Product AS,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+46,478,Negative Category,46,46,Inactive,Product AT,AT123,47,123456789012,155,Home,,Decor,BrandO,Premium,Small,Product AT,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+47,489,Negative Product Name,47,47,Active,,AU123,48,123456789012,156,Sports,Fitness,Weights,BrandP,Advanced,X-Large,Product AU,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,2,Valid
+48,490,Negative Enter Version,48,48,Inactive,Product AV,AV123,49,123456789012,157,Travel,Tickets,Flights,BrandQ,Pro,Large,Product AV,2023-01-01 10:00:00,user1,-1,2023-01-02 11:00:00,user2,2,Valid
+49,501,Missing Last Change User,49,49,Active,Product AW,AW123,50,123456789012,158,Education,Online Courses,Programming,BrandR,Standard,Medium,Product AW,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,,2,Valid
+50,512,Negative Last Change Version,50,50,Inactive,Product AX,AX123,51,123456789012,159,Health,Medical Supplies,Bandages,BrandS,Premium,Small,Product AX,2023-01-01 10:00:00,user1,1,2023-01-02 11:00:00,user2,-2,Valid

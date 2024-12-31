@@ -1,0 +1,51 @@
+LOAD_DATE,SOURCE_FILE_NAME,PLATFORM,BRAND,RPC,PRODUCT_TITLE,QUANTITY,MRP,MRP_OFFTAKES_VALUE,MONTH
+2023-01-01 12:00:00,sales_data.csv,Amazon,BrandX,12345678901234567890,Ultra HD TV,-10,1500.0,15000.0,January
+2023-01-02 12:00:00,sales_data.csv,Amazon,BrandX,12345678901234567891,Smartphone,5,-1000.0,5000.0,February
+2023-01-03 12:00:00,sales_data.csv,Amazon,BrandY,12345678901234567892,Laptop,20,800.0,-16000.0,March
+2023-01-04 12:00:00,sales_data.csv,Amazon,BrandZ,12345678901234567893,Camera,15,500.0,7500.0,April
+2023-01-05 12:00:00,sales_data.csv,Amazon,BrandW,12345678901234567894,Headphones,0,100.0,0.0,May
+2023-01-06 12:00:00,sales_data.csv,Amazon,BrandV,12345678901234567895,Bluetooth Speaker,10,150.0,1500.0,June
+2023-01-07 12:00:00,sales_data.csv,Amazon,BrandU,12345678901234567896,Gaming Console,25,300.0,7500.0,July
+2023-01-08 12:00:00,sales_data.csv,Amazon,BrandT,12345678901234567897,Smartwatch,-5,200.0,1000.0,August
+2023-01-09 12:00:00,sales_data.csv,Amazon,BrandS,12345678901234567898,Tablet,30,-250.0,7500.0,September
+2023-01-10 12:00:00,sales_data.csv,Amazon,BrandR,12345678901234567899,eReader,12,120.0,-1440.0,October
+2023-01-11 12:00:00,sales_data.csv,Amazon,BrandQ,12345678901234567890,Home Theater,8,600.0,4800.0,November
+2023-01-12 12:00:00,sales_data.csv,Amazon,BrandP,12345678901234567891,VR Headset,0,350.0,0.0,December
+2023-01-13 12:00:00,sales_data.csv,Amazon,BrandO,12345678901234567892,Fitness Tracker,18,75.0,-1350.0,January
+2023-01-14 12:00:00,sales_data.csv,Amazon,BrandN,12345678901234567893,Digital Camera,0,500.0,0.0,February
+2023-01-15 12:00:00,sales_data.csv,Amazon,BrandM,12345678901234567894,Wireless Charger,7,40.0,280.0,March
+2023-01-16 12:00:00,sales_data.csv,Amazon,BrandL,12345678901234567895,Projector,-3,220.0,660.0,April
+2023-01-17 12:00:00,sales_data.csv,Amazon,BrandK,12345678901234567896,Microwave Oven,11,-150.0,1650.0,May
+2023-01-18 12:00:00,sales_data.csv,Amazon,BrandJ,12345678901234567897,Blender,6,80.0,480.0,June
+2023-01-19 12:00:00,sales_data.csv,Amazon,BrandI,12345678901234567898,Coffee Maker,0,120.0,0.0,July
+2023-01-20 12:00:00,sales_data.csv,Amazon,BrandH,12345678901234567899,Air Fryer,14,140.0,-1960.0,August
+2023-01-21 12:00:00,sales_data.csv,Amazon,BrandG,12345678901234567890,Vacuum Cleaner,-4,250.0,1000.0,September
+2023-01-22 12:00:00,sales_data.csv,Amazon,BrandF,12345678901234567891,Electric Kettle,9,-70.0,630.0,October
+2023-01-23 12:00:00,sales_data.csv,Amazon,BrandE,12345678901234567892,Toaster,0,35.0,0.0,November
+2023-01-24 12:00:00,sales_data.csv,Amazon,BrandD,12345678901234567893,Rice Cooker,13,60.0,-780.0,December
+2023-01-25 12:00:00,sales_data.csv,Amazon,BrandC,12345678901234567894,Slow Cooker,0,90.0,0.0,January
+2023-01-26 12:00:00,sales_data.csv,Amazon,BrandB,12345678901234567895,Juicer,17,55.0,935.0,February
+2023-01-27 12:00:00,sales_data.csv,Amazon,BrandA,12345678901234567896,Mixer,-2,180.0,360.0,March
+2023-01-28 12:00:00,sales_data.csv,Amazon,BrandAA,12345678901234567897,Electric Grill,19,-95.0,1805.0,April
+2023-01-29 12:00:00,sales_data.csv,Amazon,BrandBB,12345678901234567898,Bread Maker,0,130.0,0.0,May
+2023-01-30 12:00:00,sales_data.csv,Amazon,BrandCC,12345678901234567899,Food Processor,10,75.0,-750.0,June
+2023-01-31 12:00:00,sales_data.csv,Amazon,BrandDD,12345678901234567890,Induction Cooktop,-1,150.0,150.0,July
+2023-02-01 12:00:00,sales_data.csv,Amazon,BrandEE,12345678901234567891,Stand Mixer,24,200.0,-4800.0,August
+2023-02-02 12:00:00,sales_data.csv,Amazon,BrandFF,12345678901234567892,Espresso Machine,0,400.0,0.0,September
+2023-02-03 12:00:00,sales_data.csv,Amazon,BrandGG,12345678901234567893,Water Purifier,16,220.0,-3520.0,October
+2023-02-04 12:00:00,sales_data.csv,Amazon,BrandHH,12345678901234567894,Dehumidifier,0,150.0,0.0,November
+2023-02-05 12:00:00,sales_data.csv,Amazon,BrandII,12345678901234567895,Air Conditioner,22,300.0,-6600.0,December
+2023-02-06 12:00:00,sales_data.csv,Amazon,BrandJJ,12345678901234567896,Dishwasher,-8,450.0,3600.0,January
+2023-02-07 12:00:00,sales_data.csv,Amazon,BrandKK,12345678901234567897,Refrigerator,0,800.0,0.0,February
+2023-02-08 12:00:00,sales_data.csv,Amazon,BrandLL,12345678901234567898,Washing Machine,21,600.0,-12600.0,March
+2023-02-09 12:00:00,sales_data.csv,Amazon,BrandMM,12345678901234567899,Dryer,0,500.0,0.0,April
+2023-02-10 12:00:00,sales_data.csv,Amazon,BrandNN,12345678901234567890,Freezer,26,700.0,-18200.0,May
+2023-02-11 12:00:00,sales_data.csv,Amazon,BrandOO,12345678901234567891,Stove,-6,900.0,5400.0,June
+2023-02-12 12:00:00,sales_data.csv,Amazon,BrandPP,12345678901234567892,Oven,0,1000.0,0.0,July
+2023-02-13 12:00:00,sales_data.csv,Amazon,BrandQQ,12345678901234567893,Range Hood,20,250.0,-5000.0,August
+2023-02-14 12:00:00,sales_data.csv,Amazon,BrandRR,12345678901234567894,Cooktop,0,350.0,0.0,September
+2023-02-15 12:00:00,sales_data.csv,Amazon,BrandSS,12345678901234567895,Wine Fridge,15,450.0,-6750.0,October
+2023-02-16 12:00:00,sales_data.csv,Amazon,BrandTT,12345678901234567896,Ice Maker,0,100.0,0.0,November
+2023-02-17 12:00:00,sales_data.csv,Amazon,BrandUU,12345678901234567897,Mini Fridge,23,300.0,-6900.0,December
+2023-02-18 12:00:00,sales_data.csv,Amazon,BrandVV,12345678901234567898,Portable Heater,-7,50.0,350.0,January
+2023-02-19 12:00:00,sales_data.csv,Amazon,BrandWW,12345678901234567899,Electric Blanket,0,80.0,0.0,February

@@ -1,0 +1,49 @@
+SOURCE,YEAR,MONTH,CLUSTER,MARKET,KPI,DETAIL,PLAN,FRANCHISE,SCORE_WEIGHTED,SCORE_NON_WEIGHTED,GAP_VS_PM,GAP_VS_P3M,GAP_VS_PLAN,FILENAME,CRT_DTTM
+Online,20212,Jan,North,USA,Sales Growth,Monthly increase,-1500,Franchise1,-0.5,-1.0,-20,-30,-10,report_jan.csv,2023-01-01 12:00:00
+Retail,2021,Feb,South,USA,Customer Satisfaction,Survey results,500,Franchise2,0.25,0.3,-5,-7,2,survey_feb.csv,2023-02-01 12:00:00
+Online,2021,Mar,East,CAN,Market Share,Q1 data,300,Franchise1,0.5,0.6,-15,-25,5,market_q1.csv,2023-03-01 12:00:00
+Online,2021,Apr,West,MEX,Net Promoter Score,Customer feedback,-100,Franchise3,0.4,0.45,-10,-20,-3,nps_apr.csv,2023-04-01 12:00:00
+Online,9999,May,North,USA,Revenue,Yearly revenue,1000,Franchise2,0.7,0.75,10,15,7,revenue_2023.csv,2023-05-01 12:00:00
+Retail,2021,Jun,South,USA,Customer Churn,Monthly churn rate,-50,,0.2,0.15,5,3,-2,churn_jun.csv,2023-06-01 12:00:00
+Online,2021,Jul,East,CAN,Operational Efficiency,Q2 data,700,Franchise1,0.6,0.65,-8,-18,-5,operational_q2.csv,2023-07-01 12:00:00
+Online,2021,Aug,West,MEX,Cost Reduction,Cost saving measures,200,Franchise3,-0.3,-0.2,-12,-22,4,cost_aug.csv,2023-08-01 12:00:00
+Online,2021,Sep,North,USA,Sales Conversion,Monthly conversion rate,800,Franchise2,0.85,0.9,20,25,10,conversion_sep.csv,2023-09-01 12:00:00
+Retail,2021,Oct,South,USA,Inventory Turnover,Q3 data,600,Franchise1,-0.1,-0.05,0,5,-1,inventory_q3.csv,2023-10-01 12:00:00
+Online,2021,Nov,East,CAN,Profit Margin,Monthly profit,100,Franchise3,0.55,0.6,-3,-8,3,profit_nov.csv,2023-11-01 12:00:00
+Retail,2021,Dec,West,MEX,Customer Loyalty,End of year data,400,Franchise2,0.3,0.35,7,10,-4,loyalty_dec.csv,2023-12-01 12:00:00
+Online,2021,Jan,North,USA,Sales Growth,Annual growth,1000,Franchise1,0.75,0.8,15,20,8,growth_jan.csv,2023-01-01 12:00:00
+Retail,2021,Feb,South,USA,Customer Satisfaction,Survey feedback,-500,Franchise2,0.2,0.25,0,0,-1,satisfaction_feb.csv,2023-02-01 12:00:00
+Online,2021,Mar,East,CAN,Market Share,Q1 report,300,Franchise1,0.4,0.5,-10,-5,0,share_mar.csv,2023-03-01 12:00:00
+Online,2021,Apr,West,MEX,Net Promoter Score,Customer recommendations,100,Franchise3,0.45,0.5,-2,-3,2,nps_apr.csv,2023-04-01 12:00:00
+Online,2021,May,North,USA,Revenue,Monthly earnings,1200,Franchise2,0.85,0.9,25,30,12,revenue_may.csv,2023-05-01 12:00:00
+Retail,2021,Jun,South,USA,Customer Churn,Churn analysis,50,Franchise3,0.15,0.2,-4,-2,0,churn_jun.csv,2023-06-01 12:00:00
+Online,2021,Jul,East,CAN,Operational Efficiency,Efficiency metrics,900,Franchise1,0.7,0.75,18,23,9,efficiency_jul.csv,2023-07-01 12:00:00
+Online,2021,Aug,West,MEX,Cost Reduction,Expense cut measures,250,Franchise2,0.35,0.4,-7,-12,6,cost_aug.csv,2023-08-01 12:00:00
+Retail,2021,Sep,North,USA,Sales Conversion,Conversion analysis,850,Franchise3,0.9,0.95,30,35,15,conversion_sep.csv,2023-09-01 12:00:00
+Retail,2021,Oct,South,USA,Inventory Turnover,Turnover rate analysis,650,Franchise1,0.05,0.1,2,4,-3,inventory_oct.csv,2023-10-01 12:00:00
+Online,2021,Nov,East,CAN,Profit Margin,Profit analysis,150,Franchise2,0.6,0.65,-1,-6,4,profit_nov.csv,2023-11-01 12:00:00
+Retail,2021,Dec,West,MEX,Customer Loyalty,Loyalty analysis,450,Franchise3,0.35,0.4,8,12,-5,loyalty_dec.csv,2023-12-01 12:00:00
+Online,2021,Jan,North,USA,Sales Growth,Growth metrics,1100,Franchise1,0.8,0.85,17,22,9,growth_jan.csv,2023-01-01 12:00:00
+Retail,2021,Feb,South,USA,Customer Satisfaction,Feedback survey,550,Franchise2,0.3,0.35,-2,-5,1,satisfaction_feb.csv,2023-02-01 12:00:00
+Online,2021,Mar,East,CAN,Market Share,Market analysis,350,Franchise1,0.55,0.6,-6,-11,2,share_mar.csv,2023-03-01 12:00:00
+Online,2021,Apr,West,MEX,Net Promoter Score,Promoter analysis,150,Franchise3,0.5,0.55,-3,-4,1,nps_apr.csv,2023-04-01 12:00:00
+Online,2021,May,North,USA,Revenue,Revenue metrics,1300,Franchise2,0.9,0.95,28,33,14,revenue_may.csv,2023-05-01 12:00:00
+Retail,2021,Jun,South,USA,Customer Churn,Churn metrics,60,Franchise3,0.18,0.22,-5,-3,1,churn_jun.csv,2023-06-01 12:00:00
+Online,2021,Jul,East,CAN,Operational Efficiency,Efficiency analysis,950,Franchise1,0.75,0.8,20,25,10,efficiency_jul.csv,2023-07-01 12:00:00
+Online,2021,Aug,West,MEX,Cost Reduction,Reduction analysis,300,Franchise2,0.4,0.45,-9,-14,5,cost_aug.csv,2023-08-01 12:00:00
+Retail,2021,Sep,North,USA,Sales Conversion,Conversion metrics,900,Franchise3,0.95,1.0,35,40,18,conversion_sep.csv,2023-09-01 12:00:00
+Retail,2021,Oct,South,USA,Inventory Turnover,Turnover metrics,700,Franchise1,0.1,0.15,3,6,-4,inventory_oct.csv,2023-10-01 12:00:00
+Online,2021,Nov,East,CAN,Profit Margin,Margin analysis,200,Franchise2,0.65,0.7,-2,-7,5,profit_nov.csv,2023-11-01 12:00:00
+Retail,2021,Dec,West,MEX,Customer Loyalty,Loyalty metrics,500,Franchise3,0.4,0.45,10,15,-6,loyalty_dec.csv,2023-12-01 12:00:00
+Online,2021,Jan,North,USA,Sales Growth,Growth analysis,1150,Franchise1,0.85,0.9,22,27,11,growth_jan.csv,2023-01-01 12:00:00
+Retail,2021,Feb,South,USA,Customer Satisfaction,Satisfaction report,600,Franchise2,0.35,0.4,-3,-4,2,satisfaction_feb.csv,2023-02-01 12:00:00
+Online,2021,Mar,East,CAN,Market Share,Share analysis,400,Franchise1,0.6,0.65,-5,-10,3,share_mar.csv,2023-03-01 12:00:00
+Online,2021,Apr,West,MEX,Net Promoter Score,Promoter metrics,200,Franchise3,0.55,0.6,-1,-2,4,nps_apr.csv,2023-04-01 12:00:00
+Online,2021,May,North,USA,Revenue,Revenue analysis,1400,Franchise2,0.95,1.0,32,37,16,revenue_may.csv,2023-05-01 12:00:00
+Retail,2021,Jun,South,USA,Customer Churn,Churn analysis,70,Franchise3,0.2,0.25,-4,-1,1,churn_jun.csv,2023-06-01 12:00:00
+Online,2021,Jul,East,CAN,Operational Efficiency,Efficiency metrics,1000,Franchise1,0.8,0.85,25,30,12,efficiency_jul.csv,2023-07-01 12:00:00
+Online,2021,Aug,West,MEX,Cost Reduction,Cost saving analysis,350,Franchise2,0.45,0.5,-10,-15,6,cost_aug.csv,2023-08-01 12:00:00
+Retail,2021,Sep,North,USA,Sales Conversion,Conversion analysis,950,Franchise3,1.0,1.05,38,43,20,conversion_sep.csv,2023-09-01 12:00:00
+Retail,2021,Oct,South,USA,Inventory Turnover,Turnover metrics,750,Franchise1,0.15,0.2,4,7,-3,inventory_oct.csv,2023-10-01 12:00:00
+Online,2021,Nov,East,CAN,Profit Margin,Profit metrics,250,Franchise2,0.7,0.75,-4,-9,3,profit_nov.csv,2023-11-01 12:00:00
+Retail,2021,Dec,West,MEX,Customer Loyalty,Loyalty metrics,550,Franchise3,0.45,0.5,12,17,-5,loyalty_dec.csv,2023-12-01 12:00:00

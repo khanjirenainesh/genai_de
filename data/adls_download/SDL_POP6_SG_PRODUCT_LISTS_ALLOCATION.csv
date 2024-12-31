@@ -1,0 +1,51 @@
+PRODUCT_GROUP_STATUS,PRODUCT_GROUP,PRODUCT_LIST_STATUS,PRODUCT_LIST,PRODUCT_LIST_CODE,POP_ATTRIBUTE_ID,POP_ATTRIBUTE,POP_ATTRIBUTE_VALUE_ID,POP_ATTRIBUTE_VALUE,PROD_GRP_DATE,FILE_NAME,RUN_ID,CRTD_DTTM,HASHKEY
+-1,Electronics,1,Smartphones,SPH001,A001,Color,V001,Blue,2023-08-01,file1.txt,100,2023-09-01 12:00:00,hashkey1
+0,Electronics,-5,Smartphones,SPH001,A002,Size,V002,Large,2023-08-02,file2.txt,101,2023-09-02 12:00:00,hashkey2
+1,Furniture,2,Chairs,CHR001,B001,Material,V003,Wood,2023-08-03,file3.txt,102,2023-09-03 12:00:00,hashkey3
+2,Toys,3,Action Figures,AF001,C001,Brand,V004,ToyCo,2023-08-04,file4.txt,103,2023-09-04 12:00:00,hashkey4
+3,Appliances,4,Refrigerators,RF001,D001,Energy Rating,V005,AAA,2023-08-05,file5.txt,-104,2023-09-05 12:00:00,hashkey5
+4,Gardening,5,Tools,TL001,E001,Usage,V006,Outdoor,2023-08-06,file6.txt,-105,2023-09-06 12:00:00,hashkey6
+5,Books,6,Novels,NV001,F001,Genre,V007,Fiction,2023-08-07,file7.txt,106,2023-09-07 12:00:00,hashkey7
+-3,Books,7,Comics,CM001,F002,Illustrator,V008,John Doe,2023-08-08,file8.txt,107,2023-09-08 12:00:00,hashkey8
+0,Clothing,8,Men's Wear,MW001,G001,Size,V009,Medium,2023-08-09,file9.txt,108,2023-09-09 12:00:00,hashkey9
+-10,Clothing,9,Women's Wear,WW001,G002,Color,V010,Red,2023-08-10,file10.txt,109,2023-09-10 12:00:00,hashkey10
+8,Footwear,10,Sports Shoes,SS001,H001,Brand,V011,Nike,2023-08-11,file11.txt,110,2023-09-11 12:00:00,hashkey11
+9,Footwear,11,Casual Shoes,CS001,H002,Material,V012,Leather,2023-08-12,file12.txt,111,2023-09-12 12:00:00,hashkey12
+10,Accessories,12,Watches,WT001,I001,Water Resistance,V013,Yes,2023-08-13,file13.txt,112,2023-09-13 12:00:00,hashkey13
+11,Accessories,13,Bags,BG001,I002,Capacity,V014,20L,2023-08-14,file14.txt,113,2023-09-14 12:00:00,hashkey14
+12,Beauty,14,Skincare,SK001,J001,SPF,V015,30,2023-08-15,file15.txt,114,2023-09-15 12:00:00,hashkey15
+13,Beauty,15,Makeup,MK001,J002,Shade,V016,Nude,2023-08-16,file16.txt,115,2023-09-16 12:00:00,hashkey16
+-15,Sports,16,Football,FB001,K001,Size,V017,5,2023-08-17,file17.txt,116,2023-09-17 12:00:00,hashkey17
+15,Sports,17,Basketball,BB001,K002,Weight,V018,600g,2023-08-18,file18.txt,117,2023-09-18 12:00:00,hashkey18
+16,Outdoor,18,Camping Gear,CG001,L001,Material,V019,Polyester,2023-08-19,file19.txt,118,2023-09-19 12:00:00,hashkey19
+17,Outdoor,19,Hiking Gear,HG001,L002,Weight,V020,1.5kg,2023-08-20,file20.txt,119,2023-09-20 12:00:00,hashkey20
+18,Music,20,Guitars,GT001,M001,Type,V021,Acoustic,2023-08-21,file21.txt,120,2023-09-21 12:00:00,hashkey21
+19,Music,21,Pianos,PN001,M002,Keys,V022,88,2023-08-22,file22.txt,121,2023-09-22 12:00:00,hashkey22
+20,Pets,22,Dog Food,DF001,N001,Flavor,V023,Chicken,2023-08-23,file23.txt,122,2023-09-23 12:00:00,hashkey23
+21,Pets,23,Cat Food,CF001,N002,Flavor,V024,Fish,2023-08-24,file24.txt,123,2023-09-24 12:00:00,hashkey24
+22,Automotive,24,Car Accessories,CA001,O001,Type,V025,Interior,2023-08-25,file25.txt,124,2023-09-25 12:00:00,hashkey25
+23,Automotive,25,Motorcycle Accessories,MA001,O002,Type,V026,Exterior,2023-08-26,file26.txt,125,2023-09-26 12:00:00,hashkey26
+24,Health,26,Supplements,SP001,P001,Form,V027,Capsule,2023-08-27,file27.txt,126,2023-09-27 12:00:00,hashkey27
+25,Health,27,Vitamins,VT001,P002,Type,V028,Multivitamin,2023-08-28,file28.txt,127,2023-09-28 12:00:00,hashkey28
+26,Stationery,28,Pens,PN001,Q001,Ink Color,V029,Black,2023-08-29,file29.txt,128,2023-09-29 12:00:00,hashkey29
+-30,Stationery,29,Notebooks,NB001,Q002,Pages,V030,200,2023-08-30,file30.txt,129,2023-09-30 12:00:00,hashkey30
+28,Home Decor,30,Vases,VS001,R001,Material,V031,Ceramic,2023-08-31,file31.txt,130,2023-09-01 12:00:00,hashkey31
+29,Home Decor,31,Candles,CD001,R002,Scent,V032,Lavender,2023-08-01,file32.txt,131,2023-09-02 12:00:00,hashkey32
+30,Grocery,32,Cereals,CR001,S001,Brand,V033,Kellogg's,2023-08-02,file33.txt,132,2023-09-03 12:00:00,hashkey33
+31,Grocery,33,Snacks,SN001,S002,Flavor,V034,Salted,2023-08-03,file34.txt,133,2023-09-04 12:00:00,hashkey34
+32,Technology,34,Laptops,LP001,T001,RAM,V035,16GB,2023-08-04,file35.txt,134,2023-09-05 12:00:00,hashkey35
+-33,Technology,35,Desktops,DP001,T002,Processor,V036,i7,2023-08-05,file36.txt,135,2023-09-06 12:00:00,hashkey36
+34,Jewelry,36,Necklaces,NK001,U001,Material,V037,Gold,2023-08-06,file37.txt,136,2023-09-07 12:00:00,hashkey37
+35,Jewelry,37,Rings,RG001,U002,Size,V038,6,2023-08-07,file38.txt,137,2023-09-08 12:00:00,hashkey38
+36,Tools,38,Hand Tools,HT001,V001,Type,V039,Hammer,2023-08-08,file39.txt,138,2023-09-09 12:00:00,hashkey39
+37,Tools,39,Power Tools,PT001,V002,Voltage,V040,220V,2023-08-09,file40.txt,139,2023-09-10 12:00:00,hashkey40
+38,Art,40,Paintings,PTG001,W001,Type,V041,Oil,2023-08-10,file41.txt,140,2023-09-11 12:00:00,hashkey41
+39,Art,41,Sculptures,SC001,W002,Material,V042,Bronze,2023-08-11,file42.txt,141,2023-09-12 12:00:00,hashkey42
+40,Crafts,42,Knitting,KN001,X001,Needle Size,V043,4mm,2023-08-12,file43.txt,142,2023-09-13 12:00:00,hashkey43
+41,Crafts,43,Sewing,SW001,X002,Type,V044,Machine,2023-08-13,file44.txt,143,2023-09-14 12:00:00,hashkey44
+42,Games,44,Board Games,BG001,Y001,Players,V045,2-4,2023-08-14,file45.txt,144,2023-09-15 12:00:00,hashkey45
+43,Games,45,Video Games,VG001,Y002,Platform,V046,PC,2023-08-15,file46.txt,145,2023-09-16 12:00:00,hashkey46
+44,Movies,46,Blu-ray,BR001,Z001,Genre,V047,Action,2023-08-16,file47.txt,146,2023-09-17 12:00:00,hashkey47
+45,Movies,47,DVD,DVD001,Z002,Director,V048,Spielberg,2023-08-17,file48.txt,147,2023-09-18 12:00:00,hashkey48
+46,TV Shows,48,Streaming,ST001,AA001,Platform,V049,Netflix,2023-08-18,file49.txt,148,2023-09-19 12:00:00,hashkey49
+47,TV Shows,49,Cable,CB001,AA002,Channel,V050,HBO,2023-08-19,file50.txt,149,2023-09-20 12:00:00,hashkey50

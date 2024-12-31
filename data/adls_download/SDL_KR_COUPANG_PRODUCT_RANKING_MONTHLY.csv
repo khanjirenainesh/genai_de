@@ -1,0 +1,52 @@
+PRODUCT_RANKING_DATE,CATEGORY_DEPTH1,CATEGORY_DEPTH2,CATEGORY_DEPTH3,COUPANG_SKU_ID,COUPANG_SKU_NAME,RANKING,RUN_ID,FILE_NAME,YEARMO,DATA_GRANULARITY
+2023-10-01,Electronics,Phones,Smartphones,SKU123,Galaxy S21,-5,1001,file1.csv,202310,Monthly
+2023-10-01,Electronics,Phones,Smartphones,SKU123,Galaxy S21,1,1001,file1.csv,202310,Monthly
+2023-10-01,Appliances,Kitchen,Blenders,SKU456,BlendJet,3,,file2.csv,202310,Monthly
+2023-10-01,Fashion,Men,,SKU789,T-Shirt,0,1003,file3.csv,202310,Monthly
+2023-10-01,Books,,Fiction,SKU1011,The Great Gatsby,10,1004,file4.csv,202310,Monthly
+2023-10-01,Home,Furniture,Chairs,SKU1213,Office Chair,999999,1005,file5.csv,202310,Monthly
+2023-10-01,Toys,Action Figures,Superheroes,,Batman Figure,2,1006,file6.csv,202310,Monthly
+2023-10-01,Health,Supplements,Vitamins,SKU1415,,5,1007,file7.csv,202310,Monthly
+2023-10-01,Beauty,Skincare,Moisturizers,SKU1617,Hydrating Cream,-1,1008,file8.csv,202310,Monthly
+2023-10-01,Sports,Gym Equipment,Weights,SKU1819,Dumbbells,1000000000,1009,file9.csv,202310,Monthly
+2023-10-01,Garden,Tools,Lawnmowers,SKU2021,Electric Lawnmower,1,1010,file10.csv,202310,Monthly
+2023-10-01,Automotive,Car Care,Cleaning,SKU2223,Car Wax,2,1010,file11.csv,202310,Monthly
+2023-10-01,Music,Instruments,Guitars,SKU2425,Electric Guitar,999999,1012,file12.csv,202310,Monthly
+2023-10-01,Pets,Dogs,Food,SKU2627,Dog Food,-100,1013,file13.csv,202310,Monthly
+2023-10-01,Office,Supplies,Pens,SKU2829,Ballpoint Pen,abc,1014,file14.csv,202310,Monthly
+2023-10-01,Outdoors,Camping,Tents,SKU3031,Camping Tent,,1015,file15.csv,202310,Monthly
+2023-10-01,Tools,Power Tools,Drills,SKU3233,Cordless Drill,5,1016,file16.csv,202310,Monthly
+2023-10-01,Baby,Furniture,Cribs,SKU3435,Baby Crib,5,1016,file17.csv,202310,Monthly
+2023-10-01,Jewelry,Rings,Diamond,SKU3637,Diamond Ring,7,1018,file18.csv,202310,Monthly
+2023-10-01,Home Improvement,Lighting,Bulbs,SKU3839,LED Bulb,-2,1019,file19.csv,202310,Monthly
+2023-10-01,Groceries,Beverages,Coffee,SKU4041,Instant Coffee,abc,1020,file20.csv,202310,Monthly
+2023-10-01,Computers,Laptops,Gaming,SKU4243,Gaming Laptop,1,,file21.csv,202310,Monthly
+2023-10-01,Shoes,Women,Boots,SKU4445,Ankle Boots,10,1022,file22.csv,202310,Monthly
+2023-10-01,Bags,Handbags,Leather,SKU4647,Leather Handbag,1000000,1023,file23.csv,202310,Monthly
+2023-10-01,Clothing,Women,Dresses,SKU4849,Evening Dress,999999999,1024,file24.csv,202310,Monthly
+2023-10-01,Accessories,Watches,Digital,SKU5051,Smartwatch,-10,1025,file25.csv,202310,Monthly
+2023-10-01,Food,Snacks,Chips,SKU5253,Potato Chips,abc,1026,file26.csv,202310,Monthly
+2023-10-01,Drinks,Juices,Orange,SKU5455,Orange Juice,3,1027,file27.csv,202310,Monthly
+2023-10-01,Health,Equipment,Treadmills,SKU5657,Treadmill,100000000,1028,file28.csv,202310,Monthly
+2023-10-01,Audio,Headphones,Wireless,SKU5859,Wireless Headphones,0,1029,file29.csv,202310,Monthly
+2023-10-01,Furniture,Living Room,Sofas,SKU6061,Leather Sofa,,1030,file30.csv,202310,Monthly
+2023-10-01,Books,Non-fiction,Biographies,SKU6263,Steve Jobs Biography,-5,1031,file31.csv,202310,Monthly
+2023-10-01,Stationery,Notebooks,Spiral,SKU6465,Spiral Notebook,abc,1032,file32.csv,202310,Monthly
+2023-10-01,Home Decor,Wall Art,Paintings,SKU6667,Abstract Painting,9999999,1033,file33.csv,202310,Monthly
+2023-10-01,Cleaning,Supplies,Detergents,SKU6869,Laundry Detergent,-2,1034,file34.csv,202310,Monthly
+2023-10-01,Tools,Hand Tools,Hammers,SKU7071,Claw Hammer,3,1035,file35.csv,202310,Monthly
+2023-10-01,Fitness,Yoga,Mats,SKU7273,Yoga Mat,1,1035,file36.csv,202310,Monthly
+2023-10-01,Travel,Luggage,Suitcases,SKU7475,Carry-on Suitcase,10,1037,file37.csv,202310,Monthly
+2023-10-01,Crafts,Sewing,Machines,SKU7677,Sewing Machine,10000000,1038,file38.csv,202310,Monthly
+2023-10-01,Toys,Educational,Puzzles,SKU7879,3D Puzzle,-3,1039,file39.csv,202310,Monthly
+2023-10-01,Clothing,Men,Shirts,SKU8081,Casual Shirt,abc,1040,file40.csv,202310,Monthly
+2023-10-01,Footwear,Men,Sneakers,SKU8283,Running Sneakers,9999999,1041,file41.csv,202310,Monthly
+2023-10-01,Electronics,Tablets,Android,SKU8485,Android Tablet,-1,1042,file42.csv,202310,Monthly
+2023-10-01,Musical Instruments,Keyboards,Pianos,SKU8687,Electric Piano,abc,1043,file43.csv,202310,Monthly
+2023-10-01,Gardening,Plants,Seeds,SKU8889,Flower Seeds,999999999,1044,file44.csv,202310,Monthly
+2023-10-01,Kitchen,Cookware,Pots,SKU9091,Cooking Pot,-5,1045,file45.csv,202310,Monthly
+2023-10-01,Beverages,Alcoholic,Wine,SKU9293,Red Wine,abc,1046,file46.csv,202310,Monthly
+2023-10-01,Sports,Outdoor,Bicycles,SKU9495,Mountain Bike,100000000,1047,file47.csv,202310,Monthly
+2023-10-01,Health,Personal Care,Hygiene,SKU9697,Toothbrush,0,1048,file48.csv,202310,Monthly
+2023-10-01,Appliances,Refrigerators,Mini,SKU9899,Mini Refrigerator,abc,1049,file49.csv,202310,Monthly
+2023-10-01,Furniture,Bedroom,Beds,SKU100101,King Bed,-1,1050,file50.csv,202310,Monthly

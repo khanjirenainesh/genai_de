@@ -1,0 +1,51 @@
+TASKID,FILENAME,PATH,BRAND,MRCHR_VISITDATE,CUSTOMERID,REMOTEKEY,CUSTOMERNAME,SALESGROUP,STORETYPE,DIST_CHNL,COUNTRY,SALESCYCLENAME,SALESCAMPAIGNNAME,MASTERTASKNAME,SALESPERSON_FIRSTNAME,SALESPERSON_LASTNAME,SECONDARYTRADECODE,SECONDARYTRADENAME
+123,invalid_file_name_01,/invalid/path/to/file,BrandX,2023-05-15,CUST001,REMOTE001,,GroupA,TypeA,ChannelA,Neverland,CycleA,CampaignA,TaskA,John,Doe,STC001,TradeNameA
+123,invalid_file_name_02,/invalid/path/to/file,BrandY,2023-06-20,CUST002,REMOTE002,Customer B,GroupB,TypeB,ChannelB,Atlantis,CycleB,CampaignB,TaskB,Jane,Smith,STC002,TradeNameB
+124,invalid_file_name_03,/invalid/path/to/file,BrandZ,2023-07-10,CUST003,REMOTE003,Customer C,GroupC,TypeC,ChannelC,,CycleC,CampaignC,TaskC,Alice,Brown,STC003,
+125,invalid_file_name_04,/invalid/path/to/file,BrandA,2023-08-05,CUST004,REMOTE004,Customer D,,TypeD,ChannelD,Elbonia,CycleD,CampaignD,TaskD,Bob,Johnson,STC004,TradeNameD
+126,invalid_file_name_05,/invalid/path/to/file,BrandB,2023-09-25,CUST005,REMOTE005,Customer E,GroupE,TypeE,ChannelE,Gondwana,,CampaignE,TaskE,Charlie,Davids,STC005,TradeNameE
+127,invalid_file_name_06,/invalid/path/to/file,,2023-10-15,CUST006,REMOTE006,Customer F,GroupF,TypeF,ChannelF,Narnia,CycleF,CampaignF,TaskF,Dave,Garcia,STC006,TradeNameF
+128,invalid_file_name_07,/invalid/path/to/file,BrandC,2023-11-05,CUST007,REMOTE007,Customer G,GroupG,,ChannelG,Zamunda,CycleG,CampaignG,TaskG,Eve,Martinez,STC007,TradeNameG
+129,invalid_file_name_08,/invalid/path/to/file,BrandD,2023-12-25,CUST008,REMOTE008,Customer H,GroupH,TypeH,ChannelH,Utopia,CycleH,CampaignH,,Frank,Lee,STC008,TradeNameH
+130,invalid_file_name_09,/invalid/path/to/file,BrandE,2023-01-15,CUST009,REMOTE009,Customer I,GroupI,TypeI,ChannelI,Wakanda,CycleI,CampaignI,TaskI,,Nguyen,STC009,TradeNameI
+131,invalid_file_name_10,/invalid/path/to/file,BrandF,2023-02-05,CUST010,REMOTE010,Customer J,GroupJ,TypeJ,ChannelJ,Lilliput,CycleJ,CampaignJ,TaskJ,Grace,,STC010,TradeNameJ
+132,invalid_file_name_11,/invalid/path/to/file,BrandG,2023-03-15,CUST011,,Customer K,GroupK,TypeK,ChannelK,Neverland,CycleK,CampaignK,TaskK,Hank,Ortiz,STC011,TradeNameK
+133,invalid_file_name_12,/invalid/path/to/file,BrandH,2023-04-25,CUST012,REMOTE012,Customer L,GroupL,TypeL,ChannelL,Atlantis,,CampaignL,TaskL,Ivy,Perez,STC012,TradeNameL
+134,invalid_file_name_13,/invalid/path/to/file,BrandI,2023-05-05,CUST013,REMOTE013,Customer M,GroupM,TypeM,ChannelM,Elbonia,CycleM,,TaskM,Jack,Ramirez,STC013,TradeNameM
+135,invalid_file_name_14,/invalid/path/to/file,BrandJ,2023-06-15,CUST014,REMOTE014,,GroupN,TypeN,ChannelN,Gondwana,CycleN,CampaignN,TaskN,Kate,Robinson,STC014,TradeNameN
+136,invalid_file_name_15,/invalid/path/to/file,BrandK,2023-07-25,CUST015,REMOTE015,Customer O,GroupO,TypeO,ChannelO,,CycleO,CampaignO,TaskO,Leo,Scott,STC015,TradeNameO
+137,invalid_file_name_16,/invalid/path/to/file,BrandL,2023-08-05,CUST016,REMOTE016,Customer P,GroupP,TypeP,ChannelP,Narnia,,CampaignP,TaskP,Mary,Taylor,STC016,TradeNameP
+138,invalid_file_name_17,/invalid/path/to/file,,2023-09-15,CUST017,REMOTE017,Customer Q,GroupQ,TypeQ,ChannelQ,Zamunda,CycleQ,CampaignQ,TaskQ,Neil,Thomas,STC017,TradeNameQ
+139,invalid_file_name_18,/invalid/path/to/file,BrandM,2023-10-25,CUST018,REMOTE018,,GroupR,TypeR,ChannelR,Utopia,CycleR,CampaignR,TaskR,Olivia,Walker,STC018,TradeNameR
+140,invalid_file_name_19,/invalid/path/to/file,BrandN,2023-11-05,CUST019,REMOTE019,Customer S,GroupS,TypeS,,Wakanda,CycleS,CampaignS,TaskS,Paul,Young,STC019,TradeNameS
+141,invalid_file_name_20,/invalid/path/to/file,BrandO,2023-12-15,CUST020,REMOTE020,Customer T,GroupT,TypeT,ChannelT,Lilliput,CycleT,CampaignT,,Quinn,Zimmerman,STC020,TradeNameT
+142,invalid_file_name_21,/invalid/path/to/file,BrandP,2023-01-05,CUST021,REMOTE021,Customer U,GroupU,TypeU,ChannelU,Neverland,CycleU,CampaignU,TaskU,Rita,Adams,STC021,TradeNameU
+143,invalid_file_name_22,/invalid/path/to/file,BrandQ,2023-02-15,CUST022,REMOTE022,Customer V,GroupV,TypeV,ChannelV,Atlantis,CycleV,CampaignV,TaskV,Sam,Bennett,,TradeNameV
+144,invalid_file_name_23,/invalid/path/to/file,BrandR,2023-03-25,CUST023,REMOTE023,Customer W,GroupW,TypeW,ChannelW,Elbonia,CycleW,,TaskW,Tina,Clark,STC023,TradeNameW
+145,invalid_file_name_24,/invalid/path/to/file,BrandS,2023-04-05,CUST024,REMOTE024,,GroupX,TypeX,ChannelX,Gondwana,CycleX,CampaignX,TaskX,Uma,Davis,STC024,TradeNameX
+146,invalid_file_name_25,/invalid/path/to/file,BrandT,2023-05-15,CUST025,REMOTE025,Customer Y,GroupY,TypeY,ChannelY,Narnia,CycleY,CampaignY,,Vince,Evans,STC025,TradeNameY
+147,invalid_file_name_26,/invalid/path/to/file,BrandU,2023-06-25,CUST026,REMOTE026,Customer Z,GroupZ,TypeZ,ChannelZ,Zamunda,CycleZ,CampaignZ,TaskZ,,Foster,STC026,TradeNameZ
+148,invalid_file_name_27,/invalid/path/to/file,BrandV,2023-07-05,CUST027,REMOTE027,Customer AA,GroupAA,TypeAA,ChannelAA,Utopia,CycleAA,CampaignAA,TaskAA,Will,Grant,,TradeNameAA
+149,invalid_file_name_28,/invalid/path/to/file,BrandW,2023-08-15,CUST028,REMOTE028,Customer BB,GroupBB,TypeBB,ChannelBB,Wakanda,CycleBB,CampaignBB,TaskBB,Xena,Harris,STC028,
+150,invalid_file_name_29,/invalid/path/to/file,BrandX,2023-09-25,CUST029,REMOTE029,Customer CC,GroupCC,TypeCC,ChannelCC,Lilliput,CycleCC,CampaignCC,TaskCC,Yuri,James,STC029,TradeNameCC
+151,invalid_file_name_30,/invalid/path/to/file,BrandY,2023-10-15,,REMOTE030,Customer DD,GroupDD,TypeDD,ChannelDD,Neverland,CycleDD,CampaignDD,TaskDD,Zane,King,STC030,TradeNameDD
+152,invalid_file_name_31,/invalid/path/to/file,BrandZ,2023-11-05,CUST031,REMOTE031,Customer EE,GroupEE,TypeEE,ChannelEE,Atlantis,,CampaignEE,TaskEE,Aaron,Lewis,STC031,TradeNameEE
+153,invalid_file_name_32,/invalid/path/to/file,BrandA,2023-12-15,CUST032,REMOTE032,Customer FF,GroupFF,TypeFF,ChannelFF,,CycleFF,CampaignFF,TaskFF,Bella,Morris,STC032,TradeNameFF
+154,invalid_file_name_33,/invalid/path/to/file,BrandB,2023-01-25,CUST033,REMOTE033,Customer GG,GroupGG,TypeGG,ChannelGG,Elbonia,CycleGG,CampaignGG,TaskGG,Caleb,Nelson,STC033,
+155,invalid_file_name_34,/invalid/path/to/file,BrandC,2023-02-15,CUST034,REMOTE034,Customer HH,GroupHH,TypeHH,ChannelHH,,CycleHH,CampaignHH,TaskHH,Diana,Owens,STC034,TradeNameHH
+156,invalid_file_name_35,/invalid/path/to/file,BrandD,2023-03-05,CUST035,REMOTE035,Customer II,GroupII,TypeII,ChannelII,Gondwana,CycleII,CampaignII,,Ethan,Peterson,STC035,TradeNameII
+157,invalid_file_name_36,/invalid/path/to/file,BrandE,2023-04-15,CUST036,REMOTE036,Customer JJ,GroupJJ,TypeJJ,ChannelJJ,Narnia,CycleJJ,CampaignJJ,TaskJJ,Fiona,Quinn,,TradeNameJJ
+158,invalid_file_name_37,/invalid/path/to/file,BrandF,2023-05-25,CUST037,REMOTE037,Customer KK,GroupKK,TypeKK,ChannelKK,Zamunda,CycleKK,CampaignKK,TaskKK,George,Reed,STC037,TradeNameKK
+159,invalid_file_name_38,/invalid/path/to/file,BrandG,2023-06-05,CUST038,REMOTE038,,GroupLL,TypeLL,ChannelLL,Utopia,CycleLL,CampaignLL,TaskLL,Hannah,Stewart,STC038,TradeNameLL
+160,invalid_file_name_39,/invalid/path/to/file,BrandH,2023-07-15,CUST039,REMOTE039,Customer MM,GroupMM,TypeMM,ChannelMM,Wakanda,CycleMM,CampaignMM,TaskMM,,Turner,STC039,TradeNameMM
+161,invalid_file_name_40,/invalid/path/to/file,BrandI,2023-08-25,CUST040,REMOTE040,Customer NN,GroupNN,TypeNN,ChannelNN,Lilliput,CycleNN,CampaignNN,TaskNN,Jack,Garcia,STC040,
+162,invalid_file_name_41,/invalid/path/to/file,BrandJ,2023-09-05,CUST041,REMOTE041,Customer OO,GroupOO,TypeOO,ChannelOO,Neverland,CycleOO,CampaignOO,,Kara,Hughes,STC041,TradeNameOO
+163,invalid_file_name_42,/invalid/path/to/file,BrandK,2023-10-15,CUST042,REMOTE042,Customer PP,GroupPP,TypePP,ChannelPP,Atlantis,CyclePP,,TaskPP,Liam,Murphy,STC042,TradeNamePP
+164,invalid_file_name_43,/invalid/path/to/file,BrandL,2023-11-05,CUST043,REMOTE043,Customer QQ,GroupQQ,TypeQQ,ChannelQQ,,CycleQQ,CampaignQQ,TaskQQ,Mia,Price,STC043,TradeNameQQ
+165,invalid_file_name_44,/invalid/path/to/file,BrandM,2023-12-15,CUST044,REMOTE044,Customer RR,GroupRR,TypeRR,ChannelRR,Elbonia,CycleRR,CampaignRR,TaskRR,Nina,Rivera,,TradeNameRR
+166,invalid_file_name_45,/invalid/path/to/file,BrandN,2023-01-05,CUST045,REMOTE045,Customer SS,GroupSS,TypeSS,ChannelSS,Gondwana,CycleSS,CampaignSS,TaskSS,Oscar,Sanders,STC045,
+167,invalid_file_name_46,/invalid/path/to/file,BrandO,2023-02-15,CUST046,REMOTE046,,GroupTT,TypeTT,ChannelTT,Narnia,CycleTT,CampaignTT,TaskTT,Paul,Turner,STC046,TradeNameTT
+168,invalid_file_name_47,/invalid/path/to/file,BrandP,2023-03-25,CUST047,REMOTE047,Customer UU,GroupUU,TypeUU,ChannelUU,Zamunda,CycleUU,CampaignUU,TaskUU,Quinn,Vasquez,STC047,
+169,invalid_file_name_48,/invalid/path/to/file,BrandQ,2023-04-05,CUST048,REMOTE048,Customer VV,,TypeVV,ChannelVV,Utopia,CycleVV,CampaignVV,TaskVV,Rachel,White,STC048,TradeNameVV
+170,invalid_file_name_49,/invalid/path/to/file,BrandR,2023-05-15,CUST049,REMOTE049,Customer WW,GroupWW,TypeWW,ChannelWW,Wakanda,CycleWW,CampaignWW,TaskWW,,Young,STC049,TradeNameWW
+171,invalid_file_name_50,/invalid/path/to/file,BrandS,2023-06-25,CUST050,REMOTE050,Customer XX,GroupXX,TypeXX,ChannelXX,Lilliput,CycleXX,CampaignXX,TaskXX,Steve,Zimmerman,,TradeNameXX

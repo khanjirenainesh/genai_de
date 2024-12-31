@@ -1,0 +1,51 @@
+REVIEW_DATE,BRAND,COUPANG_SKU_ID,COUPANG_SKU_NAME,REVIEW_SCORE_STAR,REVIEW_CONTENTS,RUN_ID,FILE_NAME,YEARMO,DATA_GRANULARITY
+2023-01-01,BrandA,SKU123,ProductA,5,Great product,-1,file1.txt,202301,daily
+2023-01-02,BrandA,SKU123,ProductA,6,Great product,2,file2.txt,202301,daily
+2023-01-03,BrandB,SKU124,ProductB,0,Bad product,3,file3.txt,202301,daily
+2023-01-04,BrandC,SKU125,ProductC,4,,4,file4.txt,202301,daily
+2023-01-05,BrandA,SKU123,ProductA,3,Average product,5,file5.txt,202301,daily
+2023-01-06,BrandC,SKU126,ProductD,2,Not good,6,file6.txt,202301,daily
+2023-01-07,BrandB,SKU124,ProductB,1,Terrible product,7,file7.txt,202301,daily
+2023-01-08,BrandA,SKU127,ProductE,3,Average quality,8,file8.txt,202301,daily
+2023-01-09,BrandD,SKU128,ProductF,5,Excellent product,9,file9.txt,202301,daily
+2023-01-10,BrandB,SKU129,ProductG,4,Good product,10,file10.txt,202301,daily
+2023-01-11,BrandE,SKU130,ProductH,5,Highly recommended,11,file11.txt,202301,daily
+2023-01-12,BrandF,SKU131,ProductI,6,Amazing product,12,file12.txt,202301,daily
+2023-01-13,BrandG,SKU132,ProductJ,2,Could be better,13,file13.txt,202301,daily
+2023-01-14,BrandH,SKU133,ProductK,0,Very bad,14,file14.txt,202301,daily
+2023-01-15,BrandI,SKU134,ProductL,3,It is okay,15,file15.txt,202301,daily
+2023-01-16,BrandJ,SKU135,ProductM,4,Satisfied,16,file16.txt,202301,daily
+2023-01-17,BrandK,SKU136,ProductN,5,Love it,17,file17.txt,202301,daily
+2023-01-18,BrandL,SKU137,ProductO,1,Not as expected,18,file18.txt,202301,daily
+2023-01-19,BrandM,SKU138,ProductP,3,Average,19,file19.txt,202301,daily
+2023-01-20,BrandN,SKU139,ProductQ,4,Good value,20,file20.txt,202301,daily
+2023-01-21,BrandO,SKU140,ProductR,5,Exceeded expectations,21,file21.txt,202301,daily
+2023-01-22,BrandP,SKU141,ProductS,2,Below average,22,file22.txt,202301,daily
+2023-01-23,BrandQ,SKU142,ProductT,3,Just okay,23,file23.txt,202301,daily
+2023-01-24,BrandR,SKU143,ProductU,4,Worth buying,24,file24.txt,202301,daily
+2023-01-25,BrandS,SKU144,ProductV,5,Best product ever,25,file25.txt,202301,daily
+2023-01-26,BrandT,SKU145,ProductW,1,Disappointing,26,file26.txt,202301,daily
+2023-01-27,BrandU,SKU146,ProductX,3,Not bad,27,file27.txt,202301,daily
+2023-01-28,BrandV,SKU147,ProductY,4,Good quality,28,file28.txt,202301,daily
+2023-01-29,BrandW,SKU148,ProductZ,5,Excellent choice,29,file29.txt,202301,daily
+2023-01-30,BrandX,SKU149,ProductAA,2,Not recommended,30,file30.txt,202301,daily
+2023-01-31,BrandY,SKU150,ProductBB,3,Okay product,31,file31.txt,202301,daily
+2023-02-01,BrandZ,SKU151,ProductCC,4,Pretty good,32,file32.txt,202301,daily
+2023-02-02,BrandA,SKU152,ProductDD,5,Very satisfied,33,file33.txt,202301,daily
+2023-02-03,BrandB,SKU153,ProductEE,1,Not worth it,34,file34.txt,202301,daily
+2023-02-04,BrandC,SKU154,ProductFF,3,Could be better,35,file35.txt,202301,daily
+2023-02-05,BrandD,SKU155,ProductGG,4,Good buy,36,file36.txt,202301,daily
+2023-02-06,BrandE,SKU156,ProductHH,5,Highly recommended,37,file37.txt,202301,daily
+2023-02-07,BrandF,SKU157,ProductII,2,Not great,38,file38.txt,202301,daily
+2023-02-08,BrandG,SKU158,ProductJJ,3,Average experience,39,file39.txt,202301,daily
+2023-02-09,BrandH,SKU159,ProductKK,4,Solid product,40,file40.txt,202301,daily
+2023-02-10,BrandI,SKU160,ProductLL,5,Absolutely love it,41,file41.txt,202301,daily
+2023-02-11,BrandJ,SKU161,ProductMM,1,Quite bad,42,file42.txt,202301,daily
+2023-02-12,BrandK,SKU162,ProductNN,3,Just okay,43,file43.txt,202301,daily
+2023-02-13,BrandL,SKU163,ProductOO,4,Decent quality,44,file44.txt,202301,daily
+2023-02-14,BrandM,SKU164,ProductPP,5,Fantastic purchase,45,file45.txt,202301,daily
+2023-02-15,BrandN,SKU165,ProductQQ,2,Could be better,46,file46.txt,202301,daily
+2023-02-16,BrandO,SKU166,ProductRR,3,Alright product,47,file47.txt,202301,daily
+2023-02-17,BrandP,SKU167,ProductSS,4,Works well,48,file48.txt,202301,daily
+2023-02-18,BrandQ,SKU168,ProductTT,5,Top notch,49,file49.txt,202301,daily
+2023-02-19,BrandR,SKU169,ProductUU,1,Not impressed,50,file50.txt,202301,daily

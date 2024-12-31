@@ -1,0 +1,51 @@
+ID,MUID,VERSIONNAME,VERSIONNUMBER,VERSION_ID,VERSIONFLAG,NAME,CODE,CHANGETRACKINGMASK,DISTRIBUTOR_ID,DISTRIBUTOR_NAME,SAP_MATERIAL_ID,PRODUCT_DESCRIPTION,PRODUCT_CODE,ENTERDATETIME,ENTERUSERNAME,ENTERVERSIONNUMBER,LASTCHGDATETIME,LASTCHGUSERNAME,LASTCHGVERSIONNUMBER,VALIDATIONSTATUS,NON_SAP
+-1,123,Version A,1,1,flag1,Product 1,P001,0,Dist1,Distributor 1,MAT001,Product description,PC001,2023-01-01 10:00:00,user1,1,2023-01-01 10:00:00,user1,1,Valid,No
+1,123,Version B,-2,2,flag2,Product 2,P002,1,Dist2,Distributor 2,MAT002,Another description,PC002,2023-01-02 11:00:00,user2,2,2023-01-02 11:00:00,user2,2,Invalid,Yes
+1,456,Version C,3,3,flag3,Product 3,P003,2,Dist3,Distributor 3,MAT003,Yet another description,PC003,2023-01-03 12:00:00,user3,3,2023-01-03 12:00:00,user3,3,Valid,No
+3,789,Version D,4,-1,flag4,Product 4,P004,3,Dist4,Distributor 4,MAT004,Description for product,PC004,2023-01-04 13:00:00,user4,4,2023-01-04 13:00:00,user4,4,Invalid,Yes
+4,012,Version E,5,5,flag5,Product 5,P005,-4,Dist5,Distributor 5,MAT005,Another product description,PC005,2023-01-05 14:00:00,user5,5,2023-01-05 14:00:00,user5,5,Valid,No
+5,345,Version F,6,6,flag6,Product 6,P006,5,Dist6,Distributor 6,MAT006,New product description,PC006,2023-01-06 15:00:00,user6,6,2023-01-06 15:00:00,user6,6,Invalid,Yes
+5,678,Version G,7,7,flag7,Product 7,P007,6,Dist7,Distributor 7,MAT007,Some product description,PC007,2023-01-07 16:00:00,user7,7,2023-01-07 16:00:00,user7,7,Valid,No
+7,901,Version H,8,8,flag8,Product 8,P008,7,Dist8,Distributor 8,MAT008,Product 8 description,PC008,2023-01-08 17:00:00,user8,8,2023-01-08 17:00:00,user8,8,Invalid,Yes
+8,234,Version I,9,9,flag9,Product 9,P009,8,,Distributor 9,MAT009,Another description again,PC009,2023-01-09 18:00:00,user9,9,2023-01-09 18:00:00,user9,9,Valid,No
+9,567,Version J,10,10,flag10,Product 10,P010,,Dist10,Distributor 10,MAT010,Some description,PC010,2023-01-10 19:00:00,user10,10,2023-01-10 19:00:00,user10,10,Invalid,Yes
+10,890,Version K,11,11,flag11,Product 11,P011,9,Dist11,,MAT011,Description,PC011,2023-01-11 20:00:00,user11,11,2023-01-11 20:00:00,user11,11,Valid,No
+11,123,Version L,12,12,flag12,Product 12,P012,10,Dist12,Distributor 12,,Product description,PC012,2023-01-12 21:00:00,user12,12,2023-01-12 21:00:00,user12,12,Invalid,Yes
+12,456,Version M,13,13,flag13,Product 13,P013,11,Dist13,Distributor 13,MAT013,,PC013,2023-01-13 22:00:00,user13,13,2023-01-13 22:00:00,user13,13,Valid,No
+13,789,Version N,14,,flag14,Product 14,P014,12,Dist14,Distributor 14,MAT014,Description for product,PC014,2023-01-14 23:00:00,user14,14,2023-01-14 23:00:00,user14,14,Invalid,Yes
+14,012,Version O,15,15,flag15,Product 15,P015,13,Dist15,Distributor 15,MAT015,Another product description,PC015,2023-01-15 09:00:00,user15,,2023-01-15 09:00:00,user15,15,Valid,No
+15,345,Version P,,16,flag16,Product 16,P016,14,Dist16,Distributor 16,MAT016,New product description,PC016,2023-01-16 10:00:00,user16,16,2023-01-16 10:00:00,user16,16,Invalid,Yes
+16,678,Version Q,17,17,flag17,Product 17,P017,15,Dist17,Distributor 17,MAT017,Some product description,PC017,2023-01-17 11:00:00,user17,17,2023-01-17 11:00:00,user17,17,Valid,No
+17,901,Version R,18,18,flag18,Product 18,P018,16,Dist18,Distributor 18,MAT018,Product 18 description,PC018,2023-01-18 12:00:00,user18,18,2023-01-18 12:00:00,user18,18,Invalid,Yes
+18,234,Version S,19,19,flag19,Product 19,P019,17,,Distributor 19,MAT019,Another description again,PC019,2023-01-19 13:00:00,user19,19,2023-01-19 13:00:00,user19,19,Valid,No
+19,567,Version T,20,20,flag20,Product 20,P020,,Dist20,Distributor 20,MAT020,Some description,PC020,2023-01-20 14:00:00,user20,20,2023-01-20 14:00:00,user20,20,Invalid,Yes
+20,890,Version U,21,21,flag21,Product 21,P021,18,Dist21,,MAT021,Description,PC021,2023-01-21 15:00:00,user21,21,2023-01-21 15:00:00,user21,21,Valid,No
+21,123,Version V,22,22,flag22,Product 22,P022,19,Dist22,Distributor 22,,Product description,PC022,2023-01-22 16:00:00,user22,22,2023-01-22 16:00:00,user22,22,Invalid,Yes
+22,456,Version W,23,23,flag23,Product 23,P023,20,Dist23,Distributor 23,MAT023,,PC023,2023-01-23 17:00:00,user23,23,2023-01-23 17:00:00,user23,23,Valid,No
+23,789,Version X,24,,flag24,Product 24,P024,21,Dist24,Distributor 24,MAT024,Description for product,PC024,2023-01-24 18:00:00,user24,24,2023-01-24 18:00:00,user24,24,Invalid,Yes
+24,012,Version Y,25,25,flag25,Product 25,P025,22,Dist25,Distributor 25,MAT025,Another product description,PC025,2023-01-25 19:00:00,user25,,2023-01-25 19:00:00,user25,25,Valid,No
+25,345,Version Z,,26,flag26,Product 26,P026,23,Dist26,Distributor 26,MAT026,New product description,PC026,2023-01-26 20:00:00,user26,26,2023-01-26 20:00:00,user26,26,Invalid,Yes
+26,678,Version AA,27,27,flag27,Product 27,P027,24,Dist27,Distributor 27,MAT027,Some product description,PC027,2023-01-27 21:00:00,user27,27,2023-01-27 21:00:00,user27,27,Valid,No
+27,901,Version BB,28,28,flag28,Product 28,P028,25,Dist28,Distributor 28,MAT028,Product 28 description,PC028,2023-01-28 22:00:00,user28,28,2023-01-28 22:00:00,user28,28,Invalid,Yes
+28,234,Version CC,29,29,flag29,Product 29,P029,26,,Distributor 29,MAT029,Another description again,PC029,2023-01-29 23:00:00,user29,29,2023-01-29 23:00:00,user29,29,Valid,No
+29,567,Version DD,30,30,flag30,Product 30,P030,,Dist30,Distributor 30,MAT030,Some description,PC030,2023-01-30 09:00:00,user30,30,2023-01-30 09:00:00,user30,30,Invalid,Yes
+30,890,Version EE,31,31,flag31,Product 31,P031,27,Dist31,,MAT031,Description,PC031,2023-01-31 10:00:00,user31,31,2023-01-31 10:00:00,user31,31,Valid,No
+31,123,Version FF,32,32,flag32,Product 32,P032,28,Dist32,Distributor 32,,Product description,PC032,2023-02-01 11:00:00,user32,32,2023-02-01 11:00:00,user32,32,Invalid,Yes
+32,456,Version GG,33,33,flag33,Product 33,P033,29,Dist33,Distributor 33,MAT033,,PC033,2023-02-02 12:00:00,user33,33,2023-02-02 12:00:00,user33,33,Valid,No
+33,789,Version HH,34,,flag34,Product 34,P034,30,Dist34,Distributor 34,MAT034,Description for product,PC034,2023-02-03 13:00:00,user34,34,2023-02-03 13:00:00,user34,34,Invalid,Yes
+34,012,Version II,35,35,flag35,Product 35,P035,31,Dist35,Distributor 35,MAT035,Another product description,PC035,2023-02-04 14:00:00,user35,,2023-02-04 14:00:00,user35,35,Valid,No
+35,345,Version JJ,,36,flag36,Product 36,P036,32,Dist36,Distributor 36,MAT036,New product description,PC036,2023-02-05 15:00:00,user36,36,2023-02-05 15:00:00,user36,36,Invalid,Yes
+36,678,Version KK,37,37,flag37,Product 37,P037,33,Dist37,Distributor 37,MAT037,Some product description,PC037,2023-02-06 16:00:00,user37,37,2023-02-06 16:00:00,user37,37,Valid,No
+37,901,Version LL,38,38,flag38,Product 38,P038,34,Dist38,Distributor 38,MAT038,Product 38 description,PC038,2023-02-07 17:00:00,user38,38,2023-02-07 17:00:00,user38,38,Invalid,Yes
+38,234,Version MM,39,39,flag39,Product 39,P039,35,,Distributor 39,MAT039,Another description again,PC039,2023-02-08 18:00:00,user39,39,2023-02-08 18:00:00,user39,39,Valid,No
+39,567,Version NN,40,40,flag40,Product 40,P040,,Dist40,Distributor 40,MAT040,Some description,PC040,2023-02-09 19:00:00,user40,40,2023-02-09 19:00:00,user40,40,Invalid,Yes
+40,890,Version OO,41,41,flag41,Product 41,P041,36,Dist41,,MAT041,Description,PC041,2023-02-10 20:00:00,user41,41,2023-02-10 20:00:00,user41,41,Valid,No
+41,123,Version PP,42,42,flag42,Product 42,P042,37,Dist42,Distributor 42,,Product description,PC042,2023-02-11 21:00:00,user42,42,2023-02-11 21:00:00,user42,42,Invalid,Yes
+42,456,Version QQ,43,43,flag43,Product 43,P043,38,Dist43,Distributor 43,MAT043,,PC043,2023-02-12 22:00:00,user43,43,2023-02-12 22:00:00,user43,43,Valid,No
+43,789,Version RR,44,,flag44,Product 44,P044,39,Dist44,Distributor 44,MAT044,Description for product,PC044,2023-02-13 23:00:00,user44,44,2023-02-13 23:00:00,user44,44,Invalid,Yes
+44,012,Version SS,45,45,flag45,Product 45,P045,40,Dist45,Distributor 45,MAT045,Another product description,PC045,2023-02-14 09:00:00,user45,,2023-02-14 09:00:00,user45,45,Valid,No
+45,345,Version TT,,46,flag46,Product 46,P046,41,Dist46,Distributor 46,MAT046,New product description,PC046,2023-02-15 10:00:00,user46,46,2023-02-15 10:00:00,user46,46,Invalid,Yes
+46,678,Version UU,47,47,flag47,Product 47,P047,42,Dist47,Distributor 47,MAT047,Some product description,PC047,2023-02-16 11:00:00,user47,47,2023-02-16 11:00:00,user47,47,Valid,No
+47,901,Version VV,48,48,flag48,Product 48,P048,43,Dist48,Distributor 48,MAT048,Product 48 description,PC048,2023-02-17 12:00:00,user48,48,2023-02-17 12:00:00,user48,48,Invalid,Yes
+48,234,Version WW,49,49,flag49,Product 49,P049,44,,Distributor 49,MAT049,Another description again,PC049,2023-02-18 13:00:00,user49,49,2023-02-18 13:00:00,user49,49,Valid,No
+49,567,Version XX,50,50,flag50,Product 50,P050,,Dist50,Distributor 50,MAT050,Some description,PC050,2023-02-19 14:00:00,user50,50,2023-02-19 14:00:00,user50,50,Invalid,Yes

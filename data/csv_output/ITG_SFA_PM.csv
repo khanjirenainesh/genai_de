@@ -1,0 +1,6 @@
+TASKID,FILENAME,PATH,BRAND,MRCHR_VISITDATE,CUSTOMERID,REMOTEKEY,CUSTOMERNAME,SALESGROUP,STORETYPE,DIST_CHNL,COUNTRY,SALESCYCLENAME,SALESCAMPAIGNNAME,MASTERTASKNAME,SALESPERSON_FIRSTNAME,SALESPERSON_LASTNAME,SECONDARYTRADECODE,SECONDARYTRADENAME
+12345,report1.pdf,/files/reports,BrandX,2023-05-10,CUST001,RKEY001,Customer One,SalesGroup1,Retail,Channel1,Country1,Cycle2023,CampaignA,Master Task 1,John,Doe,Trade001,TradeName1
+12345,report2.pdf,/files/reports,BrandY,2023-05-12,CUST001,RKEY002,Customer Two,SalesGroup2,Wholesale,Channel2,Country2,Cycle2024,CampaignB,Master Task 2,Jane,Smith,Trade002,TradeName2
+12346,report3.pdf,/files/reports,BrandZ,2023-05-14,CUST002,RKEY003,Customer Three,SalesGroup1,Retail,Channel3,Country1,Cycle2025,CampaignC,Master Task 3,Alice,Brown,Trade003,TradeName3
+12347,report4.pdf,/files/reports,BrandX,2023-05-16,CUST003,RKEY004,Customer Four,SalesGroup3,Retail,Channel4,Country3,Cycle2026,CampaignD,Master Task 4,Bob,White,Trade004,TradeName4
+12348,report5.pdf,/files/reports,BrandY,2023-05-18,CUST004,RKEY005,Customer Five,SalesGroup1,Wholesale,Channel5,Country4,Cycle2027,CampaignE,Master Task 5,Charlie,Green,Trade005,TradeName5

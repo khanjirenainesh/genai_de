@@ -1,0 +1,47 @@
+CATEGORY_DEPTH1,CATEGORY_DEPTH2,CATEGORY_DEPTH3,ALL_BRAND,COUPANG_SKU_ID,COUPANG_SKU_NAME,RANKING,JNJ_PRODUCT_FLAG,RUN_ID,FILE_NAME,YEARMO
+Electronics,Mobile,Smartphone,BrandX,SKU123,Smartphone Model A,-10,Y,1,products.csv,202301
+Electronics,Mobile,Smartphone,BrandY,SKU123,Smartphone Model B,100,N,1,products.csv,202301
+Home,Kitchen,Appliances,BrandZ,SKU125,Refrigerator Model X,9999,Y,2,products.csv,202302
+Home,Kitchen,Appliances,BrandZ,SKU126,Microwave Model Y,5,N,2,products.csv,202302
+Fashion,Men,Shirts,BrandA,SKU127,Men Shirt Model 1,-1,Y,3,products.csv,202303
+Fashion,Men,Shirts,BrandA,SKU127,Men Shirt Model 2,abc,N,3,products.csv,202303
+Fashion,Women,Dresses,BrandB,SKU129,Dress Model A,0,Y,4,products.csv,202304
+Fashion,Women,Dresses,BrandB,SKU130,Dress Model B,five,N,4,products.csv,202304
+Sports,Outdoor,Tents,BrandC,SKU131,Tent Model 1,-10000,Y,5,products.csv,202305
+Sports,Outdoor,Tents,BrandC,SKU131,Tent Model 2,1,N,5,products.csv,202305
+Automotive,Car Accessories,Seat Covers,BrandD,SKU133,Seat Cover Model A,3.5,Y,6,products.csv,202306
+Automotive,Car Accessories,Seat Covers,BrandD,SKU133,Seat Cover Model B,200,N,6,products.csv,202306
+Beauty,Makeup,Lipstick,BrandE,SKU135,Lipstick Model A,1,,7,products.csv,202307
+Beauty,Makeup,Lipstick,BrandE,SKU136,Lipstick Model B,1000,N,7,products.csv,202307
+Health,Supplements,Vitamins,BrandF,SKU137,Vitamin C Supplement,999999,Y,8,products.csv,202308
+Health,Supplements,Vitamins,BrandF,SKU137,Vitamin D Supplement,5,N,8,products.csv,202308
+Books,Fiction,Novels,BrandG,SKU139,Novel Model A,-50,Y,9,products.csv,202309
+Books,Fiction,Novels,BrandG,SKU140,Novel Model B,3,N,9,products.csv,202309
+Toys,Educational,Puzzles,BrandH,SKU141,Puzzle Model A,0,Y,10,products.csv,202310
+Toys,Educational,Puzzles,BrandH,SKU142,Puzzle Model B,100000,N,10,products.csv,202310
+Groceries,Beverages,Juices,BrandI,SKU143,Juice Model A,20.5,Y,11,products.csv,202311
+Groceries,Beverages,Juices,BrandI,SKU144,Juice Model B,-100,N,11,products.csv,202311
+Office Supplies,Stationery,Pens,BrandJ,SKU145,Pen Model A,XYZ,Y,12,products.csv,202312
+Office Supplies,Stationery,Pens,BrandJ,SKU145,Pen Model B,1,N,12,products.csv,202312
+Pet Supplies,Dog,Leashes,BrandK,SKU147,Leash Model A,30,Y,13,products.csv,202313
+Pet Supplies,Dog,Leashes,BrandK,SKU148,Leash Model B,100,N,13,products.csv,202313
+Garden,Plants,Seeds,BrandL,SKU149,Seed Model A,,Y,14,products.csv,202314
+Garden,Plants,Seeds,BrandL,SKU150,Seed Model B,1,N,14,products.csv,202314
+Electronics,Wearables,Smartwatches,BrandM,SKU151,Smartwatch Model A,1000000,Y,15,products.csv,202315
+Electronics,Wearables,Smartwatches,BrandM,SKU152,Smartwatch Model B,10,N,15,products.csv,202315
+Electronics,Cameras,DSLR,BrandN,SKU153,DSLR Model A,two,Y,16,products.csv,202316
+Electronics,Cameras,DSLR,BrandN,SKU154,DSLR Model B,5,N,16,products.csv,202316
+Home,Furniture,Chairs,BrandO,SKU155,Chair Model A,1001,Y,17,products.csv,202317
+Home,Furniture,Chairs,BrandO,SKU155,Chair Model B,10,N,17,products.csv,202317
+Beauty,Skincare,Creams,BrandP,SKU157,Cream Model A,-999,Y,18,products.csv,202318
+Beauty,Skincare,Creams,BrandP,SKU158,Cream Model B,1,N,18,products.csv,202318
+Automotive,Motorcycle,Helmets,BrandQ,SKU159,Helmet Model A,5,Y,19,products.csv,202319
+Automotive,Motorcycle,Helmets,BrandQ,SKU159,Helmet Model B,100,N,19,products.csv,202319
+Fashion,Kids,Shoes,BrandR,SKU161,Kids Shoes Model A,0,Y,20,products.csv,202320
+Fashion,Kids,Shoes,BrandR,SKU162,Kids Shoes Model B,10,N,20,products.csv,202320
+Sports,Fitness,Weights,BrandS,SKU163,Weights Model A,999999,Y,21,products.csv,202321
+Sports,Fitness,Weights,BrandS,SKU163,Weights Model B,2,N,21,products.csv,202321
+Books,Non-Fiction,Biographies,BrandT,SKU165,Biography Model A,-5,Y,22,products.csv,202322
+Books,Non-Fiction,Biographies,BrandT,SKU166,Biography Model B,7,N,22,products.csv,202322
+Toys,Board Games,Strategy Games,BrandU,SKU167,Strategy Game Model A,10000,Y,23,products.csv,202323
+Toys,Board Games,Strategy Games,BrandU,SKU168,Strategy Game Model B,1,N,23,products.csv,202323

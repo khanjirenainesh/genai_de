@@ -1,0 +1,232 @@
+C:\Users\kanil01\genai_de\data\adls_download
+Loaded 50 rows into CUST_CUSTOMER
+Loaded 5 rows into DAILYSALES
+Loaded 50 rows into ITG_SFA_PM
+Loaded 52 rows into KPI2DATA_MAPPING
+Loaded 50 rows into MRCHR_MERCHANDISINGRESPONSE
+Loaded 50 rows into MRCHR_RESPONSES
+Loaded 50 rows into MS_MASTERSURVEY
+Loaded 10 rows into PRODBU_PRODUCTBUSINESSUNIT
+Loaded 50 rows into PRODTR_PRODUCTTRANSLATION
+Loaded 50 rows into PROD_PRODUCT
+Loaded 50 rows into SDL_API_DSTR
+Loaded 50 rows into SDL_AU_DSTR_CHS_HEADER
+Loaded 50 rows into SDL_CBD_GT_SALES_REPORT_FACT_TEMP
+Loaded 50 rows into SDL_CHS_DSTR
+Loaded 12 rows into SDL_CLAVIS_GB_PRODUCTS
+Loaded 51 rows into SDL_CSL_CLASSMASTER
+Loaded 10 rows into SDL_CSL_DAILYSALES
+Failed to insert data into table: SDL_CSL_DISTRIBUTORACTIVATION
+Error: 100074 (54000): User character length limit (50) exceeded by string 'thisfilenameiswaytoolongtobevalidbecauseitexceedsthemaximumlength'
+Loaded 10 rows into SDL_CSL_ORDERBOOKING
+Loaded 5 rows into SDL_CSL_RETAILERMASTER
+Loaded 51 rows into SDL_CSL_TBL_SCHEMEWISE_APNO
+Loaded 50 rows into SDL_CSL_UDCDETAILS
+Loaded 6 rows into SDL_DAILYSALES_DEL
+Loaded 50 rows into SDL_DISTRIBUTOR_CUSTOMER_DIM
+Failed to insert data into table: SDL_DISTRIBUTOR_IVY_INVOICE
+Error: 100072 (22000): NULL result in a non-nullable column
+Failed to insert data into table: SDL_DISTRIBUTOR_IVY_OUTLET_MASTER
+Error: 100046 (22003): Number out of representable range: type FIXED, value 120
+Loaded 5 rows into SDL_DISTRIBUTOR_IVY_OUTLET_MASTER_ADFTEMP
+Loaded 48 rows into SDL_ECOMMERCE_6PAI
+Loaded 50 rows into SDL_ECOM_SEARCH_ADS_BY_DATE
+Loaded 30 rows into SDL_ECOM_SHOPEE_COMPENSATION
+Loaded 10 rows into SDL_GCPH_BRAND
+Loaded 50 rows into SDL_ID_POS_DAILY_SAT_SELLOUT
+Loaded 5 rows into SDL_IG_INVENTORY_DATA
+Loaded 50 rows into SDL_JNJ_CONSUMERREACH_CVS
+Loaded 50 rows into SDL_LA_GT_ROUTE_DETAIL
+Loaded 50 rows into SDL_ALL_DISTRIBUTOR_SELLOUT_SALES_FACT
+Loaded 10 rows into SDL_CBD_GT_SALES_REPORT_FACT
+Loaded 52 rows into SDL_CCR_PRODUCT_MAPPING
+Loaded 5 rows into SDL_CLAVIS_GB_SEARCH_TERMS_RESULTS
+Loaded 5 rows into SDL_CSL_DAILYSALES_UNDELIVERED
+Loaded 5 rows into SDL_CSL_PRODUCTWISESTOCK
+Loaded 50 rows into SDL_CSL_SALESINVOICEORDERS
+Loaded 50 rows into SDL_CSL_UDCMASTER
+Loaded 50 rows into SDL_DISTRIBUTOR_IVY_INVENTORY
+Loaded 30 rows into SDL_ECOM_AMS
+Loaded 10 rows into SDL_ECOM_GMV_SHOPEE
+Loaded 10 rows into SDL_GCCH_CUST_HIER
+Failed to insert data into table: SDL_HK_WINGKEUNG_DIRECT_SALES_REP_ROUTE_PLAN
+Error: 100072 (22000): NULL result in a non-nullable column
+Loaded 50 rows into SDL_ID_POS_DAILY_IDM_SELLOUT
+Loaded 50 rows into SDL_ID_POS_GUARDIAN_STOCK
+Loaded 51 rows into SDL_KR_COUPANG_PRODUCT_RANKING_MONTHLY
+Failed to insert data into table: SDL_MATERIAL_PKA_MARA_EXTRACT
+Error: 100074 (54000): User character length limit (30) exceeded by string 'Negative SKU Identification Desc'
+Loaded 50 rows into SDL_ID_POS_DIAMOND_SELLOUT
+Loaded 51 rows into SDL_LA_GT_VISIT
+Failed to insert data into table: SDL_MDS_MY_PS_TARGETS
+Error: 100046 (22003): Number out of representable range: type FIXED, value 999999999999
+Loaded 39 rows into SDL_MDS_PACIFIC_PERENSO_CYCLE_DATES
+Loaded 50 rows into SDL_MDS_PH_ECOM_PRODUCT
+Loaded 52 rows into SDL_MDS_PH_MSL_HDR
+Loaded 50 rows into SDL_MDS_PH_POS_PRICELIST
+Loaded 10 rows into SDL_MDS_PH_POS_PRODUCT
+Loaded 51 rows into SDL_MDS_SG_ECOM_PRODUCT
+Loaded 50 rows into SDL_MDS_VN_CUSTOMER_SALES_ORGANIZATION
+Loaded 50 rows into SDL_MY_CIW_MAP
+Loaded 50 rows into SDL_AU_DSTR_API_HEADER
+Loaded 33 rows into SDL_AU_DSTR_SIGMA_HEADER
+Loaded 52 rows into SDL_CHW_ECOMM_DATA
+Loaded 51 rows into SDL_CSL_RETAILERHIERARCHY
+Loaded 51 rows into SDL_CSL_RETAILERROUTE
+Loaded 5 rows into SDL_CSL_SALESRETURN
+Failed to insert data into table: SDL_CSL_SCHEME_HEADER
+Error: 100071 (22000): Failed to cast variant value "10000-01-01 00:00:00" to TIMESTAMP_NTZ
+Loaded 50 rows into SDL_CUSTOMERPL_STDCOST_2022
+Loaded 50 rows into SDL_DISTRIBUTOR_CUSTOMER_DIM_ADFTEMP
+Loaded 50 rows into SDL_DISTRIBUTOR_IVY_ORDER
+Loaded 50 rows into SDL_DISTRIBUTOR_IVY_USER_MASTER
+Loaded 50 rows into SDL_DNR_CUSTOMER_DIM
+Loaded 50 rows into SDL_ECOMMERCE_OFFTAKE_AMAZON
+Loaded 5 rows into SDL_ECOM_BACKMARGIN
+Loaded 2 rows into SDL_ECOM_COGS
+Loaded 51 rows into SDL_ECOM_CPAS
+Loaded 50 rows into SDL_ECOM_GMV_KONVY
+Failed to insert data into table: SDL_ECOM_SEARCH_ADS_BY_CHANNEL
+Error: 100071 (22000): Failed to cast variant value "2023-10-06 24:00:00" to TIMESTAMP_NTZ
+Loaded 50 rows into SDL_FPA_PROFIT_CENTER_MAPPING
+Loaded 10 rows into SDL_GCPH_CATEGORY
+Loaded 11 rows into SDL_HK_IMS_VIVA_SEL_OUT
+Loaded 50 rows into SDL_HK_IMS_WINGKEUNG_INV
+Loaded 31 rows into SDL_HK_IMS_WINGKEUNG_SEL_OUT
+Loaded 50 rows into SDL_HK_POS_SCORECARD_MANNINGS
+Failed to insert data into table: SDL_HK_WINGKEUNG_SALES_REP_SO_TGT_FACT
+Error: 100072 (22000): NULL result in a non-nullable column
+Loaded 49 rows into SDL_ID_MDS_LOG
+Failed to insert data into table: SDL_ID_POS_CARREFOUR_SELLOUT
+Error: 100071 (22000): Failed to cast variant value "fifty" to FIXED
+Loaded 50 rows into SDL_IRI_SCAN_SALES
+Loaded 50 rows into SDL_JNJ_OSA_OOS_REPORT
+Loaded 50 rows into SDL_KR_BO_YOUNG_JONG_HAP_LOGISTICS_GT_SELLOUT
+Loaded 50 rows into SDL_KR_COUPANG_BRAND_RANKING
+Loaded 50 rows into SDL_KR_COUPANG_DAILY_BRAND_REVIEWS
+Loaded 50 rows into SDL_KR_COUPANG_PRODUCTSALEREPORT
+Loaded 50 rows into SDL_KR_COUPANG_SEARCH_KEYWORD_BY_CATEGORY
+Loaded 51 rows into SDL_ALL_DISTRIBUTOR_SELLIN_SALES_FACT
+Loaded 52 rows into SDL_COMPETITIVE_BANNER_GROUP
+Loaded 50 rows into SDL_CSL_SALESMANMASTER
+Failed to insert data into table: SDL_DISTRIBUTOR_IVY_MERCHANDISING
+Error: 100074 (54000): User character length limit (30) exceeded by string 'ThisMonthNameIsWayTooLongForTheField'
+Loaded 51 rows into SDL_HK_WINGKEUNG_INDIRECT_SALES_REP_ROUTE_PLAN
+Loaded 50 rows into SDL_ID_POS_IDM_SELLOUT
+Loaded 50 rows into SDL_JNJ_CONSUMERREACH_SFM
+Loaded 10 rows into SDL_KR_COUPANG_PA_REPORT
+Failed to insert data into table: SDL_KR_COUPANG_PRODUCT_RANKING_WEEKLY
+Error: 100071 (22000): Failed to cast variant value "wrong_type" to FIXED
+Loaded 50 rows into SDL_KR_COUPANG_PRODUCT_SUMMARY_MONTHLY
+Loaded 50 rows into SDL_LA_GT_INVENTORY_FACT
+Loaded 50 rows into SDL_LA_GT_ROUTE_DETAIL_TEMP
+Failed to insert data into table: SDL_LA_GT_ROUTE_HEADER
+Error: 100074 (54000): User character length limit (5) exceeded by string 'SOMETIMES'
+Loaded 50 rows into SDL_LA_GT_ROUTE_HEADER_TEMP
+Loaded 10 rows into SDL_MARKET_SHARE_QSD
+Loaded 3 rows into SDL_MDS_APAC_DCL_CUSTOMERS
+Loaded 51 rows into SDL_MDS_APAC_DCL_PRODUCTS
+Loaded 48 rows into SDL_MDS_LOG
+Loaded 50 rows into SDL_MDS_MY_GT_OUTLETATTRIBUTES
+Loaded 40 rows into SDL_MDS_MY_PS_WEIGHTS
+Loaded 50 rows into SDL_MDS_MY_SKU_BENCHMARKS
+Loaded 5 rows into SDL_MDS_PACIFIC_CUST_CIW_PLAN
+Loaded 52 rows into SDL_MDS_PACIFIC_PRODUCT_MAPPING_COLES
+Loaded 51 rows into SDL_MDS_PH_CLOBOTICS_SOS_REF
+Loaded 50 rows into SDL_MDS_PH_DISTRIBUTOR_PRODUCT
+Loaded 10 rows into SDL_MDS_PH_LAV_PRODUCT
+Loaded 51 rows into SDL_MDS_PH_NON_ISE_WEIGHTS
+Loaded 51 rows into SDL_MDS_PH_NPI_PEG_ITEM
+Loaded 50 rows into SDL_MDS_PH_NPI_SALES_GROUPINGS
+Failed to insert data into table: SDL_MDS_VN_ALLCHANNEL_SISO_TARGET_SKU
+Error: 100074 (54000): User character length limit (36) exceeded by string 'MUID123456789012345678901234567890123456'
+Loaded 50 rows into SDL_MDS_VN_CUSTOMER_SEGMENTATION
+Loaded 51 rows into SDL_MDS_VN_DISTRIBUTOR_CUSTOMERS
+Loaded 50 rows into SDL_MDS_VN_ECOM_NTS
+Loaded 50 rows into SDL_MDS_VN_ECOM_PRODUCT
+Loaded 47 rows into SDL_MDS_VN_POS_CUSTOMERS
+Loaded 20 rows into SDL_MDS_VN_SKU_BENCHMARKS
+Loaded 32 rows into SDL_MY_ACCRUALS
+Loaded 51 rows into SDL_MY_DAILY_SELLOUT_SALES_FACT
+Loaded 50 rows into SDL_MY_DAILY_SELLOUT_SALES_FACT_MDS_SYNC
+Loaded 50 rows into SDL_MY_DAILY_SELLOUT_STOCK_FACT
+Failed to insert data into table: SDL_MY_DSTRBTRR_DIM
+Error: 100071 (22000): Failed to cast variant value "2023-10-15 24:00:00" to TIMESTAMP_NTZ
+Loaded 50 rows into SDL_POP6_SG_DISPLAYS
+Loaded 10 rows into SDL_POP6_SG_EXECUTED_VISITS
+Loaded 50 rows into SDL_POP6_SG_PRODUCTS
+Loaded 52 rows into SDL_CSL_RDSSMWEEKLYTARGET_OUTPUT
+Loaded 7 rows into SDL_CSL_SCHEMEUTILIZATION
+Loaded 50 rows into SDL_DSTR_COLES_INV
+Loaded 51 rows into SDL_GCGH_GEO_HIER
+Loaded 51 rows into SDL_ID_POS_CARREFOUR_STOCK
+Loaded 51 rows into SDL_ID_POS_DAILY_BASEDLINE_SELLOUT
+Loaded 50 rows into SDL_JNJ_CONSUMERREACH_711
+Loaded 10 rows into SDL_JNJ_MER_COP
+Loaded 50 rows into SDL_JNJ_MER_SHARE_OF_SHELF
+Loaded 7 rows into SDL_KR_COUPANG_BPA_REPORT
+Loaded 50 rows into SDL_KR_COUPANG_CUSTOMER_BRAND_TREND
+Loaded 46 rows into SDL_KR_COUPANG_PRODUCT_MASTER
+Loaded 50 rows into SDL_KR_COUPANG_PRODUCT_RANKING_DAILY
+Loaded 50 rows into SDL_LA_GT_CUSTOMER
+Loaded 10 rows into SDL_LA_GT_SALES_ORDER_FACT
+Loaded 50 rows into SDL_LA_GT_SCHEDULE
+Loaded 10 rows into SDL_LA_GT_SELLOUT_FACT
+Loaded 5 rows into SDL_LA_GT_SALES_ORDER_FACT_TEMP
+Loaded 50 rows into SDL_MDS_MY_GT_PRODUCT_MAPPING
+Loaded 5 rows into SDL_MDS_MY_PRODUCT_MASTER
+Loaded 50 rows into SDL_MDS_MY_PS_MSL
+Loaded 51 rows into SDL_MDS_PACIFIC_ACCT_NIELSENCODE_MAPPING
+Loaded 10 rows into SDL_MDS_PACIFIC_CIW_ADJUSTMENT
+Loaded 51 rows into SDL_MDS_PACIFIC_COGS_MASTER
+Loaded 10 rows into SDL_MDS_PACIFIC_ECOM_NTS
+Loaded 51 rows into SDL_MDS_PACIFIC_ECOM_PRODUCT
+Failed to insert data into table: SDL_MDS_PH_DISTRIBUTOR_SUPERVISORS
+Error: 100074 (54000): User character length limit (36) exceeded by string '1234567890123456789012345678901234567'
+Failed to insert data into table: SDL_MDS_PH_GT_CUSTOMER
+Error: 100071 (22000): Failed to cast variant value "99999999999999999999" to FIXED
+Loaded 10 rows into SDL_MDS_PH_ISE_PARENT
+Loaded 50 rows into SDL_MDS_PH_ISE_SOS_TARGETS
+Loaded 52 rows into SDL_MDS_PH_ISE_WEIGHTS
+Loaded 2 rows into SDL_MDS_PH_LAV_CUSTOMER
+Loaded 5 rows into SDL_MDS_PH_POS_CUSTOMERS
+Loaded 50 rows into SDL_MDS_SG_PRODUCT_EXCEPTIONS
+Loaded 51 rows into SDL_MDS_SG_PRODUCT_HIERARCHY
+Loaded 51 rows into SDL_MDS_SG_PS_TARGETS
+Loaded 50 rows into SDL_MDS_SG_SKU_BENCHMARKS
+Loaded 50 rows into SDL_MDS_SG_STORE_MASTER
+Failed to insert data into table: SDL_MDS_VN_DISTRIBUTOR_PRODUCTS
+Error: 100071 (22000): Failed to cast variant value "10000-01-01 10:00:00" to TIMESTAMP_NTZ
+Loaded 51 rows into SDL_MDS_VN_ECOM_TARGET
+Loaded 50 rows into SDL_MDS_VN_GT_GTS_RATIO
+Loaded 50 rows into SDL_MDS_VN_GT_MSL_SHOPTYPE_MAPPING
+Loaded 50 rows into SDL_MDS_VN_POS_PRODUCTS
+Loaded 50 rows into SDL_MDS_VN_PRICE_PRODUCTS
+Loaded 50 rows into SDL_MDS_VN_PS_STORE_TAGGING
+Loaded 50 rows into SDL_MDS_VN_PS_TARGETS
+Loaded 50 rows into SDL_MDS_VN_PS_WEIGHTS
+Failed to insert data into table: SDL_MDS_VN_STORE_RETAIL_ENVIRONMENT_MAPPING
+Error: 100074 (54000): User character length limit (40) exceeded by string 'MUID1234567890123456789012345678901234567890'
+Loaded 27 rows into SDL_MY_AFGR
+Failed to insert data into table: SDL_POP6_SG_GENERAL_AUDITS
+Error: 100046 (22003): Number out of representable range: type FIXED, value 1234567890123456789
+Loaded 50 rows into SDL_POP6_SG_POP_LISTS
+Loaded 50 rows into SDL_POP6_SG_PRODUCT_ATTRIBUTE_AUDITS
+Loaded 50 rows into SDL_POP6_SG_PRODUCT_LISTS_ALLOCATION
+Loaded 50 rows into SDL_POP6_SG_PRODUCT_LISTS_PRODUCTS
+Loaded 51 rows into SDL_SPIRAL_MTI_OFFTAKE
+Loaded 10 rows into SDL_DSTR_WOOLWORTH_INV
+Loaded 50 rows into SDL_KR_COUPANG_PRODUCT_SUMMARY_WEEKLY
+Loaded 50 rows into SDL_MDS_MY_ECOM_PRODUCT
+Loaded 51 rows into SDL_MDS_PH_MSL_DTLS
+Loaded 50 rows into SDL_MDS_SG_PRODUCT_MAPPING
+Loaded 50 rows into SDL_MDS_VN_TOPDOOR_STORETYPE_MAPPING
+Loaded 50 rows into SDL_MY_CUSTOMER_DIM
+Loaded 50 rows into SDL_POP6_SG_PLANNED_VISITS
+Loaded 50 rows into SDL_POP6_SG_POPS
+Loaded 50 rows into SDL_MDS_SG_CUSTOMER_HIERARCHY
+Loaded 50 rows into SDL_MY_AS_WATSONS_INVENTORY
+Loaded 50 rows into SDL_POP6_SG_DISPLAY_PLANS
+Loaded 51 rows into SDL_MDS_SG_PS_WEIGHTS
+Failed to insert data into table: SDL_POP6_SG_PRODUCT_LISTS_POPS
+Error: 100071 (22000): Failed to cast variant value "12345678901234567890" to FIXED
