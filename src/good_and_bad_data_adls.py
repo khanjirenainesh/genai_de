@@ -48,6 +48,9 @@ def process_tables():
     tables = cursor.fetchall()
     table_names = [table[0] for table in tables]
     
+    container_name = "genaicsvstore"
+    file_system_client = adls_client.get_file_system_client(file_system=container_name)
+
     for table_name in table_names:
         table_start_time = time.time()
         print(f"Processing table: {table_name}")
@@ -82,26 +85,23 @@ def process_tables():
         texts = splitter.split_text(json_data=json.loads(json_data))
 
         prompt_template = """
-        Generate 50 row of bad-quality data for each table based on the given metadata. 
+        Generate 50 rows of bad-quality data for the table based on the given metadata. 
         STRICTLY comply with table constraints and all column data types.
-        note: 
-        - understand the table metadata and then generate the data which should be valid enough to insert in snowflake tables but it should be bad data.
-        - this bad data must be VALID in order to insert in respective tables without fail.
-        - Don't put null in non-nullable field and don't exceed character length limit from table metadata.
+        Note: 
+        - This bad data must be VALID in order to insert in respective tables without fail.
+        - Don't put null in non-nullable fields and don't exceed character length limit from table metadata.
         - For TIMESTAMP fields, use the format 'YYYY-MM-DD HH:MM:SS' and ensure all timestamps are valid.
-        - ignore timestamp and data columns for bad data and always generate good data for them.
-        while bad data should simulate realistic yet invalid scenarios violating constraints like:
-        
+        - Ignore timestamp and date columns for bad data and always generate good data for them.
+        While bad data should simulate realistic yet invalid scenarios violating constraints like:
         1. Negative or illogical values (e.g., negative age or weight).
         2. Duplicate primary keys.
         3. Logical inconsistencies (e.g., start date after end date, year > 9999).
         4. Missing values.
         
         Output format: 
-        - Strictly provide a JSON array format containing serializable data for each table.
+        - Provide a JSON array containing serializable data for the table.
         - Generate JSON serializable data.
-        - Don't provide any comments or descriptions, only the JSON data.
-        - Don't repeat the table name inside the JSON data.
+        - STRICTLY DO NOT provide any comments using // or descriptions for columns, only give me the JSON data.
         - Ensure all date and timestamp values are valid and within reasonable ranges.
 
         Here is the input table Metadata: 
@@ -115,24 +115,41 @@ def process_tables():
 
         try:
             parsed_data = json.loads(synthetic_data)
-        except json.JSONDecodeError:
-            print(f"Error: Failed to parse generated JSON data for table {table_name}.")
+        except json.JSONDecodeError as e:
+            print(f"Error: Failed to parse generated JSON data for table {table_name}. Error: {str(e)}")
+            log_file = f"synthetic_data_log_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+            try:
+                with open(log_file, 'w') as f:
+                    f.write(f"Table: {table_name}\n")
+                    f.write(f"Error: {str(e)}\n")
+                    f.write("Raw response:\n")
+                    f.write(synthetic_data)
+                print(f"Raw response logged to {log_file}")
+            except IOError:
+                current_dir = os.path.dirname(os.path.abspath(__file__))
+                log_file = os.path.join(current_dir, log_file)
+                with open(log_file, 'w') as f:
+                    f.write(f"Table: {table_name}\n")
+                    f.write(f"Error: {str(e)}\n")
+                    f.write("Raw response:\n")
+                    f.write(synthetic_data)
+                print(f"Raw response logged to {log_file} in current directory")
             continue
 
-        base_dir = str(Path(__file__).parent.parent)
-        output_dir = os.path.join(base_dir, "data", "csv_output") 
-        os.makedirs(output_dir, exist_ok=True)
-        output_csv_file = os.path.join(output_dir, f"{table_name}.csv")
         if parsed_data and isinstance(parsed_data, list) and len(parsed_data) > 0:
-            with open(output_csv_file, mode="w", newline="", encoding="utf-8") as file:
-                if isinstance(parsed_data[0], dict):
-                    writer = csv.DictWriter(file, fieldnames=parsed_data[0].keys())
-                    writer.writeheader()
-                    writer.writerows(parsed_data)
-                else:
-                    writer = csv.writer(file)
-                    writer.writerows(parsed_data)
-            print(f"Table '{table_name}' saved to {output_csv_file}")
+            csv_buffer = StringIO()
+            if isinstance(parsed_data[0], dict):
+                writer = csv.DictWriter(csv_buffer, fieldnames=parsed_data[0].keys())
+                writer.writeheader()
+                writer.writerows(parsed_data)
+            else:
+                writer = csv.writer(csv_buffer)
+                writer.writerows(parsed_data)
+            
+            csv_content = csv_buffer.getvalue()
+            file_client = file_system_client.get_file_client(f"{table_name}.csv")
+            file_client.upload_data(csv_content, overwrite=True)
+            print(f"Table '{table_name}' saved to ADLS container '{container_name}'")
         else:
             print(f"Table '{table_name}' has no valid data. No file created.")
 
