@@ -1,0 +1,42 @@
+SDL_KR_COUPANG_PRODUCT_SUMMARY_MONTHLY:
+solution:
+- Correct the 'category_depth3' to include a valid subcategory, or if it is truly 'None', confirm that it is intended and document the exception.
+- Verify 'ranking' value for correctness as it seems unusually high for a 'jnj_product_flag' marked 'Y' or ensure it falls within the acceptable range.
+- Update 'run_id' to a valid positive integer, as '-49' appears to be an invalid value for this field.
+- Ensure 'yearmo' is formatted correctly and falls within the expected range, as '202349' seems to be incorrect.
+
+SQL Query:
+sql
+SELECT *
+FROM SDL_KR_COUPANG_PRODUCT_SUMMARY_MONTHLY
+WHERE category_depth3 IS NULL 
+   OR NOT jnj_product_flag IN ('Y', 'N') 
+   OR ranking < 1 
+   OR run_id < 0 
+   OR yearmo NOT BETWEEN 202301 AND 202312;
+Based on the information provided, it seems there are no anomalies detected in the 'DAILYSALES' table. Therefore, no specific solutions are needed for this table.
+
+table_name : DAILYSALES
+solution : No solution needed as no anomalies were detected.
+
+SQL Query to check for anomalies in the 'DAILYSALES' table:
+sql
+-- This query is a template to check for common anomalies, you can customize it based on specific anomaly criteria
+WITH sales_data AS (
+    SELECT 
+        *,
+        LAG(sales_amount) OVER (ORDER BY sales_date) AS previous_sales,
+        LEAD(sales_amount) OVER (ORDER BY sales_date) AS next_sales
+    FROM DAILYSALES
+)
+SELECT 
+    *
+FROM sales_data
+WHERE 
+    sales_amount < 0 -- Check for negative sales
+    OR sales_amount > 1000000 -- Check for unusually high sales
+    OR (sales_amount > previous_sales * 2 AND previous_sales IS NOT NULL) -- Check for sudden spikes
+    OR (sales_amount < previous_sales / 2 AND previous_sales IS NOT NULL) -- Check for sudden drops;
+
+
+This query is a generic template to detect potential anomalies by looking for negative sales amounts, unusually high sales amounts, and sudden spikes or drops compared to the previous sales data. Adjust the conditions based on the specific business rules and thresholds relevant to your dataset.
