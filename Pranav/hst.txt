@@ -1,749 +1,2320 @@
-SDL_AU_DSTR_API_HEADER :  
-solution : Ensure that the table 'SDL_AU_DSTR_API_HEADER' contains the required numeric data types necessary for performing anomaly detection, such as integers or floats, by reviewing the schema design and inserting appropriate numeric fields if they are missing. Additionally, verify that the data entries in these fields are correctly populated and not null.
-table_name: SDL_CSL_DAILYSALES  
-solution: Verify the total deductions and additions. Ensure that `saltotdedn` is correctly calculated as the sum of `salspldiscamt`, `salschdiscamt`, `salcashdiscamt`, `saldbdiscamt`, `salmktretamt`, and other relevant deductions. Additionally, ensure that any additions such as `saltaxamt`, `salwdsamt`, `salotherchargesamt`, and `saldbadjamt` are correctly reflected in `saltotaddn`. Recalculate `salnetamt` based on corrected total deductions and additions to ensure its accuracy.
-SDL_ID_POS_DAILY_BASEDLINE_SELLOUT :
-solution :
-- Correct the 'plu' value from '-1' to a valid product lookup identifier.
-- Adjust the 'month' value from '13' to a valid month between 1 and 12.
-- Set the 'year' value from '9999' to a valid year, e.g., within a reasonable range like 2000-2023.
-- Change 'roi_month' from 'January' to a correct month name corresponding to the numerical month value.
-- Correct all negative quantities and counts (e.g., 'qty_trx', 'cum_ytm_qty', 'promo_qty', etc.) to positive, valid numbers reflecting accurate sales data.
-- Ensure 'total_days', 'cum_total_days', 'promo_days', and similar fields are non-negative and logical according to the calendar.
-- Validate 'yearmonth' format to 'YYYY-MM' and ensure it represents a valid calendar month.
-- Validate all other fields to ensure consistency and logical coherence based on business rules.
-SDL_MDS_MY_PS_MSL :
-solution : The negative value in 'enterversionnumber' (-28) should be corrected to a valid positive integer that aligns with the versioning system.
-SDL_MDS_PACIFIC_ECOM_PRODUCT :
-solution :
-- Correct the 'muid' field from 'None' to a valid unique identifier.
-- Review and adjust the 'enterversionnumber' to a positive integer, replacing '-47'.
-- Ensure 'cust_attr_2' has an appropriate value instead of 'None'.
-- Verify the 'validationstatus' field aligns with the current status, considering it is marked as 'draft' but 'versionflag' is 'in_review'. Adjust as needed.
-SDL_MDS_PH_POS_PRODUCT :
-solution : Ensure that 'id' is a positive integer and correct the negative value. Verify 'cust_item_prc' to ensure it is a positive number, as negative pricing might be incorrect. Adjust 'early_bk_period' and 'lst_period' to use consistent naming or encoding for periods to avoid confusion.
-SDL_MDS_VN_CUSTOMER_SEGMENTATION :
-solution : Correct the 'validationstatus' from 'invalid' to a valid status or investigate the cause of invalid status and fix any underlying data issues. Ensure that all related fields like 'versionflag', 'changetrackingmask', and segmentation codes/names are accurate and consistent.
-SDL_KR_COUPANG_PRODUCT_SUMMARY_MONTHLY :
-solution : Correct the 'run_id' value from -49 to a valid positive integer.
-SDL_MDS_MY_PRODUCT_MASTER :
-solution :
-- Replace negative values in the fields 'attachments', 'bn-duty', 'bn-list_price', 'dz_price', 'list_price', 'list_price_w_gst', 'product_dimension-l_(mm)', 'product_dimension-w_(mm)', 'product_weight', 'qty-inner_shipper_(pc)', 'shipper_dimension-h_(mm)', 'shipper_dimension-m3', and 'shelf_life_(years)' with valid positive values or set them to a default positive value.
-- Review and correct the 'normal/promo' value to ensure it aligns with business logic, if 'Normal' is not appropriate.
-- Validate 'apo-master_code', 'code', and other identifiers to ensure they are unique or correctly duplicated as per business requirements.
-- Ensure 'enterdatetime' and 'lastchgdatetime' timestamps are accurate and reflect proper historical changes.
-- Confirm 'selling_status_name' and 'selling_status_id' align correctly with business status definitions and correct inconsistencies.
-SDL_MDS_PH_LAV_PRODUCT :
-solution : The anomaly detected is that the 'versionnumber' field has a value of -1, which is unusual and likely incorrect. Update the 'versionnumber' to a valid positive integer that corresponds with the correct versioning scheme for the product.
-SDL_MDS_VN_PS_TARGETS :
-solution :
-- Verify and correct the 'validationstatus' field for the anomalous row with id 49. The current status is 'Invalid', which indicates a potential issue with the data integrity or compliance. Investigate the underlying cause for this status and update it to a valid state after resolving any identified discrepancies.
-SDL_LA_GT_SALES_ORDER_FACT_TEMP :  
-solution : The anomaly in the dataset is related to a negative quantity (-200.0) in the 'qty' column for order 'ORD004'. Verify the source data for errors and correct the 'qty' value to a non-negative number. Re-check any data processing steps that might have led to this anomaly to prevent recurrence.
-SDL_MY_DAILY_SELLOUT_STOCK_FACT :  
-solution : Ensure that the table 'SDL_MY_DAILY_SELLOUT_STOCK_FACT' contains numeric data in the relevant columns required for anomaly detection. Verify data types of the columns and update any incorrect data types to numeric. Also, check for any missing or null values in numeric columns and address them appropriately.
-SDL_CSL_PRODUCTWISESTOCK :
-solution : 
-1. Correct negative values for 'salopenstock', 'unsalopenstock', 'unsalpurchase', 'offerpurchase', 'offerpurreturn', 'unsalsales', 'offerstockin', 'offerstockout', 'offersalesreturn', 'unsalstkjurout', 'offerstkjurout', 'salbattfrout', 'offerbattfrout', 'offerlcntfrout', 'offerreplacement', 'unsalclsstock', 'offerclsstock' to non-negative numbers.
-2. Ensure 'prdid' and 'prdcode' are valid and correct negative values if these are intended to be positive identifiers.
-3. Re-evaluate the business logic to ensure inventory transactions such as purchases, sales, returns, stock adjustments, etc., do not result in negative stock levels where not applicable.
-4. Check data entry or import processes for errors that might have caused these anomalies and implement validation checks.
-5. Review and correct the 'syncid' and 'run_id' if they are intended to be positive identifiers.
-SDL_CSL_SALESMANMASTER :
-solution :
-- Correct the 'createddate' field to a valid past or current date, as "2027-02-01 12:00:00" is a future date.
-Since no anomalies were detected in the table 'SDL_MDS_PH_LAV_CUSTOMER', there is no solution required for this table.
-SDL_POP6_SG_PRODUCT_ATTRIBUTE_AUDITS :
-solution : Investigate the 'audit_form_id' being 'None' for 'visit_id' V3, ensure it is correctly linked to an existing audit form.
-table_name: SDL_CSL_RETAILERHIERARCHY  
-solution: Verify and correct the 'turnover' value, as it is showing a negative amount (-2100.0), which is likely erroneous for a retail hierarchy.
-SDL_CSL_RETAILERMASTER :
-solution:
-- Correct the `distcode`, `rtrid`, `rtrcode`, `csrtrcode`, `rtrcategorycode`, `classcode`, `keyaccount`, `parentcode`, `villagecode`, `villagename`, `rtrtinno`, `rtrcstno`, `rtrlicno`, `rtrdrugexpirydate`, `rtrpestlicno`, `rtrpestexpirydate`, `rtrfoodlicno`, `rtrcosmeticlicno` fields to ensure they meet standard coding formats and are not negative.
-- Verify and update the `relationstatus`, `status`, `mode`, `uploadflag`, `approvalremarks`, `syncid`, and `approved` fields to ensure they reflect accurate and consistent business logic.
-- Adjust `rtrcrbills`, `rtrcrlimit`, `rtrcrdays`, `rtrdayoff`, `rtrfoodgracedays`, `rtrdruggracedays`, and `rtrcosmeticgracedays` to ensure they are positive and logical values.
-- Correct the expiration dates (`rtrlicexpirydate`, `rtrdrugexpirydate`, `rtrpestexpirydate`, `rtrfoodexpirydate`, `rtrcosmeticexpirydate`) to realistic future dates.
-- Validate and correct numerical fields like `rtrlatitude`, `rtrlongitude` to ensure they are within valid geographic ranges.
-- Ensure that the `rtraddress1`, `rtraddress2`, `rtraddress3`, `rtrshippadd1`, `rtrshippadd2`, `rtrshippadd3` fields contain valid and complete address information.
-- Confirm `rtrphoneno` is a valid phone number format.
-- Verify `rtrname`, `rtrcontactperson`, `rtrtaxgroup`, `rtrtype`, `rtrtaxable`, `run_id`, `crt_dttm`, and `file_name` for accuracy and consistency with business rules.
-SDL_ID_POS_DIAMOND_SELLOUT :
-solution :
-Update the 'qty' value to a positive number that accurately reflects the actual quantity of the 'Diamond Ring' sold in the 'nama_barang' field.
-There are no anomalies detected in the table 'SDL_KR_COUPANG_SEARCH_KEYWORD_BY_CATEGORY', so no specific solutions are required.
-SDL_MDS_SG_PRODUCT_HIERARCHY:
-solution:
-- Ensure that the 'id', 'versionnumber', 'brand_mapping_code', and 'lastchgversionnumber' are positive integers.
-- Update 'name' and 'enterusername' fields to have valid non-null values.
-- Verify 'versionflag' and 'validationstatus' fields for appropriate status or default to a valid state.
-- Correct 'muid' to be a valid unique identifier.
-- Confirm that 'enterdatetime' and 'lastchgdatetime' fields reflect accurate timestamps.
-- Check for consistency in codes and names across related fields, ensuring they correspond accurately to valid entries.
-SDL_MDS_SG_PS_WEIGHTS :  
-solution : Adjust the 'weight' value for the anomalous row with id 4 to ensure it falls within the acceptable range or matches expected values based on the context of the dataset.
-SDL_MDS_VN_PRICE_PRODUCTS :
-solution : Check and correct the 'lastchgversionnumber' field from 50.0 to an integer value, as it should not contain a decimal.
-SDL_SPIRAL_MTI_OFFTAKE :  
-solution : Ensure that the table 'SDL_SPIRAL_MTI_OFFTAKE' has numeric data available for anomaly detection by verifying and correcting data types and ensuring proper numeric data entry.
-SDL_MY_DAILY_SELLOUT_SALES_FACT :
-solution : Ensure that the numeric columns in the table 'SDL_MY_DAILY_SELLOUT_SALES_FACT' are populated with valid data. Check for any data import or transformation issues that might have resulted in missing or non-numeric values. Validate the data types of these columns and correct any discrepancies.
-SDL_CSL_DAILYSALES_UNDELIVERED :
-solution :
-1. Verify and correct the negative value in 'saldbdiscamt'. It should be a non-negative discount amount.
-2. Investigate and rectify the negative 'prdnetamt'. Ensure all deductions and additions are correctly calculated.
-SDL_DNR_CUSTOMER_DIM :  
-solution : Ensure that the table 'SDL_DNR_CUSTOMER_DIM' contains numeric data by identifying and populating the appropriate columns with numeric values necessary for anomaly detection.
-SDL_MDS_PACIFIC_ECOM_NTS :
-solution : Correct the 'month' value to be within the valid range (1-12) for the year 2022.
-SDL_POP6_SG_POPS :
-solution :
-- Correct the 'status' value from -1 to a valid status code.
-- Update 'run_id' from -5 to a valid run identifier.
-- Verify and correct the 'longitude' value 200.123 to be within the valid range (-180 to 180).
-- Verify and correct the 'latitude' value -95.456 to be within the valid range (-90 to 90).
-SDL_CSL_UDCDETAILS:  
-solution: Correct or verify the 'masterid' field as it contains an invalid value of -2, which is likely causing the anomaly.
-SDL_MDS_PH_POS_CUSTOMERS :
-solution : Verify and correct the logical values in the dataset, ensuring that all geographical codes (e.g., area_cd, barangaycode_code, city_cd, mncplty_cd_code, prov_cd_code, region_cd_code, zipcode_code) and other identifiers match real-world data. Adjust the operating hours to a realistic range and confirm that latitude and longitude values are within valid ranges.
-SDL_DSTR_WOOLWORTH_INV :  
-solution : Ensure that the table 'SDL_DSTR_WOOLWORTH_INV' contains numeric data columns that are necessary for anomaly detection. Review the data loading process to confirm that numeric fields are correctly populated and check for any data type mismatches or conversion errors.
-SDL_ECOM_BACKMARGIN :
-solution : 
-- The 'quantity' field should not be negative. Verify the data entry process to ensure quantities are entered correctly.
-- 'cogs_per_quantity' should not have a negative value. Check the cost calculation and data import process.
-- 'backmargin_cfs' should not be negative. Investigate the formula or logic generating this value.
-- The 'nmv' field should not be negative. Verify the calculation or data source for net merchandise value.
-- Review any logic or scripts updating the 'quantity', 'cogs_per_quantity', 'backmargin_cfs', and 'nmv' fields to prevent negative values.
-SDL_DISTRIBUTOR_IVY_ORDER :
-solution : The order_latitude value of -3.123456 seems incorrect or out of expected range for the location. Verify and correct the latitude value to ensure it accurately represents the geographical location of the delivery.
-SDL_MDS_VN_GT_MSL_SHOPTYPE_MAPPING :
-solution :
-- Verify the 'active' status field, as the 'versionflag' is marked as 'inactive' but 'active' is set to 1. These should be consistent.
-- Check the 'enterdatetime' and 'lastchgdatetime' for any discrepancies. Both datetime fields are the same, which might be unusual for an 'inactive' version.
-- Confirm that the 'validationstatus' is correctly marked as 'Valid' given the anomalies present.
-- Review the 'shoptype_code' and 'shoptype_name' for consistency with existing entries, ensuring that ST050 and Type50 are correctly mapped.
-SDL_POP6_SG_DISPLAY_PLANS :
-solution :
-- Verify and update the 'status' field to ensure it contains a valid value, as it currently shows '-49', which may be incorrect.
-- Check the 'required_number_of_displays' field for accuracy, as it currently shows '-240', which is typically expected to be a positive number.
-- Confirm the validity of the dates in 'start_date' and 'end_date', especially because they are very close together (one day apart), to ensure they reflect the intended display period.
-- Review the 'comments' field to confirm that the information is accurate and relevant to the anomalous data.
-- Reevaluate the 'allocation_method' and 'pop_code_or_pop_list_code' to ensure they are correctly assigned and consistent with the rest of the dataset.
-SDL_POP6_SG_PRODUCTS :
-solution : 
-1. Correct negative values for 'status', 'unit_price', 'display_order', 'largest_uom_quantity', 'middle_uom_quantity', 'smallest_uom_quantity', and 'run_id' to appropriate positive values.
-2. Verify 'productdb_id', 'barcode', and 'sku' for accuracy and correct if necessary.
-3. Ensure 'launch_date' is correctly formatted and valid.
-4. Review 'sku_english' and 'sku_code' for consistency and accuracy.
-5. Validate 'ps_category', 'ps_segment', and 'ps_category_segment' to ensure correct categorization.
-6. Confirm 'country_l1', 'regional_franchise_l2', 'franchise_l3', 'brand_l4', 'sub_category_l5', 'platform_l6', 'variance_l7', and 'pack_size_l8' are accurate and relevant.
-7. Verify 'file_name', 'crtd_dttm', and 'hashkey' for correctness and integrity.
-CUST_CUSTOMER :  
-solution :  
-- Verify and correct the customer name "M'Baku" to ensure it follows the expected naming conventions for entries in the database.
-table_name : SDL_DAILYSALES_DEL  
-solution :  
-- Correct the negative value in 'prdqty' from -10 to the accurate quantity sold.
-SDL_GCPH_BRAND :
-solution : Check the 'weight_unit' field for a missing or incorrect value, as it is marked as 'None'. Verify if this is an error and update it to the correct unit.
-SDL_MDS_SG_PRODUCT_MAPPING :  
-solution : Verify and correct the 'customer_name_id' and 'customer_brand_id' fields, ensuring they are unique and consistent with related entities to resolve the anomaly.
-SDL_MDS_SG_PS_TARGETS :
-solution :
-- Review the 'versionnumber' field in the anomalous row to ensure it adheres to expected data patterns or constraints, as the value '9999' might be out of the normal range.
-- Verify the 'value' field to confirm whether '600.0' is an expected or acceptable value for the given combination of attributes, channel, and KPI.
-- Check if the 'enterdatetime' and 'lastchgdatetime' fields are correct and consistent with the expected data entry and modification timelines.
-- Ensure that the 'validationstatus' accurately reflects the data's validity, considering the detected anomalies.
-SDL_MDS_PH_POS_PRODUCT_TEMP :  
-solution : Ensure that the table 'SDL_MDS_PH_POS_PRODUCT_TEMP' contains numeric columns with valid data types and values that can be used for anomaly detection. Validate data entries and update or insert missing numeric data.
 table_name: DAILYSALES  
-solution: Review and correct the negative values in the 'salonaccountamt' and 'salnetamt' fields. Ensure that 'salgrossamt' and 'prdqty' are not zero for a valid sales transaction. Adjust 'prdfreeqty' if necessary to reflect an accurate transaction.
-table_name : MRCHR_RESPONSES  
-solution :  
-- Correct the negative value for 'pricedetails' to a valid non-negative price or mark it as missing if the correct value is unknown.  
-- Verify the 'categorylength' value and update it to a non-negative number.
-SDL_AU_DSTR_SIGMA_HEADER :  
-solution : Ensure that the table 'SDL_AU_DSTR_SIGMA_HEADER' contains numeric data in relevant columns required for anomaly detection. Validate the data types of the columns and convert them to numeric types if necessary.
-SDL_MDS_PH_GT_CUSTOMER :  
-solution : Ensure that the table 'SDL_MDS_PH_GT_CUSTOMER' contains numerical columns necessary for anomaly detection. This might involve adding or calculating numeric fields, such as transaction amounts or customer age, depending on the context of the data.
-table_name : SDL_CLAVIS_GB_PRODUCTS
-solution : Review and correct the data for the 'diff_from_prev_observed_price' and 'diff_from_prev_observed_price_percent' fields as they seem to contain erroneous or implausible values, potentially due to incorrect calculations or data entry errors. Ensure consistency and accuracy in the pricing-related fields.
-SDL_KR_COUPANG_BPA_REPORT :  
-solution : Ensure that the table 'SDL_KR_COUPANG_BPA_REPORT' contains numeric data in the relevant columns required for anomaly detection. Verify data types and data entry processes to prevent non-numeric data from being inserted into numeric fields.
-SDL_LA_GT_CUSTOMER :  
-solution : The detected anomaly shows that there are missing or placeholder values (such as 'None') and an invalid value (-99999) in the 'activestatus' field. To resolve this, review and update the data entry process to ensure all required fields are populated with valid data. Specifically, replace 'None' and '-99999' with appropriate, accurate values. Validate the source data for completeness and accuracy, and implement data validation rules to prevent similar issues in the future.
-SDL_MDS_PACIFIC_CIW_ADJUSTMENT :
-solution :
-- The 'id' value should be a positive integer. Correct the 'id' value from '-1' to a valid positive integer.
-- The 'versionnumber' should be a positive integer. Correct the 'versionnumber' from '-10' to a valid positive integer.
-SDL_MY_DAILY_SELLOUT_SALES_FACT_MDS_SYNC :  
-solution : Ensure that the table 'SDL_MY_DAILY_SELLOUT_SALES_FACT_MDS_SYNC' contains numeric data in the relevant columns required for anomaly detection. Validate the data type of the columns and populate them with appropriate numeric values if missing.
-SDL_MDS_PH_MSL_DTLS :
-solution :
-- Check and correct the 'changetrackingmask' value for the anomalous row with id '3'. It should not be negative.
-SDL_MDS_MY_TARGETS :  
-solution : Ensure that numeric data is available in the table for anomaly detection by checking data types and populating necessary numeric fields.
-SDL_MDS_PACIFIC_COGS_MASTER :
-solution : Review and correct the 'nz_cogs_per_unit' value for the anomalous row where it is currently -1700.0, as a negative cost per unit is not logical. Ensure data entry adheres to expected value ranges and consider implementing validation rules to prevent similar errors.
-SDL_HK_IMS_VIVA_SEL_OUT :  
-solution :  
-- Investigate the negative values for 'sales_volume', 'sales_order_quantity', 'net_trade_sales', and 'local_curr_exch_rate'. These should typically be non-negative. Verify if these are data entry errors and correct them if necessary.  
-- Check if the 'transactiontype' is incorrectly labeled as 'SALE' when the 'return_reason' is 'Better price elsewhere'. This might indicate a return rather than a sale.  
-- Ensure that the 'currency' field is accurate and consistent with the 'country_code'.  
-- Verify the 'customer_number' and 'employee' details to ensure they match with existing records.  
-- Reassess the timestamp entries in 'crt_dttm' and 'updt_dttm' to ensure they represent accurate data entry and update times.  
-- Review 'file_name' for appropriate labeling and consistency with the data it contains.
-SDL_API_DSTR :  
-solution : Ensure that the table 'SDL_API_DSTR' contains numeric data in relevant columns. Identify the columns where numeric data is expected and populate them with appropriate numeric values. If the data is stored in a different format (e.g., strings), convert it to numeric format suitable for anomaly detection processes.
-SDL_LA_GT_ROUTE_DETAIL_TEMP:  
-solution: Ensure that the table 'SDL_LA_GT_ROUTE_DETAIL_TEMP' contains numeric data in the columns intended for anomaly detection. This may involve checking data types, correcting data input errors, or ensuring that data import processes correctly parse numeric values.
-SDL_MDS_PACIFIC_CUST_ATTRB :  
-solution : Add numeric data columns to the table for anomaly detection, ensuring the data is relevant to the attributes being analyzed.
-SDL_MDS_PH_DISTRIBUTOR_SUPERVISORS:
-solution: Ensure that numeric fields are defined in the table schema and populated with data. Verify that the data types for numeric fields are correctly set and that valid numeric data is being inserted during data entry or ETL processes.
-SDL_CSL_RDSSMWEEKLYTARGET_OUTPUT :
-solution : 
-- Ensure that all 'distcode', 'targetrefno', 'smcode', 'smname', 'rmcode', and 'rmname' fields are populated with valid data.
-- Correct the 'targetyear' to a positive integer reflecting the appropriate year.
-- Set a valid 'targetmonth' value between 1 and 12.
-- Ensure 'targetvalue' is a positive number that accurately reflects the intended target.
-- Verify and populate 'targetname' with a relevant and accurate name.
-- Adjust 'week1', 'week2', 'week3', 'week4', and 'week5' values to be non-negative and reflective of the actual data.
-- Clearly define 'targetstatus', 'targettype', and 'downloadstatus' fields with appropriate values.
-- Verify that 'createddate', 'run_id', 'crt_dttm', and 'file_name' are correctly populated with valid data and formats.
-SDL_JNJ_CONSUMERREACH_CVS :
-solution :
-- Verify and update the 'retailname' field for the row with id 48 to ensure it is not 'None'. Check the source data or consult relevant stakeholders for the correct retail name.
-- Confirm the accuracy of the 'run_id' field, as it appears to be negative (-48). Update it with the correct positive value.
-SDL_MDS_PACIFIC_ACCT_NIELSENCODE_MAPPING :
-solution :
-- Ensure the 'id' is a positive integer, as '-2' might be a data entry error.
-- Verify if 'muid' is correct and matches expected format or values.
-- Check if 'versionname' should have a value other than 'None', if applicable.
-- Validate 'versionflag' to ensure it is set correctly and not 'None' if required.
-- Confirm 'changetrackingmask' is a valid numeric value and correctly formatted.
-- Ensure all date and time fields like 'enterdatetime' and 'lastchgdatetime' are in correct format and reflect accurate timestamps.
-SDL_ID_POS_CARREFOUR_STOCK :
-solution :
-Check for data entry errors in the 'stock_qty' and 'stock_days' columns for the "Furniture" department, as having a stock quantity of 0 with a stock amount of 5000.0 may indicate incorrect data input. Additionally, verify if the 'crtd_dttm' aligns with expected operational hours, and cross-verify the data with corresponding records in 'file8.csv' to ensure consistency.
-SDL_MDS_PH_NON_ISE_WEIGHTS :  
-solution : The weight value of -255.0 is anomalous as weights should typically be non-negative. Review and correct the weight value for KPI51 to ensure it aligns with expected business rules.
-Since no anomalies were detected in the table 'SDL_KR_COUPANG_PRODUCT_MASTER', there are no solutions required for this table.
-PRODBU_PRODUCTBUSINESSUNIT :
-solution : The 'islisted' value should be corrected from 'No' to a valid option, potentially 'Yes' or 'No' based on business rules.
-SDL_ECOM_GMV_KONVY :
-solution :
-- Validate the data entry process to prevent entry of infinite or excessively large values.
-- Implement constraints to ensure fields such as sales_amount, total_unit_sold, current_price, pro_price, pro_cost, cost_in_vat, cost, and market_value are within realistic and predefined limits.
-- Ensure mandatory fields like brand, productname, and platform are not left as None, and implement checks to enforce non-null entries.
-- Introduce data validation rules to prevent anomalies in fields like stock_turnover_days and view_no, ensuring they are within logical ranges.
-- Conduct a review of the data import process, particularly from file4.csv, to identify and correct any systematic errors leading to such anomalies.
-- Regularly audit the database to catch similar data inconsistencies early.
-table_name: SDL_CSL_UDCMASTER  
-solution:
-- Ensure that 'udcmasterid', 'masterid', and 'columnsize' are non-negative integers.
-- Verify that 'columnprecision' is non-negative and correct any negative values.
-- Confirm that 'editable' and 'columnmandatory' fields are set to valid binary values (0 or 1).
-- Validate 'udcstatus' is set to a valid status code.
-- Check that 'createduserid' and 'modifieduserid' are valid user IDs and non-negative.
-- Review the logic that assigns 'run_id' to ensure it is a valid and non-negative identifier.
-table_name: SDL_DISTRIBUTOR_IVY_INVOICE  
-solution: Ensure that the columns expected to contain numeric data are correctly defined as numeric data types, and verify that the data entered into these columns is numeric. If necessary, clean the data to remove or correct non-numeric entries.
-SDL_KR_COUPANG_PA_REPORT :  
-solution : Add numeric data columns to the table for anomaly detection, ensuring that they are properly populated and formatted.
-SDL_LA_GT_SALES_ORDER_FACT :
-solution : Ensure that numeric fields in the table are populated with valid numerical data. Validate and clean the data source to prevent missing or non-numeric entries in numerical columns.
-SDL_MDS_VN_DISTRIBUTOR_PRODUCTS :  
-solution : Ensure that the table 'SDL_MDS_VN_DISTRIBUTOR_PRODUCTS' contains numeric data in the relevant columns needed for anomaly detection. Check for data type mismatches or missing values in these columns and correct them.
-SDL_MY_ACCRUALS :
-solution : Ensure that the 'SDL_MY_ACCRUALS' table contains numeric data in the appropriate columns for effective anomaly detection. Verify the data types and update or correct any non-numeric entries.
-SDL_MDS_SG_PRODUCT_EXCEPTIONS :
-solution : Correct the negative value in the 'changetrackingmask' column for row with id 50.
-SDL_CHS_DSTR :
-solution : Correct the negative values in the 'last_cost', 'month_06', and 'month_12' columns to appropriate positive values.
-SDL_HK_IMS_WINGKEUNG_SEL_OUT:
-solution:
-- Verify the negative value for 'sales_order_quantity' as this might indicate an incorrect data entry or a return that hasn't been properly accounted for. Check the transaction type and return reason to ensure consistency.
-- Ensure that the 'sales_volume' and 'net_trade_sales' are correctly calculated and consistent with the sales order quantity.
-- Review the 'transactiontype' and 'return_reason' fields to confirm if they are correctly logged for this anomaly.
-- Cross-check with related records to confirm if 'customer_number', 'product_number', and 'employee' details are correctly associated with this transaction.
-- Investigate if the anomaly is related to a currency conversion issue by verifying the 'local_curr_exch_rate'.
-SDL_ID_POS_IDM_SELLOUT :
-solution :
-- Correct the negative value in the 'values' column for the anomalous row with a valid positive value based on business logic or historical data.
-- Investigate the source of the negative value to prevent future occurrences, such as data entry errors or system issues.
-- Validate and verify other related data entries to ensure data integrity across the dataset.
-SDL_GCPH_CATEGORY :
-solution : Correct negative values in the fields 'suggestedclassificationscore', 'length', 'net_weight', 'volume', 'gross_weight', 'height', and any other relevant fields to ensure they reflect accurate and valid data. Verify and update 'manualclassificationid' to ensure it corresponds to a valid classification. Validate 'ean_upc' to ensure it is a 12 or 13 digit number representing a valid UPC or EAN code. Ensure 'dateofextract' and 'cdl_datetime' are in the correct format and fall within an expected range. Review and correct any other anomalous data entries to align with business rules and data integrity requirements.
-SDL_CHW_ECOMM_DATA :
-solution : Ensure that the table contains numeric data columns required for anomaly detection, such as sales figures or transaction counts. Add or update data types of existing columns to numeric types where appropriate.
-SDL_ECOM_SHOPEE_COMPENSATION:
-solution:
-- Verify the data entry for the anomalous row, especially for negative values in columns like 'sum_of_qty', 'sum_of_rspxqty', 'sum_of_total_net_selling_price', etc., which typically should not be negative.
-- Check for any data processing errors or incorrect calculations leading to negative values.
-- Ensure there are no duplicate entries causing inconsistencies in the data.
-- Correct the 'sum_of_qty' and associated financial columns to reflect positive and accurate values.
-- Validate the entries against source data to confirm the accuracy and integrity of the information.
-SDL_MDS_MY_SKU_BENCHMARKS:
-solution: Ensure that the 'jj_packsize' and 'comp_packsize' values are consistent with the expected ranges and logical for the described products. Verify if 'jj_packsize' of 5000.0 and 'comp_packsize' of 3100.0 are accurate and appropriate for 'Test product beta description' and 'Competitor product beta description', respectively. If not, correct the values to match realistic product pack sizes.
-SDL_CSL_RETAILERROUTE :
-solution :
-- Validate and ensure that all `distcode`, `rtrid`, `rtrcode`, `rtrname`, `rmid`, `rmcode`, and `rmname` fields contain valid and expected values. Replace `None` and negative values with appropriate valid data.
-- Implement checks to prevent insertion of records with `None` or negative identifiers such as `-1` for `rtrid` and `-10` for `rmid`.
-- Set default values for fields like `routetype` and `uploadflag` if they are not meant to be nullable, or ensure they are properly populated during data entry.
-- Ensure `createddate` and `crt_dttm` are correctly populated with valid dates, and handle cases where they might be `None`.
-- Confirm that `syncid` and `run_id` values are correctly assigned and are not negative unless explicitly intended.
-- Enhance data validation processes to catch and correct anomalies before data insertion into the table.
-SDL_KR_BO_YOUNG_JONG_HAP_LOGISTICS_GT_SELLOUT :  
-solution : Ensure that the table contains numeric data necessary for anomaly detection, such as sales figures or quantities. If such data is missing, verify data sources and ETL processes to correct data ingestion issues.
-SDL_GCCH_CUST_HIER :  
-solution :  
-1. Correct the negative values for 'tamr_id', 'manualclassificationid', and 'suggestedclassificationscore' to appropriate positive values or null if applicable.  
-2. Ensure 'origin_source_name' and 'origin_entity_id' are correctly mapped and are valid entries.  
-3. Verify and correct the 'finalclassificationpath' to ensure it matches the suggested classification if applicable.  
-4. Validate 'dateofextract' and 'cdl_datetime' to ensure they are accurate and consistent with the data entry timeline.  
-5. Confirm 'unique_id' and other identifier fields are unique and correctly formatted.  
-6. Review 'primary_format' and 'distributor_attribute' for accuracy and consistency with expected values.
-table_name: SDL_CSL_SALESRETURN  
-solution: Verify and correct the negative values in columns that should logically contain non-negative numbers, such as srngrossamt, srntaxamt, srnnetamt, prdgrossamt, prdtaxamt, and prdnetamt. Ensure that srndate, prdsalinvno, and other reference fields are accurate and correspond to valid entries in the database. Validate if the associated discounts and tax calculations are applied correctly and adjust them if necessary to ensure data integrity.
-SDL_JNJ_MER_COP :
-solution : Update the 'emp_address_pc' field for the anomalous row to a valid postal code, as the current value is 'None'.
-table_name : SDL_MDS_PH_MSL_HDR
-solution : Review and update the following fields with correct data: 'muid', 'versionname', 'versionflag', 'name', 'code', 'csg_code_code', 'csg_code_name', 'to_salescycle', 'enterusername', 'lastchgusername', and 'validationstatus'. Ensure 'versionnumber', 'version_id', 'csg_code_id', 'enterdatetime', and 'lastchgdatetime' fields have valid and consistent entries.
-SDL_JNJ_CONSUMERREACH_711 :
-solution : No solution required as no anomalies were detected.
-SDL_POP6_SG_PRODUCT_LISTS_POPS :  
-solution : Ensure that the 'SDL_POP6_SG_PRODUCT_LISTS_POPS' table contains numeric data in the relevant columns required for anomaly detection. Verify the data type of these columns and populate them with appropriate numeric values if missing.
-table_name : PROD_PRODUCT
-solution : Correct the 'width' field to a positive value as negative width is not logical. Verify and update 'maximumorderquantity' to a reasonable positive value. Ensure 'islisted' and 'isorderable' fields are correctly set to 'yes' if the product should be available for ordering.
-SDL_CBD_GT_SALES_REPORT_FACT :  
-solution : Ensure that the table 'SDL_CBD_GT_SALES_REPORT_FACT' includes numeric data fields necessary for anomaly detection. This may involve adding missing numeric columns or correcting data types of existing columns to enable numeric analysis.
-SDL_DISTRIBUTOR_IVY_OUTLET_MASTER :  
-solution : Ensure that numeric data is properly inserted and formatted in the table columns intended for numerical values. Check for data type mismatches and convert non-numeric entries to appropriate numeric types. Validate data entry processes to prevent future occurrences.
-SDL_LA_GT_SELLOUT_FACT :
-solution :
-- Verify the calculation of 'avgdiscount'. It seems unusually high at 90.0, which might indicate incorrect input or calculation since 'discount' and 'discountbtline' are much lower.
-- Check for data entry errors in 'qty', 'grossprice', and discount-related columns as these directly affect the 'totalbeforevat' and 'total'.
-- Ensure that 'iscancel' is correctly marked as 1, and cross-verify with 'cndocno' and 'cnreasoncode' to ensure consistency with cancellation records.
-SDL_MDS_APAC_DCL_TARGETS :
-solution : Ensure that the table 'SDL_MDS_APAC_DCL_TARGETS' contains numeric data necessary for anomaly detection. Verify data types and populate the table with appropriate numeric values.
-SDL_MDS_SG_CUSTOMER_HIERARCHY :  
-solution :  
-- Verify the 'versionname' and 'versionnumber' fields for consistency and ensure they correctly correspond to the 'version_id'.  
-- Check the 'channel_code' and 'channel_name' for accuracy and update if they do not match the intended channel information.  
-- Validate 'customer_group_code' and 'customer_group_name' to confirm they are correctly linked to 'customer_group_id'.  
-- Ensure that 'customer_segmentation_code', 'customer_segmentation_name', and related fields accurately reflect segmentation hierarchy and are consistent with 'customer_segmentation_id'.  
-- Investigate the 'validationstatus' of 'Pending' and resolve any underlying data validation issues.  
-- Confirm timestamps and usernames in 'enterdatetime', 'enterusername', 'lastchgdatetime', and 'lastchgusername' are accurate and reflect true data entry and modification events.
-SDL_IG_INVENTORY_DATA :  
-solution : Ensure that the 'SDL_IG_INVENTORY_DATA' table has numeric fields populated with appropriate data types and values necessary for anomaly detection.
-SDL_CLAVIS_GB_SEARCH_TERMS_RESULTS :
-solution : Investigate the unusually high values in 'search_results_rank', 'search_results_basic_score', 'search_results_weighted_score', 'search_results_priority_score', 'search_results_max_rank', and 'ext_page_no' fields. Verify the data source and correct any errors or anomalies. Ensure that numerical limits are implemented to prevent unrealistic values in these fields.
-table_name: SDL_ECOM_SEARCH_ADS_BY_CHANNEL  
-solution: Ensure that the table 'SDL_ECOM_SEARCH_ADS_BY_CHANNEL' includes numeric fields required for anomaly detection, such as metrics or measurements, by reviewing the data schema and populating missing numeric data.
-SDL_CBD_GT_SALES_REPORT_FACT_TEMP :
-solution :
-- Investigate the negative sales quantities (`sales_qty`) and ensure they accurately reflect returns or corrections. If they are incorrect, update them with the correct values.
-- Review the negative net price (`net_price`) and net sales (`net_sales`) to confirm if they are erroneous. If so, correct these fields to reflect accurate sales data.
-- Verify the return reason (`return_reason`) to ensure it aligns with the negative quantities and sales, or update it if necessary.
-- Check the billing and expiry dates (`billing_date`, `expiry_date`) for any discrepancies or errors and correct them if needed.
-- Confirm the order details (`order_no`, `payment_term`, etc.) and update them if they do not match the actual transaction records.
-SDL_DISTRIBUTOR_CUSTOMER_DIM :  
-solution : Ensure that numeric fields required for anomaly detection are correctly defined and populated in the table. Validate the data types of these fields to confirm they are numeric, and check for any ETL or data ingestion issues that may have led to missing or null values.
-SDL_ECOM_COGS :  
-solution : No action required as no anomalies were detected.
-SDL_AU_DSTR_CHS_HEADER:
-solution: Ensure that the table 'SDL_AU_DSTR_CHS_HEADER' contains numeric columns with valid data types (e.g., INT, FLOAT, DECIMAL) and populated values to enable anomaly detection.
-No anomalies were detected in the table 'SDL_KR_COUPANG_PRODUCT_RANKING_MONTHLY', so no specific solutions are needed for this table.
-SDL_POP6_SG_DISPLAYS :
-solution : 
-- Ensure 'end_date' is not earlier than 'start_date'.
-- Validate 'display_number' to ensure it is a positive integer.
-- Validate 'run_id' to ensure it is a positive integer.
-table_name: SDL_MATERIAL_PKA_MARA_EXTRACT  
-solution: Ensure that the table 'SDL_MATERIAL_PKA_MARA_EXTRACT' contains numeric data by verifying the data types of its columns and correcting any discrepancies. Add or convert columns to appropriate numeric data types if necessary for anomaly detection processes.
-SDL_MDS_PH_NPI_SALES_GROUPINGS :  
-solution : Check the 'versionnumber' column for correctness, as '99999' seems unusually high and may have been entered incorrectly. Verify with the data source or correct based on actual versioning conventions.
-PRODTR_PRODUCTTRANSLATION :
-solution : Check and correct the 'fetchedsequence' value to ensure it is a positive integer, as negative values are not valid for sequence numbers.
-table_name: SDL_KR_COUPANG_BRAND_RANKING
-solution: Correct the 'run_id' value from -101 to a valid positive integer representing the specific execution instance.
-SDL_KR_COUPANG_PRODUCTSALEREPORT :
-solution : Correct the 'units_sold' value from a negative number (-240) to a non-negative value that accurately reflects the actual number of units sold.
-SDL_ECOMMERCE_6PAI :
-solution :
-- Verify the data entry for the 'year' column as it appears to be incorrect (20212 should likely be 2021 or 2022).
-- Investigate reasons for the negative 'Sales Growth' value (-1500.0) and identify potential data entry errors or actual business issues.
-- Assess the 'score_weighted' and 'score_non_weighted' values to ensure they accurately reflect the data.
-- Re-examine the 'gap_vs_pm', 'gap_vs_p3m', and 'gap_vs_plan' metrics to determine if they are calculated correctly.
-- Confirm the 'crt_dttm' (creation datetime) to ensure it aligns with the actual data entry timeline.
-SDL_MDS_VN_ECOM_NTS :
-solution :
-- Verify the 'id' field format for consistency with other IDs in the dataset.
-- Ensure the 'versionname' and 'versionflag' fields match the expected naming conventions and values.
-- Check the 'changetrackingmask' for accuracy and alignment with intended tracking logic.
-- Confirm that the 'enterdatetime' and 'lastchgdatetime' are accurate and reflect the correct timezone if necessary.
-- Validate the currency ('crncy_cd') and amount ('nts_lcy') for accuracy and consistency with other entries.
-- Review 'validationstatus' for correctness and ensure it aligns with business rules.
-SDL_POP6_SG_POP_LISTS :
-solution :
-- Investigate why the 'run_id' is negative for the anomalous row and correct it if it is a data entry error.
-KPI2DATA_MAPPING :
-solution : Ensure that numeric data is correctly inserted into the columns intended for anomaly detection, and verify that data types are appropriately defined to accept numeric values.
-SDL_CSL_TBL_SCHEMEWISE_APNO :
-solution :
-- Validate 'createduserid' to ensure it is a positive integer; correct or remove any negative values.
-SDL_MY_CUSTOMER_DIM :  
-solution : Ensure that the table 'SDL_MY_CUSTOMER_DIM' contains at least one numeric column to enable anomaly detection. If necessary, add or update a numeric column that is relevant for analysis, such as customer age, transaction count, or customer lifetime value.
-SDL_POP6_SG_EXECUTED_VISITS :
-solution : Validate and correct the longitude and latitude values for check-in and check-out as they are outside the valid range. Valid longitude values must be between -180 and 180, and valid latitude values must be between -90 and 90.
-SDL_MDS_PH_DISTRIBUTOR_PRODUCT :
-solution : 
-- Check and correct the 'promostartperiod' and 'promoendperiod' as they appear to be reversed or incorrect for the given year.
-- Ensure the 'versionflag' is accurately reflecting the product's status, i.e., it should be 'active' if the product is currently in use.
-- Verify and correct the 'validationstatus' if the data becomes valid after making the necessary corrections.
-SDL_CSL_ORDERBOOKING:
-solution:
-- Correct the `orddlvdate` to be on or after `orderdate` (e.g., change it to 2023-09-10 11:10:00 or later).
-- Ensure `ordtotalamt` is positive or correctly calculated to align with the business logic.
-- Review and adjust `prdselrate` to be positive, ensuring it accurately reflects the intended sales rate.
-SDL_MDS_MY_CUSTOMER_HIERARCHY:  
-solution: Ensure that the table 'SDL_MDS_MY_CUSTOMER_HIERARCHY' contains numeric data types for columns that require anomaly detection. Verify and update the schema to include numeric fields, and populate these fields with appropriate numeric data.
-SDL_DISTRIBUTOR_IVY_USER_MASTER :
-solution : 
-- Verify and correct the `cdl_dttm` field; it appears to contain a future date (2025-01-30), which may be incorrect.
-- Check the `run_id` field, as it contains a negative value (-50), which is unusual and could indicate an error.
-- Ensure all location codes (e.g., `md_location`, `sd_location`, etc.) correspond correctly with their respective names to rule out any mismatches or misassignments.
-SDL_LA_GT_ROUTE_HEADER :  
-solution : Ensure that the table 'SDL_LA_GT_ROUTE_HEADER' contains numeric data in the relevant columns necessary for anomaly detection. Verify the data types of the columns and update or correct the entries to include appropriate numeric values where required.
-SDL_MY_CIW_MAP :  
-solution : Ensure that numeric data is inserted into the required fields for anomaly detection. Validate data types during data entry or ETL processes to prevent incorrect data types from being entered into numeric fields.
-SDL_JNJ_OSA_OOS_REPORT :
-solution : Update the 'run_id' field to a valid, non-negative integer value as the current value '-50' is invalid.
-SDL_MDS_PH_ECOM_PRODUCT :
-solution : 
-1. Correct the 'id' field to a valid UUID format instead of all zeros.
-2. Ensure 'changetrackingmask' has a valid positive integer value instead of -5.
-3. Confirm and update 'validationstatus' to 'valid' if data integrity is ensured.
-SDL_MDS_VN_PS_WEIGHTS :
-solution :
-- Correct the 'versionnumber' to a valid positive integer instead of -2.
-SDL_DSTR_COLES_INV :  
-solution : Ensure that the table 'SDL_DSTR_COLES_INV' contains numeric data by verifying the data types of the columns, correcting any incorrect data entries, and populating the table with the necessary numeric data for anomaly detection.
-SDL_MDS_PH_CLOBOTICS_SOS_REF :
-solution :
-- Verify the `version_id` field for the anomalous row, as it contains an invalid value of `-1`. Update it to a valid identifier.
-- Check the `validationstatus` field which is marked as `Invalid`. Investigate the cause of invalidity and correct any discrepancies to ensure the data is valid.
-- Ensure that `lastchgversionnumber` is accurate according to the latest changes; currently, it shows `7`, which should be confirmed or updated as needed.
-SDL_MDS_PH_POS_PRICELIST :
-solution : 
-- Correct the 'yearmo' field to a valid year-month format.
-- Update 'listpricecase', 'listpricedz', and 'listpriceunit' to non-negative values.
-- Ensure 'srp' is a valid positive value.
-table_name: SDL_ALL_DISTRIBUTOR_SELLOUT_SALES_FACT
-solution: Check and correct the negative value in the 'grs_val' column for trans_key TK050. It should be positive as it represents gross value.
-SDL_MDS_VN_POS_PRODUCTS :
-solution :
-- Ensure that the 'muid' values are unique across the table to resolve the duplicate issue. Consider checking for any processes or scripts that may be allowing duplicate entries and correct them to enforce uniqueness constraints on 'muid'.
-SDL_DISTRIBUTOR_IVY_INVENTORY:
-solution:
-- Verify the accuracy of the 'batch_expiry_date' for 'batch_code' BATCH017 to ensure it is indeed 2026-12-31.
-- Check if the quantity 'qty' of 2000 PCS for 'product_code' PRD016 is consistent with expected inventory levels.
-- Confirm the validity of the 'distributor_code' DIST016 and 'warehouse_code' WH016 to ensure they correspond to actual entities in your database.
-- Validate the timestamp 'cdl_dttm' to ensure it accurately reflects the data capture or last update time.
-- Cross-reference 'run_id' 17 and 'file_name' file17.txt to identify any discrepancies or data entry errors during data ingestion.
-SDL_HK_WINGKEUNG_DIRECT_SALES_REP_ROUTE_PLAN :  
-solution : Ensure that the table 'SDL_HK_WINGKEUNG_DIRECT_SALES_REP_ROUTE_PLAN' includes numeric columns necessary for anomaly detection, such as sales figures, quantities, or any other relevant numeric metrics. If these are missing, update the table schema to include such columns and populate them with the appropriate data.
-SDL_ID_POS_DAILY_IDM_SELLOUT :
-solution :
-Verify and correct the negative 'value' for 'PLU047' associated with 'Cust47'. Ensure that the transaction records accurately reflect a valid sale and reprocess the data if necessary.
-SDL_MDS_VN_POS_CUSTOMERS :
-solution :
-- Correct the 'id' field to a valid positive integer.
-- Update 'versionnumber' to a valid positive integer.
-- Correct 'version_id' to a valid positive integer.
-- Ensure 'muid' is unique and properly formatted as a UUID.
-- Resolve 'changetrackingmask' to a valid positive integer.
-- Verify and update 'customer_code' to a valid non-negative integer.
-- Check 'enterdatetime' and 'lastchgdatetime' for correct chronological sequence.
-- Set 'validationstatus' to 'Valid' after resolving all anomalies.
-SDL_MDS_PACIFIC_PRODUCT_MAPPING_COLES:  
-solution:  
-The anomaly in the row with id 43 indicates a potential issue with the versioning system due to the negative version_id (-45). Ensure that the version_id is a positive integer to maintain consistency and integrity of the version tracking. Additionally, verify the accuracy of other fields like versionflag and changetrackingmask to ensure they align with the corrected version_id.
-SDL_MDS_MY_ECOM_PRODUCT :
-solution : 
-- Correct the 'id' value to a positive integer.
-- Ensure 'version_id' reflects the correct version, as it currently shows 0, which is typically not valid.
-- Update 'changetrackingmask' to a valid positive integer, as it currently shows -99.
-- Verify if 'versionflag' is correctly set to 'beta' or needs updating.
-- Check the 'validationstatus' to ascertain why it is marked 'Invalid' and rectify any underlying issues causing this status.
-SDL_MDS_SG_ECOM_PRODUCT :  
-solution :  
-Ensure that the 'versionflag' field aligns with the current status of the product lifecycle. If 'inactive' is correct, verify that dependent systems and processes are updated accordingly.
-SDL_MY_AFGR :  
-solution : Ensure that numeric data is properly inserted into the table 'SDL_MY_AFGR' by verifying the database schema and data entry processes to allow for accurate anomaly detection.
-ITG_SFA_PM :  
-solution : Ensure that the table 'ITG_SFA_PM' has numeric columns populated with data, as numeric data is required for anomaly detection. Check for missing or incorrectly formatted data and rectify any data entry issues.
-SDL_HK_WINGKEUNG_INDIRECT_SALES_REP_ROUTE_PLAN :
-solution :
-- Correct the negative visit frequency '-28' to a valid positive integer.
-- Verify and correct the 'week' value 'Week82' to ensure it falls within the valid range of weeks in a year.
-- Confirm that 'period' value '30' is accurate and corresponds to the correct time frame.
-table_name : SDL_DISTRIBUTOR_IVY_OUTLET_MASTER_ADFTEMP  
-solution : Correct the negative values in the 'credit_limit', 'invoice_limit', and 'credit_period' columns; ensure 'lattitude' and 'longitude' are within valid ranges; fix the 'cdl_dttm' to a valid timestamp.
-SDL_MDS_MY_PS_TARGETS :  
-solution : Ensure that the columns intended for numeric data types are correctly defined as numeric data types and populated with valid numeric values. Validate data insertion processes to prevent non-numeric entries.
-table_name : SDL_CSL_CLASSMASTER  
-solution : Verify the 'availabilty' value as it is unusually high compared to 'turnover'; ensure it aligns with business logic and correct if necessary.
-SDL_MDS_PH_ISE_WEIGHTS :  
-solution : The 'weight' column contains an invalid negative value (-50). Update the 'weight' to a valid positive value or zero, as negative weights are not permissible.
-SDL_ECOM_GMV_SHOPEE :
-solution : 
-- Check and correct negative values in 'gross_sales', 'gross_units_sold', and 'product_views', as these should not be negative.
-- Verify the logic for calculating 'gross_sales_growth', 'gross_orders_growth', 'gross_units_sold_growth', 'gross_avg_basket_size_growth', and other growth-related fields, ensuring they accurately reflect percentage changes.
-- Investigate and rectify negative growth values where applicable, as these should not occur unless intentionally indicating a decrease.
-- Ensure that the 'gross_item_per_order' and 'gross_order_conversion_rate' calculations are accurate and that their respective growth rates reflect logical changes.
-SDL_ECOM_SEARCH_ADS_BY_DATE :
-solution :
-- Investigate the anomaly in the 'item_conversion_rate' which is unusually high at 3.8. Verify the calculation method and ensure that the values for 'orders', 'visits', and 'units_sold' are accurate.
-- Check for data entry errors or duplicate entries contributing to the inflated 'sales_usd' and 'sales_lcy'.
-- Validate the integrity of 'add_to_cart_units', 'add_to_cart_value_usd', and 'add_to_cart_value_lcy' as they seem to correlate incorrectly with 'sales_usd' and 'units_sold'.
-- Confirm that the 'buyers' and 'new_buyers' counts are consistent with the number of 'orders'.
-- Review the data collection process for this specific date and region to identify any discrepancies in data recording or reporting.
-SDL_DISTRIBUTOR_CUSTOMER_DIM_ADFTEMP :  
-solution : Ensure that the table 'SDL_DISTRIBUTOR_CUSTOMER_DIM_ADFTEMP' contains numeric columns that are populated with relevant data required for anomaly detection. If necessary, review the ETL processes or data sources to identify and correct any issues preventing numeric data from being loaded into this table.
-SDL_MDS_VN_ECOM_TARGET :
-solution :
-- Verify and correct the 'enterdatetime' and 'lastchgdatetime' fields to ensure they are logical and consistent, as the dates appear to be from the future.
-MRCHR_MERCHANDISINGRESPONSE :
-solution : 
-Adjust the 'enddate' and 'endtime' to be after the 'startdate' and 'starttime', ensuring chronological order.
-SDL_MDS_VN_TOPDOOR_STORETYPE_MAPPING :
-solution : Change the 'changetrackingmask' value from -50 to a valid positive integer, as negative values may not be appropriate for this field.
-SDL_KR_COUPANG_PRODUCT_RANKING_WEEKLY :  
-solution : Ensure that the table has columns with numeric data types and populate them with appropriate numerical values to facilitate anomaly detection.
-SDL_MDS_VN_ALLCHANNEL_SISO_TARGET_SKU :
-solution : Ensure that the table contains numeric columns required for anomaly detection. Verify the data types of columns and populate or correct any missing or incorrect numeric data.
-table_name: SDL_POP6_SG_PRODUCT_LISTS_PRODUCTS  
-solution: Verify the correctness of the 'product_list_code' and 'sku' values for consistency with other entries. Check if the 'msl_ranking' is accurate according to the ranking criteria. Ensure the 'prod_grp_date' aligns with the intended date format and context. Validate the 'hashkey' for integrity and uniqueness against existing records.
-SDL_MDS_SG_STORE_MASTER :
-solution : Investigate and verify the anomaly in the 'customer_store_code' field for row with id 49, as it might be inconsistent with expected patterns or formats. Validate and correct the data if necessary to ensure consistency with other entries.
-SDL_ECOMMERCE_OFFTAKE_AMAZON :
-solution :
-- Correct the 'quantity' value as it cannot be negative. Validate and update it with the correct positive number based on accurate sales data.
-SDL_CSL_SCHEME_HEADER :  
-solution : Ensure that the table 'SDL_CSL_SCHEME_HEADER' contains numeric data necessary for anomaly detection by adding appropriate numeric columns or populating existing columns with the required numeric data.
-table_name: SDL_KR_COUPANG_DAILY_BRAND_REVIEWS  
-solution:  
-- Ensure 'run_id' is a positive integer and update the 'run_id' value from -1 to a valid positive integer.
-SDL_LA_GT_VISIT :  
-solution : Ensure that the table 'SDL_LA_GT_VISIT' contains numeric data in the relevant columns necessary for anomaly detection. Validate data types and populate missing numeric values if applicable.
-SDL_MDS_MY_PS_WEIGHTS :
-solution : The anomalous row shows a negative value for the 'weight' column, which is not expected. Review the data entry process for the 'weight' field to ensure negative values are not allowed. Correct the 'weight' value for this specific row to a positive value based on the intended data.
-SDL_MDS_APAC_DCL_CUSTOMERS :  
-solution :  
-- Correct the sales_channel_id from 0 to a valid ID, as it is currently invalid.  
-- Ensure sales_location_id is not negative; update it to a valid positive ID.  
-- Update cust_num to a valid positive customer number.  
-- Correct the validationstatus to a valid status (e.g., "Valid" or "Reviewed").  
-- Ensure lastchgversionnumber is not negative; update it to a correct version number.
-SDL_JNJ_CONSUMERREACH_SFM :
-solution :
-- Verify the 'retail' field contains valid and expected values. If 'X' is incorrect, update it with the correct retail identifier.
-SDL_MDS_VN_SKU_BENCHMARKS :  
-solution :  
-Update the 'valid_to' date to a future date that is after the 'valid_from' date, as the current 'valid_to' date (2024-05-31) is earlier than the 'valid_from' date (2024-08-01).
-SDL_ECOM_AMS :  
-solution : No action required as no anomalies were detected.
-table_name: SDL_DISTRIBUTOR_IVY_MERCHANDISING  
-solution: Ensure that numeric fields required for anomaly detection are populated with appropriate data. Validate data entry processes to prevent missing numeric data and use default values or estimate missing values where applicable.
-SDL_MDS_MY_GT_PRODUCT_MAPPING :
-solution : Correct the 'id' field to have a valid positive integer instead of -1.
-Since no anomalies were detected in the given table, there is no solution to provide.
-SDL_MDS_SG_SKU_BENCHMARKS :
-solution : 
-- Correct the negative values in 'version_id', 'jj_target', 'comp_packsize' to valid positive numbers.
-- Ensure the 'variance' is correctly calculated based on the 'jj_target' and 'comp_packsize'.
-- Verify and update 'validationstatus' to 'valid' once the data is corrected.
-SDL_MDS_VN_STORE_RETAIL_ENVIRONMENT_MAPPING :  
-solution : Ensure that the table 'SDL_MDS_VN_STORE_RETAIL_ENVIRONMENT_MAPPING' contains at least one numeric column necessary for anomaly detection. If no numeric data exists, add or define numeric columns relevant to the data context or adjust the schema to include numerical fields that can be used for anomaly detection processes.
-SDL_MDS_PACIFIC_CUST_CIW_PLAN :
-solution :
-- Ensure that the 'id' and 'version_id' fields have valid positive integer values. Correct the values if they are incorrect.
-- Verify that 'time_period' is in a correct format and correct it to match expected formats like 'YYYY-Q1'.
-- Check 'goal_qty', 'goal_gts', 'goal_eff_val', and other goal-related fields for negative values, which may not be logical in the context. Adjust these values as necessary.
-- Validate the 'enterdatetime' and 'lastchgdatetime' fields to ensure they are within a realistic range and format.
-- Review and fix any inconsistencies in 'validationstatus' to ensure it properly reflects the data validation state.
-- Verify that 'versionname' is not missing or incorrect, and that it matches the 'versionnumber'.
-- Investigate the 'code' and 'name' fields for missing or 'None' entries and correct them with appropriate values.
-- Ensure all currency and target type fields ('local_ccy', 'target_type') have valid and consistent values across the table.
-SDL_MARKET_SHARE_QSD :
-solution : Verify the 'value' field in the anomalous row for accuracy as it contains a negative value (-1000.0) which is unusual for a 'Profit' metric. If this is incorrect, update it to the correct positive value. Additionally, ensure that the 'crtd_dttm' field is set to a valid creation date, as the current entry (2024-02-25 17:00:00) is in the future compared to the 'period_date'.
-SDL_MDS_VN_CUSTOMER_SALES_ORGANIZATION :
-solution : 
-- Correct the negative 'mti_code' value from -5000 to a valid positive integer, as negative codes may not be permissible.
-- Update the 'versionflag' from 'Inactive' to 'Active' if the record is still in use and should be considered active.
-- Review and correct the 'validationstatus' from 'Invalid' to 'Valid' if the necessary corrections are made and the data aligns with business rules.
-- Verify the 'enterdatetime' and 'lastchgdatetime' to ensure they are accurate and reflect the appropriate timeline of data entry and change.
-SDL_POP6_SG_PLANNED_VISITS:
-solution:
-- Verify the 'run_id' for correctness and update it to a valid positive integer value.
-- Ensure 'planned_visit_date' aligns with expected visit schedules and adjust if necessary.
-- Confirm that the 'popdb_id' and 'pop_code' correctly correspond to 'pop_name' and are consistent across related tables.
-- Check 'user_full_name' against 'username' for accuracy and correct any discrepancies.
-- Validate the 'address' to ensure it is accurate and complete.
-table_name: MS_MASTERSURVEY  
-solution: Verify and correct the 'fetchedsequence' value for the anomalous row, as '9999999999' appears to be an unrealistic sequence number. Ensure it aligns with the sequence logic of the dataset.
-SDL_MDS_PH_ISE_PARENT :  
-solution :  
-- Correct the 'versionnumber' field to a valid non-negative number, as -2.0 is likely an error.  
-- Verify the 'changetrackingmask' field, as -1.0 might be invalid or unintended. Update to a valid value.  
-- Ensure that 'validationstatus' is updated to 'Valid' after correcting the anomalies.
-SDL_HK_IMS_WINGKEUNG_INV :
-solution : 
-Check for data entry errors or processing logic that might have resulted in the negative amount for stk_code 12393 and prod_code PROD171 on date 2023-02-19, as the amount should not be negative for inventory closing balances. Verify the transaction history and correct the amount to reflect the actual inventory movement or rectify the incorrect data entry.
-SDL_MDS_VN_DISTRIBUTOR_CUSTOMERS :
-solution :
-- Correct the 'id' value to a valid positive integer.
-- Validate 'muid' to ensure it is a correct UUID format.
-- Ensure 'versionnumber' is a valid number and not exceedingly large.
-- Verify 'version_id' and update to a valid positive number.
-- Replace 'versionname' if it should not be 'None'.
-- Update 'group_account_id' to a valid positive number.
-- Validate 'account_id' to ensure it is a valid positive number.
-- Correct 'region_id' to a valid positive number.
-- Validate 'province_id' to ensure it is a valid positive number.
-- Ensure 'enterdatetime' and 'lastchgdatetime' are in correct datetime format.
-- Confirm that 'validationstatus' correctly reflects the validity of the data.
-SDL_MDS_VN_GT_GTS_RATIO :
-solution :
-- Review the 'percentage' value of 500.0; ensure it is within an acceptable range as it appears unusually high.
-- Verify if the 'percentage' value should be capped or normalized to a maximum value such as 100.0%.
-- Check for any data entry or calculation error that may have led to this anomaly.
-- Confirm the context of the data to ensure the value aligns with business logic or expected trends.
-table_name :
-SDL_IRI_SCAN_SALES
+solution: Update the 'salgrossamt' and other related amount fields with correct values based on the sales transaction details. Ensure 'salnetamt' is correctly calculated as it should not be negative. Correct 'prdqty' and ensure it is non-negative. Verify and correct any data entry discrepancies.  
 
-solution :
-- Check and correct the 'numeric_distribution' value to ensure it is within a valid range (e.g., 0-100%).
-- Ensure the 'weighted_distribution' is calculated correctly and is not negative.
-- Verify the 'store_count_where_scanned' to ensure it is a non-negative number.
-SDL_KR_COUPANG_PRODUCT_RANKING_DAILY :
-solution :
-- Validate the 'run_id' value as it contains '-100.0', which seems incorrect. Ensure that 'run_id' is populated with a valid positive identifier.
-- Check the process or script generating 'file_name' to confirm if 'file2.txt' is the correct source for the data entry.
-- Verify the 'data_granularity' field to ensure it is consistently labeled as 'Daily' for daily records.
-SDL_COMPETITIVE_BANNER_GROUP :  
-solution : Add numeric data to the table to enable anomaly detection. Ensure columns intended for numeric data types such as integers or floats are correctly populated with relevant numeric values.
-SDL_MDS_LOG :  
-solution : Ensure that the table 'SDL_MDS_LOG' contains numeric data necessary for anomaly detection. Verify data types for relevant columns and ensure they are set to numeric types. Populate the table with valid numeric data if missing.
-SDL_MDS_APAC_DCL_PRODUCTS :
-solution :
-- Update the 'id' field to a valid, non-negative value.
-- Correct the 'changetrackingmask' to a valid positive integer.
-- Ensure 'sales channel_id' is a valid, non-negative identifier.
-- Set 'srp usd' to a valid, non-negative price.
-- Verify and correct the 'validationstatus' if necessary.
-SDL_HK_WINGKEUNG_SALES_REP_SO_TGT_FACT :  
-solution : Ensure the table contains numeric data for fields that require anomaly detection. This might involve checking data types, ensuring data is correctly entered, and verifying data sources for accuracy.
-SDL_ID_POS_CARREFOUR_SELLOUT :
-solution : Ensure that numeric data types are correctly assigned to relevant columns and populate the table with appropriate numeric data for anomaly detection processing.
-SDL_MDS_VN_ECOM_PRODUCT :
-solution :
-- Review and correct the 'versionnumber' as it appears unusually high (99999).
-- Verify the 'versionflag' status 'Inactive' and update if necessary based on the product lifecycle.
-- Ensure the 'validationstatus' is updated to reflect the state of the product accurately, moving it from 'Not Validated' to 'Validated' if applicable.
-- Check and confirm the 'changetrackingmask', 'cust_attr_1', and 'cust_attr_2' values to make sure they are correct and consistent with other similar entries.
-SDL_LA_GT_ROUTE_DETAIL :  
-solution : Ensure that the columns expected to contain numeric data are populated with valid numeric values. Validate data types during data entry and use default values or data imputation techniques to handle missing or null entries.
-SDL_MY_DSTRBTRR_DIM :  
-solution : Ensure that the table 'SDL_MY_DSTRBTRR_DIM' contains numeric columns required for anomaly detection. Verify the data types of the columns and populate them with appropriate numeric data if missing.
-SDL_CSL_DISTRIBUTORACTIVATION:  
-solution: Ensure that the table 'SDL_CSL_DISTRIBUTORACTIVATION' contains numeric data by validating the data types of the columns intended for numeric values. Modify the data types if necessary and populate the table with appropriate numeric data for anomaly detection.
-SDL_MDS_VN_PS_STORE_TAGGING :  
-solution :  
-Update the `changetrackingmask` from -1 to a valid non-negative integer to ensure data integrity.
-SDL_CSL_SCHEMEUTILIZATION :
-solution : 
-- Correct the negative values in 'schlinecount' and 'billedqty' fields, as these should not be negative.
-- Verify and adjust 'schemeutilizedqty' as it seems inconsistent compared to 'schemeutilizedamt'.
-SDL_FPA_PROFIT_CENTER_MAPPING :  
-solution : Ensure that the table 'SDL_FPA_PROFIT_CENTER_MAPPING' contains numeric data in at least one column to enable anomaly detection. Verify data types and populate the table with appropriate numeric values.
-SDL_ALL_DISTRIBUTOR_SELLIN_SALES_FACT :
-solution : Check the consistency and correctness of 'numerator' and 'qty' fields as they both have the same value of 250.0, which might be incorrect. Validate the 'net_val' calculation based on these fields.
-SDL_MDS_PACIFIC_PERENSO_CYCLE_DATES :
-solution :
-- Correct the 'versionnumber' and 'version_id' to valid positive integers.
-- Ensure that 'start_date' is earlier than 'end_date'.
-- Verify and update 'validationstatus' to a valid status.
-- Check and correct the 'cycle_year' to align with the 'start_date' and 'end_date'.
-SDL_HK_POS_SCORECARD_MANNINGS:
-solution:
-- Investigate the negative sales quantity (-125.0) for vendor ID V047 and product ID Prod_49 on the date 2023-02-18. Ensure the sales quantity accurately reflects actual sales, as negative values may indicate a data entry error or returns that need to be processed differently.
-- Verify the sales value (1250.0) associated with the negative sales quantity to ensure it aligns with the corrected sales quantity data. Adjust the sales value if necessary based on the findings of the investigation.
-- Review the source file (file49.csv) for any discrepancies or errors that might have led to this anomaly and correct any identified issues in the source data or data processing logic.
-SDL_MDS_MY_GT_OUTLETATTRIBUTES :
-solution : 
-- Verify that the 'id' field is a valid positive integer and adjust it if necessary, as '-50' indicates a potential issue.
-- Confirm that the 'cust_year' value '9999' is accurate, as it seems unusually high and might be an error.
-SDL_MDS_PH_NPI_PEG_ITEM :  
-solution : Ensure that the 'id' and 'salescycle' fields have positive integer values, and correct the 'peg_itemcode_code' field to have a non-negative integer value.
-SDL_LA_GT_ROUTE_HEADER_TEMP :  
-solution : Ensure that numeric fields in the table 'SDL_LA_GT_ROUTE_HEADER_TEMP' are populated with valid data types and values, and check if the data import or data entry processes are correctly inserting numeric data.
-SDL_JNJ_MER_SHARE_OF_SHELF :  
-solution :  
-- Check and correct the 'file_name' field as it currently contains 'None'. Ensure it reflects the actual file name used for the data import.
-SDL_ECOM_CPAS :  
-solution :  
-Correct the negative spending value for 'shop2' on '2023-01-15' in 'file2.csv' to ensure spending is non-negative.
-SDL_GCGH_GEO_HIER :  
-solution : Ensure that numeric columns are correctly defined and populated with valid numeric data types, and verify that data entries are not missing or null.
-SDL_ID_POS_DAILY_SAT_SELLOUT :
-solution :
-Verify and correct the 'tgl' field as it represents a future date. Ensure that the date reflects a valid historical transaction date. If the transaction is planned for the future, confirm with the relevant department and update the entry accordingly.
-SDL_LA_GT_INVENTORY_FACT:  
-solution: Ensure that the 'SDL_LA_GT_INVENTORY_FACT' table has numeric columns populated with data suitable for anomaly detection. Check for missing numeric data or incorrect data types and update or correct them as necessary.
-SDL_CSL_SALESINVOICEORDERS :
-solution :
-- Verify the correctness of the 'orderno' field for the anomalous row as it may have been incorrectly entered or duplicated.
-- Check if the 'uploadflag' value should be updated to 'Y' if the order has been successfully processed.
-- Ensure the 'run_id' is valid and not a negative value; correct it to a valid positive identifier.
-- Confirm the 'file_name' is accurate and corresponds to the correct data entry.
-SDL_POP6_SG_GENERAL_AUDITS :  
-solution : Ensure that the table 'SDL_POP6_SG_GENERAL_AUDITS' contains numeric data in the relevant columns needed for anomaly detection. Review the data types and populate the table with appropriate numeric values, or adjust the schema to include numeric columns necessary for analysis.
-SDL_CUSTOMERPL_STDCOST_2022 :
-solution :
-- Correct the negative quantity value for 'materialnumber' MAT028 to reflect a positive or zero value based on accurate inventory records.
-- Verify and adjust the cost or quantity data if the negative value was intended to represent a return or adjustment, ensuring it aligns with business rules and accounting standards.
-SDL_ID_MDS_LOG :  
-solution : Ensure that the 'SDL_ID_MDS_LOG' table has numeric data available for anomaly detection by verifying the data types of relevant columns and populating them with appropriate numeric values.
-SDL_LA_GT_SCHEDULE :  
-solution : Ensure that the table 'SDL_LA_GT_SCHEDULE' is populated with numeric data required for anomaly detection. Validate data types of relevant columns to confirm they are numeric and check for any missing or improperly formatted data.
-SDL_POP6_SG_PRODUCT_LISTS_ALLOCATION :
-solution :
-- Verify and correct the 'product_group_status' to ensure it aligns with valid status codes.
-- Check the 'product_list_status' for consistency with the expected list status codes.
-- Ensure 'product_list_code' TL001 is correctly assigned and corresponds to the right 'product_list'.
-- Review 'pop_attribute_id' and 'pop_attribute_value_id' for correct mapping to 'pop_attribute' and 'pop_attribute_value'.
-- Confirm that 'prod_grp_date' is accurate and reflects the correct date format.
-- Validate the 'file_name' to ensure it matches the expected naming convention.
-- Investigate the 'run_id' for correctness and resolve any negative values.
-- Recalculate or verify the 'hashkey' to ensure data integrity.
-table_name : SDL_KR_COUPANG_CUSTOMER_BRAND_TREND
-solution : 
-1. Validate the data source to ensure that negative values for user counts and sales amounts are not possible. Correct the data entry or extraction error if found.
-2. Implement data validation rules to prevent negative values for new_user_count, curr_user_count, tot_user_count, new_user_sales_amt, and curr_user_sales_amt.
-3. Recalculate the affected metrics (new_user_avg_product_sales_price, curr_user_avg_product_sales_price, tot_user_avg_product_sales_price) using corrected user counts and sales amounts.
-4. Review the data collection process to identify and fix any underlying issues causing negative values.
-5. Update the database with corrected values after addressing the root cause.
-SDL_MDS_PH_ISE_SOS_TARGETS :  
-solution : Review the 'target' value of 5000.0 for the year 2068, as it seems unusually high or incorrectly set for a future year. Verify the data entry process for errors or confirm if this is an intentional value.
-table_name: SDL_ID_POS_GUARDIAN_STOCK  
-solution: Verify and correct the stock on hand (SOH) values for both stores and distribution centers, as they should not be identical (100.0) for the same article in a specific yearmonth (202305) and customer (Customer7). Check for data entry errors or miscommunication between inventory systems.
-SDL_MY_AS_WATSONS_INVENTORY:
-solution:
-Ensure that the table 'SDL_MY_AS_WATSONS_INVENTORY' contains numeric data in relevant columns required for anomaly detection. Check the data types of columns and update or convert them to appropriate numeric types where necessary. Validate data entries for correctness and completeness, and ensure that any transformations or data imports maintain the integrity of numeric information.
-SDL_CCR_PRODUCT_MAPPING :  
-solution : Ensure that the table 'SDL_CCR_PRODUCT_MAPPING' contains numeric data in the appropriate columns required for anomaly detection. Check the data types of these columns and update them to numeric types if necessary. Validate and clean the data to ensure it contains valid numeric entries.
-SDL_MATERIAL_PKA_MARA_EXTRACT :
-solution : Ensure metadata is defined for all the columns listed in the table. This includes defining data types, constraints, and any other relevant attributes for each column. Additionally, ensure that numeric data relevant for anomaly detection is available and correctly formatted.
+SQL Query: 
+sql
+SELECT * 
+FROM DAILYSALES 
+WHERE salgrossamt < 0 
+   OR salnetamt < 0 
+   OR prdqty < 0 
+   OR salinvno IS NULL 
+   OR salinvdate IS NULL 
+   OR prdspldiscamt < 0 
+   OR prdschdiscamt < 0 
+   OR prdcashdiscamt < 0 
+   OR prddbdiscamt < 0;
+========================================================================================================================================
+
+table_name: SDL_CSL_DAILYSALES  
+solution: Validate and correct the calculation of 'salnetamt' to ensure it equals 'salgrossamt' minus all applicable discounts and adjustments ('salspldiscamt', 'salschdiscamt', 'salcashdiscamt', 'saldbdiscamt', 'saltaxamt', 'salwdsamt', 'saldbadjamt', 'salcradjamt', 'salinvleveldiscamt', 'salroundoffamt', 'salotherchargesamt', 'saltotdedn', and add 'saltotaddn').
+
+SQL Query to Identify Anomalies:
+sql
+SELECT *
+FROM SDL_CSL_DAILYSALES
+WHERE salnetamt != (salgrossamt - salspldiscamt - salschdiscamt - salcashdiscamt - saldbdiscamt - saltaxamt - salwdsamt - saldbadjamt - salcradjamt - salinvleveldiscamt - salroundoffamt - salotherchargesamt - saltotdedn + saltotaddn);
+========================================================================================================================================
+
+table_name: SDL_CSL_DAILYSALES_UNDELIVERED  
+solution: Review and rectify the 'salnetamt' calculation which appears incorrect due to a negative 'prdnetamt'. Ensure discounts and tax calculations are accurate and consistent.
+
+sql
+SELECT * 
+FROM SDL_CSL_DAILYSALES_UNDELIVERED
+WHERE salnetamt != (
+    salgrossamt 
+    - salspldiscamt 
+    - salschdiscamt 
+    - salcashdiscamt 
+    - saldbdiscamt 
+    + saltaxamt 
+    + salwdsamt 
+    - saldbadjamt 
+    + salcradjamt 
+    - salonaccountamt 
+    - salmktretamt 
+    - salreplaceamt 
+    + salotherchargesamt 
+    - salinvleveldiscamt 
+    + salroundoffamt
+) 
+OR prdnetamt < 0;
+========================================================================================================================================
+
+table_name : SDL_CSL_RDSSMWEEKLYTARGET_OUTPUT  
+solution : Update the anomalous row by replacing 'None' with appropriate values, correct the targetyear to a positive integer, ensure targetvalue is non-negative, and validate week values.
+
+SQL Query to detect anomalies:
+sql
+SELECT *
+FROM SDL_CSL_RDSSMWEEKLYTARGET_OUTPUT
+WHERE distcode IS NULL
+   OR targetrefno IS NULL
+   OR smcode IS NULL
+   OR smname IS NULL
+   OR rmcode IS NULL
+   OR rmname IS NULL
+   OR targetyear < 0
+   OR targetmonth IS NULL
+   OR targetvalue < 0
+   OR week1 < 0
+   OR week2 < 0
+   OR week3 < 0
+   OR week4 < 0
+   OR week5 < 0
+   OR targetstatus IS NULL
+   OR targettype IS NULL
+   OR downloadstatus IS NULL;
+========================================================================================================================================
+
+table_name : SDL_JNJ_CONSUMERREACH_CVS
+solution : Ensure 'retailname' is not null. Update 'run_id' with a valid unique identifier.
+
+
+
+sql
+SELECT * 
+FROM SDL_JNJ_CONSUMERREACH_CVS
+WHERE retailname IS NULL OR run_id IS NULL OR run_id < 0;
+========================================================================================================================================
+
+table_name: SDL_MDS_MY_PRODUCT_MASTER  
+solution: Correct negative values in columns such as 'attachments', 'bn-duty', 'dz_price', 'list_price_w_gst', 'product_dimension-l_(mm)', 'product_weight', 'qty-inner_shipper_(pc)', and 'shipper_dimension-h_(mm)' to appropriate positive values. Ensure 'npi' is a valid date if applicable. Validate 'selling_status_id' and 'selling_status_name' for accuracy and consistency.
+
+SQL Query to detect anomalies:
+sql
+SELECT * 
+FROM SDL_MDS_MY_PRODUCT_MASTER
+WHERE attachments < 0
+   OR "bn-duty" < 0
+   OR dz_price < 0
+   OR list_price_w_gst < 0
+   OR "product_dimension-l_(mm)" < 0
+   OR product_weight < 0
+   OR "qty-inner_shipper_(pc)" < 0
+   OR "shipper_dimension-h_(mm)" < 0
+   OR TRY_TO_DATE(npi, 'YYYY-MM-DD') IS NULL
+   OR selling_status_id IS NULL
+   OR selling_status_name IS NULL;
+========================================================================================================================================
+
+table_name : SDL_MDS_PACIFIC_ACCT_NIELSENCODE_MAPPING  
+solution : Correct the 'id' value from -2 to a valid positive integer, and ensure 'versionname' and 'versionflag' have appropriate non-null values if applicable.
+
+SQL Query:
+sql
+SELECT * 
+FROM SDL_MDS_PACIFIC_ACCT_NIELSENCODE_MAPPING
+WHERE id < 0 
+   OR versionname IS NULL 
+   OR versionflag IS NULL;
+========================================================================================================================================
+
+table_name : SDL_MDS_VN_CUSTOMER_SEGMENTATION
+solution : Update the 'validationstatus' to 'valid' after verifying the integrity of the customer segmentation levels and version details.
+
+
+sql
+SELECT *
+FROM SDL_MDS_VN_CUSTOMER_SEGMENTATION
+WHERE validationstatus = 'invalid';
+========================================================================================================================================
+
+table_name : SDL_ID_POS_CARREFOUR_STOCK  
+solution : Verify and correct the stock_qty and stock_days values for 'Furniture'. Ensure stock_qty is not zero if stock_amt is non-zero, and adjust stock_days accordingly.  
+
+sql
+SELECT *
+FROM SDL_ID_POS_CARREFOUR_STOCK
+WHERE (stock_qty = 0 AND stock_amt > 0) OR (stock_days = 0 AND stock_amt > 0);
+========================================================================================================================================
+
+table_name : SDL_MDS_PH_MSL_DTLS  
+solution : Correct the 'changetrackingmask' value from -5 to a valid positive integer representing the change tracking mask.
+
+sql
+SELECT *
+FROM SDL_MDS_PH_MSL_DTLS
+WHERE changetrackingmask < 0;
+========================================================================================================================================
+
+table_name: SDL_MDS_PH_NON_ISE_WEIGHTS  
+solution: Adjust the 'weight' value to a non-negative number since weights should not be negative.
+
+SQL query to get anomalies:
+sql
+SELECT * 
+FROM SDL_MDS_PH_NON_ISE_WEIGHTS 
+WHERE weight < 0;
+========================================================================================================================================
+
+table_name : SDL_KR_COUPANG_PRODUCT_MASTER
+solution : No action needed as no anomalies detected.
+
+-- SQL Query to detect anomalies in Snowflake
+-- Assuming 'anomalies' are defined as null values or outliers in certain columns
+
+SELECT *
+FROM SDL_KR_COUPANG_PRODUCT_MASTER
+WHERE <COLUMN_NAME> IS NULL
+   OR <COLUMN_NAME> > <THRESHOLD>
+   OR <COLUMN_NAME> < <THRESHOLD>;
+
+
+Replace `<COLUMN_NAME>` and `<THRESHOLD>` with actual column names and anomaly thresholds as required.
+========================================================================================================================================
+
+table_name : PRODBU_PRODUCTBUSINESSUNIT
+solution : The anomaly detected is in the 'islisted' field which has a value of 'No'. Ensure 'islisted' field is correctly set to 'Yes' if the product should be listed.
+
+SQL query to get anomalies:
+SELECT *
+FROM PRODBU_PRODUCTBUSINESSUNIT
+WHERE islisted = 'No';
+========================================================================================================================================
+
+table_name : SDL_ECOM_GMV_KONVY
+solution : Correct the infinite and excessively large values in 'sales_amount', 'total_unit_sold', 'tstock', 'current_price', 'pro_price', 'pro_cost', 'cost_in_vat', 'cost', 'market_value', 'stock_turnover_days', 'view_no', and 'conversion'. Ensure values are within realistic and acceptable ranges. Validate 'productname', 'status', 'platform', and 'discontinue' fields for missing or incorrect data.
+
+SQL Query:
+SELECT *
+FROM SDL_ECOM_GMV_KONVY
+WHERE sales_amount > 1000000
+   OR total_unit_sold > 1000000
+   OR tstock = 'infinite'
+   OR current_price > 10000
+   OR pro_price > 10000
+   OR pro_cost > 10000
+   OR cost_in_vat > 10000
+   OR cost > 10000
+   OR market_value > 10000
+   OR stock_turnover_days = '9999'
+   OR view_no = 'infinite'
+   OR conversion > 1000000
+   OR productname IS NULL
+   OR status IS NULL
+   OR platform IS NULL
+   OR discontinue IS NULL;
+========================================================================================================================================
+
+table_name : SDL_CSL_UDCMASTER
+solution : Correct negative values for udcmasterid, masterid, columnsize, columnprecision, editable, columnmandatory, and udcstatus. Ensure all ID fields are positive integers. Check columnsize and columnprecision for valid range. Verify editable and columnmandatory have valid values (e.g., 0 or 1). Update createduserid and modifieduserid to valid user identifiers. 
+
+SQL Query:
+SELECT *
+FROM SDL_CSL_UDCMASTER
+WHERE udcmasterid < 0 
+   OR masterid < 0 
+   OR columnsize < 0 
+   OR columnprecision < 0 
+   OR editable NOT IN (0, 1) 
+   OR columnmandatory NOT IN (0, 1) 
+   OR udcstatus < 0 
+   OR createduserid < 0 
+   OR modifieduserid < 0;
+========================================================================================================================================
+
+table_name : SDL_DISTRIBUTOR_IVY_INVOICE  
+solution : Ensure numeric data types are used for columns intended to store numeric values, and check for any incorrect data entry or data type definitions.
+
+sql
+SELECT *
+FROM SDL_DISTRIBUTOR_IVY_INVOICE
+WHERE TRY_TO_NUMBER(<numeric_column>) IS NULL
+AND <numeric_column> IS NOT NULL;
+
+
+Replace `<numeric_column>` with the actual column name intended to store numeric data.
+========================================================================================================================================
+
+table_name: SDL_HK_IMS_VIVA_SEL_OUT  
+solution: Correct negative values for sales_volume, sales_order_quantity, net_trade_sales, and local_curr_exch_rate. Verify transactiontype and return_reason consistency.
+
+SQL Query:
+sql
+SELECT *
+FROM SDL_HK_IMS_VIVA_SEL_OUT
+WHERE sales_volume < 0
+   OR sales_order_quantity < 0
+   OR net_trade_sales < 0
+   OR local_curr_exch_rate < 0;
+========================================================================================================================================
+
+table_name : SDL_KR_COUPANG_PA_REPORT  
+solution : Ensure the table contains numeric data columns for anomaly detection. If missing, add appropriate numeric fields or verify data ingestion process.
+
+SQL Query:
+sql
+SELECT column_name
+FROM information_schema.columns
+WHERE table_name = 'SDL_KR_COUPANG_PA_REPORT'
+AND data_type NOT IN ('NUMBER', 'FLOAT', 'INTEGER', 'DOUBLE');
+========================================================================================================================================
+
+table_name: SDL_LA_GT_SALES_ORDER_FACT
+solution: Ensure numeric columns have valid numeric data types and populate them with correct numeric values. Check for incorrect data types or empty columns and correct them.
+
+SQL query to get anomalies:
+
+sql
+SELECT *
+FROM SDL_LA_GT_SALES_ORDER_FACT
+WHERE NOT (COLUMN_NAME1 IS NOT NULL AND COLUMN_NAME2 IS NOT NULL AND ...) -- replace COLUMN_NAME1, COLUMN_NAME2, ... with actual column names that should contain numeric data
+OR TRY_TO_NUMERIC(COLUMN_NAME1) IS NULL
+OR TRY_TO_NUMERIC(COLUMN_NAME2) IS NULL;
+
+
+Note: Replace `COLUMN_NAME1`, `COLUMN_NAME2`, etc. with the actual column names expected to contain numeric data, and ensure the columns use appropriate numeric data types.
+========================================================================================================================================
+
+table_name: SDL_MDS_PH_POS_CUSTOMERS  
+solution: Correct the logical placeholders with real-world data, such as valid geographic data, customer identification numbers, and operational details.
+
+SQL Query:
+sql
+SELECT *
+FROM SDL_MDS_PH_POS_CUSTOMERS
+WHERE address1 LIKE '%Logical%' 
+   OR area_cd LIKE '%LOG%' 
+   OR ash_nm LIKE '%Logical%'
+   OR barangaycode_code LIKE '%LOG%' 
+   OR city_cd LIKE '%LOG%' 
+   OR prov_cd_code LIKE '%LOG%' 
+   OR region_cd_code LIKE '%LOG%' 
+   OR chnl LIKE '%Logical%' 
+   OR store_typ_desc LIKE '%Logical%' 
+   OR validationstatus LIKE '%Logical%';
+========================================================================================================================================
+
+table_name : SDL_MDS_VN_DISTRIBUTOR_PRODUCTS  
+solution : Ensure that numeric data types are assigned to relevant columns and that all numeric columns contain valid data.
+
+sql
+SELECT *
+FROM SDL_MDS_VN_DISTRIBUTOR_PRODUCTS
+WHERE TRY_CAST(column_name AS NUMBER) IS NULL
+AND column_name IS NOT NULL;
+========================================================================================================================================
+
+table_name : SDL_GCPH_BRAND
+solution : Check the 'weight_unit' field for a missing or incorrect value and ensure consistency in 'volume_unit' and 'width' fields.
+
+SQL Query:
+sql
+SELECT *
+FROM SDL_GCPH_BRAND
+WHERE weight_unit IS NULL OR weight_unit = 'None'
+   OR volume_unit IS NULL OR volume_unit = 'None'
+   OR width IS NULL OR width = 0;
+========================================================================================================================================
+
+table_name : SDL_MDS_SG_PRODUCT_EXCEPTIONS  
+solution : Change 'changetrackingmask' from -500 to a valid positive integer value that aligns with the system's requirement for tracking changes.
+
+SQL Query to detect anomalies:
+sql
+SELECT * 
+FROM SDL_MDS_SG_PRODUCT_EXCEPTIONS 
+WHERE changetrackingmask < 0;
+========================================================================================================================================
+
+table_name : SDL_CLAVIS_GB_PRODUCTS
+solution : Review and correct negative milestone values, ensure consistent URL formats, rectify incorrect status in product availability, verify pricing anomalies and promo discrepancies, and update the delete indicator properly.
+
+-- SQL query to identify anomalies
+SELECT *
+FROM SDL_CLAVIS_GB_PRODUCTS
+WHERE 
+    (milestone1_comp < 0 OR milestone2_comp < 0 OR milestone3_comp < 0 OR milestone4_comp < 0 OR milestone5_comp < 0 OR milestone6_comp < 0 OR milestone7_comp < 0 OR milestone8_comp < 0 OR milestone9_comp < 0 OR milestone10_comp < 0)
+    OR (avail_status NOT IN ('In Stock', 'Out of Stock', 'Pre-order'))
+    OR (observed_price < 0 OR prev_observed_price < 0 OR diff_from_prev_observed_price < 0 OR diff_from_prev_observed_price_percent < 0)
+    OR (promo_discounted_price < 0 OR promo_discount_amount < 0 OR promo_discount_percent < 0)
+    OR (delete_ind NOT IN ('Y', 'N'));
+========================================================================================================================================
+
+table_name : SDL_CHS_DSTR  
+solution : Correct the 'last_cost' to a positive value and ensure all monthly values are non-negative.
+
+sql
+SELECT * 
+FROM SDL_CHS_DSTR
+WHERE last_cost < 0
+   OR month_01 < 0
+   OR month_02 < 0
+   OR month_03 < 0
+   OR month_04 < 0
+   OR month_05 < 0
+   OR month_06 < 0
+   OR month_07 < 0
+   OR month_08 < 0
+   OR month_09 < 0
+   OR month_10 < 0
+   OR month_11 < 0
+   OR month_12 < 0;
+========================================================================================================================================
+
+table_name : SDL_MY_ACCRUALS  
+solution : Ensure the column intended for numeric data is correctly defined with a numeric data type. Review and correct any data entry or ETL processes that may lead to non-numeric data being inserted.
+
+SQL Query:
+sql
+SELECT *
+FROM SDL_MY_ACCRUALS
+WHERE TRY_TO_NUMBER(<numeric_column>) IS NULL;
+
+Replace `<numeric_column>` with the actual column name intended for numeric data.
+========================================================================================================================================
+
+table_name : SDL_MDS_VN_PS_TARGETS
+solution : Check the 'validationstatus' column for entry with id 49, and verify the data integrity or constraints that resulted in 'Invalid' status. Correct any data entry errors or update validation rules accordingly.
+
+SQL Query:
+SELECT * 
+FROM SDL_MDS_VN_PS_TARGETS 
+WHERE validationstatus = 'Invalid';
+========================================================================================================================================
+
+table_name: SDL_CSL_UDCDETAILS  
+solution: Validate and correct 'masterid' with valid positive integer values, and ensure 'uploadflag' is set to 'Y' for valid entries.
+
+SQL query to detect anomalies in Snowflake:
+sql
+SELECT *
+FROM SDL_CSL_UDCDETAILS
+WHERE masterid < 0 OR uploadflag = 'N';
+========================================================================================================================================
+
+table_name : SDL_GCPH_CATEGORY  
+solution : Verify and correct negative values in columns like suggestedclassificationscore, length, net_weight, volume, and gross_weight. Ensure all IDs have valid formats and check for data entry errors in fields like manualclassificationid and ean_upc.
+
+sql
+SELECT * 
+FROM SDL_GCPH_CATEGORY
+WHERE suggestedclassificationscore < 0
+   OR length < 0
+   OR net_weight < 0
+   OR volume < 0
+   OR gross_weight < 0
+   OR manualclassificationid IS NOT NULL AND LENGTH(manualclassificationid) != 10
+   OR ean_upc IS NOT NULL AND LENGTH(ean_upc) != 12;
+========================================================================================================================================
+
+table_name : SDL_MDS_PH_DISTRIBUTOR_SUPERVISORS
+solution : Add numeric data columns necessary for anomaly detection, such as sales figures or performance metrics, to enable effective analysis.
+
+SQL query to detect anomalies:
+sql
+SELECT *
+FROM SDL_MDS_PH_DISTRIBUTOR_SUPERVISORS
+WHERE <numeric_column> IS NULL OR NOT IS_NUMERIC(<numeric_column>);
+
+
+Replace `<numeric_column>` with the actual column name(s) that should contain numeric data.
+========================================================================================================================================
+
+table_name : SDL_CSL_RETAILERMASTER  
+solution : Correct the negative values for 'syncid', 'rtrcrbills', 'rtrcrdays', 'rtrfoodgracedays', 'rtrdruggracedays', 'rtrcosmeticgracedays', ensure 'rtrlicexpirydate', 'rtrdrugexpirydate', 'rtrpestexpirydate' are valid future dates, and rectify the 'relationstatus' to an acceptable status.
+
+SQL Query:
+sql
+SELECT *
+FROM SDL_CSL_RETAILERMASTER
+WHERE syncid < 0
+   OR rtrcrbills < 0
+   OR rtrcrdays < 0
+   OR rtrfoodgracedays < 0
+   OR rtrdruggracedays < 0
+   OR rtrcosmeticgracedays < 0
+   OR rtrlicexpirydate < CURRENT_DATE
+   OR rtrdrugexpirydate < CURRENT_DATE
+   OR rtrpestexpirydate < CURRENT_DATE
+   OR relationstatus = 'Suspended';
+========================================================================================================================================
+
+table_name : SDL_ECOM_SHOPEE_COMPENSATION  
+solution : Correct negative values in 'sum_of_qty', 'sum_of_rspxqty', 'sum_of_total_net_selling_price', 'sum_of_dis_shopee', 'sum_of_ltpxqty', 'sum_of_front_margin', 'sum_of_enabler_margin', and 'sum_of_compensation' as they should not be negative for a delivered order.
+
+SQL Query:
+sql
+SELECT *
+FROM SDL_ECOM_SHOPEE_COMPENSATION
+WHERE sum_of_qty < 0
+   OR sum_of_rspxqty < 0
+   OR sum_of_total_net_selling_price < 0
+   OR sum_of_dis_shopee < 0
+   OR sum_of_ltpxqty < 0
+   OR sum_of_front_margin < 0
+   OR sum_of_enabler_margin < 0
+   OR sum_of_compensation < 0
+   AND status = 'Delivered';
+========================================================================================================================================
+
+table_name : SDL_CSL_RETAILERROUTE  
+solution : Ensure all fields have valid, non-null values. Set default values for negative or null entries and enforce data integrity constraints.
+
+SQL Query:
+sql
+SELECT * 
+FROM SDL_CSL_RETAILERROUTE
+WHERE distcode IS NULL 
+   OR rtrid = -1 
+   OR rtrcode IS NULL 
+   OR rtrname IS NULL 
+   OR rmid = -10 
+   OR rmcode IS NULL 
+   OR rmname IS NULL 
+   OR routetype IS NULL 
+   OR uploadflag IS NULL 
+   OR syncid = -1 
+   OR run_id = -100 
+   OR crt_dttm = '2023-01-01'
+   OR file_name IS NULL;
+========================================================================================================================================
+
+table_name : SDL_GCCH_CUST_HIER  
+solution : Correct negative values for 'manualclassificationid', 'suggestedclassificationscore', and 'tamr_id' to valid non-negative integers or nulls where applicable.
+
+sql
+SELECT * 
+FROM SDL_GCCH_CUST_HIER
+WHERE tamr_id < 0 
+   OR manualclassificationid < 0 
+   OR suggestedclassificationscore < 0;
+========================================================================================================================================
+
+table_name : SDL_JNJ_MER_COP  
+solution : Update the 'emp_address_pc' field to include a valid postal code for the affected row, as the current value is 'None'.  
+
+-- SQL Query to identify anomalies
+SELECT *  
+FROM SDL_JNJ_MER_COP  
+WHERE emp_address_pc IS NULL;
+========================================================================================================================================
+
+table_name : SDL_MDS_SG_PRODUCT_MAPPING
+solution : Verify 'id' uniqueness as anomalies may arise from duplicate entries. Ensure all 'version' fields align with respective 'version_id' and 'versionflag'. Check 'customer' and 'brand' related fields for consistency and proper linkage. Validate 'enterdatetime' and 'lastchgdatetime' for logical sequence. Regularly update 'validationstatus' to reflect accurate data integrity.
+
+SQL Query:
+SELECT *
+FROM SDL_MDS_SG_PRODUCT_MAPPING
+WHERE 
+  id IN (SELECT id FROM SDL_MDS_SG_PRODUCT_MAPPING GROUP BY id HAVING COUNT(*) > 1)
+  OR versionnumber != version_id
+  OR enterdatetime > lastchgdatetime
+  OR validationstatus IS NULL;
+========================================================================================================================================
+
+table_name : SDL_POP6_SG_PRODUCT_LISTS_POPS  
+solution : Add numeric fields necessary for anomaly detection, such as sales figures, inventory counts, or product ratings.
+
+SQL Query to get anomalies:
+sql
+SELECT * 
+FROM SDL_POP6_SG_PRODUCT_LISTS_POPS 
+WHERE <CONDITION_FOR_ANOMALY_DETECTION>;
+
+(Note: Replace `<CONDITION_FOR_ANOMALY_DETECTION>` with the specific condition you deem as an anomaly, like NULL checks or unexpected values in numeric fields once they are added.)
+========================================================================================================================================
+
+table_name : SDL_CBD_GT_SALES_REPORT_FACT  
+solution : Ensure that numeric columns are populated with valid data. Verify data sources and ETL processes for proper numeric data extraction and loading.  
+
+SQL Query:  
+sql  
+SELECT *  
+FROM SDL_CBD_GT_SALES_REPORT_FACT  
+WHERE NOT EXISTS (  
+  SELECT 1  
+  FROM INFORMATION_SCHEMA.COLUMNS  
+  WHERE TABLE_NAME = 'SDL_CBD_GT_SALES_REPORT_FACT'  
+  AND DATA_TYPE IN ('NUMBER', 'FLOAT', 'DECIMAL')  
+  AND COLUMN_NAME IS NOT NULL  
+);
+========================================================================================================================================
+
+table_name : SDL_KR_COUPANG_PRODUCT_SUMMARY_MONTHLY  
+solution : Change 'run_id' from -49 to a valid positive value and ensure 'category_depth3' is filled appropriately if applicable.
+
+sql
+SELECT *
+FROM SDL_KR_COUPANG_PRODUCT_SUMMARY_MONTHLY
+WHERE run_id < 0
+   OR category_depth3 IS NULL
+   OR yearmo NOT LIKE '2023%'
+========================================================================================================================================
+
+table_name: SDL_LA_GT_SELLOUT_FACT  
+solution: Review the cancellation status and ensure it aligns with the associated credit note and reason code. Verify that the applied discounts and promotions are consistent with company policies and correct any discrepancies.
+
+SQL query to get anomalies:
+sql
+SELECT * 
+FROM SDL_LA_GT_SELLOUT_FACT
+WHERE iscancel = 1 AND (cndocno IS NULL OR cnreasoncode IS NULL)
+   OR discountbtline > totalbeforevat
+   OR avgdiscount > 100;
+========================================================================================================================================
+
+table_name : SDL_MDS_PH_LAV_CUSTOMER
+solution : No solution needed as no anomalies were detected.
+
+
+SQL Query to check for anomalies in Snowflake:
+
+sql
+SELECT *
+FROM SDL_MDS_PH_LAV_CUSTOMER
+-- Add conditions to identify anomalies if any, e.g., WHERE column IS NULL
+-- Since no anomalies were detected, the query remains simple for review.
+========================================================================================================================================
+
+table_name: SDL_MDS_PH_LAV_PRODUCT
+solution: The anomaly is due to an invalid 'versionnumber' with a value of -1. Ensure 'versionnumber' is a positive integer to maintain data integrity.
+
+
+SQL Query to detect anomalies:
+sql
+SELECT *
+FROM SDL_MDS_PH_LAV_PRODUCT
+WHERE versionnumber < 0;
+========================================================================================================================================
+
+table_name : SDL_LA_GT_CUSTOMER  
+solution : Update the anomalous row where fields like 'arname', 'araddress', 'telephone', etc., are missing. Replace '-99999' in 'activestatus' with a valid status. Ensure all required fields have valid data.
+
+sql
+SELECT * 
+FROM SDL_LA_GT_CUSTOMER
+WHERE arname IS NULL 
+   OR araddress IS NULL 
+   OR telephone IS NULL 
+   OR activestatus = '-99999';
+========================================================================================================================================
+
+table_name : SDL_IG_INVENTORY_DATA  
+solution : Ensure numeric columns are populated with appropriate data for anomaly detection.
+
+sql
+SELECT *
+FROM SDL_IG_INVENTORY_DATA
+WHERE NOT TRY_CAST(your_numeric_column AS DECIMAL) IS NOT NULL;
+========================================================================================================================================
+
+table_name : SDL_HK_IMS_WINGKEUNG_SEL_OUT  
+solution : Correct the 'sales_order_quantity' value to a positive number or ensure that negative values are intended for returns or special conditions, and verify the 'net_trade_sales' calculation to match the sales volume and order quantity.  
+
+SQL Query:  
+sql
+SELECT *  
+FROM SDL_HK_IMS_WINGKEUNG_SEL_OUT  
+WHERE sales_order_quantity < 0  
+   OR net_trade_sales != sales_volume + sales_order_quantity;
+========================================================================================================================================
+
+table_name : SDL_ID_POS_IDM_SELLOUT  
+solution : Update the 'values' column to a valid positive number or verify if the negative value is correct and adjust the business logic accordingly.
+
+SQL Query to detect anomalies:
+sql
+SELECT *
+FROM SDL_ID_POS_IDM_SELLOUT
+WHERE values < 0;
+========================================================================================================================================
+
+table_name : CUST_CUSTOMER
+solution : Correct the customer name "M'Baku" to a valid format without special characters if it's incorrect or confirm it's accurate. Verify the customer's phone number has the correct format and update if necessary. Check "county" and "district" fields for consistency with other records from Wakanda.
+
+SQL Query to detect anomalies:
+SELECT *
+FROM CUST_CUSTOMER
+WHERE customername LIKE '%''%' OR
+      LENGTH(phonenumber) != 10 OR
+      NOT EXISTS (
+          SELECT 1
+          FROM CUST_CUSTOMER AS cc
+          WHERE cc.country = 'Wakanda' AND
+                (cc.county = 'Wakanda' OR cc.district = 'District 57')
+      );
+========================================================================================================================================
+
+table_name : SDL_CHW_ECOMM_DATA  
+solution : Ensure numeric columns in the table are correctly populated and not null. Verify data types and data sources.
+
+sql
+SELECT *
+FROM SDL_CHW_ECOMM_DATA
+WHERE TRY_CAST(<numeric_column> AS NUMBER) IS NULL OR <numeric_column> IS NULL;
+========================================================================================================================================
+
+table_name: SDL_ID_POS_DAILY_BASEDLINE_SELLOUT  
+solution: Correct the negative and out-of-range values for columns, ensure 'month' is within 1-12, 'year' is a valid year, and 'key_account', 'plu', 'run_id', 'crtd_dttm', 'file_name' have valid formats.  
+
+SQL Query:  
+sql
+SELECT *  
+FROM SDL_ID_POS_DAILY_BASEDLINE_SELLOUT  
+WHERE plu < 0  
+   OR month NOT BETWEEN 1 AND 12  
+   OR year < 0 OR year > 9999  
+   OR qty_trx < 0  
+   OR cum_ytm_qty < 0  
+   OR promo_qty < 0  
+   OR cum_promo_qty < 0  
+   OR basedline_total_qty < 0  
+   OR cum_basedline_total_qty < 0  
+   OR total_days < 0  
+   OR cum_total_days < 0  
+   OR promo_days < 0  
+   OR cum_promo_days < 0  
+   OR baselined_total_days < 0  
+   OR cum_baselined_total_days < 0  
+   OR total_qty_baselined < 0  
+   OR indirect_qty_trx < 0  
+   OR indirect_cum_qty < 0  
+   OR indirect_promo_qty < 0  
+   OR indirect_cum_promo_qty < 0  
+   OR indirect_basedline_total_qty < 0  
+   OR indirect_cum_basedline_total_qty < 0  
+   OR indirect_qty_basedlined < 0  
+   OR yearmonth NOT LIKE '____-__'  
+   OR run_id < 0  
+   OR crtd_dttm IS NULL  
+   OR file_name IS NULL;
+========================================================================================================================================
+
+table_name: SDL_MDS_MY_SKU_BENCHMARKS  
+solution: Correct 'versionflag' from 'Stable' to match version 'Beta' or adjust 'versionname' to align with 'Stable'.
+
+sql
+SELECT * FROM SDL_MDS_MY_SKU_BENCHMARKS
+WHERE (versionname = 'Beta' AND versionflag = 'Stable')
+OR (valid_from > valid_to)
+OR (jj_packsize < variance);
+========================================================================================================================================
+
+table_name : SDL_CSL_PRODUCTWISESTOCK  
+solution : Correct negative values in 'prdid', 'unsalopenstock', 'unsalpurchase', 'offeropenstock', 'offerpurchase', 'unsalsales', 'offerstockin', 'offerstockout', 'offersalesreturn', 'unsalstkjurin', 'offerstkjurin', 'offerbattfrout', 'offerlcntfrout', 'salreplacement' columns, and verify logical consistency for stock calculations.
+
+SQL query to detect anomalies:
+sql
+SELECT *
+FROM SDL_CSL_PRODUCTWISESTOCK
+WHERE prdid < 0 
+   OR unsalopenstock < 0 
+   OR unsalpurchase < 0 
+   OR offeropenstock < 0 
+   OR offerpurchase < 0 
+   OR unsalsales < 0 
+   OR offerstockin < 0 
+   OR offerstockout < 0 
+   OR offersalesreturn < 0 
+   OR unsalstkjurin < 0 
+   OR offerstkjurin < 0 
+   OR offerbattfrout < 0 
+   OR offerlcntfrout < 0 
+   OR salreplacement < 0;
+========================================================================================================================================
+
+table_name : SDL_KR_BO_YOUNG_JONG_HAP_LOGISTICS_GT_SELLOUT  
+solution : Ensure that the table has numeric data types in its columns. Convert or cast non-numeric data where necessary to allow for anomaly detection.
+
+sql
+SELECT *
+FROM SDL_KR_BO_YOUNG_JONG_HAP_LOGISTICS_GT_SELLOUT
+WHERE TRY_CAST(column_name AS NUMBER) IS NULL AND column_name IS NOT NULL;
+========================================================================================================================================
+
+table_name: SDL_DAILYSALES_DEL
+solution: Correct the 'prdqty' field to a positive value as it currently has a negative quantity which is not valid.
+
+-- SQL query to identify anomalies in the SDL_DAILYSALES_DEL table
+SELECT *
+FROM SDL_DAILYSALES_DEL
+WHERE prdqty < 0;
+========================================================================================================================================
+
+table_name: SDL_CSL_SALESRETURN  
+solution: Correct negative values for srngrossamt, srntaxamt, and prdselrate, and ensure all quantities are non-negative.
+
+SQL Query to detect anomalies:  
+sql
+SELECT *  
+FROM SDL_CSL_SALESRETURN  
+WHERE srngrossamt < 0  
+   OR srntaxamt < 0  
+   OR prdselrate < 0  
+   OR prdsalqty < 0  
+   OR prdunsalqty < 0  
+   OR prdofferqty < 0;
+========================================================================================================================================
+
+table_name : SDL_ECOM_SEARCH_ADS_BY_CHANNEL  
+solution : Ensure the column intended for numeric data in the table is correctly defined as a numeric data type and populated with valid numeric values. Validate and clean any existing data to rectify incorrect types or missing values.
+
+SQL Query:
+sql
+SELECT * 
+FROM SDL_ECOM_SEARCH_ADS_BY_CHANNEL
+WHERE TRY_CAST(<numeric_column_name> AS NUMBER) IS NULL;
+========================================================================================================================================
+
+table_name : SDL_MDS_PH_MSL_HDR
+solution : Update the 'muid', 'versionname', 'versionflag', 'name', 'code', 'csg_code_code', 'csg_code_name', 'enterusername', 'lastchgusername', and 'validationstatus' fields with valid data where they are currently 'None' for the row with 'id' = 3. Additionally, verify that 'versionnumber', 'version_id', 'enterversionnumber', and 'lastchgversionnumber' are correctly set, as 9999 may be a placeholder or error.
+
+SQL Query to detect anomalies:
+SELECT * FROM SDL_MDS_PH_MSL_HDR WHERE muid IS NULL OR versionname IS NULL OR versionnumber = 9999 OR version_id = 9999 OR versionflag IS NULL OR name IS NULL OR code IS NULL OR csg_code_code IS NULL OR csg_code_name IS NULL OR enterusername IS NULL OR lastchgusername IS NULL OR validationstatus IS NULL;
+========================================================================================================================================
+
+table_name : SDL_JNJ_CONSUMERREACH_711
+solution : No action needed as no anomalies were detected.
+
+SQL Query to detect anomalies:
+SELECT * 
+FROM SDL_JNJ_CONSUMERREACH_711
+WHERE 1=2; -- No anomalies detected, so query returns no results.
+========================================================================================================================================
+
+table_name : SDL_CBD_GT_SALES_REPORT_FACT_TEMP  
+solution : Adjust the negative sales_qty, foc_qty, net_price, and net_sales to reflect a return or correction accurately, and ensure that any return_reason is documented appropriately.
+
+sql
+SELECT * 
+FROM SDL_CBD_GT_SALES_REPORT_FACT_TEMP
+WHERE sales_qty < 0 OR foc_qty < 0 OR net_price < 0 OR net_sales < 0;
+========================================================================================================================================
+
+table_name : SDL_DISTRIBUTOR_CUSTOMER_DIM  
+solution : Ensure that numeric columns are properly defined and populated. If no numeric columns exist, consider adding relevant numeric fields for anomaly detection.
+
+SQL Query:
+sql
+SELECT *
+FROM SDL_DISTRIBUTOR_CUSTOMER_DIM
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM INFORMATION_SCHEMA.COLUMNS
+    WHERE TABLE_NAME = 'SDL_DISTRIBUTOR_CUSTOMER_DIM'
+    AND TABLE_CATALOG = CURRENT_DATABASE()
+    AND DATA_TYPE IN ('NUMBER', 'FLOAT', 'INTEGER')
+);
+========================================================================================================================================
+
+table_name : SDL_DISTRIBUTOR_IVY_OUTLET_MASTER  
+solution : Ensure numeric data types are correctly defined for relevant columns and populate missing numeric data.
+
+SQL Query:
+sql
+SELECT * 
+FROM SDL_DISTRIBUTOR_IVY_OUTLET_MASTER 
+WHERE TRY_TO_DECIMAL(column_name) IS NULL 
+AND column_name IS NOT NULL;
+
+
+Replace `column_name` with the specific numeric column(s) you want to check for anomalies.
+========================================================================================================================================
+
+table_name : SDL_MDS_APAC_DCL_TARGETS
+solution : Add numeric data to the table for anomaly detection. Ensure that the columns intended for numerical values are correctly defined with appropriate data types and populated with data.
+
+SQL Query:
+SELECT * 
+FROM SDL_MDS_APAC_DCL_TARGETS 
+WHERE TRY_CAST(<numeric_column> AS NUMBER) IS NULL;
+========================================================================================================================================
+
+table_name: SDL_MDS_SG_CUSTOMER_HIERARCHY
+solution: Ensure that all fields in row 50 have correct and consistent data types and values, particularly focusing on versioning and customer segmentation codes.
+
+SQL Query to find anomalies:
+SELECT * 
+FROM SDL_MDS_SG_CUSTOMER_HIERARCHY
+WHERE id = 50
+  AND (versionnumber IS NULL OR version_id IS NULL OR versionflag IS NULL 
+       OR customer_segmentation_code IS NULL OR customer_segmentation_level_2_code IS NULL
+       OR enterdatetime IS NULL OR lastchgdatetime IS NULL);
+========================================================================================================================================
+
+table_name : SDL_ECOM_BACKMARGIN  
+solution : Adjust negative values in 'quantity', 'cogs_per_quantity', 'actual_shipping_fee', and 'backmargin_cfs' to be non-negative, as negative values are illogical for these fields. Verify and correct any discrepancies in 'order_value' and 'nmv' as these values should not be zero or negative.
+
+sql
+SELECT * 
+FROM SDL_ECOM_BACKMARGIN
+WHERE quantity < 0
+   OR cogs_per_quantity < 0
+   OR actual_shipping_fee < 0
+   OR backmargin_cfs < 0
+   OR order_value <= 0
+   OR nmv <= 0;
+========================================================================================================================================
+
+table_name : PROD_PRODUCT
+solution : Correct the 'width' field to a positive value and adjust 'maximumorderquantity' to a realistic positive value. Ensure all numeric fields have valid positive values where applicable.
+
+SQL Query:
+SELECT *
+FROM PROD_PRODUCT
+WHERE width < 0 OR maximumorderquantity < 0;
+========================================================================================================================================
+
+table_name : SDL_ECOM_COGS
+solution : No action needed as no anomalies were detected.
+
+SQL Query to detect anomalies:
+
+-- Assuming anomalies might include null values, duplicates, or out-of-range values
+-- This query checks for such potential issues
+SELECT *
+FROM SDL_ECOM_COGS
+WHERE 
+  column_name IS NULL
+  OR column_name NOT BETWEEN acceptable_value_min AND acceptable_value_max
+  OR (SELECT COUNT(*) FROM SDL_ECOM_COGS AS inner_table WHERE inner_table.id = SDL_ECOM_COGS.id) > 1;
+========================================================================================================================================
+
+table_name : SDL_CLAVIS_GB_SEARCH_TERMS_RESULTS
+solution : Review and correct extremely high values for search_results_rank, search_results_basic_score, search_results_weighted_score, search_results_priority_score, search_results_max_rank, and ext_page_no as they are likely incorrect. Ensure correct data entry and validation processes to prevent these anomalies.
+
+
+sql
+SELECT *
+FROM SDL_CLAVIS_GB_SEARCH_TERMS_RESULTS
+WHERE search_results_rank > 100000 OR
+      search_results_basic_score > 100000 OR
+      search_results_weighted_score > 100000 OR
+      search_results_priority_score > 100000 OR
+      search_results_max_rank > 100000 OR
+      ext_page_no > 100000;
+========================================================================================================================================
+
+table_name : MRCHR_RESPONSES
+solution : Correct negative values in 'pricedetails' and 'categorylength'. Verify logical consistency for 'facings' and 'stockcount' and adjust if necessary.
+
+SELECT * FROM MRCHR_RESPONSES
+WHERE pricedetails < 0 OR categorylength < 0 OR facings < 0 OR stockcount < 0;
+========================================================================================================================================
+
+table_name: SDL_DISTRIBUTOR_CUSTOMER_DIM_ADFTEMP  
+solution: Add numeric columns for anomaly detection.
+
+SQL Query:  
+sql
+SELECT *
+FROM SDL_DISTRIBUTOR_CUSTOMER_DIM_ADFTEMP
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM INFORMATION_SCHEMA.COLUMNS
+    WHERE TABLE_NAME = 'SDL_DISTRIBUTOR_CUSTOMER_DIM_ADFTEMP'
+    AND DATA_TYPE IN ('NUMBER', 'INTEGER', 'FLOAT', 'DOUBLE', 'DECIMAL')
+);
+========================================================================================================================================
+
+table_name : SDL_MDS_PACIFIC_CIW_ADJUSTMENT  
+solution : Correct the 'id' to a positive integer, update 'versionnumber' to a non-negative value, ensure 'version_id' is a valid reference.
+
+SQL Query:
+sql
+SELECT * 
+FROM SDL_MDS_PACIFIC_CIW_ADJUSTMENT
+WHERE id < 0 
+   OR versionnumber < 0 
+   OR version_id IS NULL 
+   OR version_id NOT IN (
+       SELECT DISTINCT version_id 
+       FROM valid_version_table -- Replace with the actual table containing valid version_ids
+   );
+========================================================================================================================================
+
+table_name : SDL_MDS_PH_ISE_WEIGHTS  
+solution : Update the 'weight' field to a non-negative value, as weights should not be negative.
+
+sql
+SELECT * 
+FROM SDL_MDS_PH_ISE_WEIGHTS 
+WHERE weight < 0;
+========================================================================================================================================
+
+table_name : SDL_MDS_VN_ECOM_TARGET  
+solution : Correct the 'enterdatetime' and 'lastchgdatetime' fields to valid historical dates as '2024-01-07' and '2024-01-08' are future dates.
+
+sql
+SELECT * 
+FROM SDL_MDS_VN_ECOM_TARGET
+WHERE enterdatetime > CURRENT_TIMESTAMP
+   OR lastchgdatetime > CURRENT_TIMESTAMP;
+========================================================================================================================================
+
+table_name: MRCHR_MERCHANDISINGRESPONSE  
+solution: Adjust the fetchedsequence value to a positive integer as it should not be negative. Ensure the enddate and endtime are after the startdate and starttime.
+
+SQL Query:
+sql
+SELECT *
+FROM MRCHR_MERCHANDISINGRESPONSE
+WHERE fetchedsequence < 0
+   OR (enddate < startdate OR (enddate = startdate AND endtime < starttime));
+========================================================================================================================================
+
+table_name : SDL_DNR_CUSTOMER_DIM  
+solution : Ensure that columns expected to contain numeric data are correctly formatted as numeric data types. Check the data import process to ensure numeric values are not being misinterpreted or lost.  
+
+SQL Query:  
+sql
+SELECT *
+FROM SDL_DNR_CUSTOMER_DIM
+WHERE NOT TRY_TO_NUMBER(<numeric_column>) IS NOT NULL;
+
+Replace `<numeric_column>` with the actual column names that are supposed to have numeric data.
+========================================================================================================================================
+
+table_name: SDL_LA_GT_SALES_ORDER_FACT_TEMP  
+solution: Correct the negative quantity value in the 'qty' column to a positive value or a contextually accurate value, as negative quantities are not valid for sales orders.
+
+sql
+SELECT * 
+FROM SDL_LA_GT_SALES_ORDER_FACT_TEMP
+WHERE qty < 0;
+========================================================================================================================================
+
+table_name : SDL_KR_COUPANG_BPA_REPORT  
+solution : Ensure numeric columns have valid data types and values are correctly populated. Validate data input processes.
+
+SQL query:
+sql
+SELECT *
+FROM SDL_KR_COUPANG_BPA_REPORT
+WHERE TRY_CAST(numeric_column AS NUMBER) IS NULL;
+========================================================================================================================================
+
+table_name : SDL_MDS_PH_NPI_SALES_GROUPINGS  
+solution : Update 'versionnumber' to a valid range if '99999' is outside accepted values.
+
+SQL query:
+
+sql
+SELECT * 
+FROM SDL_MDS_PH_NPI_SALES_GROUPINGS 
+WHERE versionnumber = 99999;
+========================================================================================================================================
+
+table_name : SDL_MDS_VN_TOPDOOR_STORETYPE_MAPPING
+solution : Update the 'changetrackingmask' field from -50 to a valid positive integer as negative values are not acceptable.
+
+SQL Query:
+SELECT *
+FROM SDL_MDS_VN_TOPDOOR_STORETYPE_MAPPING
+WHERE changetrackingmask < 0;
+========================================================================================================================================
+
+table_name: SDL_MY_DAILY_SELLOUT_SALES_FACT  
+solution: Ensure numeric columns are correctly defined and populated with valid data. Validate data types and check data ingestion process for issues.
+
+sql
+SELECT * 
+FROM SDL_MY_DAILY_SELLOUT_SALES_FACT 
+WHERE TRY_CAST(<numeric_column> AS NUMBER) IS NULL;
+
+Replace `<numeric_column>` with the specific column name you wish to check for numeric anomalies.
+========================================================================================================================================
+
+table_name : SDL_MDS_VN_POS_CUSTOMERS
+solution : Update the 'id', 'versionnumber', 'version_id', 'customer_code', and 'changetrackingmask' fields to appropriate non-negative values, ensuring they meet the database constraints and business logic.
+
+SQL Query:
+SELECT *
+FROM SDL_MDS_VN_POS_CUSTOMERS
+WHERE id < 0 
+   OR versionnumber < 0 
+   OR version_id < 0 
+   OR changetrackingmask < 0 
+   OR customer_code = '-999';
+========================================================================================================================================
+
+table_name : SDL_DISTRIBUTOR_IVY_USER_MASTER
+solution : Correct the 'run_id' to a positive integer value as negative values are not valid. Verify and update the 'cdl_dttm' to ensure it is not set in the future.
+
+SQL Query to get anomalies:
+SELECT *
+FROM SDL_DISTRIBUTOR_IVY_USER_MASTER
+WHERE run_id < 0 OR cdl_dttm > CURRENT_TIMESTAMP();
+========================================================================================================================================
+
+table_name : SDL_DISTRIBUTOR_IVY_OUTLET_MASTER_ADFTEMP  
+solution : Correct 'credit_limit', 'invoice_limit', and 'credit_period' to non-negative values. Validate 'latitude' and 'longitude' within valid geographic ranges. Fix 'cdl_dttm' to a valid timestamp format.  
+
+SQL Query:  
+sql  
+SELECT *  
+FROM SDL_DISTRIBUTOR_IVY_OUTLET_MASTER_ADFTEMP  
+WHERE credit_limit < 0  
+   OR invoice_limit < 0  
+   OR credit_period < 0  
+   OR latitude NOT BETWEEN -90 AND 90  
+   OR longitude NOT BETWEEN -180 AND 180  
+   OR TRY_TO_TIMESTAMP(cdl_dttm) IS NULL;
+========================================================================================================================================
+
+table_name : SDL_KR_COUPANG_PRODUCT_RANKING_WEEKLY  
+solution : Add numeric columns necessary for anomaly detection, such as sales volume or ranking change percentage.
+
+sql
+-- Snowflake friendly query to detect anomalies when numeric data is missing
+SELECT * 
+FROM SDL_KR_COUPANG_PRODUCT_RANKING_WEEKLY
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM INFORMATION_SCHEMA.COLUMNS 
+    WHERE TABLE_NAME = 'SDL_KR_COUPANG_PRODUCT_RANKING_WEEKLY'
+    AND COLUMN_TYPE LIKE '%NUMBER%'
+);
+========================================================================================================================================
+
+table_name : SDL_MDS_VN_ALLCHANNEL_SISO_TARGET_SKU  
+solution : Ensure numeric data is present in the columns intended for anomaly detection; check data type and transformation processes.
+
+SQL Query:
+sql
+SELECT * 
+FROM SDL_MDS_VN_ALLCHANNEL_SISO_TARGET_SKU 
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM INFORMATION_SCHEMA.COLUMNS 
+    WHERE TABLE_NAME = 'SDL_MDS_VN_ALLCHANNEL_SISO_TARGET_SKU' 
+    AND DATA_TYPE IN ('NUMBER', 'FLOAT', 'INTEGER')
+);
+========================================================================================================================================
+
+table_name : SDL_POP6_SG_PRODUCT_LISTS_PRODUCTS  
+solution : Check the integrity of the 'product_list_code' and 'productdb_id' for potential mismatches or duplicates; ensure the 'sku' and 'msl_ranking' are consistent with business rules; verify the 'prod_grp_date' aligns with the expected date format and range.
+
+sql
+SELECT * 
+FROM SDL_POP6_SG_PRODUCT_LISTS_PRODUCTS
+WHERE product_list_code IS NULL 
+   OR productdb_id IS NULL 
+   OR sku IS NULL 
+   OR msl_ranking IS NULL 
+   OR NOT TRY_TO_DATE(prod_grp_date, 'YYYY-MM-DD')
+   OR LENGTH(run_id) != 12;
+========================================================================================================================================
+
+table_name : SDL_MDS_SG_STORE_MASTER  
+solution : Verify and correct the 'changetrackingmask' value for the anomalous row as it seems incorrect or inconsistent with other data entries.
+
+sql
+SELECT * 
+FROM SDL_MDS_SG_STORE_MASTER
+WHERE changetrackingmask = 3550;
+========================================================================================================================================
+
+table_name : SDL_ECOMMERCE_OFFTAKE_AMAZON  
+solution : Correct the 'quantity' value from negative to a valid non-negative integer.
+
+sql
+SELECT *
+FROM SDL_ECOMMERCE_OFFTAKE_AMAZON
+WHERE quantity < 0;
+========================================================================================================================================
+
+I'm unable to provide specific solutions or SQL queries for detected anomalies since no anomalies were identified in the table you mentioned. If you have details of anomalies in other tables, please provide them for further assistance.
+========================================================================================================================================
+
+table_name : SDL_MDS_PH_POS_PRODUCT  
+solution : Correct the 'id' field from '-1' to a valid positive integer. Update the 'cust_item_prc' field to a non-negative value.
+
+sql
+SELECT *
+FROM SDL_MDS_PH_POS_PRODUCT
+WHERE id < 0 OR cust_item_prc < 0;
+========================================================================================================================================
+
+table_name: SDL_AU_DSTR_SIGMA_HEADER  
+solution: Add numeric data columns required for anomaly detection.
+
+SQL query to identify anomalies:
+sql
+SELECT * 
+FROM SDL_AU_DSTR_SIGMA_HEADER 
+WHERE <numeric_column> IS NULL OR <numeric_column> = 0;
+========================================================================================================================================
+
+table_name : SDL_LA_GT_VISIT  
+solution : Ensure numeric data is populated for anomaly detection by checking data types and properly mapping numeric fields.
+
+SQL Query:
+sql
+SELECT * 
+FROM SDL_LA_GT_VISIT 
+WHERE NOT TRY_CAST(<numeric_column> AS NUMBER) IS NULL;
+========================================================================================================================================
+
+table_name: SDL_MDS_MY_PS_WEIGHTS  
+solution: Update the 'weight' value to a positive number as negative weights are not valid.
+
+SQL query to detect anomalies:
+sql
+SELECT * 
+FROM SDL_MDS_MY_PS_WEIGHTS 
+WHERE weight < 0;
+========================================================================================================================================
+
+table_name: SDL_MDS_PH_GT_CUSTOMER  
+solution: Add numeric columns to 'SDL_MDS_PH_GT_CUSTOMER' for anomaly detection.
+
+SQL Query:
+sql
+SELECT * 
+FROM SDL_MDS_PH_GT_CUSTOMER 
+WHERE 1=0; -- Placeholder query to modify once numeric columns are added for anomaly detection
+========================================================================================================================================
+
+table_name : SDL_MDS_VN_ECOM_NTS  
+solution : Check and correct the 'versionnumber' and 'version_id' fields to ensure consistency, as they may cause anomalies.
+
+SQL query:
+sql
+SELECT * 
+FROM SDL_MDS_VN_ECOM_NTS 
+WHERE versionnumber != version_id OR changetrackingmask < 0;
+========================================================================================================================================
+
+table_name : SDL_MDS_PH_ECOM_PRODUCT
+solution : Update the 'changetrackingmask' value to a valid positive integer for the row with id '00000000-0000-0000-0000-000000000000'.
+
+-- Snowflake SQL query to find anomalies
+SELECT * 
+FROM SDL_MDS_PH_ECOM_PRODUCT 
+WHERE id = '00000000-0000-0000-0000-000000000000' 
+AND changetrackingmask < 0;
+========================================================================================================================================
+
+table_name : SDL_MDS_PACIFIC_ECOM_PRODUCT  
+solution : The anomaly in the 'SDL_MDS_PACIFIC_ECOM_PRODUCT' table is due to the mismatch between 'versionnumber' (50) and 'enterversionnumber' (-47). Ensure that 'enterversionnumber' is updated to reflect the correct positive value corresponding to 'versionnumber' for consistency.
+
+SQL Query to detect anomalies:
+sql
+SELECT * 
+FROM SDL_MDS_PACIFIC_ECOM_PRODUCT
+WHERE versionnumber <= 0
+OR enterversionnumber <= 0
+OR versionnumber != ABS(enterversionnumber);
+========================================================================================================================================
+
+table_name : SDL_MY_AFGR  
+solution : Ensure the table contains numeric data by reviewing the data types and populating the table with appropriate numeric values if missing.
+
+sql
+SELECT *
+FROM SDL_MY_AFGR
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM INFORMATION_SCHEMA.COLUMNS
+  WHERE TABLE_NAME = 'SDL_MY_AFGR'
+    AND (DATA_TYPE LIKE '%INT%' OR DATA_TYPE LIKE '%FLOAT%' OR DATA_TYPE LIKE '%DECIMAL%')
+);
+========================================================================================================================================
+
+table_name : SDL_MY_DAILY_SELLOUT_SALES_FACT_MDS_SYNC  
+solution : Ensure that numeric columns are correctly defined and populated. Check ETL processes for missing or incorrect data mapping.
+
+SQL query:
+sql
+SELECT * 
+FROM SDL_MY_DAILY_SELLOUT_SALES_FACT_MDS_SYNC
+WHERE <numeric_column> IS NULL OR NOT <numeric_column> ~ '^[0-9]+$'
+========================================================================================================================================
+
+table_name : SDL_MDS_APAC_DCL_CUSTOMERS  
+solution : Verify 'sales_channel_id' as it should not be zero. Correct 'cust_num' from negative to positive. Validate 'enterusername' and 'lastchgusername' to ensure they are correct users.  
+snowflake_query :  
+sql  
+SELECT *  
+FROM SDL_MDS_APAC_DCL_CUSTOMERS  
+WHERE sales_channel_id = 0  
+   OR cust_num < 0  
+   OR validationstatus = 'Invalid';
+========================================================================================================================================
+
+table_name : SDL_JNJ_CONSUMERREACH_SFM  
+solution : Verify the 'retail' column value 'X' as it seems to be a placeholder or incorrect. Update it to the correct retail identifier.
+
+sql
+SELECT *
+FROM SDL_JNJ_CONSUMERREACH_SFM
+WHERE retail = 'X';
+========================================================================================================================================
+
+table_name : SDL_CSL_SCHEME_HEADER  
+solution : Ensure the table contains numeric columns for anomaly detection; add or correct numeric fields as needed.
+
+SQL Query:
+sql
+SELECT * 
+FROM SDL_CSL_SCHEME_HEADER
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM INFORMATION_SCHEMA.COLUMNS
+    WHERE TABLE_NAME = 'SDL_CSL_SCHEME_HEADER'
+    AND DATA_TYPE IN ('NUMBER', 'FLOAT', 'INTEGER', 'DECIMAL')
+);
+========================================================================================================================================
+
+table_name: SDL_KR_COUPANG_DAILY_BRAND_REVIEWS  
+solution: Update 'run_id' to a valid positive integer value to replace the anomalous '-1'.
+
+sql
+SELECT * 
+FROM SDL_KR_COUPANG_DAILY_BRAND_REVIEWS
+WHERE run_id < 0;
+========================================================================================================================================
+
+table_name : SDL_MY_DAILY_SELLOUT_STOCK_FACT  
+solution : Ensure numeric data types are correctly defined and populated for anomaly detection.
+
+sql
+SELECT * 
+FROM SDL_MY_DAILY_SELLOUT_STOCK_FACT 
+WHERE NOT TRY_CAST(<numeric_column> AS NUMBER) IS NULL;
+========================================================================================================================================
+
+table_name : SDL_POP6_SG_DISPLAYS  
+solution : Correct the 'start_date' and 'end_date' so 'start_date' is earlier than 'end_date'. Ensure 'display_number' and 'run_id' are positive integers.
+
+sql
+SELECT *
+FROM SDL_POP6_SG_DISPLAYS
+WHERE start_date > end_date
+   OR display_number < 0
+   OR run_id < 0;
+========================================================================================================================================
+
+table_name : SDL_AU_DSTR_CHS_HEADER  
+solution : Ensure that the table contains numeric columns for anomaly detection by adding appropriate numeric data types to relevant columns or by correcting data entry processes to include numeric values.  
+
+sql
+SELECT *  
+FROM SDL_AU_DSTR_CHS_HEADER  
+WHERE TRY_CAST(<numeric_column> AS NUMBER) IS NULL
+========================================================================================================================================
+
+table_name : SDL_MDS_SG_PS_WEIGHTS  
+solution : Correct 'weight' value to be within the valid range according to business rules, as 400.0 might be out of expected bounds.  
+
+sql
+SELECT * 
+FROM SDL_MDS_SG_PS_WEIGHTS 
+WHERE weight > <upper_bound> OR weight < <lower_bound>;
+ 
+
+Replace `<upper_bound>` and `<lower_bound>` with the appropriate values according to the business requirements.
+========================================================================================================================================
+
+table_name : SDL_KR_COUPANG_PRODUCT_RANKING_MONTHLY
+solution : No action needed as no anomalies were detected.
+
+-- Snowflake SQL query to check for anomalies
+-- This query assumes anomalies are to be detected based on certain criteria which aren't specified in the prompt. 
+-- Assuming common anomaly checks like null values, duplicates, or outliers.
+SELECT * 
+FROM SDL_KR_COUPANG_PRODUCT_RANKING_MONTHLY
+WHERE <anomaly_detection_criteria>;
+========================================================================================================================================
+
+table_name : SDL_CSL_RETAILERHIERARCHY  
+solution : Correct the negative turnover value of -2100.0 to a valid positive number.
+
+SQL query to get anomalies:
+sql
+SELECT * 
+FROM SDL_CSL_RETAILERHIERARCHY 
+WHERE turnover < 0;
+========================================================================================================================================
+
+table_name : SDL_MATERIAL_PKA_MARA_EXTRACT  
+solution : Add numeric columns with relevant data for anomaly detection, ensure data types are correct.  
+
+SQL Query:  
+sql
+SELECT *  
+FROM SDL_MATERIAL_PKA_MARA_EXTRACT  
+WHERE TRY_TO_NUMBER(<column_name>) IS NULL;
+========================================================================================================================================
+
+table_name : SDL_MDS_PH_POS_PRODUCT_TEMP  
+solution : Ensure numeric data is properly ingested into the table, and verify data types for relevant columns to support numeric entries.
+
+SQL Query:
+sql
+SELECT *
+FROM SDL_MDS_PH_POS_PRODUCT_TEMP
+WHERE NOT (COLUMN_NAME1 IS NOT NULL AND TRY_CAST(COLUMN_NAME1 AS NUMBER) IS NOT NULL)
+   OR NOT (COLUMN_NAME2 IS NOT NULL AND TRY_CAST(COLUMN_NAME2 AS NUMBER) IS NOT NULL);
+
+Replace `COLUMN_NAME1`, `COLUMN_NAME2`, etc., with the actual column names that are expected to hold numeric data.
+========================================================================================================================================
+
+table_name: SDL_MDS_SG_PRODUCT_HIERARCHY  
+solution: Update negative values for 'id', 'versionnumber', 'brand_mapping_code', 'new_category_code', 'product_type_code', 'product_variant_code', 'lastchgversionnumber' to positive integers. Set 'versionflag', 'name', 'enterusername', 'lastchgusername', and 'validationstatus' to appropriate non-null values.  
+
+SQL Query:  
+sql
+SELECT * 
+FROM SDL_MDS_SG_PRODUCT_HIERARCHY
+WHERE id < 0
+   OR versionnumber < 0
+   OR brand_mapping_code < 0
+   OR new_category_code < 0
+   OR product_type_code < 0
+   OR product_variant_code < 0
+   OR lastchgversionnumber < 0
+   OR versionflag IS NULL
+   OR name IS NULL
+   OR enterusername IS NULL
+   OR lastchgusername IS NULL
+   OR validationstatus IS NULL;
+========================================================================================================================================
+
+Certainly! Here's a concise solution and a Snowflake-friendly SQL query for the detected anomaly in the specified table:
+
+
+table_name : SDL_MDS_VN_GT_MSL_SHOPTYPE_MAPPING
+solution : Update the 'active' status to 0 if 'versionflag' is 'inactive' for id 25 to ensure consistency in the status fields.
+
+SQL Query:
+SELECT * 
+FROM SDL_MDS_VN_GT_MSL_SHOPTYPE_MAPPING
+WHERE id = 25 AND versionflag = 'inactive' AND active = 1;
+========================================================================================================================================
+
+table_name : PRODTR_PRODUCTTRANSLATION  
+solution : Correct the negative 'fetchedsequence' value to a valid positive integer.
+
+SQL Query to detect anomalies:
+sql
+SELECT *
+FROM PRODTR_PRODUCTTRANSLATION
+WHERE fetchedsequence < 0;
+========================================================================================================================================
+
+table_name : SDL_KR_COUPANG_BRAND_RANKING  
+solution : Update 'run_id' from -101 to a positive integer that correctly corresponds to its intended sequence or batch identifier.
+
+sql
+SELECT *
+FROM SDL_KR_COUPANG_BRAND_RANKING
+WHERE run_id < 0;
+========================================================================================================================================
+
+table_name : SDL_KR_COUPANG_PRODUCTSALEREPORT  
+solution : Correct the negative 'units_sold' value to a positive number, verify the transaction data to ensure that the sales are accurately recorded, and consult with the data source to correct any discrepancies.
+
+SQL Query:
+sql
+SELECT *
+FROM SDL_KR_COUPANG_PRODUCTSALEREPORT
+WHERE units_sold < 0;
+========================================================================================================================================
+
+table_name : SDL_ECOMMERCE_6PAI  
+solution : Investigate the negative sales growth and correct any data entry errors. Verify if the sales data for January 2021 is accurate, as negative growth figures are unusual. Adjust the plan or forecast accordingly if data is correct.
+
+sql
+SELECT *
+FROM SDL_ECOMMERCE_6PAI
+WHERE score_weighted < 0 OR score_non_weighted < 0 OR gap_vs_pm < 0 OR gap_vs_p3m < 0 OR gap_vs_plan < 0;
+========================================================================================================================================
+
+table_name : SDL_POP6_SG_POP_LISTS  
+solution : The 'run_id' value '-32' seems anomalous and possibly incorrect. Verify and correct the 'run_id' to a valid positive integer.
+
+sql
+SELECT * 
+FROM SDL_POP6_SG_POP_LISTS
+WHERE run_id < 0;
+========================================================================================================================================
+
+table_name : KPI2DATA_MAPPING  
+solution : Ensure numeric data is available in the required columns by checking data types and input sources. Consider adding default values or converting existing data to numeric where necessary.
+
+SQL Query:
+sql
+SELECT *
+FROM KPI2DATA_MAPPING
+WHERE TRY_CAST(column_name AS NUMBER) IS NULL;
+========================================================================================================================================
+
+table_name : SDL_CSL_TBL_SCHEMEWISE_APNO  
+solution : Update the 'createduserid' to a valid positive integer or assign a default valid ID.
+
+sql
+SELECT *
+FROM SDL_CSL_TBL_SCHEMEWISE_APNO
+WHERE createduserid < 0;
+========================================================================================================================================
+
+table_name : SDL_MDS_MY_TARGETS  
+solution : Ensure numeric data is present in the required columns for anomaly detection by verifying data types and correcting them if necessary. Populate missing numeric values.
+
+SQL Query:
+sql
+SELECT * 
+FROM SDL_MDS_MY_TARGETS
+WHERE NOT (COLUMN_NAME REGEXP '^[0-9]+(\.[0-9]+)?$')
+   OR COLUMN_NAME IS NULL;
+========================================================================================================================================
+
+table_name : SDL_MY_CUSTOMER_DIM  
+solution : Add numeric data columns to enable anomaly detection.
+
+SQL Query:
+sql
+SELECT * FROM SDL_MY_CUSTOMER_DIM 
+WHERE FALSE; -- Modify to include numeric data columns for anomaly detection
+========================================================================================================================================
+
+table_name : SDL_POP6_SG_EXECUTED_VISITS  
+solution : Correct the invalid longitude and latitude values to valid geographical coordinates.
+
+sql
+SELECT * 
+FROM SDL_POP6_SG_EXECUTED_VISITS 
+WHERE check_in_longitude < -180 OR check_in_longitude > 180 
+   OR check_in_latitude < -90 OR check_in_latitude > 90 
+   OR check_out_longitude < -180 OR check_out_longitude > 180 
+   OR check_out_latitude < -90 OR check_out_latitude > 90;
+========================================================================================================================================
+
+table_name : SDL_MDS_PH_DISTRIBUTOR_PRODUCT
+solution : Update 'promoendperiod' to be later than 'promostartperiod', and confirm 'validationstatus' based on business rules.
+
+
+SQL query to detect anomalies:
+
+sql
+SELECT *
+FROM SDL_MDS_PH_DISTRIBUTOR_PRODUCT
+WHERE promoendperiod <= promostartperiod
+   OR validationstatus = 'invalid';
+========================================================================================================================================
+
+table_name: SDL_CSL_ORDERBOOKING  
+solution: Correct the 'orddlvdate' to be after or equal to 'orderdate', update 'ordtotalamt' to be non-negative, and ensure 'prdgrossamt' aligns with 'prdqty' and 'prdbilledqty' values.
+
+sql
+SELECT * 
+FROM SDL_CSL_ORDERBOOKING 
+WHERE orddlvdate < orderdate 
+   OR ordtotalamt < 0 
+   OR prdgrossamt <> (prdqty * prdselrate) 
+   OR prdgrossamt <> (prdbilledqty * prdselrate);
+========================================================================================================================================
+
+table_name : SDL_MDS_MY_CUSTOMER_HIERARCHY  
+solution : Ensure numeric data types are used where necessary and populate missing numeric values for accurate anomaly detection.  
+
+sql
+SELECT *  
+FROM SDL_MDS_MY_CUSTOMER_HIERARCHY  
+WHERE <numeric_column> IS NULL OR <numeric_column> NOT REGEXP '^[0-9]+$';
+========================================================================================================================================
+
+table_name : SDL_LA_GT_ROUTE_HEADER  
+solution : Add numeric columns necessary for anomaly detection, such as route duration or distance. Ensure these fields are populated with valid numeric data.  
+
+SQL Query:   
+sql
+SELECT *
+FROM SDL_LA_GT_ROUTE_HEADER
+WHERE 1 = 0; -- Placeholder for anomaly detection logic once numeric data is added
+========================================================================================================================================
+
+table_name : SDL_MY_CIW_MAP  
+solution : Ensure the table contains relevant numeric data for anomaly detection; check data types and data integrity.
+
+sql
+SELECT * 
+FROM SDL_MY_CIW_MAP 
+WHERE TRY_CAST(column_name AS NUMBER) IS NULL;
+========================================================================================================================================
+
+table_name : SDL_JNJ_OSA_OOS_REPORT  
+solution : Verify and correct the 'yearmo' value to ensure it matches the correct year and month for the 'osa_oos_date' field. Ensure the 'run_id' is a positive integer to avoid invalid data entry.
+
+SQL Query:
+sql
+SELECT *
+FROM SDL_JNJ_OSA_OOS_REPORT
+WHERE yearmo::VARCHAR != TO_CHAR(osa_oos_date, 'YYYYMM')
+   OR run_id < 0;
+========================================================================================================================================
+
+table_name : SDL_MDS_VN_PS_WEIGHTS  
+solution : Change the 'versionnumber' value from -2 to a valid positive integer that aligns with expected version tracking in your database.
+
+sql
+SELECT * 
+FROM SDL_MDS_VN_PS_WEIGHTS
+WHERE versionnumber < 0;
+========================================================================================================================================
+
+table_name : SDL_DSTR_COLES_INV  
+solution : Add numeric data to enable anomaly detection. Ensure columns intended for numeric data are correctly defined and populated.  
+
+sql
+SELECT *
+FROM SDL_DSTR_COLES_INV
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM INFORMATION_SCHEMA.COLUMNS
+    WHERE TABLE_NAME = 'SDL_DSTR_COLES_INV'
+    AND DATA_TYPE IN ('NUMBER', 'FLOAT', 'INTEGER')
+);
+========================================================================================================================================
+
+table_name : SDL_AU_DSTR_API_HEADER  
+solution : Add numeric columns or ensure existing columns contain numeric data for anomaly detection.  
+
+SQL Query:  
+sql
+SELECT *  
+FROM SDL_AU_DSTR_API_HEADER  
+WHERE TRY_CAST(column_name AS NUMBER) IS NULL;  -- Replace 'column_name' with specific column names to check for non-numeric data
+========================================================================================================================================
+
+table_name : SDL_MDS_MY_PS_MSL  
+solution : Update `enterversionnumber` from `-28` to a positive integer to maintain data consistency.
+
+SQL query to get anomalies:
+sql
+SELECT * 
+FROM SDL_MDS_MY_PS_MSL
+WHERE enterversionnumber < 0;
+========================================================================================================================================
+
+table_name : SDL_CSL_SALESMANMASTER
+solution : The 'createddate' field has a future date (2027-02-01). Correct it to a valid past or present date.
+
+SQL Query to detect anomalies:
+SELECT * 
+FROM SDL_CSL_SALESMANMASTER 
+WHERE createddate > CURRENT_DATE;
+========================================================================================================================================
+
+table_name: SDL_DISTRIBUTOR_IVY_ORDER  
+solution: The issue is with the negative order_latitude value, which should be within valid geographical coordinate ranges. Verify the data entry process or source system providing this data.
+
+SQL Query to detect anomalies:
+sql
+SELECT * 
+FROM SDL_DISTRIBUTOR_IVY_ORDER
+WHERE order_latitude < -90 OR order_latitude > 90;
+========================================================================================================================================
+
+table_name : SDL_POP6_SG_DISPLAY_PLANS  
+solution : Update the status to a valid value and ensure 'required_number_of_displays' is a positive integer.
+
+SQL query to detect anomalies:
+sql
+SELECT *
+FROM SDL_POP6_SG_DISPLAY_PLANS
+WHERE status < 0
+   OR required_number_of_displays < 0;
+========================================================================================================================================
+
+table_name : SDL_POP6_SG_PRODUCTS
+solution : Correct negative values for 'unit_price', 'display_order', 'largest_uom_quantity', 'middle_uom_quantity', 'smallest_uom_quantity', and 'run_id' to appropriate positive values.
+
+SQL Query:
+SELECT *
+FROM SDL_POP6_SG_PRODUCTS
+WHERE unit_price < 0
+   OR display_order < 0
+   OR largest_uom_quantity < 0
+   OR middle_uom_quantity < 0
+   OR smallest_uom_quantity < 0
+   OR run_id < 0;
+========================================================================================================================================
+
+table_name : SDL_POP6_SG_PRODUCT_ATTRIBUTE_AUDITS  
+solution : The anomaly in the dataset is due to the 'audit_form_id' being 'None'. Ensure that the 'audit_form_id' is correctly populated for all rows as it is critical for linking audit forms.
+
+SQL Query to detect anomalies:
+sql
+SELECT *
+FROM SDL_POP6_SG_PRODUCT_ATTRIBUTE_AUDITS
+WHERE audit_form_id IS NULL;
+========================================================================================================================================
+
+table_name : SDL_ID_POS_DIAMOND_SELLOUT  
+solution : Correct the negative quantity (-10.0) for 'Diamond Ring' to ensure it reflects actual sales data.
+
+SQL Query:
+sql
+SELECT *
+FROM SDL_ID_POS_DIAMOND_SELLOUT
+WHERE qty < 0;
+========================================================================================================================================
+
+table_name : SDL_MDS_VN_PRICE_PRODUCTS
+solution : Check the data types for 'price' and 'lastchgversionnumber'; ensure they are correctly defined as float and integer respectively, and verify 'price' is not exceeding logical limits for the product category.
+
+SQL Query to get anomalies:
+
+sql
+SELECT *
+FROM SDL_MDS_VN_PRICE_PRODUCTS
+WHERE TRY_CAST(price AS FLOAT) IS NULL
+   OR TRY_CAST(lastchgversionnumber AS INTEGER) IS NULL
+   OR price > 1000;  -- Assuming 1000 is a logical limit for this context
+========================================================================================================================================
+
+table_name : SDL_SPIRAL_MTI_OFFTAKE  
+solution : Ensure numeric data is populated in the table by checking the data source and ETL processes for errors. Validate data types and correct inconsistencies.
+
+sql
+SELECT * 
+FROM SDL_SPIRAL_MTI_OFFTAKE
+WHERE TRY_CAST(column_name AS NUMBER) IS NULL;
+========================================================================================================================================
+
+table_name : SDL_API_DSTR  
+solution : Add numeric columns for anomaly detection or ensure existing data is numeric.
+
+sql
+SELECT *
+FROM SDL_API_DSTR
+WHERE TRY_TO_NUMBER(column_name) IS NULL;
+========================================================================================================================================
+
+table_name : SDL_LA_GT_ROUTE_DETAIL_TEMP  
+solution : Ensure that numeric columns contain valid numeric data and are not null. Update the data type if necessary.
+
+SQL query: 
+sql
+SELECT *
+FROM SDL_LA_GT_ROUTE_DETAIL_TEMP
+WHERE NOT TRY_TO_NUMBER(<numeric_column_name>) IS NOT NULL;
+========================================================================================================================================
+
+table_name : SDL_MDS_PACIFIC_ECOM_NTS  
+solution : Correct the 'month' value to be within the valid range (1-12) for the row with 'id' 1.  
+  
+SQL Query:  
+sql  
+SELECT *  
+FROM SDL_MDS_PACIFIC_ECOM_NTS  
+WHERE month < 1 OR month > 12;
+========================================================================================================================================
+
+table_name : SDL_POP6_SG_POPS  
+solution : Correct the 'status' and 'run_id' fields to valid positive values, and ensure the 'longitude' and 'latitude' are within valid geographic ranges.
+
+SQL Query to detect anomalies:
+sql
+SELECT * 
+FROM SDL_POP6_SG_POPS
+WHERE status < 0 
+   OR run_id < 0 
+   OR longitude NOT BETWEEN -180 AND 180 
+   OR latitude NOT BETWEEN -90 AND 90;
+========================================================================================================================================
+
+table_name : SDL_DSTR_WOOLWORTH_INV  
+solution : Ensure numeric data is present in columns intended for numerical analysis by updating the data type or correcting data entries.
+
+SQL Query:
+sql
+SELECT *
+FROM SDL_DSTR_WOOLWORTH_INV
+WHERE TRY_CAST(column_name AS NUMBER) IS NULL;
+
+Replace `column_name` with the specific numeric column names you want to check.
+========================================================================================================================================
+
+table_name : SDL_MDS_PACIFIC_CUST_ATTRB  
+solution : Add numeric columns or ensure existing columns are correctly typed as numeric for anomaly detection.
+
+sql
+SELECT COLUMN_NAME, DATA_TYPE 
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME = 'SDL_MDS_PACIFIC_CUST_ATTRB'
+AND DATA_TYPE NOT IN ('NUMBER', 'FLOAT', 'DECIMAL', 'INTEGER');
+========================================================================================================================================
+
+table_name : SDL_MDS_PACIFIC_COGS_MASTER  
+solution : Correct the negative value in 'nz_cogs_per_unit' for entry with 'id' 49 to a valid positive number as negative cost per unit is illogical.
+
+sql
+SELECT * 
+FROM SDL_MDS_PACIFIC_COGS_MASTER 
+WHERE nz_cogs_per_unit < 0;
+========================================================================================================================================
+
+table_name : SDL_MDS_SG_PS_TARGETS  
+solution : Check if 'versionnumber' 9999 is valid or a placeholder; update if necessary. Verify 'lastchgdatetime' and 'enterdatetime' for consistency with 'versionnumber'. Confirm 'value' 600.0 aligns with 'kpi' KPI7 expectations.
+
+SQL Query:
+sql
+SELECT * 
+FROM SDL_MDS_SG_PS_TARGETS 
+WHERE versionnumber = 9999
+   OR lastchgdatetime != enterdatetime
+   OR kpi = 'KPI7' AND value != 600.0;
+========================================================================================================================================
+
+table_name : SDL_MDS_VN_SKU_BENCHMARKS
+solution : Adjust the 'valid_to' date to be after the 'valid_from' date.
+
+SQL query:
+sql
+SELECT *
+FROM SDL_MDS_VN_SKU_BENCHMARKS
+WHERE valid_to <= valid_from;
+========================================================================================================================================
+
+table_name : SDL_ECOM_SEARCH_ADS_BY_DATE  
+solution : Check for consistency in sales_usd to sales_lcy conversion rate and ensure item_conversion_rate is calculated correctly. Verify order and buyer counts are logical.
+
+SQL Query:
+sql
+SELECT *
+FROM SDL_ECOM_SEARCH_ADS_BY_DATE
+WHERE 
+    ABS(sales_usd * 2 - sales_lcy) > 0.01 OR 
+    item_conversion_rate != (orders::FLOAT / visits) * 100 OR
+    orders > units_sold OR
+    buyers > orders OR
+    add_to_cart_units > units_sold;
+========================================================================================================================================
+
+table_name : SDL_ECOM_AMS
+solution : No action needed as no anomalies detected.
+
+
+sql
+-- SQL query to check for anomalies in a Snowflake table
+-- Since no anomalies were detected, this query will not return any results for SDL_ECOM_AMS
+SELECT *
+FROM SDL_ECOM_AMS
+WHERE <condition_for_anomaly_detection>;
+-- Replace <condition_for_anomaly_detection> with actual conditions for identifying anomalies
+========================================================================================================================================
+
+table_name : SDL_DISTRIBUTOR_IVY_MERCHANDISING  
+solution : Ensure the table has numeric columns with data; add numeric fields if missing or populate existing numeric fields.  
+  
+sql  
+SELECT *  
+FROM SDL_DISTRIBUTOR_IVY_MERCHANDISING  
+WHERE NOT EXISTS (  
+    SELECT *  
+    FROM INFORMATION_SCHEMA.COLUMNS  
+    WHERE TABLE_NAME = 'SDL_DISTRIBUTOR_IVY_MERCHANDISING'  
+    AND DATA_TYPE IN ('NUMBER', 'FLOAT', 'DECIMAL', 'INTEGER')  
+);
+========================================================================================================================================
+
+table_name : SDL_MDS_MY_GT_PRODUCT_MAPPING  
+solution : Update the 'id' field to a valid positive integer, as negative IDs are typically invalid.
+
+SQL query to detect anomalies:
+sql
+SELECT * 
+FROM SDL_MDS_MY_GT_PRODUCT_MAPPING 
+WHERE id < 0;
+========================================================================================================================================
+
+table_name : SDL_HK_WINGKEUNG_DIRECT_SALES_REP_ROUTE_PLAN  
+solution : Ensure numeric data is present for anomaly detection by adding or correcting numeric fields.
+
+sql
+SELECT * 
+FROM SDL_HK_WINGKEUNG_DIRECT_SALES_REP_ROUTE_PLAN
+WHERE TRY_TO_NUMBER(<numeric_column>) IS NULL;
+========================================================================================================================================
+
+table_name : SDL_MDS_PACIFIC_PRODUCT_MAPPING_COLES  
+solution : Correct the negative 'version_id' value to a positive integer to maintain data consistency.
+
+SQL Query to detect anomalies:
+
+sql
+SELECT * 
+FROM SDL_MDS_PACIFIC_PRODUCT_MAPPING_COLES
+WHERE version_id < 0;
+========================================================================================================================================
+
+Certainly. Since you mentioned that no anomalies were detected in the table 'SDL_KR_COUPANG_PRODUCT_SUMMARY_WEEKLY', there is no specific solution needed for this table. However, I can provide a Snowflake-friendly SQL query template to check for anomalies, which can be used for other tables as well. Anomalies might include issues like null values, duplicates, or unexpected data ranges, depending on the context.
+
+Here's how you can structure it:
+
+sql
+-- Example query template to check for anomalies
+SELECT 
+    column_name, 
+    COUNT(*) AS occurrence_count 
+FROM 
+    SDL_KR_COUPANG_PRODUCT_SUMMARY_WEEKLY
+WHERE 
+    column_name IS NULL  -- Check for NULL values
+    OR column_name NOT BETWEEN expected_min AND expected_max  -- Check for unexpected data ranges
+GROUP BY 
+    column_name
+HAVING 
+    COUNT(*) > 1; -- Modify as necessary to check for duplicates or other specific conditions
+
+
+This template is a starting point and should be customized based on the specific columns and anomaly definitions applicable to your data.
+========================================================================================================================================
+
+table_name : SDL_MDS_SG_SKU_BENCHMARKS
+solution : Correct negative values in 'version_id', 'jj_target', and 'comp_packsize'. Update 'validationstatus' to 'valid' after corrections.
+
+SQL Query:
+SELECT * 
+FROM SDL_MDS_SG_SKU_BENCHMARKS
+WHERE version_id < 0 
+   OR jj_target < 0 
+   OR comp_packsize < 0 
+   OR validationstatus = 'invalid';
+========================================================================================================================================
+
+table_name : SDL_MDS_VN_STORE_RETAIL_ENVIRONMENT_MAPPING  
+solution : Add numeric columns with relevant numerical data for anomaly detection.
+
+SQL query to identify anomalies:  
+sql
+SELECT *  
+FROM SDL_MDS_VN_STORE_RETAIL_ENVIRONMENT_MAPPING  
+WHERE <numeric_column> IS NULL OR <numeric_column> = ''  
+
+
+(Note: Replace `<numeric_column>` with the actual column name intended for numerical data.)
+========================================================================================================================================
+
+table_name : SDL_MDS_SG_ECOM_PRODUCT
+solution : Review and correct the 'upc' field as it may have an incorrect format or value. Ensure 'versionflag' reflects the correct status if 'inactive' is unintended.
+
+SQL Query:
+SELECT *
+FROM SDL_MDS_SG_ECOM_PRODUCT
+WHERE LENGTH(upc) != 13
+   OR versionflag = 'inactive'
+   OR id = 50;
+========================================================================================================================================
+
+table_name : SDL_MDS_PACIFIC_CUST_CIW_PLAN  
+solution : Correct the negative values for 'id', 'version_id', 'goal_qty', 'goal_gts', 'goal_eff_val', 'goal_jgf_si_val', 'goal_pmt_terms_val', 'goal_datains_val', 'goal_exp_adj_val', 'goal_jgf_sd_val', 'goal_ciw_tot', 'goal_cogs', 'goal_gp', and 'enterversionnumber'. Ensure 'time_period' is valid. Confirm 'validationstatus' as 'valid'.
+
+sql
+SELECT *
+FROM SDL_MDS_PACIFIC_CUST_CIW_PLAN
+WHERE id < 0
+   OR version_id < 0
+   OR goal_qty < 0
+   OR goal_gts < 0
+   OR goal_eff_val < 0
+   OR goal_jgf_si_val < 0
+   OR goal_pmt_terms_val < 0
+   OR goal_datains_val < 0
+   OR goal_exp_adj_val < 0
+   OR goal_jgf_sd_val < 0
+   OR goal_ciw_tot < 0
+   OR goal_cogs < 0
+   OR goal_gp < 0
+   OR enterversionnumber < 0
+   OR NOT REGEXP_LIKE(time_period, '^\d{4}-Q[1-4]$')
+   OR validationstatus != 'valid';
+========================================================================================================================================
+
+table_name : SDL_MARKET_SHARE_QSD
+solution : Correct the negative value for the 'value' column to ensure it reflects a valid profit figure.
+
+SQL Query:
+
+SELECT * 
+FROM SDL_MARKET_SHARE_QSD
+WHERE value < 0;
+========================================================================================================================================
+
+table_name : SDL_MDS_VN_CUSTOMER_SALES_ORGANIZATION
+solution : Update the 'mti_code' to a valid positive number for 'id' 45, and ensure 'status' aligns with 'versionflag'.
+
+SQL Query:
+SELECT *
+FROM SDL_MDS_VN_CUSTOMER_SALES_ORGANIZATION
+WHERE mti_code < 0 OR status != versionflag;
+========================================================================================================================================
+
+table_name : SDL_POP6_SG_PLANNED_VISITS  
+solution : Update the 'run_id' to a valid positive integer that corresponds to the correct report sequence, replacing the anomalous '-49'.
+
+SQL Query to detect anomalies:
+sql
+SELECT * 
+FROM SDL_POP6_SG_PLANNED_VISITS
+WHERE run_id < 0;
+========================================================================================================================================
+
+table_name : MS_MASTERSURVEY
+solution : The anomalous row in the 'MS_MASTERSURVEY' table has an unusually large 'fetchedsequence' value of 9999999999, which should be verified and corrected if it's not intentional or exceeds the expected range.
+
+SQL Query:
+SELECT *
+FROM MS_MASTERSURVEY
+WHERE fetchedsequence = 9999999999;
+========================================================================================================================================
+
+table_name : SDL_MDS_PH_CLOBOTICS_SOS_REF
+solution : Update the 'version_id' from -1 to a valid positive integer and set 'validationstatus' to 'Valid'.
+
+
+sql
+-- SQL query to get anomalies
+SELECT *
+FROM SDL_MDS_PH_CLOBOTICS_SOS_REF
+WHERE version_id = -1 OR validationstatus = 'Invalid';
+========================================================================================================================================
+
+table_name : SDL_MDS_PH_POS_PRICELIST  
+solution : Correct the 'yearmo' column to a valid year-month format, ensure 'listpricecase', 'listpricedz', and 'listpriceunit' values are positive, and confirm if 'srp' value is valid.
+
+sql
+SELECT *
+FROM SDL_MDS_PH_POS_PRICELIST
+WHERE TRY_TO_DATE(SUBSTR(yearmo, 1, 4) || '-' || SUBSTR(yearmo, 6, 2) || '-01') IS NULL
+   OR listpricecase < 0
+   OR listpricedz < 0
+   OR listpriceunit < 0
+   OR srp < 0;
+========================================================================================================================================
+
+table_name : SDL_ALL_DISTRIBUTOR_SELLOUT_SALES_FACT  
+solution : Correct the 'grs_val' to be a positive value, likely it should be 460000.0 based on the expected sales calculation.
+
+SQL query to get anomalies:
+sql
+SELECT * 
+FROM SDL_ALL_DISTRIBUTOR_SELLOUT_SALES_FACT
+WHERE grs_val < 0;
+========================================================================================================================================
+
+table_name : SDL_MDS_VN_POS_PRODUCTS  
+solution : Remove or update the duplicate entry with `muid` as 'duplicate-muid-1' to ensure uniqueness of the `muid` field.
+
+SQL Query to detect anomalies:
+sql
+SELECT 
+    muid, COUNT(*) as duplicate_count 
+FROM 
+    SDL_MDS_VN_POS_PRODUCTS 
+GROUP BY 
+    muid 
+HAVING 
+    COUNT(*) > 1;
+========================================================================================================================================
+
+table_name : SDL_DISTRIBUTOR_IVY_INVENTORY  
+solution : Verify if the quantity (qty) of 2000 PCS is correct for distributor DIST016, warehouse WH016, product PRD016, and batch BATCH017 with expiry 2026-12-31. If incorrect, update the record with the correct quantity.
+
+sql
+SELECT * 
+FROM SDL_DISTRIBUTOR_IVY_INVENTORY
+WHERE distributor_code = 'DIST016'
+  AND warehouse_code = 'WH016'
+  AND product_code = 'PRD016'
+  AND batch_code = 'BATCH017'
+  AND batch_expiry_date = '2026-12-31'
+  AND uom = 'PCS'
+  AND qty = 2000;
+========================================================================================================================================
+
+table_name : SDL_ID_POS_DAILY_IDM_SELLOUT  
+solution : Check for negative values in the `value` column. Validate data entry process for type 'B'. Ensure data consistency for `account` and `pos_cust`.
+
+sql
+SELECT *
+FROM SDL_ID_POS_DAILY_IDM_SELLOUT
+WHERE value < 0;
+========================================================================================================================================
+
+table_name : SDL_MDS_MY_ECOM_PRODUCT  
+solution : Update the 'id' from -1 to a valid unique identifier, ensure 'version_id' matches 'versionnumber', correct 'changetrackingmask' from -99 to a valid value, and review the 'validationstatus' to ensure data integrity.  
+
+sql
+SELECT * 
+FROM SDL_MDS_MY_ECOM_PRODUCT 
+WHERE id = -1 
+   OR version_id != versionnumber 
+   OR changetrackingmask = -99 
+   OR validationstatus = 'Invalid';
+========================================================================================================================================
+
+table_name : ITG_SFA_PM  
+solution : Ensure the table has numeric data by adding numeric columns or verifying the data types of existing columns.
+
+SQL Query:
+sql
+SELECT * 
+FROM ITG_SFA_PM
+WHERE TRY_CAST(column_name AS NUMBER) IS NULL;
+========================================================================================================================================
+
+table_name : SDL_ECOM_GMV_SHOPEE
+solution : Correct the negative values for 'gross_sales', 'gross_units_sold', and 'product_views'. Ensure all growth rates are consistent with the actual values. Verify 'gross_avg_selling_price' calculation as it appears unusually low.
+
+
+sql
+SELECT *
+FROM SDL_ECOM_GMV_SHOPEE
+WHERE gross_sales < 0
+   OR gross_units_sold < 0
+   OR product_views < 0
+   OR gross_orders_growth < 0
+   OR gross_units_sold_growth < 0
+   OR gross_avg_basket_size_growth < 0
+   OR gross_avg_selling_price_growth < 0
+   OR product_views_growth < 0
+   OR product_visitors_growth < 0
+   OR gross_order_conversion_rate_growth < 0
+   OR gross_item_conversion_rate_growth < 0;
+========================================================================================================================================
+
+table_name : SDL_HK_WINGKEUNG_INDIRECT_SALES_REP_ROUTE_PLAN  
+solution : Correct the 'visit_freq' to a positive integer and ensure 'week' value is within valid range.
+
+sql
+SELECT *
+FROM SDL_HK_WINGKEUNG_INDIRECT_SALES_REP_ROUTE_PLAN
+WHERE visit_freq < 0 OR week NOT BETWEEN 1 AND 52;
+========================================================================================================================================
+
+table_name : SDL_MDS_MY_PS_TARGETS  
+solution : Add numeric columns or ensure existing numeric columns have data for anomaly detection.  
+
+SQL Query:  
+sql
+SELECT *  
+FROM SDL_MDS_MY_PS_TARGETS  
+WHERE NOT EXISTS (  
+  SELECT 1  
+  FROM INFORMATION_SCHEMA.COLUMNS  
+  WHERE TABLE_NAME = 'SDL_MDS_MY_PS_TARGETS'  
+  AND DATA_TYPE IN ('NUMBER', 'FLOAT', 'INTEGER')  
+);
+========================================================================================================================================
+
+table_name: SDL_CSL_CLASSMASTER  
+solution: Check the 'classcode' for potential errors or inconsistencies that might not align with expected codes and validate the 'createduserid' to ensure it exists in the users' table.  
+
+sql
+SELECT * 
+FROM SDL_CSL_CLASSMASTER 
+WHERE classcode NOT IN (SELECT expected_classcode FROM expected_classcodes_table)
+   OR createduserid NOT IN (SELECT userid FROM users_table);
+========================================================================================================================================
+
+table_name : SDL_MDS_PH_ISE_PARENT  
+solution : Update the 'versionname' to a valid string, ensure 'versionnumber' is a positive number, and validate the 'changetrackingmask' and 'validationstatus' fields to match expected values.
+
+SQL Query to detect anomalies:
+sql
+SELECT *
+FROM SDL_MDS_PH_ISE_PARENT
+WHERE versionname IS NULL
+   OR versionnumber < 0
+   OR changetrackingmask < 0
+   OR validationstatus = 'Invalid';
+========================================================================================================================================
+
+table_name : SDL_HK_IMS_WINGKEUNG_INV  
+solution : The anomaly is likely caused by a negative 'amount' which suggests a data entry error. Verify and correct the 'amount' field to ensure it reflects the correct positive stock level or transaction value.
+
+SQL Query to detect anomalies:
+sql
+SELECT *
+FROM SDL_HK_IMS_WINGKEUNG_INV
+WHERE amount < 0;
+========================================================================================================================================
+
+table_name: SDL_MDS_VN_DISTRIBUTOR_CUSTOMERS  
+solution: Correct the negative and NaN values in 'id', 'version_id', 'sub_channel_id', 'group_account_id', 'account_id', 'region_id', 'province_id'. Ensure 'versionname', 'group_account_code', 'group_account_name' are not None.
+
+SQL query:
+sql
+SELECT * 
+FROM SDL_MDS_VN_DISTRIBUTOR_CUSTOMERS
+WHERE id < 0
+   OR versionnumber < 0
+   OR version_id < 0
+   OR sub_channel_id IS NULL
+   OR group_account_id IS NULL
+   OR account_id < 0
+   OR region_id IS NULL
+   OR province_id < 0
+   OR versionname IS NULL
+   OR group_account_code IS NULL
+   OR group_account_name IS NULL;
+========================================================================================================================================
+
+table_name : SDL_MDS_VN_GT_GTS_RATIO  
+solution : The issue is with the 'percentage' column having an unusually high value of 500.0. Verify if this is a data entry mistake or if there is a legitimate reason for this value. If it is an error, correct it to a more reasonable range based on the business rules.
+
+SQL Query:
+sql
+SELECT * 
+FROM SDL_MDS_VN_GT_GTS_RATIO 
+WHERE percentage > 100;
+========================================================================================================================================
+
+table_name : SDL_IRI_SCAN_SALES
+solution : Correct negative and overly high values in 'scan_sales', 'scan_units', 'numeric_distribution', 'weighted_distribution', and 'store_count_where_scanned'. Validate 'iri_ean' for correct format and ensure 'wk_end_dt' is within expected range.
+
+SQL query to get anomalies:
+SELECT *
+FROM SDL_IRI_SCAN_SALES
+WHERE scan_sales < 0
+   OR scan_units < 0
+   OR numeric_distribution < 0 OR numeric_distribution > 100
+   OR weighted_distribution < 0 OR weighted_distribution > 100
+   OR store_count_where_scanned < 0
+   OR NOT REGEXP_LIKE(iri_ean, '^\d{12}$')
+   OR wk_end_dt > CURRENT_DATE + INTERVAL '6 MONTH';
+========================================================================================================================================
+
+table_name : SDL_KR_COUPANG_PRODUCT_RANKING_DAILY
+solution : Correct the 'run_id' value from '-100.0' to a valid positive integer that represents a legitimate run identifier.
+
+
+sql
+SELECT * 
+FROM SDL_KR_COUPANG_PRODUCT_RANKING_DAILY
+WHERE run_id < 0;
+========================================================================================================================================
+
+table_name : SDL_COMPETITIVE_BANNER_GROUP  
+solution : Ensure numeric data types are assigned to relevant columns. Add missing numeric data or correct data type mismatches.  
+
+SQL Query:  
+sql  
+SELECT column_name, data_type  
+FROM information_schema.columns  
+WHERE table_name = 'SDL_COMPETITIVE_BANNER_GROUP'  
+AND data_type NOT IN ('NUMBER', 'INTEGER', 'FLOAT', 'DECIMAL');
+========================================================================================================================================
+
+table_name : SDL_MDS_LOG  
+solution : Ensure numeric data types are present for columns where anomaly detection is required and populate them as needed.
+
+SQL Query:
+sql
+SELECT * 
+FROM SDL_MDS_LOG 
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM INFORMATION_SCHEMA.COLUMNS 
+    WHERE TABLE_NAME = 'SDL_MDS_LOG' 
+    AND DATA_TYPE IN ('INTEGER', 'FLOAT', 'NUMBER', 'DECIMAL')
+);
+========================================================================================================================================
+
+table_name : SDL_MDS_APAC_DCL_PRODUCTS  
+solution : Correct the negative values for 'id', 'changetrackingmask', 'sales channel_id', and 'srp usd'. Ensure 'id' is positive, 'changetrackingmask' is non-negative, 'sales channel_id' is valid, and 'srp usd' is non-negative.
+
+SQL Query:  
+sql
+SELECT *  
+FROM SDL_MDS_APAC_DCL_PRODUCTS  
+WHERE id < 0  
+   OR changetrackingmask < 0  
+   OR sales_channel_id < 0  
+   OR srp_usd < 0;
+========================================================================================================================================
+
+table_name : SDL_HK_WINGKEUNG_SALES_REP_SO_TGT_FACT  
+solution : Ensure that numeric data is populated in relevant columns, possibly by reviewing data loading processes or correcting data input errors.
+
+sql
+SELECT * 
+FROM SDL_HK_WINGKEUNG_SALES_REP_SO_TGT_FACT 
+WHERE CAST(COLUMN_NAME AS VARCHAR) NOT RLIKE '^[0-9]+(\.[0-9]+)?$';
+========================================================================================================================================
+
+table_name : SDL_ID_POS_CARREFOUR_SELLOUT  
+solution : Ensure the table contains numeric data for anomaly detection, possibly by adding or correcting numeric columns.  
+
+sql
+SELECT * 
+FROM SDL_ID_POS_CARREFOUR_SELLOUT 
+WHERE NOT EXISTS (
+    SELECT 1 
+    FROM INFORMATION_SCHEMA.COLUMNS 
+    WHERE TABLE_NAME = 'SDL_ID_POS_CARREFOUR_SELLOUT' 
+    AND TABLE_SCHEMA = '<your_schema>'
+    AND DATA_TYPE IN ('NUMBER', 'FLOAT', 'INTEGER')
+);
+========================================================================================================================================
+
+table_name: SDL_MDS_VN_ECOM_PRODUCT  
+solution: Update the 'validationstatus' to 'Validated' if the record has been reviewed and confirmed as correct, or correct any discrepancies if present.
+
+SQL Query: 
+sql
+SELECT * 
+FROM SDL_MDS_VN_ECOM_PRODUCT 
+WHERE versionnumber = 99999 
+  AND versionflag = 'Inactive' 
+  AND validationstatus = 'Not Validated';
+========================================================================================================================================
+
+table_name : SDL_LA_GT_ROUTE_DETAIL  
+solution : Ensure numeric columns are populated with valid data; check data types and source data integrity.
+
+sql
+SELECT * 
+FROM SDL_LA_GT_ROUTE_DETAIL
+WHERE CAST(numeric_column AS STRING) IS NULL OR numeric_column = '';
+========================================================================================================================================
+
+table_name : SDL_MDS_PH_NPI_PEG_ITEM  
+solution : Update 'id' to a valid positive integer, correct 'salescycle' to a non-negative value, and ensure 'peg_itemcode_code' is a non-negative integer.
+
+SQL Query to detect anomalies:
+sql
+SELECT * 
+FROM SDL_MDS_PH_NPI_PEG_ITEM
+WHERE id < 0 
+   OR salescycle < 0 
+   OR peg_itemcode_code < 0;
+========================================================================================================================================
+
+table_name : SDL_MDS_MY_GT_OUTLETATTRIBUTES  
+solution : Anomalous row detected due to 'cust_year' being set to 9999, which is likely incorrect. Validate and correct the 'cust_year' to a realistic value.
+
+sql
+SELECT * 
+FROM SDL_MDS_MY_GT_OUTLETATTRIBUTES 
+WHERE cust_year = 9999;
+========================================================================================================================================
+
+table_name : SDL_MDS_VN_PS_STORE_TAGGING  
+solution : Change 'changetrackingmask' value from -1 to a valid positive integer or null based on business logic. Ensure 'validationstatus' is updated to a valid status.
+
+SQL Query: 
+sql
+SELECT * 
+FROM SDL_MDS_VN_PS_STORE_TAGGING
+WHERE changetrackingmask < 0;
+========================================================================================================================================
+
