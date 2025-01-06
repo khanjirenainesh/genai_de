@@ -1,0 +1,94 @@
+table_name: MRCHR_RESPONSES
+solution: Identify and filter out records with negative or zero values where they don't make sense, such as pricedetails, facings, stockcount, categoryfacings, and categorylength. Ensure that all datetime fields are valid and logically consistent. Investigate records marked as 'OutOfStock' but with a positive stock count.
+snowflake query: 
+SELECT * 
+FROM MRCHR_RESPONSES
+WHERE 
+    pricedetails <= 0 OR
+    facings <= 0 OR
+    stockcount < 0 OR
+    categoryfacings <= 0 OR
+    categorylength <= 0 OR
+    fetcheddatetime IS NULL OR
+    azuredatetime IS NULL OR
+    cdl_datetime IS NULL OR
+    (outofstock = 'Yes' AND stockcount > 0);
+========================================================================================================================================
+
+table_name : SDL_CSL_DAILYSALES_UNDELIVERED
+solution : Ensure data completeness by checking for null values, validate numerical ranges, and verify date consistency.
+snowflake query : 
+SELECT 
+    COUNT(*) AS total_rows, 
+    COUNT(DISTINCT salinvno) AS unique_invoices,
+    SUM(CASE WHEN salgrossamt IS NULL OR salnetamt IS NULL THEN 1 ELSE 0 END) AS null_value_count,
+    SUM(CASE WHEN salinvdate > CURRENT_DATE OR saldlvdate > CURRENT_DATE THEN 1 ELSE 0 END) AS future_date_count,
+    SUM(CASE WHEN salnetamt < 0 THEN 1 ELSE 0 END) AS negative_amount_count
+FROM SDL_CSL_DAILYSALES_UNDELIVERED;
+========================================================================================================================================
+
+table_name: SDL_MDS_PH_GT_CUSTOMER
+solution: Address missing data and potential data type mismatches by identifying null or inconsistent entries. Recommend ensuring all mandatory fields are filled and data types are consistent with expected formats.
+snowflake query: 
+SELECT 
+    COUNT(*) AS total_rows,
+    SUM(CASE WHEN ID IS NULL THEN 1 ELSE 0 END) AS id_null_count,
+    SUM(CASE WHEN MUID IS NULL THEN 1 ELSE 0 END) AS muid_null_count,
+    SUM(CASE WHEN VERSIONNAME IS NULL THEN 1 ELSE 0 END) AS versionname_null_count,
+    SUM(CASE WHEN VERSIONNUMBER IS NULL THEN 1 ELSE 0 END) AS versionnumber_null_count,
+    SUM(CASE WHEN VERSION_ID IS NULL THEN 1 ELSE 0 END) AS version_id_null_count,
+    SUM(CASE WHEN VERSIONFLAG IS NULL THEN 1 ELSE 0 END) AS versionflag_null_count,
+    SUM(CASE WHEN NAME IS NULL THEN 1 ELSE 0 END) AS name_null_count,
+    SUM(CASE WHEN CODE IS NULL THEN 1 ELSE 0 END) AS code_null_count,
+    SUM(CASE WHEN CHANGETRACKINGMASK IS NULL THEN 1 ELSE 0 END) AS changetrackingmask_null_count,
+    SUM(CASE WHEN SALESMAN IS NULL THEN 1 ELSE 0 END) AS salesman_null_count,
+    SUM(CASE WHEN SALESMANDESC IS NULL THEN 1 ELSE 0 END) AS salesmandesc_null_count,
+    SUM(CASE WHEN REPORTGROUP2 IS NULL THEN 1 ELSE 0 END) AS reportgroup2_null_count,
+    SUM(CASE WHEN REPORTGROUP2DESC IS NULL THEN 1 ELSE 0 END) AS reportgroup2desc_null_count,
+    SUM(CASE WHEN REPORTGROUP3 IS NULL THEN 1 ELSE 0 END) AS reportgroup3_null_count,
+    SUM(CASE WHEN REPORTGROUP3DESC IS NULL THEN 1 ELSE 0 END) AS reportgroup3desc_null_count,
+    SUM(CASE WHEN REPORTGROUP4_CODE IS NULL THEN 1 ELSE 0 END) AS reportgroup4_code_null_count,
+    SUM(CASE WHEN REPORTGROUP4_NAME IS NULL THEN 1 ELSE 0 END) AS reportgroup4_name_null_count,
+    SUM(CASE WHEN REPORTGROUP4_ID IS NULL THEN 1 ELSE 0 END) AS reportgroup4_id_null_count,
+    SUM(CASE WHEN REPORTGROUP5 IS NULL THEN 1 ELSE 0 END) AS reportgroup5_null_count,
+    SUM(CASE WHEN REPORTGROUP5DESC IS NULL THEN 1 ELSE 0 END) AS reportgroup5desc_null_count,
+    SUM(CASE WHEN REPORTGROUP6 IS NULL THEN 1 ELSE 0 END) AS reportgroup6_null_count,
+    SUM(CASE WHEN REPORTGROUP6DESC IS NULL THEN 1 ELSE 0 END) AS reportgroup6desc_null_count,
+    SUM(CASE WHEN STATUS IS NULL THEN 1 ELSE 0 END) AS status_null_count,
+    SUM(CASE WHEN ADDRESS IS NULL THEN 1 ELSE 0 END) AS address_null_count,
+    SUM(CASE WHEN ZIP IS NULL THEN 1 ELSE 0 END) AS zip_null_count,
+    SUM(CASE WHEN SLMGRPCODE IS NULL THEN 1 ELSE 0 END) AS slmgrpcode_null_count,
+    SUM(CASE WHEN FREQUENCYVISIT IS NULL THEN 1 ELSE 0 END) AS frequencyvisit_null_count,
+    SUM(CASE WHEN STOREPRIORITIZATION IS NULL THEN 1 ELSE 0 END) AS storeprioritization_null_count,
+    SUM(CASE WHEN LATITUDE IS NULL THEN 1 ELSE 0 END) AS latitude_null_count,
+    SUM(CASE WHEN LONGITUDE IS NULL THEN 1 ELSE 0 END) AS longitude_null_count,
+    SUM(CASE WHEN REPORTGROUP9_CODE IS NULL THEN 1 ELSE 0 END) AS reportgroup9_code_null_count,
+    SUM(CASE WHEN REPORTGROUP9_NAME IS NULL THEN 1 ELSE 0 END) AS reportgroup9_name_null_count,
+    SUM(CASE WHEN REPORTGROUP9_ID IS NULL THEN 1 ELSE 0 END) AS reportgroup9_id_null_count,
+    SUM(CASE WHEN REPORTGROUP11_CODE IS NULL THEN 1 ELSE 0 END) AS reportgroup11_code_null_count,
+    SUM(CASE WHEN REPORTGROUP11_NAME IS NULL THEN 1 ELSE 0 END) AS reportgroup11_name_null_count,
+    SUM(CASE WHEN REPORTGROUP11_ID IS NULL THEN 1 ELSE 0 END) AS reportgroup11_id_null_count,
+    SUM(CASE WHEN SDTRCT_CODE IS NULL THEN 1 ELSE 0 END) AS sdtrct_code_null_count,
+    SUM(CASE WHEN SDTRCT_NAME IS NULL THEN 1 ELSE 0 END) AS sdtrct_name_null_count,
+    SUM(CASE WHEN SDTRCT_ID IS NULL THEN 1 ELSE 0 END) AS sdtrct_id_null_count,
+    SUM(CASE WHEN DISTCODE_CODE IS NULL THEN 1 ELSE 0 END) AS distcode_code_null_count,
+    SUM(CASE WHEN DISTCODE_NAME IS NULL THEN 1 ELSE 0 END) AS distcode_name_null_count,
+    SUM(CASE WHEN DISTCODE_ID IS NULL THEN 1 ELSE 0 END) AS distcode_id_null_count,
+    SUM(CASE WHEN REPORTGROUP15DESC IS NULL THEN 1 ELSE 0 END) AS reportgroup15desc_null_count,
+    SUM(CASE WHEN ENTERDATETIME IS NULL THEN 1 ELSE 0 END) AS enterdatetime_null_count,
+    SUM(CASE WHEN ENTERUSERNAME IS NULL THEN 1 ELSE 0 END) AS enterusername_null_count,
+    SUM(CASE WHEN ENTERVERSIONNUMBER IS NULL THEN 1 ELSE 0 END) AS enterversionnumber_null_count,
+    SUM(CASE WHEN LASTCHGDATETIME IS NULL THEN 1 ELSE 0 END) AS lastchgdatetime_null_count,
+    SUM(CASE WHEN LASTCHGUSERNAME IS NULL THEN 1 ELSE 0 END) AS lastchgusername_null_count,
+    SUM(CASE WHEN LASTCHGVERSIONNUMBER IS NULL THEN 1 ELSE 0 END) AS lastchgversionnumber_null_count,
+    SUM(CASE WHEN VALIDATIONSTATUS IS NULL THEN 1 ELSE 0 END) AS validationstatus_null_count,
+    SUM(CASE WHEN ZIPCODE_CODE IS NULL THEN 1 ELSE 0 END) AS zipcode_code_null_count,
+    SUM(CASE WHEN ZIPCODE_NAME IS NULL THEN 1 ELSE 0 END) AS zipcode_name_null_count,
+    SUM(CASE WHEN ZIPCODE_ID IS NULL THEN 1 ELSE 0 END) AS zipcode_id_null_count,
+    SUM(CASE WHEN BARANGAYCODE_CODE IS NULL THEN 1 ELSE 0 END) AS barangaycode_code_null_count,
+    SUM(CASE WHEN BARANGAYCODE_NAME IS NULL THEN 1 ELSE 0 END) AS barangaycode_name_null_count,
+    SUM(CASE WHEN BARANGAYCODE_ID IS NULL THEN 1 ELSE 0 END) AS barangaycode_id_null_count,
+    SUM(CASE WHEN LONGLATSOURCE IS NULL THEN 1 ELSE 0 END) AS longlatsource_null_count
+FROM SDL_MDS_PH_GT_CUSTOMER;
+========================================================================================================================================
+

@@ -5202,3 +5202,191 @@ WHERE
     OR TRY_TO_NUMBER(INV_VALUE) IS NULL OR CAST(INV_VALUE AS NUMBER) < 0;
 ========================================================================================================================================
 
+```sql
+table_name: SDL_MDS_PH_DISTRIBUTOR_PRODUCT
+solution: 
+1. Missing Data: Several columns have missing data, such as 'versionflag', 'distcode_code', 'promostartperiod', and 'enterusername'. 
+   Solution: Implement data validation checks and ensure mandatory fields are filled before data insertion.
+   
+SQL Query:
+SELECT * 
+FROM SDL_MDS_PH_DISTRIBUTOR_PRODUCT
+WHERE versionflag IS NULL 
+   OR distcode_code IS NULL 
+   OR promostartperiod IS NULL 
+   OR enterusername IS NULL;
+
+2. Invalid Date Ranges: The 'promoendperiod' is earlier than 'promostartperiod' for some records.
+   Solution: Implement a constraint to ensure that 'promoendperiod' is always later than or equal to 'promostartperiod'.
+   
+SQL Query:
+SELECT * 
+FROM SDL_MDS_PH_DISTRIBUTOR_PRODUCT
+WHERE promoendperiod < promostartperiod;
+
+3. Duplicate Entries: Duplicate records might exist based on combinations of key identifiers.
+   Solution: Identify and remove duplicates, and enforce uniqueness constraints on key columns.
+   
+SQL Query:
+SELECT muid, COUNT(*)
+FROM SDL_MDS_PH_DISTRIBUTOR_PRODUCT
+GROUP BY muid
+HAVING COUNT(*) > 1;
+
+4. Invalid Validation Status: Records with 'validationstatus' as 'invalid' need review.
+   Solution: Implement a process to review and correct invalid entries.
+   
+SQL Query:
+SELECT * 
+FROM SDL_MDS_PH_DISTRIBUTOR_PRODUCT
+WHERE validationstatus = 'invalid';
+```
+
+Each solution addresses a specific anomaly and proposes a preventive measure alongside a Snowflake-compatible SQL query for detection.
+table_name: SDL_CSL_RDSSMWEEKLYTARGET_OUTPUT
+solution: 
+1. Identify and handle duplicate records.
+2. Identify and address negative target values.
+3. Verify and correct future target years beyond a reasonable range.
+4. Ensure the sum of weekly targets matches the target value.
+
+SQL Queries:
+1. Duplicate Records:
+sql
+SELECT DISTCODE, TARGETREFNO, COUNT(*) AS RECORD_COUNT
+FROM SDL_CSL_RDSSMWEEKLYTARGET_OUTPUT
+GROUP BY DISTCODE, TARGETREFNO
+HAVING RECORD_COUNT > 1;
+
+
+2. Negative Target Values:
+sql
+SELECT DISTINCT DISTCODE, TARGETREFNO, TARGETVALUE
+FROM SDL_CSL_RDSSMWEEKLYTARGET_OUTPUT
+WHERE TARGETVALUE < 0;
+
+
+3. Future Target Years:
+sql
+SELECT DISTINCT DISTCODE, TARGETREFNO, TARGETYEAR
+FROM SDL_CSL_RDSSMWEEKLYTARGET_OUTPUT
+WHERE TARGETYEAR > YEAR(CURRENT_DATE) + 5;
+
+
+4. Weekly Targets Sum Mismatch:
+sql
+SELECT DISTINCT DISTCODE, TARGETREFNO, TARGETVALUE, 
+    (WEEK1 + WEEK2 + WEEK3 + WEEK4 + WEEK5) AS SUM_WEEKLY
+FROM SDL_CSL_RDSSMWEEKLYTARGET_OUTPUT
+WHERE TARGETVALUE != (WEEK1 + WEEK2 + WEEK3 + WEEK4 + WEEK5);
+table_name: SDL_CSL_DAILYSALES_UNDELIVERED
+solution: 
+1. Missing Data Anomalies
+   - Check for columns with missing values to identify records with incomplete data.
+   - SQL Query:
+     sql
+     SELECT *
+     FROM SDL_CSL_DAILYSALES_UNDELIVERED
+     WHERE salinvno IS NULL
+        OR salinvdate IS NULL
+        OR salnetamt IS NULL
+        OR prdcode IS NULL;
+     
+   - Recommendation: Ensure mandatory fields are filled during data entry or processing. Implement validation rules.
+
+2. Data Type Anomalies
+   - Check for incorrect data types, especially in numeric fields where text might have been entered.
+   - SQL Query:
+     sql
+     SELECT *
+     FROM SDL_CSL_DAILYSALES_UNDELIVERED
+     WHERE TRY_TO_NUMBER(salgrossamt) IS NULL
+        AND salgrossamt IS NOT NULL;
+     
+   - Recommendation: Validate data types during ETL processes to prevent type mismatches.
+
+3. Date Anomalies
+   - Identify records with invalid date sequences, such as delivery dates before invoice dates.
+   - SQL Query:
+     sql
+     SELECT *
+     FROM SDL_CSL_DAILYSALES_UNDELIVERED
+     WHERE saldlvdate < salinvdate;
+     
+   - Recommendation: Implement date checks to ensure logical consistency of timestamps.
+
+4. Duplicate Records
+   - Detect potential duplicates based on unique fields like invoice number.
+   - SQL Query:
+     sql
+     SELECT salinvno, COUNT(*)
+     FROM SDL_CSL_DAILYSALES_UNDELIVERED
+     GROUP BY salinvno
+     HAVING COUNT(*) > 1;
+     
+   - Recommendation: Use unique constraints or deduplication processes to prevent duplicate entries.
+
+
+These solutions and queries focus on detecting common data anomalies related to missing values, incorrect data types, invalid date sequences, and duplicate records. Each solution includes a recommendation to address the identified anomaly.
+table_name: PRODBU_PRODUCTBUSINESSUNIT
+solution: The sample data is empty, suggesting potential issues with data ingestion or extraction. First, verify data loading processes and ensure data is being inserted into the table. Check ETL jobs and data pipelines for errors. If the data is supposed to be populated and isn't due to issues in the data source or ETL, address those issues first. Once data is populated, use the following queries to detect anomalies.
+
+SQL Queries:
+-- Check for missing or null values in critical columns
+SELECT 
+    COUNT(*) AS total_rows,
+    COUNT(CASE WHEN PRODUCTID IS NULL THEN 1 END) AS null_productid,
+    COUNT(CASE WHEN BUSINESSUNITID IS NULL THEN 1 END) AS null_businessunitid,
+    COUNT(CASE WHEN PRODUCTTYPE IS NULL THEN 1 END) AS null_producttype
+FROM PRODBU_PRODUCTBUSINESSUNIT;
+
+-- Check for duplicate records based on a unique constraint, assuming PRODUCTID should be unique
+SELECT 
+    PRODUCTID, 
+    COUNT(*) AS duplicate_count
+FROM PRODBU_PRODUCTBUSINESSUNIT
+GROUP BY PRODUCTID
+HAVING COUNT(*) > 1;
+
+-- Check for inconsistent data in ISLISTED, ISORDERABLE, ISRETURNABLE which should be 'Yes' or 'No'
+SELECT *
+FROM PRODBU_PRODUCTBUSINESSUNIT
+WHERE ISLISTED NOT IN ('Yes', 'No')
+   OR ISORDERABLE NOT IN ('Yes', 'No')
+   OR ISRETURNABLE NOT IN ('Yes', 'No');
+
+-- Check for negative values in MAXIMUMORDERQUANTITY which should always be non-negative
+SELECT *
+FROM PRODBU_PRODUCTBUSINESSUNIT
+WHERE MAXIMUMORDERQUANTITY < 0;
+
+
+This approach focuses on identifying common data quality issues such as missing, duplicate, inconsistent, or logically incorrect data. Adjustments to data loading and validation processes should address these anomalies.
+========================================================================================================================================
+
+table_name: SDL_CSL_UDCDETAILS
+solution:
+1. Negative IDs: The `masterid` and `run_id` columns contain negative values, which might be considered invalid if IDs are expected to be positive.
+   Solution: Verify the data source and ensure IDs are correctly entered. Consider altering the data type to enforce non-negative values if applicable.
+
+2. NULL values: The `mastervaluename` column contains NULL values.
+   Solution: Investigate why `mastervaluename` is missing and ensure data integrity. If NULLs are acceptable, confirm that downstream processes can handle them.
+
+3. Upload Flag Inconsistency: Rows with the `uploadflag` set to 'N' might indicate incomplete or unsuccessful uploads.
+   Solution: Investigate the process that sets the `uploadflag` and ensure it accurately reflects the data state or consider excluding these rows from further processing.
+
+4. Duplicate Timestamps: Both `createddate` and `crt_dttm` have identical values, which may be redundant.
+   Solution: Determine if both columns are necessary or if one can be removed to streamline the schema.
+
+Snowflake SQL Query:
+sql
+-- Query to detect anomalies in SDL_CSL_UDCDETAILS
+SELECT *
+FROM SDL_CSL_UDCDETAILS
+WHERE masterid < 0
+   OR run_id < 0
+   OR mastervaluename IS NULL
+   OR uploadflag = 'N'
+   OR createddate = crt_dttm;
+========================================================================================================================================
+
