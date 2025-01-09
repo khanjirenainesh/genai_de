@@ -1,0 +1,386 @@
+Certainly, here is the solution and the corresponding SQL query for detecting anomalies in the 'SALES_DATA' table:
+
+---
+
+**table_name:** SALES_DATA  
+**solution:** Review and correct negative values in 'tot_invc_val' and 'tot_invc_qty'. Ensure consistent 'to_crncy' values across similar transactions. Validate exchange rates ('ex_rt') for accuracy.
+
+**SQL Query:**
+sql
+SELECT *
+FROM SALES_DATA
+WHERE tot_invc_val < 0
+   OR tot_invc_qty < 0
+   OR to_crncy != 'KRW'
+   OR (to_crncy IN ('USD', 'SGD') AND ex_rt <= 0);
+
+
+This SQL query will help you identify rows with negative invoice values or quantities, inconsistent currency conversions, and potentially incorrect exchange rates, which are the root causes of the anomalies detected.
+========================================================================================================================================
+
+Certainly. Below are the solutions and the SQL query to identify anomalies in the `SALES_DATA` table:
+
+
+table_name : SALES_DATA
+solution : 
+1. Verify and correct the 'to_crncy' values to ensure they are consistent and align with the expected currency conversion logic.
+2. Check for duplicate entries based on key identifiers like 'sls_doc_typ', 'cust_no', 'cal_day', 'store_cd', and 'mat' and remove or consolidate duplicates as necessary.
+3. Validate exchange rates ('ex_rt') to ensure they match the expected conversion rates for the given date and currency pairs.
+
+SQL Query:
+SELECT *
+FROM SALES_DATA
+WHERE 
+    (to_crncy IN ('USD', 'SGD') AND ex_rt NOT BETWEEN 0.0007 AND 0.0011)
+    OR
+    (sls_doc_typ = 'ZF2K' AND cust_no IN (
+        SELECT cust_no
+        FROM SALES_DATA
+        GROUP BY sls_doc_typ, cust_no, cal_day, store_cd, matl_desc
+        HAVING COUNT(*) > 1
+    ))
+    OR
+    (ex_rt NOT BETWEEN 0.0007 AND 1.0001);
+
+
+This solution addresses the anomalies related to currency conversion inconsistencies, duplication of rows, and verification of exchange rates. The SQL query is crafted to be compatible with Snowflake's syntax and efficiently retrieves the anomalous data based on the described conditions.
+========================================================================================================================================
+
+table_name: SALES_DATA  
+solution: Correct currency exchange rates and ensure consistent currency conversion for all transactions to avoid duplicate entries.
+
+SQL query to get anomalies:
+
+sql
+SELECT 
+    sls_doc_typ,
+    billing_type,
+    cust_no,
+    fisc_yr,
+    fisc_mo,
+    cal_day,
+    fisc_wk_num,
+    sls_ofc_cv_cd,
+    sls_ofc_cv,
+    sls_grp_cv_cd,
+    sls_grp_cv,
+    sls_ofc_cy,
+    mega_brnd_cd,
+    brnd_desc,
+    mother_sku,
+    prod_hier_l2,
+    prod_hier_l3,
+    category_1,
+    categroy_2,
+    platform_ca,
+    core_plat,
+    prod_hier_l9,
+    key_acct_nm,
+    channel,
+    store_cd,
+    store_nm,
+    store_typ,
+    mat,
+    matl_desc,
+    ean_num,
+    tot_invc_val,
+    tot_invc_qty,
+    country,
+    edw_cust_nm,
+    currency,
+    from_crncy,
+    to_crncy,
+    ex_rt_typ,
+    ex_rt,
+    country_cd,
+    company_nm,
+    current_fisc_per
+FROM SALES_DATA
+WHERE (cust_no, cal_day, mat, to_crncy) IN (
+    SELECT cust_no, cal_day, mat, to_crncy
+    FROM SALES_DATA
+    GROUP BY cust_no, cal_day, mat, to_crncy
+    HAVING COUNT(*) > 1
+)
+ORDER BY cust_no, cal_day, mat, to_crncy;
+========================================================================================================================================
+
+table_name: SALES_DATA  
+solution: Identify and correct currency conversion inconsistencies by verifying exchange rate application, ensuring that 'to_crncy' matches the expected currency for each transaction.  
+
+SQL Query to get anomalies:  
+sql
+SELECT *  
+FROM SALES_DATA  
+WHERE (to_crncy IN ('USD', 'SGD') AND ex_rt <> 1.000000)  
+   OR (to_crncy = 'KRW' AND ex_rt <> 1.000000);
+========================================================================================================================================
+
+table_name : SALES_DATA  
+solution : The anomalies are primarily due to incorrect currency conversion or duplicate entries. Ensure consistent currency conversion rates and remove duplicate records. Verify the 'from_crncy' and 'to_crncy' values to ensure they match expected values for each transaction.  
+
+Snowflake SQL query to detect anomalies: 
+sql
+WITH CurrencyAnomalies AS (
+    SELECT 
+        *,
+        COUNT(*) OVER (PARTITION BY cust_no, cal_day, mat, from_crncy, to_crncy) AS duplicate_count
+    FROM 
+        SALES_DATA
+    WHERE 
+        (from_crncy = 'KRW' AND to_crncy IN ('USD', 'SGD') AND ex_rt NOT IN (0.000755, 0.001023))
+        OR (from_crncy = 'KRW' AND to_crncy = 'KRW' AND ex_rt <> 1.000000)
+),
+DuplicateAnomalies AS (
+    SELECT 
+        *
+    FROM 
+        CurrencyAnomalies
+    WHERE 
+        duplicate_count > 1
+)
+SELECT 
+    *
+FROM 
+    CurrencyAnomalies
+
+UNION ALL
+
+SELECT 
+    *
+FROM 
+    DuplicateAnomalies;
+========================================================================================================================================
+
+Certainly! Below is the solution provided in the specified format for the detected anomalies in the `SALES_DATA` table, along with a Snowflake-friendly SQL query to identify these anomalies.
+
+
+table_name : SALES_DATA
+solution : The anomalies are primarily due to repeated entries with different currency conversion rates. Normalize the data by ensuring that each transaction entry has a consistent currency conversion rate or is recorded only once per unique transaction identifier. Check for duplicates and maintain a single entry per unique transaction, ensuring consistent currency data across those entries.
+
+
+**SQL Query to Identify Anomalies:**
+
+sql
+WITH RankedSalesData AS (
+    SELECT *,
+           ROW_NUMBER() OVER (PARTITION BY sls_doc_typ, billing_type, cust_no, fisc_yr, fisc_mo, cal_day, fisc_wk_num, sls_ofc_cv_cd, sls_ofc_cv, sls_grp_cv_cd, sls_grp_cv, sls_ofc_cy, mega_brnd_cd, brnd_desc, mother_sku, prod_hier_l2, prod_hier_l3, category_1, categroy_2, platform_ca, core_plat, prod_hier_l9, key_acct_nm, channel, store_cd, store_nm, store_typ, mat, matl_desc, ean_num, tot_invc_val, tot_invc_qty, country, edw_cust_nm, currency, from_crncy, to_crncy, ex_rt_typ, ex_rt, country_cd, company_nm, current_fisc_per 
+                           ORDER BY ex_rt DESC) AS rn
+    FROM SALES_DATA
+)
+SELECT *
+FROM RankedSalesData
+WHERE rn > 1;
+
+
+This SQL query identifies duplicates in the `SALES_DATA` table based on all columns except for `ex_rt` and filters out those with a row number greater than 1, effectively flagging the anomalies that need resolution.
+========================================================================================================================================
+
+text
+table_name : SALES_DATA
+solution : Review the exchange rate discrepancies. Ensure 'ex_rt' values are consistent and correct for currency conversions. Check for data duplication and remove duplicate entries.
+
+-- SQL Query to get anomalies
+SELECT *
+FROM SALES_DATA
+WHERE (from_crncy <> to_crncy AND ex_rt = 1.000000)
+   OR (from_crncy = to_crncy AND ex_rt <> 1.000000)
+   OR EXISTS(
+       SELECT 1
+       FROM SALES_DATA AS sd2
+       WHERE SALES_DATA.cust_no = sd2.cust_no
+         AND SALES_DATA.cal_day = sd2.cal_day
+         AND SALES_DATA.store_cd = sd2.store_cd
+         AND SALES_DATA.mat = sd2.mat
+         AND SALES_DATA.ean_num = sd2.ean_num
+         AND SALES_DATA.object_id <> sd2.object_id
+   );
+========================================================================================================================================
+
+table_name: SALES_DATA  
+solution: The anomalies appear to be related to currency conversions for sales data where the exchange rates (`ex_rt`) and target currencies (`to_crncy`) are suspiciously low or incorrect. Review and correct exchange rates and ensure that currency conversions are accurately reflected. Specifically, check rows with multiple entries for different `to_crncy` values for the same transaction. Remove or adjust duplicate entries with incorrect currency conversion rates.
+
+SQL Query (Snowflake friendly) to identify anomalies:
+sql
+SELECT *
+FROM SALES_DATA
+WHERE (to_crncy IN ('USD', 'SGD') AND ex_rt IN (0.000755, 0.001023))
+   OR (to_crncy = 'KRW' AND ex_rt != 1.000000)
+   OR (cust_no, mat, cal_day, ex_rt, to_crncy) IN (
+       SELECT cust_no, mat, cal_day, ex_rt, to_crncy
+       FROM SALES_DATA
+       GROUP BY cust_no, mat, cal_day, ex_rt, to_crncy
+       HAVING COUNT(*) > 1
+   );
+========================================================================================================================================
+
+table_name : SALES_DATA
+solution : The anomalies are due to duplicate rows with varying currency conversions. Ensure that there are no duplicates by checking for unique combinations of key attributes such as 'cust_no', 'mat', 'cal_day', and 'from_crncy'. Remove duplicates and ensure consistent exchange rates for currency conversion.
+
+SQL Query to detect anomalies:
+SELECT 
+    cust_no, 
+    mat, 
+    cal_day, 
+    from_crncy, 
+    COUNT(*) as duplicate_count
+FROM 
+    SALES_DATA
+GROUP BY 
+    cust_no, 
+    mat, 
+    cal_day, 
+    from_crncy
+HAVING 
+    COUNT(*) > 1;
+
+
+This solution identifies the issue of duplicate entries due to different currency conversions for the same transaction and suggests a method to ensure data consistency by removing such duplicates. The provided SQL query identifies sets of rows with the same key attributes that appear more than once, which indicates duplicates.
+========================================================================================================================================
+
+Certainly! Below is the solution tailored to the anomalies detected in the 'SALES_DATA' table:
+
+
+table_name : SALES_DATA
+solution : Review and correct the 'from_crncy' and 'to_crncy' exchange rate inconsistencies, ensuring that exchange rates are accurate and consistent across similar transactions. Remove duplicate rows where identical rows appear multiple times with different exchange rates. Verify the 'tot_invc_val' and 'tot_invc_qty' for correctness and consistency.
+
+
+Here is the Snowflake-friendly SQL query to identify anomalies in the 'SALES_DATA' table:
+
+sql
+SELECT 
+    sls_doc_typ, billing_type, cust_no, fisc_yr, fisc_mo, cal_day, fisc_wk_num, sls_ofc_cv_cd, 
+    sls_ofc_cv, sls_grp_cv_cd, sls_grp_cv, sls_ofc_cy, mega_brnd_cd, brnd_desc, mother_sku, 
+    prod_hier_l2, prod_hier_l3, category_1, categroy_2, platform_ca, core_plat, prod_hier_l9, 
+    key_acct_nm, channel, store_cd, store_nm, store_typ, mat, matl_desc, ean_num, 
+    tot_invc_val, tot_invc_qty, country, edw_cust_nm, currency, from_crncy, to_crncy, 
+    ex_rt_typ, ex_rt, country_cd, company_nm, current_fisc_per
+FROM 
+    SALES_DATA
+WHERE 
+    (from_crncy != 'HKD' AND to_crncy = 'HKD' AND ex_rt = 1.00000)
+    OR
+    (from_crncy = 'HKD' AND to_crncy != 'HKD' AND ex_rt != 1.00000)
+    OR
+    (from_crncy != to_crncy AND (from_crncy, to_crncy) IN (SELECT from_crncy, to_crncy FROM SALES_DATA GROUP BY from_crncy, to_crncy HAVING COUNT(DISTINCT ex_rt) > 1))
+    OR
+    (tot_invc_val <= 0 OR tot_invc_qty <= 0)
+GROUP BY 
+    sls_doc_typ, billing_type, cust_no, fisc_yr, fisc_mo, cal_day, fisc_wk_num, sls_ofc_cv_cd, 
+    sls_ofc_cv, sls_grp_cv_cd, sls_grp_cv, sls_ofc_cy, mega_brnd_cd, brnd_desc, mother_sku, 
+    prod_hier_l2, prod_hier_l3, category_1, categroy_2, platform_ca, core_plat, prod_hier_l9, 
+    key_acct_nm, channel, store_cd, store_nm, store_typ, mat, matl_desc, ean_num, 
+    tot_invc_val, tot_invc_qty, country, edw_cust_nm, currency, from_crncy, to_crncy, 
+    ex_rt_typ, ex_rt, country_cd, company_nm, current_fisc_per
+HAVING 
+    COUNT(*) > 1;
+
+
+This query identifies rows with currency exchange rate inconsistencies and potential duplicate entries by grouping and filtering based on the conditions specified.
+========================================================================================================================================
+
+table_name: SALES_DATA
+solution: Correct inconsistent currency conversions and ensure uniform currency usage across transactions. Address duplicate rows by removing or consolidating them appropriately. Rectify missing or "Not Available" data entries.
+
+-- SQL query to identify anomalies
+WITH DuplicateRows AS (
+    SELECT *,
+           ROW_NUMBER() OVER (PARTITION BY cust_no, fisc_yr, fisc_mo, cal_day, mat, ean_num, tot_invc_val, tot_invc_qty, country ORDER BY sls_doc_typ) AS row_num
+    FROM SALES_DATA
+),
+CurrencyMismatch AS (
+    SELECT *
+    FROM SALES_DATA
+    WHERE from_crncy != to_crncy AND ex_rt != 1.00000
+),
+MissingData AS (
+    SELECT *
+    FROM SALES_DATA
+    WHERE brnd_desc = 'Not Available'
+       OR category_1 = 'Not Available'
+       OR platform_ca = 'Not Available'
+)
+
+SELECT * FROM DuplicateRows WHERE row_num > 1
+UNION ALL
+SELECT * FROM CurrencyMismatch
+UNION ALL
+SELECT * FROM MissingData;
+========================================================================================================================================
+
+table_name : SALES_DATA
+solution : 
+1. Verify and correct the `currency` and `to_crncy` fields to ensure consistency with `ex_rt`.
+2. Check for duplicate entries, especially those with identical `mat`, `store_cd`, and `cal_day`, and remove duplicates.
+3. Ensure `tot_invc_val` and `tot_invc_qty` are consistent with the `currency` conversion rates.
+4. Review `prod_hier_l2`, `prod_hier_l3`, and `category_1` for accurate categorization.
+5. Validate `country_cd` and `country` fields for uniformity and accuracy.
+
+SQL Query to identify anomalies:
+sql
+SELECT *
+FROM SALES_DATA
+WHERE (
+  (currency != to_crncy AND ex_rt != 1.00000) OR
+  (tot_invc_val / tot_invc_qty <= 0) OR
+  (currency IN ('USD', 'SGD') AND ex_rt = 1.00000) OR
+  EXISTS (
+    SELECT 1
+    FROM SALES_DATA AS sub
+    WHERE SALES_DATA.mat = sub.mat
+      AND SALES_DATA.store_cd = sub.store_cd
+      AND SALES_DATA.cal_day = sub.cal_day
+      AND SALES_DATA.ean_num = sub.ean_num
+      AND SALES_DATA.rowid <> sub.rowid
+  )
+);
+========================================================================================================================================
+
+table_name : SALES_DATA
+solution : Ensure that exchange rates are consistent and correct for each transaction. Verify and correct discrepancies in 'to_crncy' field where multiple currencies are listed for similar transactions. Check for duplication in records and remove any duplicates. Verify that 'categroy_2' column is consistently labeled and correct spelling from 'categroy_2' to 'category_2'.
+
+SQL Query to Detect Anomalies:
+SELECT *
+FROM SALES_DATA
+WHERE 
+  (cust_no, fisc_yr, fisc_mo, cal_day, mat) IN (
+    SELECT cust_no, fisc_yr, fisc_mo, cal_day, mat
+    FROM SALES_DATA
+    GROUP BY cust_no, fisc_yr, fisc_mo, cal_day, mat
+    HAVING COUNT(*) > 1
+  )
+  OR to_crncy IN ('SGD', 'USD')
+  OR categroy_2 IS NOT NULL;
+========================================================================================================================================
+
+Certainly, here is a concise solution for the anomalies detected in the 'SALES_DATA' table, along with a Snowflake-friendly SQL query to retrieve the anomalies:
+
+
+table_name: SALES_DATA
+solution: 
+- Review the negative invoice values and quantities for potential data entry errors or returns.
+- Verify the currency conversion for inconsistent currency entries.
+- Check for duplicate records that might lead to redundant data.
+- Ensure product descriptions and SKUs align with the sales data accurately.
+- Validate customer and store information for correctness and consistency.
+
+
+Here is a Snowflake-friendly SQL query to identify these anomalies:
+
+sql
+SELECT *
+FROM SALES_DATA
+WHERE tot_invc_val < 0
+   OR tot_invc_qty < 0
+   OR from_crncy <> to_crncy
+   OR (cust_no, fisc_yr, fisc_mo, cal_day, sls_doc_typ, billing_type) IN (
+       SELECT cust_no, fisc_yr, fisc_mo, cal_day, sls_doc_typ, billing_type
+       FROM SALES_DATA
+       GROUP BY cust_no, fisc_yr, fisc_mo, cal_day, sls_doc_typ, billing_type
+       HAVING COUNT(*) > 1
+   );
+
+
+This query checks for negative invoice values and quantities, mismatched currencies, and duplicate entries based on key fields.
+========================================================================================================================================
+

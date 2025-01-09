@@ -1,94 +1,748 @@
-table_name: MRCHR_RESPONSES
-solution: Identify and filter out records with negative or zero values where they don't make sense, such as pricedetails, facings, stockcount, categoryfacings, and categorylength. Ensure that all datetime fields are valid and logically consistent. Investigate records marked as 'OutOfStock' but with a positive stock count.
-snowflake query: 
+The following are the anomalies detected in the "SALES_DATA" table along with the solutions and Snowflake queries to address them:
+
+### Table: SALES_DATA
+- **Solution**: Detect and handle missing or null critical values, identify duplicate records, and ensure referential integrity.
+- **Snowflake Query**:
+
+sql
+-- Detect NULL values in critical columns
+SELECT *
+FROM SALES_DATA
+WHERE CHANNEL IS NULL 
+   OR PLATFORM_CA IS NULL 
+   OR MEGA_BRND_CD IS NULL 
+   OR SLS_GRP_CV IS NULL 
+   OR COMPANY_NM IS NULL 
+   OR COUNTRY IS NULL 
+   OR TOT_INVC_QTY IS NULL 
+   OR CUST_NO IS NULL 
+   OR KEY_ACCT_NM IS NULL 
+   OR EDW_CUST_NM IS NULL 
+   OR STORE_NM IS NULL 
+   OR COUNTRY_CD IS NULL 
+   OR SLS_OFC_CV IS NULL 
+   OR CATEGROY_2 IS NULL 
+   OR EX_RT IS NULL 
+   OR FROM_CRNCY IS NULL 
+   OR FISC_WK_NUM IS NULL 
+   OR SLS_DOC_TYP IS NULL 
+   OR TOT_INVC_VAL IS NULL 
+   OR SLS_GRP_CV_CD IS NULL 
+   OR CURRENT_FISC_PER IS NULL 
+   OR SLS_OFC_CY IS NULL 
+   OR SLS_OFC_CV_CD IS NULL 
+   OR MOTHER_SKU IS NULL 
+   OR TO_CRNCY IS NULL 
+   OR FISC_YR IS NULL 
+   OR CAL_DAY IS NULL 
+   OR CATEGORY_1 IS NULL 
+   OR STORE_CD IS NULL 
+   OR BILLING_TYPE IS NULL 
+   OR CORE_PLAT IS NULL 
+   OR MAT IS NULL 
+   OR EX_RT_TYP IS NULL 
+   OR PROD_HIER_L9 IS NULL 
+   OR MATL_DESC IS NULL 
+   OR PROD_HIER_L2 IS NULL 
+   OR PROD_HIER_L3 IS NULL 
+   OR FISC_MO IS NULL 
+   OR BRND_DESC IS NULL 
+   OR EAN_NUM IS NULL 
+   OR STORE_TYP IS NULL 
+   OR CURRENCY IS NULL;
+
+-- Detect duplicate records
+SELECT CHANNEL, PLATFORM_CA, MEGA_BRND_CD, SLS_GRP_CV, COMPANY_NM, COUNTRY, TOT_INVC_QTY, CUST_NO, 
+       KEY_ACCT_NM, EDW_CUST_NM, STORE_NM, COUNTRY_CD, SLS_OFC_CV, CATEGROY_2, EX_RT, FROM_CRNCY, 
+       FISC_WK_NUM, SLS_DOC_TYP, TOT_INVC_VAL, SLS_GRP_CV_CD, CURRENT_FISC_PER, SLS_OFC_CY, 
+       SLS_OFC_CV_CD, MOTHER_SKU, TO_CRNCY, FISC_YR, CAL_DAY, CATEGORY_1, STORE_CD, BILLING_TYPE, 
+       CORE_PLAT, MAT, EX_RT_TYP, PROD_HIER_L9, MATL_DESC, PROD_HIER_L2, PROD_HIER_L3, FISC_MO, 
+       BRND_DESC, EAN_NUM, STORE_TYP, CURRENCY, COUNT(*) AS count
+FROM SALES_DATA
+GROUP BY CHANNEL, PLATFORM_CA, MEGA_BRND_CD, SLS_GRP_CV, COMPANY_NM, COUNTRY, TOT_INVC_QTY, CUST_NO, 
+         KEY_ACCT_NM, EDW_CUST_NM, STORE_NM, COUNTRY_CD, SLS_OFC_CV, CATEGROY_2, EX_RT, FROM_CRNCY, 
+         FISC_WK_NUM, SLS_DOC_TYP, TOT_INVC_VAL, SLS_GRP_CV_CD, CURRENT_FISC_PER, SLS_OFC_CY, 
+         SLS_OFC_CV_CD, MOTHER_SKU, TO_CRNCY, FISC_YR, CAL_DAY, CATEGORY_1, STORE_CD, BILLING_TYPE, 
+         CORE_PLAT, MAT, EX_RT_TYP, PROD_HIER_L9, MATL_DESC, PROD_HIER_L2, PROD_HIER_L3, FISC_MO, 
+         BRND_DESC, EAN_NUM, STORE_TYP, CURRENCY
+HAVING COUNT(*) > 1;
+
+-- Check for referential integrity issues if applicable (e.g., foreign key relationships)
+-- This requires knowing the foreign key relationships which are not provided here.
+
+
+### Explanation:
+1. **NULL checks**: Identifies records where any critical column has a NULL value, which might indicate missing data.
+2. **Duplicate Detection**: Identifies duplicate records based on all columns, assuming a complete duplicate is not desirable.
+3. **Referential Integrity**: While not specifically checked here due to lack of explicit foreign key relationships, this solution assumes that you should ensure that any foreign key constraints are met.
+========================================================================================================================================
+
+Certainly! Below is the analysis of anomalies found in the `SALES_DATA` table, along with potential solutions and corresponding Snowflake queries to detect these issues.
+
+### Anomalies in SALES_DATA Table
+
+#### 1. Data Inconsistencies
+- **Solution**: Standardize data formats and validate data entries.
+- **Snowflake Query**:
+  sql
+  SELECT *
+  FROM SALES_DATA
+  WHERE LENGTH(CHANNEL) = 0 OR LENGTH(PLATFORM_CA) = 0;
+  
+
+#### 2. Missing or Null Critical Values
+- **Solution**: Identify critical columns and ensure data completeness.
+- **Snowflake Query**:
+  sql
+  SELECT *
+  FROM SALES_DATA
+  WHERE TOT_INVC_QTY IS NULL OR TOT_INVC_VAL IS NULL OR CUST_NO IS NULL;
+  
+
+#### 3. Referential Integrity Violations
+- **Solution**: Ensure foreign keys map to existing primary keys in related tables.
+- **Snowflake Query**:
+  sql
+  -- Assuming there is a CUSTOMER table with CUST_NO as primary key
+  SELECT *
+  FROM SALES_DATA
+  WHERE CUST_NO NOT IN (SELECT CUST_NO FROM CUSTOMER);
+  
+
+#### 4. Duplicate Records
+- **Solution**: Identify and consolidate duplicate entries.
+- **Snowflake Query**:
+  sql
+  SELECT CHANNEL, PLATFORM_CA, MEGA_BRND_CD, COUNT(*)
+  FROM SALES_DATA
+  GROUP BY CHANNEL, PLATFORM_CA, MEGA_BRND_CD
+  HAVING COUNT(*) > 1;
+  
+
+#### 5. Schema Issues
+- **Solution**: Ensure schema matches the intended design and data types are appropriate.
+- **Snowflake Query**:
+  sql
+  -- Check for unexpected data types or lengths
+  SELECT *
+  FROM SALES_DATA
+  WHERE LENGTH(COUNTRY) > 3 OR LENGTH(CURRENCY) > 3;
+  
+
+#### 6. Anomalous Patterns
+- **Solution**: Use statistical methods to detect outliers or unusual patterns.
+- **Snowflake Query**:
+  sql
+  -- Detect unusually high or low invoice values
+  SELECT *
+  FROM SALES_DATA
+  WHERE TOT_INVC_VAL > (SELECT AVG(TOT_INVC_VAL) + 3 * STDDEV(TOT_INVC_VAL) FROM SALES_DATA)
+     OR TOT_INVC_VAL < (SELECT AVG(TOT_INVC_VAL) - 3 * STDDEV(TOT_INVC_VAL) FROM SALES_DATA);
+  
+
+#### 7. Performance Bottlenecks
+- **Solution**: Optimize query performance by indexing and partitioning.
+- **Snowflake Query**:
+  sql
+  -- Identify slow queries or expensive operations (conceptual example)
+  SELECT QUERY_TEXT, EXECUTION_TIME
+  FROM QUERY_HISTORY
+  WHERE DATABASE_NAME = 'YOUR_DATABASE' AND TABLE_NAME = 'SALES_DATA'
+  ORDER BY EXECUTION_TIME DESC
+  LIMIT 10;
+  
+
+This analysis identifies specific anomalies in the `SALES_DATA` table and provides solutions along with Snowflake queries to detect and address these issues.
+========================================================================================================================================
+
+I'm unable to directly analyze the specific anomalies since they were represented by placeholders (`[[...], [...]]`) in the metadata provided. However, I can guide you on how to structure your analysis and queries for detecting anomalies in the `SALES_DATA` table based on common scenarios. 
+
+Here is a template that you can use to detect anomalies, with hypothetical examples:
+
+1. **Missing or Null Critical Values:**
+    - Critical columns like `TOT_INVC_QTY`, `TOT_INVC_VAL`, `CUST_NO` should not have null values.
+
+    sql
+    SELECT * FROM SALES_DATA
+    WHERE TOT_INVC_QTY IS NULL OR TOT_INVC_VAL IS NULL OR CUST_NO IS NULL;
+    
+
+2. **Data Inconsistencies:**
+    - Ensure that `TOT_INVC_QTY` and `TOT_INVC_VAL` are not negative.
+
+    sql
+    SELECT * FROM SALES_DATA
+    WHERE TOT_INVC_QTY < 0 OR TOT_INVC_VAL < 0;
+    
+
+3. **Duplicate Records:**
+    - Check for duplicate records based on unique identifiers such as `CUST_NO`, `CAL_DAY`, `MAT`.
+
+    sql
+    SELECT CUST_NO, CAL_DAY, MAT, COUNT(*)
+    FROM SALES_DATA
+    GROUP BY CUST_NO, CAL_DAY, MAT
+    HAVING COUNT(*) > 1;
+    
+
+4. **Referential Integrity Violations:**
+    - Ensure `COUNTRY_CD` exists in a reference table called `COUNTRY_LOOKUP`.
+
+    sql
+    SELECT * FROM SALES_DATA
+    WHERE COUNTRY_CD NOT IN (SELECT COUNTRY_CD FROM COUNTRY_LOOKUP);
+    
+
+5. **Anomalous Patterns:**
+    - Detect unusually high or low sales values that deviate significantly from the norm.
+
+    sql
+    SELECT * FROM SALES_DATA
+    WHERE TOT_INVC_VAL > (SELECT AVG(TOT_INVC_VAL) + 3 * STDDEV(TOT_INVC_VAL) FROM SALES_DATA)
+       OR TOT_INVC_VAL < (SELECT AVG(TOT_INVC_VAL) - 3 * STDDEV(TOT_INVC_VAL) FROM SALES_DATA);
+    
+
+**Sample Solution Format:**
+
+- **table_name:** SALES_DATA
+- **solution:** Ensure all critical columns have non-null values.
+- **snowflake query:** 
+  sql
+  SELECT * FROM SALES_DATA
+  WHERE TOT_INVC_QTY IS NULL OR TOT_INVC_VAL IS NULL OR CUST_NO IS NULL;
+  
+
+- **table_name:** SALES_DATA
+- **solution:** Remove or correct duplicate records based on unique identifiers.
+- **snowflake query:**
+  sql
+  SELECT CUST_NO, CAL_DAY, MAT, COUNT(*)
+  FROM SALES_DATA
+  GROUP BY CUST_NO, CAL_DAY, MAT
+  HAVING COUNT(*) > 1;
+  
+
+You can use the above templates to build specific queries for detecting anomalies in your `SALES_DATA` table, and follow the same solution format for each type of anomaly you find.
+========================================================================================================================================
+
+To identify anomalies in the `SALES_DATA` table from Snowflake, you'll need to look for specific issues such as data inconsistencies, missing or null critical values, duplicate records, and other anomalies. Below is the analysis and corresponding Snowflake queries for detecting potential anomalies:
+
+### Analysis of Anomalies
+
+1. **Data Inconsistencies**: Check for inconsistencies in currency exchange rates or mismatched data types in numeric fields.
+2. **Missing or Null Critical Values**: Identify any key columns that have null values. This includes columns like `TOT_INVC_QTY`, `TOT_INVC_VAL`, and `CUST_NO`.
+3. **Duplicate Records**: Look for duplicate records based on key identifiers such as `CUST_NO`, `CAL_DAY`, `MAT`, and `STORE_CD`.
+4. **Referential Integrity Violations**: Ensure that references such as `COUNTRY_CD` match existing entries.
+5. **Anomalous Patterns**: Detect unusual patterns, such as very high or low invoice values compared to historical data.
+6. **Performance Bottlenecks**: Identify columns that could cause performance issues, like non-indexed columns frequently used in joins or filters.
+
+### Snowflake Queries for Anomalies
+
+#### 1. Data Inconsistencies
+
+sql
 SELECT * 
-FROM MRCHR_RESPONSES
-WHERE 
-    pricedetails <= 0 OR
-    facings <= 0 OR
-    stockcount < 0 OR
-    categoryfacings <= 0 OR
-    categorylength <= 0 OR
-    fetcheddatetime IS NULL OR
-    azuredatetime IS NULL OR
-    cdl_datetime IS NULL OR
-    (outofstock = 'Yes' AND stockcount > 0);
+FROM SALES_DATA 
+WHERE EX_RT <= 0 OR TOT_INVC_QTY < 0 OR TOT_INVC_VAL < 0;
+
+
+#### 2. Missing or Null Critical Values
+
+sql
+SELECT * 
+FROM SALES_DATA 
+WHERE TOT_INVC_QTY IS NULL 
+   OR TOT_INVC_VAL IS NULL 
+   OR CUST_NO IS NULL;
+
+
+#### 3. Duplicate Records
+
+sql
+SELECT CUST_NO, CAL_DAY, MAT, STORE_CD, COUNT(*) 
+FROM SALES_DATA 
+GROUP BY CUST_NO, CAL_DAY, MAT, STORE_CD 
+HAVING COUNT(*) > 1;
+
+
+#### 4. Referential Integrity Violations
+
+sql
+SELECT * 
+FROM SALES_DATA 
+WHERE COUNTRY_CD NOT IN (SELECT DISTINCT COUNTRY_CD FROM COUNTRY_TABLE);  -- Assume COUNTRY_TABLE exists
+
+
+#### 5. Anomalous Patterns
+
+sql
+SELECT * 
+FROM SALES_DATA 
+WHERE TOT_INVC_VAL > (SELECT AVG(TOT_INVC_VAL) * 10 FROM SALES_DATA);  -- Example threshold
+
+
+### Solutions
+
+- **Data Inconsistencies**: Ensure consistent data entry and validation rules at the point of data capture.
+- **Missing or Null Critical Values**: Implement data validation checks to prevent null entries in critical columns.
+- **Duplicate Records**: Establish a unique constraint or composite key for customer and transaction identifiers.
+- **Referential Integrity Violations**: Implement foreign key constraints where applicable.
+- **Anomalous Patterns**: Set alerts for data anomalies and review business logic for possible errors.
+
+These queries and solutions should help you identify and address the anomalies in the `SALES_DATA` table.
 ========================================================================================================================================
 
-table_name : SDL_CSL_DAILYSALES_UNDELIVERED
-solution : Ensure data completeness by checking for null values, validate numerical ranges, and verify date consistency.
-snowflake query : 
-SELECT 
-    COUNT(*) AS total_rows, 
-    COUNT(DISTINCT salinvno) AS unique_invoices,
-    SUM(CASE WHEN salgrossamt IS NULL OR salnetamt IS NULL THEN 1 ELSE 0 END) AS null_value_count,
-    SUM(CASE WHEN salinvdate > CURRENT_DATE OR saldlvdate > CURRENT_DATE THEN 1 ELSE 0 END) AS future_date_count,
-    SUM(CASE WHEN salnetamt < 0 THEN 1 ELSE 0 END) AS negative_amount_count
-FROM SDL_CSL_DAILYSALES_UNDELIVERED;
+To generate solutions and identify anomalies in the provided `SALES_DATA` table, first, let's analyze for potential issues based on the schema and typical anomalies in such datasets:
+
+### Table: SALES_DATA
+
+#### Possible Anomalies Detected:
+
+1. **Null or Missing Critical Values**:
+   - Critical columns such as `TOT_INVC_QTY`, `TOT_INVC_VAL`, `CUST_NO`, `CAL_DAY` should not have null values.
+
+2. **Data Inconsistencies**:
+   - Check for negative values in `TOT_INVC_QTY` and `TOT_INVC_VAL`.
+
+3. **Duplicate Records**:
+   - Detect duplicates based on unique identifiers or a combination of fields such as `CUST_NO`, `CAL_DAY`, `MAT`.
+
+4. **Referential Integrity Violations**:
+   - Ensure foreign keys like `COUNTRY_CD`, `SLS_OFC_CV_CD`, `SLS_GRP_CV_CD` refer to valid entries in their respective master tables.
+
+5. **Anomalous Patterns**:
+   - Analyze for unusual transaction volumes or values, e.g., unusually high `TOT_INVC_VAL` for certain `CUST_NO`.
+
+6. **Performance Bottlenecks**:
+   - Identify queries that could be optimized by checking for indexes on frequently queried columns.
+
+#### Solution and Queries:
+
+1. **Null or Missing Critical Values**:
+   - **Solution**: Ensure that critical fields have default values or are checked for nulls before insertion.
+   - **Snowflake Query**:
+     sql
+     SELECT * FROM SALES_DATA
+     WHERE TOT_INVC_QTY IS NULL
+        OR TOT_INVC_VAL IS NULL
+        OR CUST_NO IS NULL
+        OR CAL_DAY IS NULL;
+     
+
+2. **Data Inconsistencies**:
+   - **Solution**: Validate data before entry; use constraints to prevent negative values.
+   - **Snowflake Query**:
+     sql
+     SELECT * FROM SALES_DATA
+     WHERE TOT_INVC_QTY < 0 OR TOT_INVC_VAL < 0;
+     
+
+3. **Duplicate Records**:
+   - **Solution**: Implement unique constraints on combinations of critical columns.
+   - **Snowflake Query**:
+     sql
+     SELECT CUST_NO, CAL_DAY, MAT, COUNT(*)
+     FROM SALES_DATA
+     GROUP BY CUST_NO, CAL_DAY, MAT
+     HAVING COUNT(*) > 1;
+     
+
+4. **Referential Integrity Violations**:
+   - **Solution**: Establish foreign key relationships with master tables.
+   - **Snowflake Query**:
+     sql
+     SELECT * FROM SALES_DATA
+     WHERE COUNTRY_CD NOT IN (SELECT DISTINCT COUNTRY_CD FROM COUNTRY_MASTER)
+        OR SLS_OFC_CV_CD NOT IN (SELECT DISTINCT SLS_OFC_CV_CD FROM OFFICE_MASTER)
+        OR SLS_GRP_CV_CD NOT IN (SELECT DISTINCT SLS_GRP_CV_CD FROM GROUP_MASTER);
+     
+
+5. **Anomalous Patterns**:
+   - **Solution**: Use statistical methods to flag transactions outside normal ranges.
+   - **Snowflake Query**:
+     sql
+     SELECT * FROM SALES_DATA
+     WHERE TOT_INVC_VAL > (SELECT AVG(TOT_INVC_VAL) + 3 * STDDEV(TOT_INVC_VAL) FROM SALES_DATA);
+     
+
+6. **Performance Bottlenecks**:
+   - **Solution**: Add indexes on frequently queried columns like `CUST_NO`, `CAL_DAY`.
+   - **Snowflake Query**: No direct query, suggest using Snowflake's performance tuning tools.
+
+Each solution targets a specific type of anomaly, ensuring the data's integrity and reliability in the `SALES_DATA` table.
 ========================================================================================================================================
 
-table_name: SDL_MDS_PH_GT_CUSTOMER
-solution: Address missing data and potential data type mismatches by identifying null or inconsistent entries. Recommend ensuring all mandatory fields are filled and data types are consistent with expected formats.
+table_name: SALES_DATA
+solution: Identify missing or null critical values in key columns and ensure data completeness.
 snowflake query: 
-SELECT 
-    COUNT(*) AS total_rows,
-    SUM(CASE WHEN ID IS NULL THEN 1 ELSE 0 END) AS id_null_count,
-    SUM(CASE WHEN MUID IS NULL THEN 1 ELSE 0 END) AS muid_null_count,
-    SUM(CASE WHEN VERSIONNAME IS NULL THEN 1 ELSE 0 END) AS versionname_null_count,
-    SUM(CASE WHEN VERSIONNUMBER IS NULL THEN 1 ELSE 0 END) AS versionnumber_null_count,
-    SUM(CASE WHEN VERSION_ID IS NULL THEN 1 ELSE 0 END) AS version_id_null_count,
-    SUM(CASE WHEN VERSIONFLAG IS NULL THEN 1 ELSE 0 END) AS versionflag_null_count,
-    SUM(CASE WHEN NAME IS NULL THEN 1 ELSE 0 END) AS name_null_count,
-    SUM(CASE WHEN CODE IS NULL THEN 1 ELSE 0 END) AS code_null_count,
-    SUM(CASE WHEN CHANGETRACKINGMASK IS NULL THEN 1 ELSE 0 END) AS changetrackingmask_null_count,
-    SUM(CASE WHEN SALESMAN IS NULL THEN 1 ELSE 0 END) AS salesman_null_count,
-    SUM(CASE WHEN SALESMANDESC IS NULL THEN 1 ELSE 0 END) AS salesmandesc_null_count,
-    SUM(CASE WHEN REPORTGROUP2 IS NULL THEN 1 ELSE 0 END) AS reportgroup2_null_count,
-    SUM(CASE WHEN REPORTGROUP2DESC IS NULL THEN 1 ELSE 0 END) AS reportgroup2desc_null_count,
-    SUM(CASE WHEN REPORTGROUP3 IS NULL THEN 1 ELSE 0 END) AS reportgroup3_null_count,
-    SUM(CASE WHEN REPORTGROUP3DESC IS NULL THEN 1 ELSE 0 END) AS reportgroup3desc_null_count,
-    SUM(CASE WHEN REPORTGROUP4_CODE IS NULL THEN 1 ELSE 0 END) AS reportgroup4_code_null_count,
-    SUM(CASE WHEN REPORTGROUP4_NAME IS NULL THEN 1 ELSE 0 END) AS reportgroup4_name_null_count,
-    SUM(CASE WHEN REPORTGROUP4_ID IS NULL THEN 1 ELSE 0 END) AS reportgroup4_id_null_count,
-    SUM(CASE WHEN REPORTGROUP5 IS NULL THEN 1 ELSE 0 END) AS reportgroup5_null_count,
-    SUM(CASE WHEN REPORTGROUP5DESC IS NULL THEN 1 ELSE 0 END) AS reportgroup5desc_null_count,
-    SUM(CASE WHEN REPORTGROUP6 IS NULL THEN 1 ELSE 0 END) AS reportgroup6_null_count,
-    SUM(CASE WHEN REPORTGROUP6DESC IS NULL THEN 1 ELSE 0 END) AS reportgroup6desc_null_count,
-    SUM(CASE WHEN STATUS IS NULL THEN 1 ELSE 0 END) AS status_null_count,
-    SUM(CASE WHEN ADDRESS IS NULL THEN 1 ELSE 0 END) AS address_null_count,
-    SUM(CASE WHEN ZIP IS NULL THEN 1 ELSE 0 END) AS zip_null_count,
-    SUM(CASE WHEN SLMGRPCODE IS NULL THEN 1 ELSE 0 END) AS slmgrpcode_null_count,
-    SUM(CASE WHEN FREQUENCYVISIT IS NULL THEN 1 ELSE 0 END) AS frequencyvisit_null_count,
-    SUM(CASE WHEN STOREPRIORITIZATION IS NULL THEN 1 ELSE 0 END) AS storeprioritization_null_count,
-    SUM(CASE WHEN LATITUDE IS NULL THEN 1 ELSE 0 END) AS latitude_null_count,
-    SUM(CASE WHEN LONGITUDE IS NULL THEN 1 ELSE 0 END) AS longitude_null_count,
-    SUM(CASE WHEN REPORTGROUP9_CODE IS NULL THEN 1 ELSE 0 END) AS reportgroup9_code_null_count,
-    SUM(CASE WHEN REPORTGROUP9_NAME IS NULL THEN 1 ELSE 0 END) AS reportgroup9_name_null_count,
-    SUM(CASE WHEN REPORTGROUP9_ID IS NULL THEN 1 ELSE 0 END) AS reportgroup9_id_null_count,
-    SUM(CASE WHEN REPORTGROUP11_CODE IS NULL THEN 1 ELSE 0 END) AS reportgroup11_code_null_count,
-    SUM(CASE WHEN REPORTGROUP11_NAME IS NULL THEN 1 ELSE 0 END) AS reportgroup11_name_null_count,
-    SUM(CASE WHEN REPORTGROUP11_ID IS NULL THEN 1 ELSE 0 END) AS reportgroup11_id_null_count,
-    SUM(CASE WHEN SDTRCT_CODE IS NULL THEN 1 ELSE 0 END) AS sdtrct_code_null_count,
-    SUM(CASE WHEN SDTRCT_NAME IS NULL THEN 1 ELSE 0 END) AS sdtrct_name_null_count,
-    SUM(CASE WHEN SDTRCT_ID IS NULL THEN 1 ELSE 0 END) AS sdtrct_id_null_count,
-    SUM(CASE WHEN DISTCODE_CODE IS NULL THEN 1 ELSE 0 END) AS distcode_code_null_count,
-    SUM(CASE WHEN DISTCODE_NAME IS NULL THEN 1 ELSE 0 END) AS distcode_name_null_count,
-    SUM(CASE WHEN DISTCODE_ID IS NULL THEN 1 ELSE 0 END) AS distcode_id_null_count,
-    SUM(CASE WHEN REPORTGROUP15DESC IS NULL THEN 1 ELSE 0 END) AS reportgroup15desc_null_count,
-    SUM(CASE WHEN ENTERDATETIME IS NULL THEN 1 ELSE 0 END) AS enterdatetime_null_count,
-    SUM(CASE WHEN ENTERUSERNAME IS NULL THEN 1 ELSE 0 END) AS enterusername_null_count,
-    SUM(CASE WHEN ENTERVERSIONNUMBER IS NULL THEN 1 ELSE 0 END) AS enterversionnumber_null_count,
-    SUM(CASE WHEN LASTCHGDATETIME IS NULL THEN 1 ELSE 0 END) AS lastchgdatetime_null_count,
-    SUM(CASE WHEN LASTCHGUSERNAME IS NULL THEN 1 ELSE 0 END) AS lastchgusername_null_count,
-    SUM(CASE WHEN LASTCHGVERSIONNUMBER IS NULL THEN 1 ELSE 0 END) AS lastchgversionnumber_null_count,
-    SUM(CASE WHEN VALIDATIONSTATUS IS NULL THEN 1 ELSE 0 END) AS validationstatus_null_count,
-    SUM(CASE WHEN ZIPCODE_CODE IS NULL THEN 1 ELSE 0 END) AS zipcode_code_null_count,
-    SUM(CASE WHEN ZIPCODE_NAME IS NULL THEN 1 ELSE 0 END) AS zipcode_name_null_count,
-    SUM(CASE WHEN ZIPCODE_ID IS NULL THEN 1 ELSE 0 END) AS zipcode_id_null_count,
-    SUM(CASE WHEN BARANGAYCODE_CODE IS NULL THEN 1 ELSE 0 END) AS barangaycode_code_null_count,
-    SUM(CASE WHEN BARANGAYCODE_NAME IS NULL THEN 1 ELSE 0 END) AS barangaycode_name_null_count,
-    SUM(CASE WHEN BARANGAYCODE_ID IS NULL THEN 1 ELSE 0 END) AS barangaycode_id_null_count,
-    SUM(CASE WHEN LONGLATSOURCE IS NULL THEN 1 ELSE 0 END) AS longlatsource_null_count
-FROM SDL_MDS_PH_GT_CUSTOMER;
+SELECT * FROM SALES_DATA 
+WHERE CHANNEL IS NULL 
+   OR PLATFORM_CA IS NULL 
+   OR MEGA_BRND_CD IS NULL 
+   OR SLS_GRP_CV IS NULL 
+   OR COMPANY_NM IS NULL 
+   OR COUNTRY IS NULL 
+   OR TOT_INVC_QTY IS NULL 
+   OR CUST_NO IS NULL 
+   OR TOT_INVC_VAL IS NULL;
+
+solution: Detect duplicate records based on a unique combination of columns.
+snowflake query:
+SELECT CHANNEL, PLATFORM_CA, MEGA_BRND_CD, SLS_GRP_CV, COMPANY_NM, COUNTRY, COUNT(*)
+FROM SALES_DATA
+GROUP BY CHANNEL, PLATFORM_CA, MEGA_BRND_CD, SLS_GRP_CV, COMPANY_NM, COUNTRY
+HAVING COUNT(*) > 1;
+
+solution: Check for referential integrity violations, such as invalid foreign keys.
+snowflake query:
+SELECT * FROM SALES_DATA 
+WHERE SLS_GRP_CV_CD NOT IN (SELECT DISTINCT SLS_GRP_CV_CD FROM SOME_RELATED_TABLE);
+
+solution: Identify anomalous patterns, such as outliers in invoice values.
+snowflake query:
+SELECT * FROM SALES_DATA 
+WHERE TOT_INVC_VAL > (SELECT AVG(TOT_INVC_VAL) + 3 * STDDEV(TOT_INVC_VAL) FROM SALES_DATA);
+
+solution: Ensure correct data types and schema integrity.
+snowflake query:
+SELECT COLUMN_NAME, DATA_TYPE 
+FROM INFORMATION_SCHEMA.COLUMNS 
+WHERE TABLE_NAME = 'SALES_DATA' 
+AND DATA_TYPE NOT IN ('TEXT', 'FLOAT', 'NUMBER', 'DATE');
+========================================================================================================================================
+
+Certainly! Here's a concise analysis of the anomalies present in the "SALES_DATA" table, along with specific solutions and Snowflake queries to address them:
+
+### Table Name: SALES_DATA
+
+1. **Anomaly: Data Inconsistencies (e.g., Mismatched Currency Values)**
+   - **Solution:** Ensure consistent currency conversion by cross-verifying exchange rates and recalculating invoice values.
+   - **Snowflake Query:**
+     sql
+     SELECT *
+     FROM SALES_DATA
+     WHERE (TOT_INVC_VAL * EX_RT) <> (SELECT SUM(TOT_INVC_VAL) FROM SALES_DATA WHERE CURRENCY = TO_CRNCY);
+     
+
+2. **Anomaly: Missing or Null Critical Values**
+   - **Solution:** Identify and impute or correct missing critical fields such as 'CUST_NO', 'COUNTRY', or 'TOT_INVC_QTY'.
+   - **Snowflake Query:**
+     sql
+     SELECT *
+     FROM SALES_DATA
+     WHERE CUST_NO IS NULL
+        OR COUNTRY IS NULL
+        OR TOT_INVC_QTY IS NULL;
+     
+
+3. **Anomaly: Referential Integrity Violations**
+   - **Solution:** Verify and update foreign key references, ensuring all referenced keys exist.
+   - **Snowflake Query:**
+     sql
+     SELECT *
+     FROM SALES_DATA
+     WHERE SLS_GRP_CV_CD NOT IN (SELECT DISTINCT SLS_GRP_CV_CD FROM REFERENCE_TABLE);
+     
+
+4. **Anomaly: Duplicate Records**
+   - **Solution:** Remove duplicates by identifying and deleting redundant rows based on unique constraints.
+   - **Snowflake Query:**
+     sql
+     SELECT CUST_NO, STORE_CD, COUNT(*)
+     FROM SALES_DATA
+     GROUP BY CUST_NO, STORE_CD
+     HAVING COUNT(*) > 1;
+     
+
+5. **Anomaly: Schema Issues (e.g., Incorrect Data Types)**
+   - **Solution:** Correct data types for fields that are inconsistently formatted, such as numerical fields stored as text.
+   - **Snowflake Query:**
+     sql
+     SELECT *
+     FROM SALES_DATA
+     WHERE TRY_TO_NUMBER(TOT_INVC_QTY) IS NULL;
+     
+
+6. **Anomaly: Anomalous Patterns (e.g., Unusual Sales Trends)**
+   - **Solution:** Analyze and validate unusual data patterns or trends for potential errors.
+   - **Snowflake Query:**
+     sql
+     SELECT *
+     FROM SALES_DATA
+     WHERE TOT_INVC_VAL > (SELECT AVG(TOT_INVC_VAL) * 2 FROM SALES_DATA GROUP BY CHANNEL);
+     
+
+By executing these queries, you can detect and address specific anomalies within the "SALES_DATA" table in Snowflake, ensuring data integrity and consistency.
+========================================================================================================================================
+
+table_name: SALES_DATA
+solution: Detect missing or null critical values in key columns such as 'TOT_INVC_QTY', 'CUST_NO', 'SLS_DOC_TYP', and 'TOT_INVC_VAL'.
+snowflake_query: 
+SELECT * FROM SALES_DATA
+WHERE TOT_INVC_QTY IS NULL OR CUST_NO IS NULL OR SLS_DOC_TYP IS NULL OR TOT_INVC_VAL IS NULL;
+
+solution: Identify duplicate records based on unique identifiers such as 'CUST_NO', 'MAT' and 'CAL_DAY'.
+snowflake_query: 
+SELECT CUST_NO, MAT, CAL_DAY, COUNT(*)
+FROM SALES_DATA
+GROUP BY CUST_NO, MAT, CAL_DAY
+HAVING COUNT(*) > 1;
+
+solution: Check for referential integrity violations by ensuring that 'COUNTRY_CD' matches existing codes in a reference table.
+snowflake_query: 
+SELECT COUNTRY_CD 
+FROM SALES_DATA
+WHERE COUNTRY_CD NOT IN (SELECT COUNTRY_CD FROM COUNTRY_REFERENCE_TABLE);
+
+solution: Detect data inconsistencies by verifying that 'EX_RT' (exchange rate) values are consistent with 'FROM_CRNCY' and 'TO_CRNCY'.
+snowflake_query: 
+SELECT *
+FROM SALES_DATA
+WHERE EX_RT <= 0 OR FROM_CRNCY = TO_CRNCY AND EX_RT != 1;
+
+solution: Find anomalous patterns where 'TOT_INVC_VAL' (total invoice value) is significantly higher or lower than expected.
+snowflake_query: 
+SELECT *
+FROM SALES_DATA
+WHERE TOT_INVC_VAL > (SELECT AVG(TOT_INVC_VAL) FROM SALES_DATA) * 2
+   OR TOT_INVC_VAL < (SELECT AVG(TOT_INVC_VAL) FROM SALES_DATA) / 2;
+
+solution: Identify schema issues by checking for incorrect data types or column values that do not adhere to expected formats.
+snowflake_query: 
+SELECT *
+FROM SALES_DATA
+WHERE TRY_CAST(TOT_INVC_QTY AS FLOAT) IS NULL
+   OR TRY_CAST(CUST_NO AS NUMBER) IS NULL;
+
+solution: Detect performance bottlenecks by analyzing large datasets and identifying slow query executions or excessive data retrieval.
+snowflake_query: 
+-- Analyze queries using Snowflake's QUERY_HISTORY to identify long-running queries
+SELECT *
+FROM TABLE(information_schema.query_history())
+WHERE END_TIME > CURRENT_TIMESTAMP() - INTERVAL '1 hour'
+ORDER BY TOTAL_ELAPSED_TIME DESC;
+========================================================================================================================================
+
+table_name: SALES_DATA
+solution: 
+  - Duplicate Records: Ensure there are no duplicate records. You can identify duplicates by grouping the data based on key fields and checking for counts greater than 1.
+  - Missing Critical Values: Identify and address rows with null or missing values in critical columns like 'TOT_INVC_QTY', 'TOT_INVC_VAL', or 'CUST_NO'.
+  - Data Inconsistencies: Ensure that the 'EX_RT' values are consistent with known exchange rates; flag any anomalies.
+  - Referential Integrity Violations: Verify that any foreign keys or references to other tables are valid.
+  - Anomalous Patterns: Analyze sales data for outliers in quantity or value that deviate significantly from the norm.
+  - Performance Bottlenecks: Index critical columns frequently used in WHERE clauses to enhance query performance.
+
+snowflake query:
+  - To detect duplicate records:
+    sql
+    SELECT 
+      CHANNEL, PLATFORM_CA, MEGA_BRND_CD, SLS_GRP_CV, COMPANY_NM, COUNTRY, 
+      COUNT(*) as record_count
+    FROM SALES_DATA
+    GROUP BY 
+      CHANNEL, PLATFORM_CA, MEGA_BRND_CD, SLS_GRP_CV, COMPANY_NM, COUNTRY
+    HAVING COUNT(*) > 1;
+    
+
+  - To identify missing or null critical values:
+    sql
+    SELECT *
+    FROM SALES_DATA
+    WHERE TOT_INVC_QTY IS NULL OR TOT_INVC_VAL IS NULL OR CUST_NO IS NULL;
+    
+
+  - To check data inconsistencies in exchange rates:
+    sql
+    SELECT *
+    FROM SALES_DATA
+    WHERE EX_RT <= 0;
+    
+
+  - To ensure referential integrity (assuming reference checks to another table like 'CUSTOMER_DATA'):
+    sql
+    SELECT *
+    FROM SALES_DATA
+    WHERE CUST_NO NOT IN (SELECT CUST_NO FROM CUSTOMER_DATA);
+    
+
+  - To identify anomalous patterns in sales data:
+    sql
+    SELECT *
+    FROM SALES_DATA
+    WHERE TOT_INVC_QTY > (SELECT AVG(TOT_INVC_QTY) + 3 * STDDEV(TOT_INVC_QTY) FROM SALES_DATA)
+       OR TOT_INVC_VAL > (SELECT AVG(TOT_INVC_VAL) + 3 * STDDEV(TOT_INVC_VAL) FROM SALES_DATA);
+    
+
+  - To enhance performance by indexing:
+    - Create index on columns frequently queried:
+      sql
+      CREATE INDEX idx_sales_data ON SALES_DATA (CUST_NO, TOT_INVC_QTY, TOT_INVC_VAL);
+========================================================================================================================================
+
+Here's the analysis of the `SALES_DATA` table for potential anomalies:
+
+1. **Data Inconsistencies**: 
+   - Anomaly: Inconsistent values in columns like `CURRENCY` or `COUNTRY_CD`.
+
+2. **Missing or Null Critical Values**: 
+   - Anomaly: Presence of null values in critical columns like `TOT_INVC_QTY`, `TOT_INVC_VAL`, `CUST_NO`.
+
+3. **Referential Integrity Violations**: 
+   - Anomaly: Foreign key violations if any column references another table (like `CUST_NO` referencing a customer table).
+
+4. **Duplicate Records**: 
+   - Anomaly: Duplicate entries based on unique identifiers such as `MAT` and `CAL_DAY`.
+
+5. **Schema Issues**: 
+   - Anomaly: Mismatch between schema definition and data types, e.g., TEXT for columns that should be NUMBER.
+
+6. **Anomalous Patterns**: 
+   - Anomaly: Unusual patterns in sales data, such as negative `TOT_INVC_QTY` or `TOT_INVC_VAL`.
+
+7. **Performance Bottlenecks**: 
+   - Anomaly: Inefficient indexing or query performance issues due to large data volumes.
+
+### Solutions and Queries:
+
+#### Table: SALES_DATA
+
+- **Solution for Data Inconsistencies**: 
+  - Standardize and validate input data for columns like `CURRENCY` and `COUNTRY_CD`.
+  - **Snowflake Query**:
+    sql
+    SELECT CURRENCY, COUNTRY_CD, COUNT(*) 
+    FROM SALES_DATA 
+    GROUP BY CURRENCY, COUNTRY_CD 
+    HAVING COUNT(DISTINCT COUNTRY_CD) > 1;
+    
+
+- **Solution for Missing or Null Critical Values**: 
+  - Ensure data completeness by setting constraints or default values.
+  - **Snowflake Query**:
+    sql
+    SELECT * 
+    FROM SALES_DATA 
+    WHERE TOT_INVC_QTY IS NULL 
+       OR TOT_INVC_VAL IS NULL 
+       OR CUST_NO IS NULL;
+    
+
+- **Solution for Referential Integrity Violations**:
+  - Ensure foreign keys are properly defined and enforced.
+  - **Snowflake Query**:
+    sql
+    SELECT CUST_NO 
+    FROM SALES_DATA 
+    WHERE CUST_NO NOT IN (SELECT DISTINCT CUST_NO FROM CUSTOMER_TABLE);
+    
+
+- **Solution for Duplicate Records**: 
+  - Implement unique constraints or deduplication processes.
+  - **Snowflake Query**:
+    sql
+    SELECT MAT, CAL_DAY, COUNT(*) 
+    FROM SALES_DATA 
+    GROUP BY MAT, CAL_DAY 
+    HAVING COUNT(*) > 1;
+    
+
+- **Solution for Schema Issues**: 
+  - Align schema definitions with actual data types and ensure data type integrity.
+  - **Snowflake Query**:
+    sql
+    -- Analyze data types
+    SELECT COLUMN_NAME, DATA_TYPE 
+    FROM INFORMATION_SCHEMA.COLUMNS 
+    WHERE TABLE_NAME = 'SALES_DATA';
+    
+
+- **Solution for Anomalous Patterns**: 
+  - Set validation rules to avoid negative or unrealistic values.
+  - **Snowflake Query**:
+    sql
+    SELECT * 
+    FROM SALES_DATA 
+    WHERE TOT_INVC_QTY < 0 
+       OR TOT_INVC_VAL < 0;
+    
+
+- **Solution for Performance Bottlenecks**: 
+  - Optimize queries and indexing strategies.
+  - **Snowflake Query** (to identify slow queries):
+    sql
+    SELECT QUERY_TEXT, EXECUTION_TIME 
+    FROM TABLE(QUERY_HISTORY()) 
+    ORDER BY EXECUTION_TIME DESC 
+    LIMIT 10;
+    
+
+These solutions and queries aim to identify and rectify the anomalies present in the `SALES_DATA` table.
+========================================================================================================================================
+
+The analysis of the provided metadata and sample data from the `SALES_DATA` table in Snowflake has revealed several potential anomalies. Below are the detailed anomalies, solutions, and Snowflake queries tailored for each anomaly:
+
+1. **Data Inconsistencies:**
+    - **Solution:** Identify inconsistent data entries that do not align with expected patterns or formats.
+    - **Snowflake Query:**
+      sql
+      SELECT CHANNEL, PLATFORM_CA, MEGA_BRND_CD, COMPANY_NM, COUNTRY 
+      FROM SALES_DATA 
+      WHERE CHANNEL IS NULL OR PLATFORM_CA IS NULL OR MEGA_BRND_CD IS NULL 
+      OR COMPANY_NM IS NULL OR COUNTRY IS NULL;
+      
+
+2. **Missing or Null Critical Values:**
+    - **Solution:** Detect records with missing or null values in essential fields like `TOT_INVC_QTY`, `TOT_INVC_VAL`, etc.
+    - **Snowflake Query:**
+      sql
+      SELECT * 
+      FROM SALES_DATA 
+      WHERE TOT_INVC_QTY IS NULL OR TOT_INVC_VAL IS NULL;
+      
+
+3. **Referential Integrity Violations:**
+    - **Solution:** Check for any referential integrity issues by verifying foreign keys against the primary key values in related tables.
+    - **Snowflake Query:**
+      sql
+      SELECT DISTINCT CUST_NO 
+      FROM SALES_DATA 
+      WHERE CUST_NO NOT IN (SELECT DISTINCT CUST_NO FROM CUSTOMER_TABLE);
+      
+
+4. **Duplicate Records:**
+    - **Solution:** Identify duplicate records in the table based on a combination of critical fields.
+    - **Snowflake Query:**
+      sql
+      SELECT CUST_NO, KEY_ACCT_NM, STORE_CD, COUNT(*) 
+      FROM SALES_DATA 
+      GROUP BY CUST_NO, KEY_ACCT_NM, STORE_CD 
+      HAVING COUNT(*) > 1;
+      
+
+5. **Schema Issues:**
+    - **Solution:** Verify data types and schema definitions are consistently applied and match the expected structure.
+    - **Snowflake Query:**
+      sql
+      DESCRIBE TABLE SALES_DATA;
+      
+
+6. **Anomalous Patterns:**
+    - **Solution:** Detect records with values that significantly deviate from the norm, indicating potential data entry errors.
+    - **Snowflake Query:**
+      sql
+      SELECT * 
+      FROM SALES_DATA 
+      WHERE TOT_INVC_QTY < 0 OR TOT_INVC_VAL < 0;
+      
+
+7. **Performance Bottlenecks:**
+    - **Solution:** Analyze query performance issues by reviewing indexes and query execution plans.
+    - **Snowflake Query:**
+      sql
+      EXPLAIN INSERT INTO ANALYTICS_TABLE 
+      SELECT * FROM SALES_DATA WHERE ...;
+      
+
+These solutions and queries are designed to effectively address the anomalies identified in the `SALES_DATA` table within the Snowflake environment, ensuring data integrity and consistency.
 ========================================================================================================================================
 

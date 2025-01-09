@@ -5278,3 +5278,13 @@ WHERE
     OR TRY_TO_TIMESTAMP(CRTD_DTTM) IS NULL;
 ========================================================================================================================================
 
+table_name: SDL_GCCH_CUST_HIER
+solution: Address negative values in 'tamr_id', 'manualclassificationid', and 'suggestedclassificationscore'. Ensure positive values where applicable.
+snowflake query: 
+SELECT * 
+FROM SDL_GCCH_CUST_HIER 
+WHERE tamr_id < 0 
+   OR manualclassificationid < 0 
+   OR suggestedclassificationscore < 0;
+========================================================================================================================================
+
