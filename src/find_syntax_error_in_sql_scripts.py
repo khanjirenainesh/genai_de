@@ -16,19 +16,15 @@ from pathlib import Path
 from typing import Dict, List, Any
 from io import StringIO
 
-print("Starting script execution...")
-
 # Set up directory structure
 base_dir = str(Path(__file__).parent.parent)
 logs_dir = os.path.join(base_dir, "logs")
 os.makedirs(logs_dir, exist_ok=True)
-print(f"Created logs directory at: {logs_dir}")
 
 load_dotenv()
-print("Environment variables loaded")
+
 
 def main():
-    print("\n=== Initializing main function ===")
     
     # Load environment variables
     env_vars = {
@@ -38,21 +34,14 @@ def main():
         "AZURE_OPENAI_API_KEY": os.environ.get("AZURE_OPENAI_API_KEY"),
     }
     
-    # Check if all environment variables are present
-    missing_vars = [key for key, value in env_vars.items() if value is None]
-    if missing_vars:
-        print(f"WARNING: Missing environment variables: {missing_vars}")
-    else:
-        print("All required environment variables found")
 
-    print("Initializing Azure OpenAI model...")
     model = AzureChatOpenAI(
         azure_endpoint=env_vars.get("AZURE_OPENAI_ENDPOINT"),
         azure_deployment=env_vars.get("AZURE_OPENAI_4o_DEPLOYMENT_NAME"),
         openai_api_version=env_vars.get("AZURE_OPENAI_API_VERSION"),
         openai_api_key=env_vars.get("AZURE_OPENAI_API_KEY"),
     )
-    print("Azure OpenAI model initialized successfully")
+
 
     prompt =  """Analyze the following SQL code for potential issues. 
 	    Please check for:
@@ -72,8 +61,7 @@ def main():
 
     # Set up directory paths
     input_dir = os.path.join(base_dir, "data", "test")
-    print(f"\nBase directory: {base_dir}")
-    print(f"Input directory: {input_dir}")
+    
 
     # Set up analysis report file
     report_path = os.path.join(logs_dir, "sql_analysis_report.txt")
@@ -104,18 +92,14 @@ def main():
                     print(f"\nProcessing file: {file_path}")
                     
                     try:
-                        print(f"Reading file contents...")
                         with open(file_path, 'r') as file:
                             sql_code = file.read()
-                            print(f"File size: {len(sql_code)} characters")
 
-                            print("Creating prompt template...")
                             prompt_template = PromptTemplate(
                                 input_variables=["code"],
                                 template=prompt
                             )
                             
-                            print("Generating analysis...")
                             start_time = time.time()
                             result = model.invoke(prompt_template.format(code=sql_code))
                             analysis_text = result.content
@@ -138,21 +122,12 @@ Analysis Result:
 {analysis_text}
 {'='*50}
 """
-                            if "error" in analysis_text.lower() or "issue" in analysis_text.lower():
-                                print("Issues found in analysis")
-                                logging.warning(log_message)
-                                print(f"Issues found in file {file_path}. Check logs for details.")
-                            else:
-                                print("No issues found in analysis")
-                                logging.info(log_message)
-                                print(f"No issues found in file {file_path}")
                                 
                             processed_files_count += 1
                             print(f"Progress: {processed_files_count}/{sql_files_count} files processed")
                                 
                     except Exception as e:
                         error_message = f"Error processing file {file_path}: {str(e)}"
-                        print(f"ERROR: {error_message}")
                         logging.error(error_message)
                         report_file.write(f"ERROR processing {file_path}: {str(e)}\n")
                         report_file.write("="*80 + "\n\n")
