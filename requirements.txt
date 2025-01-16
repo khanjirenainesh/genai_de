@@ -10,6 +10,7 @@ faiss-cpu
 cv2
 PyMuPDF
 fitz
+sklearn
 azure-storage-file-datalake
 azure-functions
 python-tabular
