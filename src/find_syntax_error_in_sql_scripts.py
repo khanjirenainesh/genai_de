@@ -112,16 +112,7 @@ def main():
                             report_file.write("-"*80 + "\n")
                             report_file.write(analysis_text + "\n")
                             report_file.write("="*80 + "\n\n")
-                            
-                            # Log to log file
-                            log_message = f"""
-File Analysis: {file_path}
-Timestamp: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
-{'='*50}
-Analysis Result:
-{analysis_text}
-{'='*50}
-"""
+                        
                                 
                             processed_files_count += 1
                             print(f"Progress: {processed_files_count}/{sql_files_count} files processed")
