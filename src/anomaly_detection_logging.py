@@ -12,6 +12,8 @@ from io import StringIO
 import os
 import json
 import csv
+import time
+from datetime import datetime
 
 load_dotenv()
 
@@ -221,16 +223,30 @@ def main():
 
             # Get metadata for all tables
             metadata = db_connector.get_table_metadata(database, schema)
-            print(f"Processing {len(metadata['TABLE_NAME'].unique())} tables")
+            total_tables = len(metadata['TABLE_NAME'].unique())
+            print(f"Starting processing of {total_tables} tables")
             
             base_dir = str(Path(__file__).parent.parent)
             logs_dir = os.path.join(base_dir, "logs")
             os.makedirs(logs_dir, exist_ok=True)
-            report_path = os.path.join(logs_dir, "anomaly_detection_report.txt")
+            
+            # Create timestamp for the report
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            report_path = os.path.join(logs_dir, f"anomaly_detection_report_{timestamp}.txt")
+            
+            # Keep track of total processing time and tables processed
+            total_start_time = time.time()
+            tables_processed = 0
             
             # Process each table
             with open(report_path, "w") as report_file:
+                # Write header with start time
+                report_file.write(f"Analysis Start Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                report_file.write(f"Total Tables to Process: {total_tables}\n")
+                report_file.write(f"{'-'*80}\n\n")
+                
                 for table in metadata['TABLE_NAME'].unique():
+                    table_start_time = time.time()
                     print(f"\nProcessing table: {table}")
                     
                     # Get table data and metadata
@@ -241,7 +257,12 @@ def main():
                     chunk_size = 5000
                     chunks = [df[i:i + chunk_size] for i in range(0, df.shape[0], chunk_size)]
                     
+                    report_file.write(f"Table: {table}\n")
+                    report_file.write(f"Processing Start Time: {datetime.now().strftime('%H:%M:%S')}\n")
+                    report_file.write(f"Total Records: {len(df)}\n")
+                    
                     for chunk_num, chunk in enumerate(chunks, 1):
+                        chunk_start_time = time.time()
                         print(f"Processing chunk {chunk_num}/{len(chunks)} for table {table}")
                         
                         # Detect anomalies
@@ -252,16 +273,36 @@ def main():
                             anomaly_prompt = insight_generator.create_anomaly_prompt(anomaly_result)
                             semantic_prompt = insight_generator.create_semantic_prompt(chunk, table_metadata, table)
                             
-                            anomaly_insights = insight_generator.generate_insights(anomaly_prompt)
-                            semantic_insights = insight_generator.generate_insights(semantic_prompt)
+                            anomaly_insights = insight_generator.generate_insights(anomaly_prompt).replace("```plaintext", "").replace("```", "").strip()
+                            symantic_issues = insight_generator.generate_insights(semantic_prompt).replace("```plaintext", "").replace("```", "").strip()
                             
                             # Write results to file
-                            report_file.write(f"\n{'-'*80}\n")
-                            report_file.write(f"Table: {table} (Chunk {chunk_num})\n")
+                            report_file.write(f"\nChunk {chunk_num}/{len(chunks)}:\n")
                             report_file.write(f"Anomaly Analysis:\n{anomaly_insights}\n")
-                            report_file.write(f"Semantic Analysis:\n{semantic_insights}\n")
+                            report_file.write(f"Semantic Analysis:\n{symantic_issues}\n")
+                        
+                        chunk_time = time.time() - chunk_start_time
+                        report_file.write(f"Chunk Processing Time: {chunk_time:.2f} seconds\n")
+                    
+                    # Calculate and write table processing time
+                    table_time = time.time() - table_start_time
+                    tables_processed += 1
+                    
+                    report_file.write(f"\nTable Processing Time: {table_time:.2f} seconds")
+                    report_file.write(f"\nTables Processed: {tables_processed}/{total_tables}")
+                    report_file.write(f"\n{'-'*80}\n\n")
+                
+                # Write summary at the end
+                total_time = time.time() - total_start_time
+                report_file.write(f"\nFinal Summary:\n")
+                report_file.write(f"Total Tables Processed: {tables_processed}\n")
+                report_file.write(f"Total Processing Time: {total_time:.2f} seconds\n")
+                report_file.write(f"Average Time per Table: {(total_time/tables_processed):.2f} seconds\n")
+                report_file.write(f"Analysis End Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
 
             print(f"Analysis completed. Results written to {report_path}")
+            print(f"Total processing time: {total_time:.2f} seconds")
+            print(f"Total tables processed: {tables_processed}")
 
         finally:
             # Ensure database connection is closed
