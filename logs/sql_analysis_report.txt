@@ -1,0 +1,142 @@
+SQL Analysis Report - Generated on 2025-01-16 12:48:19
+================================================================================
+
+File: C:\Users\kanil01\genai_de\data\test\EDW_PHARMACY_ECOMMERCE_ANALYSIS.sql
+Analysis Time: 2025-01-16 12:48:22
+--------------------------------------------------------------------------------
+### Syntax Errors
+
+- **Line 3:** Missing comma after `PEF.WEEK_END_DT`.
+
+### Missing JOIN/WHERE Columns, Table Names
+
+- No issues found in this category.
+
+### Commas, FROM/WHERE Clause, Proper JOIN and CASE Statements in Nested Subqueries
+
+- **Line 67:** In the subquery for `EPPD`, the `GROUP BY 1` is not ideal because it relies on the position of the column, which can be error-prone. It is better to specify the exact column name.
+  
+- **Line 83:** In the subquery for `GCH`, the `LTRIM(MATERIALNUMBER, 0)` function call is incorrect. The `LTRIM` function typically only takes one argument, which is the string to be trimmed. If the intention is to remove leading zeros, a different approach or function should be used.
+
+No other issues were found in the code provided based on the specified criteria.
+================================================================================
+
+File: C:\Users\kanil01\genai_de\data\test\ITG_CHW_ECOMM_DATA.sql
+Analysis Time: 2025-01-16 12:48:23
+--------------------------------------------------------------------------------
+Syntax Errors:
+- Statement 1: Missing comma after `PERIODID AS TIME_PERIOD`.
+- Statement 1: Missing `FROM` clause before `AU_SDL.sdl_chw_ecomm_data`.
+
+Missing JOIN/WHERE Columns, Table Names:
+- Statement 2: `ITG_CHW_ECOMM_DATA` is referenced without a table alias or defined table.
+================================================================================
+
+File: C:\Users\kanil01\genai_de\data\test\ITG_METCASH_IND_GROCERY.sql
+Analysis Time: 2025-01-16 12:48:27
+--------------------------------------------------------------------------------
+### Syntax Errors
+
+- **Statement 1**: 
+  - The `DELETE FROM` statement is missing a `WHERE` clause before `WEEK_END_DT IN (...)`.
+
+- **Statement 2**: 
+  - No syntax errors detected.
+
+- **Statement 3**: 
+  - No syntax errors detected.
+
+### Missing JOIN/WHERE Columns, Table Names
+
+- **Statement 1**: 
+  - The `DELETE FROM` statement is missing a `WHERE` clause before `WEEK_END_DT IN (...)`.
+
+### Commas, FROM/WHERE Clause, Proper Join and Case Statements in Nested Subqueries
+
+- **Statement 1**: 
+  - No issues with commas, FROM/WHERE clause, joins, or case statements in nested subqueries detected.
+
+- **Statement 2**: 
+  - No issues with commas, FROM/WHERE clause, joins, or case statements in nested subqueries detected.
+
+- **Statement 3**: 
+  - No issues with commas, FROM/WHERE clause, joins, or case statements in nested subqueries detected.
+================================================================================
+
+File: C:\Users\kanil01\genai_de\data\test\itg_perenso_account_custom_list.sql
+Analysis Time: 2025-01-16 12:48:28
+--------------------------------------------------------------------------------
+```plaintext
+Syntax Errors:
+- No syntax errors found.
+
+Missing JOIN/WHERE Columns or Table Names:
+- No missing JOIN/WHERE columns or table names found.
+
+Commas, FROM/WHERE Clause, Proper Join and Case Statements in Nested Subqueries:
+- No issues found with commas, FROM/WHERE clause, proper join, and case statements in nested subqueries.
+
+```
+================================================================================
+
+File: C:\Users\kanil01\genai_de\data\test\itg_perenso_account_fields.sql
+Analysis Time: 2025-01-16 12:48:29
+--------------------------------------------------------------------------------
+Syntax Errors:
+- No issues found.
+
+Missing JOIN/WHERE Columns, Table Names:
+- No issues found.
+
+Commas, FROM/WHERE Clauses, Proper JOIN and CASE Statements in Nested Subqueries:
+- No issues found.
+================================================================================
+
+File: C:\Users\kanil01\genai_de\data\test\test.sql
+Analysis Time: 2025-01-16 12:48:36
+--------------------------------------------------------------------------------
+### Syntax Errors
+
+1. **Missing THEN Keyword in CASE Statement:**
+   - Line: `WHEN sls_org = '2400' AND LTRIM(matl_num,'0') NOT IN ('41812332','41802332') '2500'`
+     - Issue: Missing `THEN` keyword.
+
+2. **Missing JOIN Keyword:**
+   - Line: `INNER  rg_itg.itg_custgp_cogs_fg_control fgctl on`
+     - Issue: Missing `JOIN` keyword.
+
+3. **Incorrect Placement of 'END' in CASE Statement:**
+   - Line: `and case when cogs.acct_hier_shrt_desc = 'FG' then ltrim(cogs.acct_num,'0') = fgctl.gl_acct_num when cogs.acct_hier_shrt_desc = 'NTS' then '0' = fgctl.gl_acct_num end and`
+     - Issue: Incorrect placement of `end`.
+
+4. **Missing THEN Keyword in CASE Statement:**
+   - Line: `and case when cogs.acct_hier_shrt_desc = 'FG' then ltrim(cogs.acct_num,'0') = fgctl.gl_acct_num when cogs.acct_hier_shrt_desc = 'NTS' then '0' = fgctl.gl_acct_num end and`
+     - Issue: Missing `THEN` keyword for `when cogs.acct_hier_shrt_desc = 'NTS'`.
+
+5. **Missing Comma after Column:**
+   - Line: `ecd.cust_nm copa.nts,`
+     - Issue: Missing comma after `ecd.cust_nm`.
+
+6. **Missing Keyword in JOIN Clause:**
+   - Line: `left ecd ON LTRIM (ecd.cust_num,'0') = copa.cust_num`
+     - Issue: Missing `JOIN` keyword.
+
+### Missing JOIN/WHERE Columns, Table Names
+
+1. **Missing Table Name in FROM Clause:**
+   - Line: `) base`
+     - Issue: Missing `FROM` keyword and table name in the subquery.
+
+### Commas, FROM/WHERE Clause, Proper Join and Case Statements in Nested Subqueries
+
+1. **Missing Commas in SELECT Clause:**
+   - Line: `ecd.cust_nm copa.nts,`
+     - Issue: Missing comma after `ecd.cust_nm`.
+
+2. **Case Statement in JOIN Condition:**
+   - Line: `and case when cogs.acct_hier_shrt_desc = 'FG' then ltrim(cogs.acct_num,'0') = fgctl.gl_acct_num when cogs.acct_hier_shrt_desc = 'NTS' then '0' = fgctl.gl_acct_num end and`
+     - Issue: Using `CASE` statement directly in a `JOIN` condition; this is not standard practice and may lead to logic errors.
+
+These issues need to be addressed to ensure that the SQL code runs correctly and produces the expected results.
+================================================================================
+

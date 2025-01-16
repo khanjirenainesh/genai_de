@@ -1,0 +1,40 @@
+
+ --================statement 1================ 
+DELETE FROM AU_WKS.WKS_SDL_METCASH_IND_GROCERY
+WHERE
+  FILE_NAME = '"+(String)globalMap.get("f")+"';
+
+ --================statement 2================ 
+INSERT INTO AU_WKS.WKS_SDL_METCASH_IND_GROCERY (
+  SUPP_ID,
+  SUPP_NAME,
+  STATE,
+  BANNER_ID,
+  BANNER,
+  CUSTOMER_ID,
+  CUSTOMER,
+  PRODUCT_ID,
+  PRODUCT,
+  GROSS_SALES_WK1,
+  GROSS_SALES_WK2,
+  GROSS_SALES_WK3,
+  GROSS_SALES_WK4,
+  GROSS_SALES_WK5,
+  GROSS_CASES_WK1,
+  GROSS_CASES_WK2,
+  GROSS_CASES_WK3,
+  GROSS_CASES_WK4,
+  GROSS_CASES_WK5,
+  RUN_ID,
+  FILE_NAME,
+  CREATE_DT
+)
+SELECT
+  *,
+  '"+context.run_id+"' AS RUN_ID,
+  '"+(String)globalMap.get("f")+"' AS FILE_NAME,
+  CURRENT_TIMESTAMP()
+FROM AU_WKS.WKS_SDL_METCASH_IND_GROCERY_TEMP;
+
+ --================statement 3================ 
+DROP TABLE IF EXISTS AU_WKS.WKS_SDL_METCASH_IND_GROCERY_TEMP;
