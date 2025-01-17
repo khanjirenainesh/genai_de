@@ -1,0 +1,19 @@
+Data Warehouse: SNOWFLAKE
+Database/Project: RAW
+Schema/Dataset: TEST
+Analysis Start Time: 2025-01-17 17:47:06
+Total Tables to Process: 194
+--------------------------------------------------------------------------------
+
+Table: DAILYSALES
+Processing Start Time: 17:47:07
+Total Records: 5
+Chunk Processing Time: 0.04 seconds
+
+Table Processing Time: 1.11 seconds
+Tables Processed: 1/194
+--------------------------------------------------------------------------------
+
+Table: PRODBU_PRODUCTBUSINESSUNIT
+Processing Start Time: 17:47:08
+Total Records: 10

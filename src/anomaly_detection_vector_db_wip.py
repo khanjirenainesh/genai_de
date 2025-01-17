@@ -1,12 +1,25 @@
+from snowflake.connector.pandas_tools import write_pandas
 from langchain_openai import AzureChatOpenAI
 from sklearn.ensemble import IsolationForest
+from langchain_core.prompts import PromptTemplate
+from langchain_text_splitters import RecursiveJsonSplitter
 import snowflake.connector
 import pandas as pd
+import numpy as np
 from dotenv import load_dotenv
 from pathlib import Path
+from typing import Dict, List, Any, Tuple
+from io import StringIO
 import os
+import json
+import csv
 import time
+import faiss
 from datetime import datetime
+from sklearn.preprocessing import StandardScaler
+from concurrent.futures import ThreadPoolExecutor
+import pickle
+from typing import Optional, Dict, Any
 
 load_dotenv()
 
@@ -31,8 +44,75 @@ class Config:
         if missing_vars:
             raise ValueError(f"Missing required environment variables: {', '.join(missing_vars)}")
 
+class VectorDatabase:
+    """Handle vector database operations for efficient similarity search"""
+    def __init__(self):
+        self.index = None
+        self.scaler = StandardScaler()
+        self.stored_vectors = []
+        self.vector_metadata = []
+        
+    def build_index(self, data: np.ndarray, dimension: int):
+        """Build FAISS index for fast similarity search"""
+        self.index = faiss.IndexFlatL2(dimension)
+        self.index.add(data)
+        print(f"Built FAISS index with {self.index.ntotal} vectors")
+        
+    def add_vectors(self, vectors: np.ndarray, metadata: List[Dict]):
+        """Add vectors and their metadata to storage"""
+        if len(vectors) != len(metadata):
+            raise ValueError("Number of vectors must match number of metadata entries")
+        self.stored_vectors.extend(vectors)
+        self.vector_metadata.extend(metadata)
+        
+    def search(self, query_vector: np.ndarray, k: int = 5) -> Tuple[np.ndarray, np.ndarray]:
+        """Search for similar vectors"""
+        if self.index is None:
+            raise ValueError("Index not built yet")
+        return self.index.search(query_vector, k)
+
+class VectorDatabaseManager:
+    """Enhanced vector database manager with caching and persistence"""
+    def __init__(self, cache_dir: str = "vector_cache"):
+        self.cache_dir = cache_dir
+        self.vector_dbs: Dict[str, VectorDatabase] = {}
+        os.makedirs(cache_dir, exist_ok=True)
+        
+    def get_cache_path(self, table_name: str) -> str:
+        return os.path.join(self.cache_dir, f"{table_name}_vectors.pkl")
+        
+    def load_or_create_db(self, table_name: str) -> VectorDatabase:
+        """Load vector database from cache or create new one"""
+        cache_path = self.get_cache_path(table_name)
+        
+        if table_name in self.vector_dbs:
+            return self.vector_dbs[table_name]
+            
+        if os.path.exists(cache_path):
+            try:
+                with open(cache_path, 'rb') as f:
+                    self.vector_dbs[table_name] = pickle.load(f)
+                print(f"Loaded vector database from cache for table: {table_name}")
+                return self.vector_dbs[table_name]
+            except Exception as e:
+                print(f"Error loading cached vector database: {str(e)}")
+                
+        self.vector_dbs[table_name] = VectorDatabase()
+        return self.vector_dbs[table_name]
+        
+    def save_db(self, table_name: str):
+        """Save vector database to cache"""
+        if table_name in self.vector_dbs:
+            cache_path = self.get_cache_path(table_name)
+            try:
+                with open(cache_path, 'wb') as f:
+                    pickle.dump(self.vector_dbs[table_name], f)
+                print(f"Saved vector database to cache for table: {table_name}")
+            except Exception as e:
+                print(f"Error saving vector database to cache: {str(e)}")
+
 class DatabaseConnector:
-    # Handle database connections and queries
+    """Handle database connections and queries"""
     def __init__(self, config: Config):
         self.config = config
         self.conn = self._create_connection()
@@ -97,24 +177,69 @@ class DatabaseConnector:
             self.conn.close()
             print("Database connection closed")
 
-class AnomalyDetector:
-    """Handle anomaly detection in datasets"""
-    @staticmethod
-    def detect_anomalies(df: pd.DataFrame, table_name: str = "Unnamed Table") -> str:
-        print(f"Starting anomaly detection for table: {table_name}")
+class EnhancedDatabaseConnector(DatabaseConnector):
+    """Enhanced database connector with vector database integration"""
+    def __init__(self, config: Config):
+        super().__init__(config)
+        self.vector_manager = VectorDatabaseManager()
+        self.data_cache: Dict[str, pd.DataFrame] = {}
         
-        # Separate numeric and text columns
-        numeric_columns = [col for col in df.columns 
-                         if not pd.api.types.is_datetime64_any_dtype(df[col]) 
-                         and pd.to_numeric(df[col], errors='coerce').notna().all()]
+    def get_table_data(self, database: str, schema: str, table: str) -> pd.DataFrame:
+        """Enhanced data retrieval using vector database"""
+        cache_key = f"{database}.{schema}.{table}"
         
-        if not numeric_columns:
-            return f"No numeric data available for anomaly detection in table '{table_name}'."
-        
-        numeric_data = df[numeric_columns]
-        
-        # Initialize and fit Isolation Forest model
-        model = IsolationForest(
+        # Check if data is in memory cache
+        if cache_key in self.data_cache:
+            print(f"Retrieved data from memory cache for table: {table}")
+            return self.data_cache[cache_key]
+            
+        try:
+            # Get data from original method
+            df = super().get_table_data(database, schema, table)
+            
+            # Store in memory cache
+            self.data_cache[cache_key] = df
+            
+            # Initialize vector database for this table
+            vector_db = self.vector_manager.load_or_create_db(table)
+            
+            # Process numeric columns for vector database
+            numeric_columns = df.select_dtypes(include=['int64', 'float64']).columns
+            if not numeric_columns.empty:
+                numeric_data = df[numeric_columns].fillna(df[numeric_columns].mean())
+                vectors = self.vector_manager.vector_dbs[table].scaler.fit_transform(numeric_data).astype('float32')
+                
+                # Build or update vector index
+                vector_db.build_index(vectors, vectors.shape[1])
+                
+                # Store metadata
+                metadata = [{"row_index": i, "original_index": df.index[i]} 
+                          for i in range(len(df))]
+                vector_db.add_vectors(vectors, metadata)
+                
+                # Save vector database to cache
+                self.vector_manager.save_db(table)
+                
+            return df
+            
+        except Exception as e:
+            print(f"Error in enhanced data retrieval: {str(e)}")
+            raise
+            
+    def close(self):
+        """Close database connection and save vector databases"""
+        try:
+            # Save all vector databases
+            for table in self.vector_manager.vector_dbs:
+                self.vector_manager.save_db(table)
+        finally:
+            super().close()
+
+class EnhancedAnomalyDetector:
+    """Enhanced anomaly detector with vectorized operations"""
+    def __init__(self):
+        self.vector_manager = VectorDatabaseManager()
+        self.isolation_forest = IsolationForest(
             contamination=0.01,
             max_features=0.5,
             max_samples=0.5,
@@ -122,17 +247,53 @@ class AnomalyDetector:
             random_state=42
         )
         
-        anomalies = model.fit_predict(numeric_data)
-        anomaly_indices = numeric_data.index[anomalies == -1]
-        anomaly_rows = df.loc[anomaly_indices]
+    def prepare_data(self, df: pd.DataFrame) -> Tuple[np.ndarray, List[str]]:
+        """Prepare data for vector database"""
+        numeric_columns = df.select_dtypes(include=['int64', 'float64']).columns
         
-        if len(anomaly_indices) > 0:
-            print(f"Found {len(anomaly_indices)} anomalies in {table_name}")
+        if numeric_columns.empty:
+            raise ValueError("No numeric data available for processing")
+            
+        numeric_data = df[numeric_columns].copy()
+        numeric_data = numeric_data.fillna(numeric_data.mean())
+        
+        # Scale the data
+        scaled_data = StandardScaler().fit_transform(numeric_data)
+        return scaled_data.astype('float32'), numeric_columns.tolist()
+        
+    def detect_anomalies(self, df: pd.DataFrame, table_name: str = "Unnamed Table") -> str:
+        """Enhanced anomaly detection using vector database"""
+        try:
+            # Get or create vector database for this table
+            vector_db = self.vector_manager.load_or_create_db(table_name)
+            
+            # Prepare data
+            vectors, columns = self.prepare_data(df)
+            
+            # Use vector database for fast similarity search
+            k = 5
+            distances, indices = vector_db.search(vectors, k)
+            
+            # Calculate anomaly scores using distances
+            anomaly_scores = np.mean(distances, axis=1)
+            threshold = np.percentile(anomaly_scores, 95)
+            anomaly_indices = np.where(anomaly_scores > threshold)[0]
+            
+            if len(anomaly_indices) == 0:
+                return f"No anomalies detected in table '{table_name}'."
+                
+            # Get anomalous rows
+            anomaly_rows = df.iloc[anomaly_indices]
+            
             return (
-                f"Detected {len(anomaly_indices)} anomalies in the dataset of table '{table_name}'.\n"
+                f"Detected {len(anomaly_indices)} verified anomalies in table '{table_name}'.\n"
                 f"Anomalous rows:\n{anomaly_rows.to_string(index=False)}"
             )
-        return f"No anomalies detected in table '{table_name}'."
+            
+        except Exception as e:
+            print(f"Error in anomaly detection: {str(e)}")
+            return f"Error processing table '{table_name}': {str(e)}"
+
 
 class InsightGenerator:
     """Generate insights using Azure OpenAI"""
@@ -203,10 +364,9 @@ class InsightGenerator:
 
 def main():
     try:
-        # Initialize components
         config = Config()
-        db_connector = DatabaseConnector(config)
-        anomaly_detector = AnomalyDetector()
+        db_connector = EnhancedDatabaseConnector(config)  # Use enhanced connector
+        anomaly_detector = EnhancedAnomalyDetector()
         insight_generator = InsightGenerator(config)
 
         try:

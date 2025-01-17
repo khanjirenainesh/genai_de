@@ -7,6 +7,9 @@ pytesseract
 streamlit
 pdf2image
 faiss-cpu
+pyodbc
+pymysql
+psycopg2
 PyMuPDF
 fitz
 scikit-learn
