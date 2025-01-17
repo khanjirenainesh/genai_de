@@ -1,0 +1,1622 @@
+Analysis Start Time: 2025-01-17 15:01:45
+Total Tables to Process: 194
+--------------------------------------------------------------------------------
+
+Table: PROD_PRODUCT
+Processing Start Time: 15:01:46
+Total Records: 50
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : PROD_PRODUCT
+solution : 
+1. Issue: WIDTH has incorrect value -600.0 for PRODUCTID prod138.
+   Solution: Verify and correct the WIDTH to a valid non-negative value.
+   
+2. Issue: WIDTH has incorrect value -2300.0 for PRODUCTID prod172.
+   Solution: Verify and correct the WIDTH to a valid non-negative value.
+   
+3. Issue: MAXIMUMORDERQUANTITY has incorrect value -11000.0 for PRODUCTID prod138.
+   Solution: Verify and correct the MAXIMUMORDERQUANTITY to a valid non-negative value.
+   
+4. Issue: MAXIMUMORDERQUANTITY has incorrect value -45000.0 for PRODUCTID prod172.
+   Solution: Verify and correct the MAXIMUMORDERQUANTITY to a valid non-negative value.
+
+SQL Query:
+SELECT * 
+FROM PROD_PRODUCT
+WHERE WIDTH < 0 OR MAXIMUMORDERQUANTITY < 0;
+Semantic Analysis:
+1. **FETCHEDSEQUENCE**  
+   Issue: Contains a negative value (-16), which might be unexpected for a sequence number typically representing a positive integer or zero.
+
+2. **MAXIMUMORDERQUANTITY**  
+   Issue: Contains negative values, which may not align with the expected semantic meaning of a maximum order quantity, as quantities are typically non-negative.
+
+3. **ISRETURNABLE**  
+   No issues identified based on the sample data provided; however, if "yes" or "no" are expected, ensure that all values strictly adhere to these options.
+
+4. **FETCHEDDATETIME**, **AZUREDATETIME**, **CDL_DATETIME**  
+   No issues identified based on the sample data provided; ensure all values are valid datetime strings in the expected format.
+
+5. **CDL_SOURCE_FILE**, **LOAD_KEY**, **AZUREFILE**  
+   No issues identified based on the sample data provided; ensure all values conform to the expected text data type and maximum length constraints.
+
+6. **REGION**  
+   No issues identified based on the sample data provided; ensure all values are valid region identifiers within the expected set.
+Chunk Processing Time: 7.91 seconds
+
+Table Processing Time: 9.10 seconds
+Tables Processed: 1/194
+--------------------------------------------------------------------------------
+
+Table: SDL_DSTR_WOOLWORTH_INV
+Processing Start Time: 15:01:55
+Total Records: 10
+Chunk Processing Time: 0.00 seconds
+
+Table Processing Time: 1.04 seconds
+Tables Processed: 2/194
+--------------------------------------------------------------------------------
+
+Table: SDL_HK_IMS_WINGKEUNG_SEL_OUT
+Processing Start Time: 15:01:56
+Total Records: 31
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_HK_IMS_WINGKEUNG_SEL_OUT
+solution : 
+1. SALES_ORDER_QUANTITY should not be negative. Check and correct the SALES_ORDER_QUANTITY for both affected rows.
+2. NET_TRADE_SALES calculation should be verified as it does not match expected values when SALES_ORDER_QUANTITY is negative. Recalculate or correct NET_TRADE_SALES.
+
+SQL Query:
+SELECT * FROM SDL_HK_IMS_WINGKEUNG_SEL_OUT
+WHERE SALES_ORDER_QUANTITY < 0 OR (SALES_VOLUME + SALES_ORDER_QUANTITY * <unit_price>) != NET_TRADE_SALES;
+
+
+Note: Replace `<unit_price>` with the actual unit price used for calculation if available.
+Semantic Analysis:
+Issue: No issues detected based on the provided data sample and metadata.
+Chunk Processing Time: 3.17 seconds
+
+Table Processing Time: 4.19 seconds
+Tables Processed: 3/194
+--------------------------------------------------------------------------------
+
+Table: SDL_GCPH_CATEGORY
+Processing Start Time: 15:02:00
+Total Records: 10
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_GCPH_CATEGORY
+solution : 
+1. Correct negative TAMR_ID value: Replace -10 with a valid positive ID.
+2. Fix negative SUGGESTEDCLASSIFICATIONSCORE: Adjust it to a valid score, typically between 0 and 1.
+3. Correct negative LENGTH, NET_WEIGHT, VOLUME, GROSS_WEIGHT, HEIGHT, and WIDTH values: Convert to positive numbers or validate against the product specifications.
+4. Check negative VOLUME_UNIT and adjust to a proper unit, typically with positive values.
+
+SQL Query:
+SELECT * FROM SDL_GCPH_CATEGORY
+WHERE TAMR_ID < 0
+   OR SUGGESTEDCLASSIFICATIONSCORE < 0
+   OR LENGTH < 0
+   OR NET_WEIGHT < 0
+   OR VOLUME < 0
+   OR GROSS_WEIGHT < 0
+   OR HEIGHT < 0
+   OR WIDTH < 0
+   OR VOLUME_UNIT LIKE '%-%';
+Semantic Analysis:
+Column: DATEOFEXTRACT
+Issue: The data type is 'TEXT', but the sample data suggests a 'DATETIME' format should be used.
+
+Column: CDL_DATETIME
+Issue: The data type is 'TEXT', but the sample data suggests a 'DATETIME' format should be used.
+Chunk Processing Time: 4.80 seconds
+
+Table Processing Time: 5.68 seconds
+Tables Processed: 4/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MDS_PH_POS_CUSTOMERS
+Processing Start Time: 15:02:06
+Total Records: 5
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_MDS_PH_POS_CUSTOMERS
+solution : Issue with latitude and longitude values (93.0000000, 183.0000000) which exceed valid ranges. Correct latitude to range -90 to 90 and longitude to -180 to 180.
+
+SQL Query:
+sql
+SELECT * 
+FROM SDL_MDS_PH_POS_CUSTOMERS
+WHERE LATITUDE NOT BETWEEN -90 AND 90 
+   OR LONGITUDE NOT BETWEEN -180 AND 180;
+Semantic Analysis:
+Issue: ADDRESS1 - Contains negative-themed names which may not align with real-world address expectations.
+Issue: AE_NM - Contains negative-themed names which may not align with real-world names.
+Issue: AREA_NM - Contains negative-themed names which may not align with real-world area names.
+Issue: ZIPCODE_NAME - Contains negative-themed names which may not align with real-world zip code names.
+Issue: GSB - Contains negative-themed names which may not align with real-world group or area names.
+Issue: AREA - Contains negative-themed names which may not align with real-world area names.
+Issue: FORMAT - Contains negative-themed names which may not align with expected format names.
+Chunk Processing Time: 18.55 seconds
+
+Table Processing Time: 19.52 seconds
+Tables Processed: 5/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MDS_PH_DISTRIBUTOR_PRODUCT
+Processing Start Time: 15:02:25
+Total Records: 50
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name: SDL_MDS_PH_DISTRIBUTOR_PRODUCT
+solution: 
+1. ID anomaly: Correct ID from -5 to a positive integer.
+2. PROMOSTARTPERIOD anomaly: PROMOSTARTPERIOD 2023-05 should be earlier than PROMOENDPERIOD 2023-04. Correct PROMOENDPERIOD.
+3. BASEITEMCODE_ID anomaly: Correct negative BASEITEMCODE_ID from -10 to a valid positive ID.
+4. DISTCODE_ID anomaly: Correct negative DISTCODE_ID from -14 to a valid positive ID.
+
+SQL Query:
+SELECT * FROM SDL_MDS_PH_DISTRIBUTOR_PRODUCT
+WHERE ID < 0 
+OR PROMOSTARTPERIOD > PROMOENDPERIOD
+OR BASEITEMCODE_ID < 0
+OR DISTCODE_ID < 0;
+Semantic Analysis:
+1. **VERSIONNUMBER**: 
+   - Issue: The sample data contains a negative value (-1), which may not align with the semantic meaning of a version number, typically expected to be a positive integer or zero.
+
+2. **VERSIONNAME**: 
+   - Issue: The sample data includes a `None` value, which may not align with the expectation that a version name is a textual descriptor representing a specific version.
+
+3. **VERSIONFLAG**: 
+   - Issue: The sample data contains a `None` value. Typically, a version flag is expected to be a textual status indicator such as "active" or "inactive."
+
+4. **VALIDATIONSTATUS**: 
+   - Issue: The sample data includes a `None` value. Validation status is expected to be a clear descriptor, such as "valid" or "invalid."
+Chunk Processing Time: 18.09 seconds
+
+Table Processing Time: 18.94 seconds
+Tables Processed: 6/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MDS_PH_NPI_SALES_GROUPINGS
+Processing Start Time: 15:02:44
+Total Records: 50
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_MDS_PH_NPI_SALES_GROUPINGS
+solution : 
+1. VERSIONNUMBER 99999 is unusually high, consider reviewing the versioning system.
+2. VERSION_ID -1004 is negative, verify the logic for generating version IDs.
+3. VERSION_ID -1043 is negative, verify the logic for generating version IDs.
+4. VERSIONFLAG 'deprecated' must be reviewed for appropriate usage.
+5. VALIDATIONSTATUS 'Pending' should be processed or reviewed for completion.
+
+SQL Query:
+SELECT *
+FROM SDL_MDS_PH_NPI_SALES_GROUPINGS
+WHERE VERSIONNUMBER >= 99999
+   OR VERSION_ID < 0
+   OR VERSIONFLAG = 'deprecated'
+   OR VALIDATIONSTATUS = 'Pending';
+Semantic Analysis:
+Issue: `VERSIONNUMBER` contains negative values, which may be unexpected for a version number typically expected to be non-negative.
+
+Issue: `VERSION_ID` contains negative values, which may be unexpected for an identifier typically expected to be non-negative.
+Chunk Processing Time: 2.70 seconds
+
+Table Processing Time: 3.57 seconds
+Tables Processed: 7/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MDS_SG_PRODUCT_HIERARCHY
+Processing Start Time: 15:02:48
+Total Records: 51
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_MDS_SG_PRODUCT_HIERARCHY
+solution : 
+1. ID should not be negative. Correct the IDs from -1, -18, -50 to positive values.
+2. VERSIONNUMBER should not be negative. Correct VERSIONNUMBER from -10, -117, -149 to positive values.
+3. CHANGETRACKINGMASK should not be negative. Correct CHANGETRACKINGMASK from -1, -18, -50 to positive values.
+4. BRAND_MAPPING_ID, NEW_CATEGORY_ID, PRODUCT_TYPE_ID, PRODUCT_VARIANT_ID should not be negative. Correct these IDs from -1, -18, -50 to positive values.
+5. Ensure ENTERUSERNAME and LASTCHGUSERNAME are populated.
+
+SQL Query:
+SELECT * 
+FROM SDL_MDS_SG_PRODUCT_HIERARCHY 
+WHERE ID < 0 
+   OR VERSIONNUMBER < 0 
+   OR CHANGETRACKINGMASK < 0 
+   OR BRAND_MAPPING_ID < 0 
+   OR NEW_CATEGORY_ID < 0 
+   OR PRODUCT_TYPE_ID < 0 
+   OR PRODUCT_VARIANT_ID < 0 
+   OR ENTERUSERNAME IS NULL 
+   OR LASTCHGUSERNAME IS NULL;
+Semantic Analysis:
+Issue: MUID contains 'DUPLICATE' in some rows, which doesn't align with an expected unique identifier format.
+Issue: VERSIONNUMBER has negative values in some rows, which typically should be positive integers.
+Issue: VERSION_ID has a negative value in one row, which should generally be a positive integer.
+Issue: VERSIONFLAG contains 'None' in some rows, which should typically be one of the valid version states (e.g., 'alpha', 'beta', 'stable').
+Issue: ENTERUSERNAME contains 'None' in some rows, which should typically be a valid username.
+Issue: ENTERVERSIONNUMBER contains negative values in some rows, which should generally be positive integers.
+Issue: LASTCHGUSERNAME contains 'None' in some rows, which should typically be a valid username.
+Issue: LASTCHGVERSIONNUMBER has a negative value in one row, which typically should be a positive integer.
+Issue: VALIDATIONSTATUS contains 'None' in some rows, which should typically indicate a valid status such as 'VALID'.
+Chunk Processing Time: 10.04 seconds
+
+Table Processing Time: 10.98 seconds
+Tables Processed: 8/194
+--------------------------------------------------------------------------------
+
+Table: DAILYSALES
+Processing Start Time: 15:02:59
+Total Records: 5
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : DAILYSALES  
+solution : Correct negative SALGROSSAMT (-1500.000000) and PRDGROSSAMT (-1000.000000) to reflect actual sales values. Ensure PRDQTY (-10) is positive and consistent with sales data. Correct SALINVLINECOUNT (-5) to a non-negative integer.  
+
+SQL Query:  
+sql  
+SELECT *  
+FROM DAILYSALES  
+WHERE SALGROSSAMT < 0  
+   OR PRDGROSSAMT < 0  
+   OR PRDQTY < 0  
+   OR SALINVLINECOUNT < 0;
+Semantic Analysis:
+Issue: No issues found with the provided sample data.
+Chunk Processing Time: 5.83 seconds
+
+Table Processing Time: 6.72 seconds
+Tables Processed: 9/194
+--------------------------------------------------------------------------------
+
+Table: SDL_LA_GT_SALES_ORDER_FACT_TEMP
+Processing Start Time: 15:03:05
+Total Records: 5
+Chunk Processing Time: 0.00 seconds
+
+Table Processing Time: 0.87 seconds
+Tables Processed: 10/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MDS_PH_POS_PRODUCT_TEMP
+Processing Start Time: 15:03:06
+Total Records: 0
+
+Table Processing Time: 0.98 seconds
+Tables Processed: 11/194
+--------------------------------------------------------------------------------
+
+Table: SDL_KR_COUPANG_PA_REPORT
+Processing Start Time: 15:03:07
+Total Records: 10
+Chunk Processing Time: 0.00 seconds
+
+Table Processing Time: 0.86 seconds
+Tables Processed: 12/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MDS_SG_STORE_MASTER
+Processing Start Time: 15:03:08
+Total Records: 50
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_MDS_SG_STORE_MASTER
+solution : 
+- VERSION_ID for ID 5 should be corrected from -20 to a valid positive integer.
+- VERSIONNUMBER for ID 10 should be corrected from -15 to a valid positive integer.
+- ENTERVERSIONNUMBER for ID 14 should be corrected from -2 to a valid positive integer.
+- CUSTOMER_STORE_NAME for ID 10 should not be 'None', it should be corrected to a valid store name.
+
+SQL Query:
+SELECT * FROM SDL_MDS_SG_STORE_MASTER
+WHERE VERSION_ID < 0 
+   OR VERSIONNUMBER < 0 
+   OR ENTERVERSIONNUMBER < 0 
+   OR CUSTOMER_STORE_NAME = 'None';
+Semantic Analysis:
+Issue: `VERSIONNUMBER` - Contains negative numbers, which may be unexpected for a version numbering system that typically uses positive integers.
+
+Issue: `VERSION_ID` - Contains negative numbers, which might not be appropriate if version identifiers are typically positive.
+
+Issue: `ENTERVERSIONNUMBER` - Contains a negative number (-2), which may be unusual for version numbers.
+
+Note: The issues identified are based on the assumption that version numbers and identifiers are typically non-negative integers, which is a common convention.
+Chunk Processing Time: 15.11 seconds
+
+Table Processing Time: 16.23 seconds
+Tables Processed: 13/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MDS_VN_POS_CUSTOMERS
+Processing Start Time: 15:03:24
+Total Records: 47
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_MDS_VN_POS_CUSTOMERS
+solution : 
+1. Anomaly 1: Correct the invalid ID value -1 to a valid ID.
+2. Anomaly 1: Ensure VERSION_ID -5 is valid, it should be non-negative.
+3. Anomaly 1: Correct CHANGETRACKINGMASK value -999 to a valid positive integer.
+4. Anomaly 1: Correct VALIDATIONSTATUS 'Invalid' to 'Valid' after fixing issues.
+5. Anomaly 3: Validate VERSIONNUMBER 99999, ensure it is within an acceptable range.
+
+SQL Query:
+SELECT 
+  ID, MUID, VERSIONNAME, VERSIONNUMBER, VERSION_ID, VERSIONFLAG, 
+  NAME, CODE, CHANGETRACKINGMASK, CUSTOMER_CODE, CUSTOMER_NAME, 
+  STORE_CODE, CUSTOMER_STORE_CODE, STORE_NAME, ZONE, DISTRICT, 
+  FORMAT, PLANT, CHAIN, STATUS, NOTE_CLOSED_STORE, STORE_NAME_2, 
+  WH, ENTERDATETIME, ENTERUSERNAME, ENTERVERSIONNUMBER, 
+  LASTCHGDATETIME, LASTCHGUSERNAME, LASTCHGVERSIONNUMBER, 
+  VALIDATIONSTATUS
+FROM 
+  SDL_MDS_VN_POS_CUSTOMERS
+WHERE 
+  ID < 0 OR 
+  VERSION_ID < 0 OR 
+  CHANGETRACKINGMASK < 0 OR 
+  VALIDATIONSTATUS = 'Invalid' OR 
+  VERSIONNUMBER >= 100000;
+Semantic Analysis:
+Column: ID
+Issue: Contains negative values, which are typically unexpected for an ID column.
+
+Column: VERSIONNUMBER
+Issue: Contains an unusually large value (99999) which may not be typical for versioning sequences.
+
+Column: VERSION_ID
+Issue: Contains negative values, which are typically unexpected for an ID column.
+
+Column: ENTERVERSIONNUMBER
+Issue: Contains negative values, which are typically unexpected for versioning sequences.
+
+Column: VALIDATIONSTATUS
+Issue: Some values are either "Valid" or "Invalid", which suggests binary status, but the use of text could be more descriptive or standardized as Boolean.
+Chunk Processing Time: 6.61 seconds
+
+Table Processing Time: 7.50 seconds
+Tables Processed: 14/194
+--------------------------------------------------------------------------------
+
+Table: SDL_CSL_PRODUCTWISESTOCK
+Processing Start Time: 15:03:32
+Total Records: 5
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_CSL_PRODUCTWISESTOCK
+solution : 
+1. PRDID should not be negative. Correct value in PRDID column from -1002 to a valid positive ID.
+2. SALOPENSTOCK, UNSALOPENSTOCK, UNSALPURCHASE, UNSALPURRETURN, UNSALSALES, OFFERSTOCKIN, UNSALSTOCKOUT, OFFERSTOCKOUT, OFFERSALESRETURN, UNSALSTKJUROUT, OFFERBATTFROUT, OFFERLCNTFROUT, OFFERREPLACEMENT, OFFERCLSSTOCK should not be negative. Correct these values to ensure non-negative stock levels.
+
+SQL Query:
+SELECT *
+FROM SDL_CSL_PRODUCTWISESTOCK
+WHERE PRDID < 0
+   OR SALOPENSTOCK < 0
+   OR UNSALOPENSTOCK < 0
+   OR UNSALPURCHASE < 0
+   OR UNSALPURRETURN < 0
+   OR UNSALSALES < 0
+   OR OFFERSTOCKIN < 0
+   OR UNSALSTOCKOUT < 0
+   OR OFFERSTOCKOUT < 0
+   OR OFFERSALESRETURN < 0
+   OR UNSALSTKJUROUT < 0
+   OR OFFERBATTFROUT < 0
+   OR OFFERLCNTFROUT < 0
+   OR OFFERREPLACEMENT < 0
+   OR OFFERCLSSTOCK < 0;
+Semantic Analysis:
+Issue: `LCNCODE`  
+- The column name suggests it should contain a unique code associated with locations. However, there is a `None` value in the data, indicating a possible missing or incorrect entry for a location code.
+
+Issue: `PRDCODE`  
+- The column name implies it should contain product codes, but there is a `None` value in the data, suggesting a missing or incorrect product code.
+
+Issue: `FILE_NAME`  
+- The column name suggests it should contain the names of files. However, there is a `None` value, indicating a possible missing file name.
+
+Please ensure these columns have valid entries consistent with their intended purposes.
+Chunk Processing Time: 12.68 seconds
+
+Table Processing Time: 13.56 seconds
+Tables Processed: 15/194
+--------------------------------------------------------------------------------
+
+Table: ITG_SFA_PM
+Processing Start Time: 15:03:45
+Total Records: 50
+Chunk Processing Time: 0.00 seconds
+
+Table Processing Time: 0.90 seconds
+Tables Processed: 16/194
+--------------------------------------------------------------------------------
+
+Table: SDL_CSL_RETAILERHIERARCHY
+Processing Start Time: 15:03:46
+Total Records: 51
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_CSL_RETAILERHIERARCHY
+solution : 
+1. CMPCODE CMP049 has TURNOVER 0.0000, verify if this is accurate or update with correct turnover.
+2. RUN_ID values are negative, update RUN_ID to correct positive values.
+3. Ensure CREATEDDT and CRT_DTTM are consistent with expected data entry dates.
+
+SQL Query:
+sql
+SELECT *
+FROM SDL_CSL_RETAILERHIERARCHY
+WHERE TURNOVER = 0.0000
+   OR RUN_ID < 0
+   OR CREATEDDT != CRT_DTTM;
+Semantic Analysis:
+RUN_ID: Issue - Contains negative values, but typically IDs are expected to be positive.
+TURNOVER: Issue - Contains negative turnover values, which might not be expected unless indicating a loss.
+Chunk Processing Time: 9.56 seconds
+
+Table Processing Time: 10.44 seconds
+Tables Processed: 17/194
+--------------------------------------------------------------------------------
+
+Table: SDL_ECOM_AMS
+Processing Start Time: 15:03:57
+Total Records: 30
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_ECOM_AMS
+solution : 
+1. Correct negative BRAND_COMMISSION value from -5.0000 to a valid positive value.
+2. Update negative QTY from -1 to a valid positive integer.
+3. Resolve ITEM_NAME as it is currently 'None'; assign the correct item name.
+4. Verify PROMOTION_ID and update from 'None' to the correct promotion ID if applicable.
+
+SQL Query:
+SELECT * 
+FROM SDL_ECOM_AMS 
+WHERE BRAND_COMMISSION < 0 
+   OR QTY < 0 
+   OR ITEM_NAME = 'None' 
+   OR PROMOTION_ID = 'None';
+Semantic Analysis:
+Issue: `ORDER_ID`
+- The sample data shows a repeated value for `ORDER_ID` ("ORD123") with different times for `ORDER_COMPLETED_TIME`, which may indicate an error if `ORDER_ID` is expected to be a unique identifier for each order.
+
+Issue: `ORDER_COMPLETED_TIME`
+- In one instance, `ORDER_COMPLETED_TIME` ("2023-07-14 10:00:00") is before `ORDER_TIME` ("2023-07-15 09:00:00"), which is logically inconsistent as an order cannot be completed before it is placed.
+
+Note: The columns `ORDER_TIME`, `ORDER_COMPLETED_TIME`, `DEDUCTION_TIME`, `CRTD_DTTM`, and `FILENAME` do not have any issues with their semantic meanings based on the provided sample data.
+Chunk Processing Time: 13.12 seconds
+
+Table Processing Time: 14.03 seconds
+Tables Processed: 18/194
+--------------------------------------------------------------------------------
+
+Table: SDL_JNJ_CONSUMERREACH_CVS
+Processing Start Time: 15:04:11
+Total Records: 50
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_JNJ_CONSUMERREACH_CVS  
+solution :  
+1. RetailName is missing for all anomalous rows. Update with correct RetailName.  
+2. RUN_ID values are negative; update RUN_ID with positive integer values.  
+3. DISTRIBUTION value is 'None' for ID 20; update with valid distribution method.  
+
+SQL Query:  
+sql  
+SELECT *  
+FROM SDL_JNJ_CONSUMERREACH_CVS  
+WHERE RetailName IS NULL  
+   OR RUN_ID < 0  
+   OR DISTRIBUTION = 'None';
+Semantic Analysis:
+Column: ID
+Issue: Although the 'ID' column is expected to contain unique identifiers (possibly integers), it is defined as a 'TEXT' data type, which might not be suitable if numeric operations are intended. 
+
+Column: CDATE
+Issue: 'CDATE' represents dates (in the format 'YYYY-MM-DD') but is stored as 'TEXT'. Using a date data type would be more appropriate for date-specific operations.
+
+Column: RUN_ID
+Issue: 'RUN_ID' is stored as a 'NUMBER' but the sample data contains negative values, which might not logically align with its purpose as an identifier. Further validation might be needed to ensure the values align with expected use.
+
+Column: YEARMO
+Issue: 'YEARMO' represents a combination of year and month in a 'YYYYMM' format but is defined as 'TEXT'. A numeric data type might be more appropriate for chronological operations.
+Chunk Processing Time: 12.41 seconds
+
+Table Processing Time: 13.31 seconds
+Tables Processed: 19/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MDS_MY_TARGETS
+Processing Start Time: 15:04:24
+Total Records: 0
+
+Table Processing Time: 0.98 seconds
+Tables Processed: 20/194
+--------------------------------------------------------------------------------
+
+Table: SDL_POP6_SG_EXECUTED_VISITS
+Processing Start Time: 15:04:25
+Total Records: 10
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_POP6_SG_EXECUTED_VISITS
+solution : 
+1. Correct invalid longitude (-360.00000) to valid range (-180 to 180).
+2. Correct invalid latitude (180.00000) to valid range (-90 to 90).
+3. Verify and correct unplanned visit indicator (-99999).
+4. Verify and correct cancelled visit indicator (-99999).
+
+SQL Query:
+SELECT *
+FROM SDL_POP6_SG_EXECUTED_VISITS
+WHERE CHECK_IN_LONGITUDE NOT BETWEEN -180 AND 180
+   OR CHECK_IN_LATITUDE NOT BETWEEN -90 AND 90
+   OR CHECK_OUT_LONGITUDE NOT BETWEEN -180 AND 180
+   OR CHECK_OUT_LATITUDE NOT BETWEEN -90 AND 90
+   OR PLANNED_VISIT = -99999
+   OR CANCELLED_VISIT = -99999;
+Semantic Analysis:
+Issue: `CHECK_OUT_DATETIME` - The sample data contains a date in 2022 for one record, which seems inconsistent with the other records from 2023. This might indicate a data entry error.
+
+Issue: `CANCELLED_VISIT` - The sample data contains unexpected negative and large positive values (e.g., -99999, 99999, 100000), which may indicate data entry errors or misuse of the column meant to represent cancellation status. Typically, this should represent a binary state (e.g., 0 for not canceled, 1 for canceled).
+
+Issue: `CHECK_OUT_DATETIME` - In record 3, the check-in and check-out times are identical (11:00:00), which might be unusual for a visit and potentially indicates a data inconsistency.
+
+Issue: `POPDB_ID` and `POP_CODE` - In record 3, both fields have 'None,' which may suggest missing or incomplete data for this visit.
+Chunk Processing Time: 4.68 seconds
+
+Table Processing Time: 5.55 seconds
+Tables Processed: 21/194
+--------------------------------------------------------------------------------
+
+Table: SDL_CSL_RETAILERMASTER
+Processing Start Time: 15:04:31
+Total Records: 5
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name: SDL_CSL_RETAILERMASTER  
+solution:  
+- `RTRCRBILLS` has an impossible negative value: -9000. Correct the value to a valid non-negative number.  
+- `RTRCRDAYS` has an impossible negative value: -150. Correct the value to a valid non-negative number.  
+- `RTRDRUGGRACEDAYS` has an impossible negative value: -4. Correct the value to a valid non-negative number.  
+- `RTRCOSMETICGRACEDAYS` has an impossible negative value: -13. Correct the value to a valid non-negative number.  
+- `RUN_ID` has an impossible negative value: -3005. Correct the value to a valid non-negative number.  
+- `LICEXPIRYDATE`, `RTRDRUGEXPIRYDATE`, and `RTRPESTEXPIRYDATE` have an impossible future date: 5555-08-27. Correct to a realistic future date.  
+- `RTRFOODGRACEDAYS` has an impossible negative value: -30. Correct the value to a valid non-negative number.
+
+SQL Query:  
+sql  
+SELECT *  
+FROM SDL_CSL_RETAILERMASTER  
+WHERE RTRCRBILLS < 0  
+   OR RTRCRDAYS < 0  
+   OR RTRDRUGGRACEDAYS < 0  
+   OR RTRCOSMETICGRACEDAYS < 0  
+   OR RUN_ID < 0  
+   OR LICEXPIRYDATE > '2100-01-01'  
+   OR RTRDRUGEXPIRYDATE > '2100-01-01'  
+   OR RTRPESTEXPIRYDATE > '2100-01-01'  
+   OR RTRFOODGRACEDAYS < 0;
+Semantic Analysis:
+1. DISTCODE
+   Issue: "DUPLICATE_CODE" appears as a repeated value, suggesting it might not be unique as expected for a distribution code.
+
+2. RTRLATITUDE and RTRLONGITUDE
+   Issue: Values such as "91", "-91", "181", and "-181" are outside the valid range for latitude (-90 to 90) and longitude (-180 to 180).
+
+3. RUN_ID
+   Issue: Contains negative values like "-3003", which is unusual for an identifier unless explicitly intended to represent a specific condition.
+
+4. FILE_NAME
+   Issue: The column is expected to be text, but lacks specific semantic validations based on the provided data.
+Chunk Processing Time: 19.94 seconds
+
+Table Processing Time: 20.81 seconds
+Tables Processed: 22/194
+--------------------------------------------------------------------------------
+
+Table: SDL_CSL_SALESMANMASTER
+Processing Start Time: 15:04:51
+Total Records: 50
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_CSL_SALESMANMASTER
+solution : 
+1. DISTCODE cannot be None, should be a valid district code. Issue in row with SMID=50.
+2. SMID cannot be negative. Issue in row with SMID=-1.
+3. SMDAILYALLOWANCE cannot be negative. Issue in row with SMID=-1.
+4. SMCREDITDAYS cannot be negative. Issue in row with SMID=15.
+5. SMDAILYALLOWANCE seems unusually high. Verify value in row with SMID=50.
+6. SMMKTCREDIT is unusually high compared to SMMONTHLYSALARY. Verify value in row with SMID=50.
+7. SMCREDITDAYS is unusually high. Verify value in row with SMID=50.
+
+SQL Query:
+SELECT * FROM SDL_CSL_SALESMANMASTER
+WHERE DISTCODE IS NULL
+   OR SMID < 0
+   OR SMDAILYALLOWANCE < 0
+   OR SMCREDITDAYS < 0
+   OR SMDAILYALLOWANCE > 2000  -- Assuming 2000 is a threshold for unusually high allowance
+   OR SMMKTCREDIT > SMMONTHLYSALARY
+   OR SMCREDITDAYS > 365; -- Assuming 365 days is a practical limit
+Semantic Analysis:
+Issue: `DISTCODE` - The column name suggests it should contain a district code, but it has entries with 'None', indicating missing values. If `DISTCODE` is meant to be non-null, this is an issue.
+
+Issue: `SMCODE` - The column contains 'None' in some rows, which may indicate missing salesperson codes. If `SMCODE` is intended to be unique and always present, this is an issue.
+
+Issue: `SMNAME` - The column has 'None' in some rows, suggesting missing salesperson names. If every salesperson should have a name, this is an issue.
+
+Issue: `SMPHONENO` - The column has 'None' in some rows, indicating missing phone numbers. If every salesperson is expected to have a phone number, this is an issue.
+
+Issue: `SMEMAIL` - The column contains 'None' in some rows, suggesting missing email addresses. If every salesperson should have an email, this is an issue.
+
+Issue: `FILE_NAME` - The column name suggests a file naming convention, but it has entries with 'None', indicating missing file names. If `FILE_NAME` is expected to be present for every entry, this is an issue.
+Chunk Processing Time: 26.39 seconds
+
+Table Processing Time: 27.33 seconds
+Tables Processed: 23/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MDS_MY_GT_PRODUCT_MAPPING
+Processing Start Time: 15:05:19
+Total Records: 50
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_MDS_MY_GT_PRODUCT_MAPPING
+solution : 
+- Row ID 44: Correct `ENTERVERSIONNUMBER` as it is NaN, should match `VERSIONNUMBER` = 45.0.
+- Row ID 45: Correct `VERSIONNAME` as `VERSIONNUMBER` is NaN, should be 46.0.
+- Row ID 49: Correct `CHANGETRACKINGMASK` as it is NaN, should be a valid numeric value.
+
+SQL Query:
+SELECT * FROM SDL_MDS_MY_GT_PRODUCT_MAPPING
+WHERE 
+  (ID = 44 AND ENTERVERSIONNUMBER IS NULL) OR
+  (ID = 45 AND VERSIONNUMBER IS NULL) OR
+  (ID = 49 AND CHANGETRACKINGMASK IS NULL);
+Semantic Analysis:
+Issue: VERSIONNUMBER  
+- The column contains negative numbers and NaN values, which may not align with the expected semantic meaning of a version number being a positive number.
+
+Issue: VERSION_ID  
+- This column has negative numbers, which could be misleading if version IDs are expected to be positive.
+
+Issue: NON_SAP  
+- The column contains "Yes" and "No" values, which may not clearly align with the semantic meaning of "NON_SAP". A clearer description or binary indicator might be expected.
+
+The rest of the columns appear to have data that aligns with their column names based on the provided sample data.
+Chunk Processing Time: 23.20 seconds
+
+Table Processing Time: 24.17 seconds
+Tables Processed: 24/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MDS_PH_ISE_WEIGHTS
+Processing Start Time: 15:05:43
+Total Records: 52
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_MDS_PH_ISE_WEIGHTS
+solution : 
+1. ID -1: WEIGHT should not be negative. Correct WEIGHT from -50 to a valid positive value.
+2. ID 1: Set VALIDATIONSTATUS from invalid to valid as per business rules for inactive entries.
+3. ID 4: WEIGHT is unrealistically high. Validate and correct WEIGHT from 200 to a sensible value.
+
+SQL Query:
+SELECT * FROM SDL_MDS_PH_ISE_WEIGHTS 
+WHERE WEIGHT < 0 
+   OR VALIDATIONSTATUS = 'invalid' 
+   OR WEIGHT > 150; -- Assuming 150 is the threshold for realistic WEIGHT values
+Semantic Analysis:
+1. **ID**:  
+   Issue: Inconsistent values with duplicate ID `1` in multiple rows. Typically, IDs are expected to be unique.
+
+2. **VERSIONNAME**:  
+   Issue: None observed.
+
+3. **VERSIONNUMBER**:  
+   Issue: Contains negative values (-10), which may not make sense in the context of versioning where numbers usually increment.
+
+4. **VERSION_ID**:  
+   Issue: None observed.
+
+5. **ENTERVERSIONNUMBER**:  
+   Issue: None observed.
+
+6. **LASTCHGDATETIME**:  
+   Issue: None observed.
+
+7. **LASTCHGUSERNAME**:  
+   Issue: None observed.
+
+8. **LASTCHGVERSIONNUMBER**:  
+   Issue: None observed.
+
+9. **VALIDATIONSTATUS**:  
+   Issue: None observed.
+
+(Note: The output format is maintained as requested, and only columns with identified issues are listed.)
+Chunk Processing Time: 6.88 seconds
+
+Table Processing Time: 7.78 seconds
+Tables Processed: 25/194
+--------------------------------------------------------------------------------
+
+Table: SDL_POP6_SG_POP_LISTS
+Processing Start Time: 15:05:51
+Total Records: 50
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_POP6_SG_POP_LISTS
+solution : 
+1. STATUS value '12' is incorrect for POP_CODE 'CODE13'; update to correct value.
+2. RUN_ID value '-22' is incorrect for POP_CODE 'CODE22'; update to correct value.
+3. CRTD_DTTM value '2023-10-01 12:00:00' is incorrect for POP_CODE 'CODE32'; update to correct value.
+
+SQL Query:
+SELECT *
+FROM SDL_POP6_SG_POP_LISTS
+WHERE (STATUS = 12 AND POP_CODE = 'CODE13')
+   OR (RUN_ID = -22 AND POP_CODE = 'CODE22')
+   OR (CRTD_DTTM = '2023-10-01 12:00:00' AND POP_CODE = 'CODE32');
+Semantic Analysis:
+1. COLUMN_NAME: POP_LIST_DATE
+   Issue: Although the column name suggests it should contain dates, the metadata lists it as nullable, and the sample data supports that it contains a date format. Ensure the column consistently holds valid date values and that any null values are intended and properly handled.
+
+2. COLUMN_NAME: STATUS
+   Issue: The name "STATUS" might imply a categorical or binary status, but the data contains a range of numbers, including negative values. Clarification on what these numerical values represent is necessary to determine if they align with the intended meaning of "status."
+
+3. COLUMN_NAME: RUN_ID
+   Issue: The column name "RUN_ID" suggests a positive identifier or sequence number, but the sample data contains negative values. Verify if negative values are valid for this field.
+
+4. COLUMN_NAME: HASHKEY
+   Issue: The column name "HASHKEY" implies a unique hash, potentially for integrity or security purposes, but without additional context, it's challenging to determine if the provided strings are valid hash values. Ensure they are unique and meet any necessary hashing standards.
+Chunk Processing Time: 7.11 seconds
+
+Table Processing Time: 8.04 seconds
+Tables Processed: 26/194
+--------------------------------------------------------------------------------
+
+Table: SDL_DISTRIBUTOR_IVY_ORDER
+Processing Start Time: 15:05:59
+Total Records: 50
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_DISTRIBUTOR_IVY_ORDER
+solution : 
+1. QTY anomaly: Correct negative QTY for ORDER_ID ORD022 to a valid positive value.
+2. UOM anomaly: Correct negative UOM_COUNT for ORDER_ID ORD047 to a valid positive value.
+3. QTY anomaly: Correct negative QTY for ORDER_ID ORD048 to a valid positive value.
+
+SQL Query:
+SELECT * FROM SDL_DISTRIBUTOR_IVY_ORDER
+WHERE QTY < 0 OR UOM_COUNT < 0;
+Semantic Analysis:
+Issue: ORDER_LONGITUDE - The data type in the metadata is TEXT, but it holds numeric values representing longitude coordinates, which should be stored as a NUMBER or DECIMAL.
+
+Issue: ORDER_LATITUDE - The data type in the metadata is TEXT, but it holds numeric values representing latitude coordinates, which should be stored as a NUMBER or DECIMAL.
+
+Issue: CDL_DTTM - The data type in the metadata is TEXT, but it holds datetime values, which should be stored as TIMESTAMP or DATETIME.
+Chunk Processing Time: 5.81 seconds
+
+Table Processing Time: 6.80 seconds
+Tables Processed: 27/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MDS_PH_MSL_HDR
+Processing Start Time: 15:06:05
+Total Records: 52
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name: SDL_MDS_PH_MSL_HDR  
+solution:  
+- ID = -1: Set ID to a valid unique positive integer.  
+- VERSIONNUMBER = 9999: Correct VERSIONNUMBER to a valid version number within acceptable range.  
+- Version fields with 'None': Populate with appropriate version details or defaults.  
+- CHANGETRACKINGMASK = -1: Correct to a valid positive integer.  
+- CSG_CODE_CODE, CSG_CODE_NAME, CSG_CODE_ID with 'None' or 0: Populate with valid CSG code details.  
+- ENTERDATETIME, LASTCHGDATETIME with '2023-01-01', '2023-01-04', '2023-02-20': Verify and correct to actual change dates if incorrect.  
+- ENTERUSERNAME, LASTCHGUSERNAME, NAME, CODE, VERSIONFLAG with 'None': Populate with actual values where applicable.  
+- VALIDATIONSTATUS with 'None': Set to a valid validation status.  
+
+SQL Query:  
+sql  
+SELECT *  
+FROM SDL_MDS_PH_MSL_HDR  
+WHERE ID < 0  
+   OR VERSIONNUMBER = 9999  
+   OR VERSIONNAME IS NULL  
+   OR CHANGETRACKINGMASK < 0  
+   OR CSG_CODE_CODE IS NULL  
+   OR CSG_CODE_NAME IS NULL  
+   OR CSG_CODE_ID = 0  
+   OR ENTERDATETIME IN ('2023-01-01', '2023-01-04', '2023-02-20')  
+   OR ENTERUSERNAME IS NULL  
+   OR LASTCHGUSERNAME IS NULL  
+   OR NAME IS NULL  
+   OR CODE IS NULL  
+   OR VERSIONFLAG IS NULL  
+   OR VALIDATIONSTATUS IS NULL;
+Semantic Analysis:
+text
+Issue: MUID column contains only 'None' and one duplicate value 'duplicate-id-1', which may not align with its purpose of uniquely identifying records.
+
+Issue: VERSIONNAME column is entirely 'None', which may indicate missing version names.
+
+Issue: VERSION_ID column is entirely 'None', which suggests missing or incorrect version identifiers.
+
+Issue: VERSIONFLAG column is entirely 'None', which may indicate missing version flags.
+
+Issue: ENTERUSERNAME column is entirely 'None', which suggests missing user information related to entries.
+
+Issue: LASTCHGUSERNAME column is entirely 'None', indicating missing user information related to changes.
+
+Issue: VALIDATIONSTATUS column is entirely 'None', which may imply missing validation status information.
+Chunk Processing Time: 14.04 seconds
+
+Table Processing Time: 14.93 seconds
+Tables Processed: 28/194
+--------------------------------------------------------------------------------
+
+Table: SDL_CSL_DAILYSALES_UNDELIVERED
+Processing Start Time: 15:06:20
+Total Records: 5
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_CSL_DAILYSALES_UNDELIVERED
+solution : 
+1. Correct negative 'SALGROSSAMT' to positive or validate the entry.
+2. Verify and correct the 'SALDLVDATE' as it is earlier than 'SALINVDATE'.
+3. Validate negative 'PRDQTY' and correct it to a valid positive quantity.
+
+SQL Query:
+SELECT * FROM SDL_CSL_DAILYSALES_UNDELIVERED
+WHERE SALGROSSAMT < 0 
+   OR SALDLVDATE < SALINVDATE 
+   OR PRDQTY < 0;
+Semantic Analysis:
+Issue: None of the text columns have any issues with their semantic meaning and data alignment based on the provided sample data.
+Chunk Processing Time: 11.32 seconds
+
+Table Processing Time: 12.25 seconds
+Tables Processed: 29/194
+--------------------------------------------------------------------------------
+
+Table: SDL_ID_POS_CARREFOUR_STOCK
+Processing Start Time: 15:06:33
+Total Records: 51
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_ID_POS_CARREFOUR_STOCK
+solution : 
+1. Anomalous row with DEP_DESC 'Toys': Negative STOCK_QTY of -50.00 detected. Correct the STOCK_QTY to a non-negative value.
+2. Anomalous row with DEP_DESC 'Sports': Negative STOCK_QTY of -100.00 detected. Correct the STOCK_QTY to a non-negative value.
+
+SQL Query:
+SELECT *
+FROM SDL_ID_POS_CARREFOUR_STOCK
+WHERE STOCK_QTY < 0;
+Semantic Analysis:
+1. **DEP_DESC**:  
+   - No issue detected.
+
+2. **STOCK_QTY**:  
+   - Issue: Contains negative values, which might not align with typical expectations for stock quantities unless negative values are meant to represent returns or errors.
+
+3. **STOCK_AMT**:  
+   - Issue: Contains negative values, which might not align with typical expectations for stock amounts unless negative values are meant to represent returns or discounts.
+
+4. **STOCK_DAYS**:  
+   - Issue: Contains negative values, which is unusual as stock days are typically non-negative.
+
+5. **POS_CUST**:  
+   - No issue detected.
+
+6. **YEARMONTH**:  
+   - Issue: Contains values like `202399` which could be an invalid year-month combination, as the month part `99` is not valid.
+
+7. **RUN_ID**:  
+   - No issue detected.
+
+8. **CRTD_DTTM**:  
+   - No issue detected.
+
+9. **FILENAME**:  
+   - No issue detected.
+Chunk Processing Time: 10.20 seconds
+
+Table Processing Time: 11.15 seconds
+Tables Processed: 30/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MY_DAILY_SELLOUT_SALES_FACT_MDS_SYNC
+Processing Start Time: 15:06:44
+Total Records: 50
+Chunk Processing Time: 0.00 seconds
+
+Table Processing Time: 0.93 seconds
+Tables Processed: 31/194
+--------------------------------------------------------------------------------
+
+Table: SDL_ECOM_BACKMARGIN
+Processing Start Time: 15:06:45
+Total Records: 5
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name: SDL_ECOM_BACKMARGIN
+solution: 
+1. Negative value detected in COIN_EARN: Change COIN_EARN from -10.0000 to a valid positive or zero value.
+2. Potential problem with BE_STATUS as 'Cancelled': Verify if backmargin calculations are necessary for cancelled orders and adjust logic accordingly if not.
+
+SQL Query:
+SELECT * FROM SDL_ECOM_BACKMARGIN
+WHERE COIN_EARN < 0 OR (BE_STATUS = 'Cancelled' AND (BACKMARGIN_CFS != 0 OR BACKMARGIN_NORMAL != 0 OR BACKMARGIN_BUNDLE != 0 OR BACKMARGIN_ADDON != 0 OR BACKMARGIN_SHIPPING != 0));
+Semantic Analysis:
+Issue: SELLER_USERNAME  
+- The data in the second row is `None`, which is not consistent with a username. Ideally, this should be a valid username if the seller is known.
+
+Issue: ORDER_VALUE  
+- The data in the second row is `-200.0000`, which is unusual for an order value as it suggests a negative transaction, which might not align with typical order value expectations unless specifically representing a refund or similar transaction.
+
+Issue: IS_NEW_BUYER_PRICE  
+- The data in the fourth row is `-1`, which might be unexpected since this column typically represents a binary indicator (0 or 1) indicating whether the price is for a new buyer.
+
+Issue: BUNDLE_ORD_ITMID  
+- The data in the third row is `None`, which might be unexpected if every order is supposed to have a bundle order item ID. 
+
+Issue: ESCROW_PAID_DATE  
+- The format is `TEXT`, but typically dates should be in a more structured date format for better validation and processing. 
+
+Note: These issues are based on assumptions about typical use cases and expected constraints in such datasets.
+Chunk Processing Time: 15.81 seconds
+
+Table Processing Time: 16.74 seconds
+Tables Processed: 32/194
+--------------------------------------------------------------------------------
+
+Table: SDL_IG_INVENTORY_DATA
+Processing Start Time: 15:07:01
+Total Records: 5
+Chunk Processing Time: 0.00 seconds
+
+Table Processing Time: 0.87 seconds
+Tables Processed: 33/194
+--------------------------------------------------------------------------------
+
+Table: SDL_KR_COUPANG_PRODUCT_SUMMARY_MONTHLY
+Processing Start Time: 15:07:03
+Total Records: 50
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name: SDL_KR_COUPANG_PRODUCT_SUMMARY_MONTHLY
+solution: 
+- Correct 'RUN_ID' for SKU139 to a valid positive integer.
+- Correct 'RUN_ID' for SKU145 to a valid positive integer.
+- Correct 'RUN_ID' for SKU171 to a valid positive integer.
+- Correct 'YEARMO' for SKU139 to a valid year-month format.
+- Correct 'YEARMO' for SKU145 to a valid year-month format.
+- Correct 'YEARMO' for SKU171 to a valid year-month format.
+
+SQL Query:
+SELECT * 
+FROM SDL_KR_COUPANG_PRODUCT_SUMMARY_MONTHLY
+WHERE RUN_ID < 0 OR YEARMO > 202312;
+Semantic Analysis:
+Issue: RANKING
+- The RANKING column is expected to hold numerical data representing the rank of a product. However, it is defined as TEXT in the metadata. This misalignment could lead to sorting and comparison issues when processing the data.
+
+Issue: RUN_ID
+- RUN_ID contains negative numbers, which may not be expected if this is intended to be a strictly positive identifier or sequence number. The presence of negative values suggests potential data quality issues or incorrect data entry.
+
+Issue: JNJ_PRODUCT_FLAG
+- The JNJ_PRODUCT_FLAG column contains both 'Y' and 'N', which is semantically valid. However, the metadata lists its data type as TEXT, which is appropriate. Ensure consistent use of 'Y'/'N' as flags without additional unexpected characters.
+
+Note: These are the identified issues based on the data provided. Ensure data integrity and consistency for accurate analysis and processing.
+Chunk Processing Time: 4.23 seconds
+
+Table Processing Time: 5.41 seconds
+Tables Processed: 34/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MDS_PH_LAV_PRODUCT
+Processing Start Time: 15:07:08
+Total Records: 10
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_MDS_PH_LAV_PRODUCT
+solution : The anomaly is detected in the 'VERSIONNUMBER' column with a value of -1. Ensure 'VERSIONNUMBER' is positive and represents a valid version.
+
+SQL Query:
+SELECT *
+FROM SDL_MDS_PH_LAV_PRODUCT
+WHERE VERSIONNUMBER < 0;
+Semantic Analysis:
+VALIDATIONSTATUS: This column contains text entries such as "Validated", "In Progress", "Rejected", etc., which align with its description of validation status. However, there is an entry "None", which might not be a valid status, depending on the business logic.
+
+VERSIONNUMBER: This column is expected to contain numerical values representing version numbers. There is a value of "-1" which might be an error or placeholder, as version numbers typically start from 0 or 1.
+
+MUID: This column contains UUIDs, which are typically 36 characters long. There is an entry "None" which does not align with the expected UUID format.
+Chunk Processing Time: 5.39 seconds
+
+Table Processing Time: 6.30 seconds
+Tables Processed: 35/194
+--------------------------------------------------------------------------------
+
+Table: SDL_SPIRAL_MTI_OFFTAKE
+Processing Start Time: 15:07:14
+Total Records: 51
+Chunk Processing Time: 0.00 seconds
+
+Table Processing Time: 0.86 seconds
+Tables Processed: 36/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MARKET_SHARE_QSD
+Processing Start Time: 15:07:15
+Total Records: 10
+Chunk Processing Time: 0.01 seconds
+
+Table Processing Time: 0.89 seconds
+Tables Processed: 37/194
+--------------------------------------------------------------------------------
+
+Table: SDL_CSL_RDSSMWEEKLYTARGET_OUTPUT
+Processing Start Time: 15:07:16
+Total Records: 52
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_CSL_RDSSMWEEKLYTARGET_OUTPUT  
+solution :  
+- Row 1: Correct negative values in TARGETYEAR, TARGETVALUE, WEEK1, WEEK2, WEEK3, WEEK4, WEEK5. Ensure DISTCODE, TARGETREFNO, SMCODE, SMNAME, RMCODE, RMNAME are not None.  
+- Row 2: Remove duplicate row or ensure uniqueness in DISTCODE, TARGETREFNO, SMCODE, SMNAME, RMCODE, RMNAME.  
+- Row 3: Correct TARGETYEAR to a valid year.  
+
+SQL Query:  
+sql
+SELECT *  
+FROM SDL_CSL_RDSSMWEEKLYTARGET_OUTPUT  
+WHERE (TARGETYEAR < 0 OR TARGETVALUE < 0 OR WEEK1 < 0 OR WEEK2 < 0 OR WEEK3 < 0 OR WEEK4 < 0 OR WEEK5 < 0  
+       OR DISTCODE IS NULL OR TARGETREFNO IS NULL OR SMCODE IS NULL OR SMNAME IS NULL OR RMCODE IS NULL OR RMNAME IS NULL)  
+   OR (DISTCODE = 'DUPLICATE' AND TARGETREFNO = 'DUPLICATE')  
+   OR (TARGETYEAR > 2100);
+Semantic Analysis:
+Issue: TARGETSTATUS - Column name suggests a status indicator, but the sample data does not include this column. It might need review or inclusion in the data.
+
+Issue: TARGETVALUE - Column name suggests a numerical target value, but the sample data does not include this column. It might need review or inclusion in the data.
+Chunk Processing Time: 10.41 seconds
+
+Table Processing Time: 11.30 seconds
+Tables Processed: 38/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MDS_MY_SKU_BENCHMARKS
+Processing Start Time: 15:07:27
+Total Records: 50
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_MDS_MY_SKU_BENCHMARKS
+solution : 
+1. ID 3: VERSION_ID is NaN; Update VERSION_ID to a valid number.
+2. ID 3: VERSIONFLAG is 'Invalid'; Correct VERSIONFLAG to a valid value.
+3. ID 3: CHANGETRACKINGMASK is NaN; Update CHANGETRACKINGMASK to a valid number.
+4. ID 24: VERSIONNUMBER is negative (-2500); Correct VERSIONNUMBER to a positive value.
+5. ID 24: VALID_TO is same as VALID_FROM (2025-01-01); Ensure VALID_TO is greater than VALID_FROM.
+6. ID 45: VERSIONNUMBER is negative (-11500); Correct VERSIONNUMBER to a positive value.
+7. ID 45: VALID_TO is same as VALID_FROM (2026-10-01); Ensure VALID_TO is greater than VALID_FROM.
+
+SQL Query:
+SELECT * FROM SDL_MDS_MY_SKU_BENCHMARKS
+WHERE VERSION_ID IS NULL
+   OR VERSIONFLAG = 'Invalid'
+   OR CHANGETRACKINGMASK IS NULL
+   OR VERSIONNUMBER < 0
+   OR VALID_TO <= VALID_FROM;
+Semantic Analysis:
+Column: VERSIONNAME
+Issue: The value "None" in row 2 might be inappropriate if VERSIONNAME is expected to represent a specific version name.
+
+Column: VERSIONNUMBER
+Issue: The value "-500" in row 4 is unusual for a version number which typically should be positive.
+
+Column: VERSION_ID
+Issue: The value "NaN" in row 3 indicates a missing entry which might be critical for identifying versions.
+
+Column: ENTERUSERNAME
+Issue: The value "None" in row 3 suggests a missing username which may be important for tracking who entered the version.
+
+Column: LASTCHGUSERNAME
+Issue: The value "None" in row 4 suggests a missing username which may be important for tracking who last changed the version.
+
+Column: LASTCHGVERSIONNUMBER
+Issue: The value "-1" in row 4 is unexpected for a version number, which is typically a positive integer or decimal.
+
+Column: VALIDATIONSTATUS
+Issue: The value "None" in row 6 suggests a missing validation status that may be necessary for understanding the state of the version.
+Chunk Processing Time: 11.43 seconds
+
+Table Processing Time: 12.29 seconds
+Tables Processed: 39/194
+--------------------------------------------------------------------------------
+
+Table: SDL_ECOM_GMV_KONVY
+Processing Start Time: 15:07:40
+Total Records: 50
+Chunk Processing Time: 0.00 seconds
+
+Table Processing Time: 1.08 seconds
+Tables Processed: 40/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MY_DAILY_SELLOUT_SALES_FACT
+Processing Start Time: 15:07:40
+Total Records: 51
+Chunk Processing Time: 0.00 seconds
+
+Table Processing Time: 0.88 seconds
+Tables Processed: 41/194
+--------------------------------------------------------------------------------
+
+Table: MRCHR_RESPONSES
+Processing Start Time: 15:07:41
+Total Records: 50
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : MRCHR_RESPONSES
+solution : 
+1. Anomalous row 1: 'CATEGORYFACINGS' has an invalid value of -5.0. Correct 'CATEGORYFACINGS' to a non-negative value.
+2. Anomalous row 2: 'FACINGS' has an invalid value of -2.0. Correct 'FACINGS' to a non-negative value.
+3. Anomalous row 3: 'PRICEDETAILS' has an invalid value of -13.00. Correct 'PRICEDETAILS' to a non-negative value.
+4. Anomalous row 3: 'CATEGORYLENGTH' has an invalid value of -10.0. Correct 'CATEGORYLENGTH' to a non-negative value.
+
+SQL Query:
+SELECT *
+FROM MRCHR_RESPONSES
+WHERE CATEGORYFACINGS < 0
+   OR FACINGS < 0
+   OR PRICEDETAILS < 0
+   OR CATEGORYLENGTH < 0;
+Semantic Analysis:
+Issue: FETCHEDSEQUENCE - The column is expected to hold a non-negative sequence number based on its name, but contains negative values (e.g., -10, -5).
+
+Issue: CATEGORYLENGTH - The column is expected to hold positive or zero values representing a length measurement, but contains negative values (e.g., -1.5, -3.0, -10.0).
+
+Issue: CATEGORYFACINGS - The column is expected to hold positive or zero values representing the number of facings, but contains negative values (e.g., -2.0, -5.0, -4.0, -7.0).
+Chunk Processing Time: 5.05 seconds
+
+Table Processing Time: 5.89 seconds
+Tables Processed: 42/194
+--------------------------------------------------------------------------------
+
+Table: SDL_AU_DSTR_API_HEADER
+Processing Start Time: 15:07:47
+Total Records: 50
+Chunk Processing Time: 0.00 seconds
+
+Table Processing Time: 0.92 seconds
+Tables Processed: 43/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MDS_APAC_DCL_TARGETS
+Processing Start Time: 15:07:48
+Total Records: 0
+
+Table Processing Time: 0.93 seconds
+Tables Processed: 44/194
+--------------------------------------------------------------------------------
+
+Table: SDL_CBD_GT_SALES_REPORT_FACT_TEMP
+Processing Start Time: 15:07:49
+Total Records: 50
+Chunk Processing Time: 0.00 seconds
+
+Table Processing Time: 0.87 seconds
+Tables Processed: 45/194
+--------------------------------------------------------------------------------
+
+Table: SDL_COMPETITIVE_BANNER_GROUP
+Processing Start Time: 15:07:50
+Total Records: 52
+Chunk Processing Time: 0.00 seconds
+
+Table Processing Time: 0.84 seconds
+Tables Processed: 46/194
+--------------------------------------------------------------------------------
+
+Table: SDL_CSL_RETAILERROUTE
+Processing Start Time: 15:07:51
+Total Records: 51
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_CSL_RETAILERROUTE
+solution : 
+1. DISTCODE: None should be valid district code.
+2. RTRID: -1 should be valid retailer ID.
+3. RTRCODE: None should be valid retailer code.
+4. RTRNAME: None should be valid retailer name.
+5. RMID: -10 should be valid route manager ID.
+6. RMCODE: None should be valid route manager code.
+7. RMNAME: None should be valid route manager name.
+8. ROUTETYPE: None should be valid route type.
+9. UPLOADFLAG: None should be 'Y' or 'N'.
+10. SYNCID: -1 should be valid sync ID.
+11. RUN_ID: -100 should be valid run ID.
+12. FILE_NAME: None should be valid file name.
+
+SQL Query:
+SELECT * FROM SDL_CSL_RETAILERROUTE 
+WHERE DISTCODE IS NULL OR RTRID = -1 OR RTRCODE IS NULL OR RTRNAME IS NULL 
+OR RMID = -10 OR RMCODE IS NULL OR RMNAME IS NULL OR ROUTETYPE IS NULL 
+OR UPLOADFLAG IS NULL OR SYNCID = -1 OR RUN_ID = -100 OR FILE_NAME IS NULL;
+Semantic Analysis:
+1. DISTCODE
+   Issue: None value in row 0, expected a text code representing a district.
+
+2. RTRCODE
+   Issue: None value in row 0, expected a text code representing a retailer.
+
+3. RTRNAME
+   Issue: None value in row 0, expected a text name representing a retailer.
+
+4. RMCODE
+   Issue: None value in row 0, expected a text code representing a route manager.
+
+5. RMNAME
+   Issue: None value in row 0, expected a text name representing a route manager.
+
+6. ROUTETYPE
+   Issue: None value in row 0, expected a text indicating the type of route.
+
+7. UPLOADFLAG
+   Issue: None values in rows 0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, expected 'Y' or 'N' indicating upload status.
+
+8. FILE_NAME
+   Issue: None value in row 0, expected a text name of the file.
+Chunk Processing Time: 5.69 seconds
+
+Table Processing Time: 6.57 seconds
+Tables Processed: 47/194
+--------------------------------------------------------------------------------
+
+Table: SDL_ECOMMERCE_OFFTAKE_AMAZON
+Processing Start Time: 15:07:57
+Total Records: 50
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_ECOMMERCE_OFFTAKE_AMAZON
+solution : 
+1. QUANTITY should not be negative. Correct the QUANTITY for RPC 12345678901234567890 with LOAD_DATE 2023-01-01 12:00:00.
+2. MRP should not be negative. Correct the MRP for RPC 12345678901234567891 with LOAD_DATE 2023-01-02 12:00:00.
+3. MRP_OFFTAKES_VALUE should not be negative. Correct the MRP_OFFTAKES_VALUE for RPC 12345678901234567890 with LOAD_DATE 2023-02-10 12:00:00.
+ 
+SQL Query:
+SELECT * FROM SDL_ECOMMERCE_OFFTAKE_AMAZON
+WHERE QUANTITY < 0 OR MRP < 0 OR MRP_OFFTAKES_VALUE < 0;
+Semantic Analysis:
+1. **QUANTITY**:
+   - Issue: The column contains negative values (e.g., -10, -5). Typically, "QUANTITY" should represent a non-negative integer, indicating the number of items sold or available.
+
+2. **MRP**:
+   - Issue: The column contains negative values (e.g., -1000.0, -250.0). "MRP" (Maximum Retail Price) is expected to be a non-negative float, representing the price at which a product is sold to consumers.
+
+3. **MRP_OFFTAKES_VALUE**:
+   - Issue: The column contains negative values (e.g., -16000.0, -1440.0). While it might be contextually valid to have negative values to indicate returns or adjustments, typically, "OFFTAKES_VALUE" would be expected to be non-negative, or it should be clearly documented that negative values are possible for specific reasons.
+Chunk Processing Time: 10.21 seconds
+
+Table Processing Time: 11.15 seconds
+Tables Processed: 48/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MDS_VN_CUSTOMER_SEGMENTATION
+Processing Start Time: 15:08:09
+Total Records: 50
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_MDS_VN_CUSTOMER_SEGMENTATION
+solution : 
+1. ID value '-40' and '-44' are invalid as ID should be a positive integer or UUID. Correct to valid UUIDs.
+2. VERSIONNAME 'None' for ID '3' should be updated to a valid name.
+3. VERSIONNUMBER '-50', '-28', and '30' seem to be inconsistent or negative; ensure all are positive and consistent.
+4. NAME 'None' for ID '3' should be updated to a valid name.
+5. CODE 'None' for ID '3' should be updated to a valid code.
+6. CHANGETRACKINGMASK '-215' and '-235' should be positive integers.
+
+SQL Query:
+SELECT * FROM SDL_MDS_VN_CUSTOMER_SEGMENTATION
+WHERE ID <= 0 OR VERSIONNAME = 'None' OR VERSIONNUMBER < 0 OR NAME = 'None' OR CODE = 'None' OR CHANGETRACKINGMASK < 0;
+Semantic Analysis:
+Issue: `VERSIONNUMBER`
+- The column name suggests it should contain positive version numbers. However, there are negative values present, which may not align with typical version numbering conventions.
+
+Issue: `VALIDATIONSTATUS`
+- The metadata indicates a maximum character length of 500. However, the data only shows "valid" or "invalid". This discrepancy in expected length could indicate a potential mismatch or misunderstanding in data requirements.
+
+Issue: `ID`
+- The column name suggests a unique identifier, which usually consists of positive integers. However, there are negative values present, which might not align with typical ID conventions.
+
+Issue: `MUID`
+- The metadata specifies a maximum character length of 36, which matches the format of a UUID. However, the data uses a UUID format, so while the length matches, the semantic meaning of "MUID" is unclear if it should specifically reference a UUID.
+Chunk Processing Time: 6.94 seconds
+
+Table Processing Time: 7.84 seconds
+Tables Processed: 49/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MY_ACCRUALS
+Processing Start Time: 15:08:16
+Total Records: 32
+Chunk Processing Time: 0.00 seconds
+
+Table Processing Time: 0.88 seconds
+Tables Processed: 50/194
+--------------------------------------------------------------------------------
+
+Table: SDL_LA_GT_SALES_ORDER_FACT
+Processing Start Time: 15:08:17
+Total Records: 10
+Chunk Processing Time: 0.00 seconds
+
+Table Processing Time: 0.88 seconds
+Tables Processed: 51/194
+--------------------------------------------------------------------------------
+
+Table: CUST_CUSTOMER
+Processing Start Time: 15:08:18
+Total Records: 50
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : CUST_CUSTOMER
+solution : 
+1. Anomalous row 1: FETCHEDSEQUENCE should not be negative. Update FETCHEDSEQUENCE from -10 to a valid positive value.
+2. Anomalous row 2: FETCHEDSEQUENCE should not be negative. Update FETCHEDSEQUENCE from -8 to a valid positive value.
+3. Anomalous row 3: COUNTRY should be USA instead of WAK. Update COUNTRY from WAK to USA.
+
+SQL Query:
+SELECT *
+FROM CUST_CUSTOMER
+WHERE FETCHEDSEQUENCE < 0
+   OR COUNTRY NOT IN ('USA');
+Semantic Analysis:
+Issue: REGION  
+- The column 'REGION' contains the value 'None', which is not a valid region name.  
+
+Issue: FETCHEDSEQUENCE  
+- The column 'FETCHEDSEQUENCE' contains negative numbers, which may not semantically align with a sequence number expected to be non-negative.  
+
+Issue: CDL_DATETIME  
+- The metadata indicates 'CDL_DATETIME' is of type TEXT with a maximum length of 24. It holds datetime values, which suggests a more appropriate data type could be a datetime format rather than text.  
+
+Issue: AZUREDATETIME  
+- The metadata indicates 'AZUREDATETIME' is of type TEXT with a maximum length of 32. It holds datetime values, which suggests a more appropriate data type could be a datetime format rather than text.  
+
+Issue: FETCHEDDATETIME  
+- The metadata indicates 'FETCHEDDATETIME' is of type TEXT with a maximum length of 32. It holds datetime values, which suggests a more appropriate data type could be a datetime format rather than text.
+Chunk Processing Time: 31.52 seconds
+
+Table Processing Time: 32.41 seconds
+Tables Processed: 52/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MDS_PH_MSL_DTLS
+Processing Start Time: 15:08:51
+Total Records: 51
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_MDS_PH_MSL_DTLS
+solution : 
+1. Remove duplicate rows with ID -1 and ensure unique key constraints are properly defined to prevent duplicates.
+2. Correct the CHANGETRACKINGMASK value from -5 to a valid non-negative integer in the row with ID 3.
+
+SQL Query:
+SELECT ID, MUID, VERSIONNAME, VERSIONNUMBER, VERSION_ID, VERSIONFLAG, NAME, CODE, CHANGETRACKINGMASK, MSL_HDR_CODE_CODE, MSL_HDR_CODE_NAME, MSL_HDR_CODE_ID, SKU_CODE, SKU_NAME, SKU_ID, ENTERDATETIME, ENTERUSERNAME, ENTERVERSIONNUMBER, LASTCHGDATETIME, LASTCHGUSERNAME, LASTCHGVERSIONNUMBER, VALIDATIONSTATUS
+FROM SDL_MDS_PH_MSL_DTLS
+WHERE ID = -1
+UNION ALL
+SELECT ID, MUID, VERSIONNAME, VERSIONNUMBER, VERSION_ID, VERSIONFLAG, NAME, CODE, CHANGETRACKINGMASK, MSL_HDR_CODE_CODE, MSL_HDR_CODE_NAME, MSL_HDR_CODE_ID, SKU_CODE, SKU_NAME, SKU_ID, ENTERDATETIME, ENTERUSERNAME, ENTERVERSIONNUMBER, LASTCHGDATETIME, LASTCHGUSERNAME, LASTCHGVERSIONNUMBER, VALIDATIONSTATUS
+FROM SDL_MDS_PH_MSL_DTLS
+WHERE CHANGETRACKINGMASK < 0;
+Semantic Analysis:
+Issue:  
+- `VERSIONNUMBER`: The column contains a negative value (-2) which is unexpected for a version number that typically should be non-negative.
+Chunk Processing Time: 12.92 seconds
+
+Table Processing Time: 13.82 seconds
+Tables Processed: 53/194
+--------------------------------------------------------------------------------
+
+Table: SDL_CSL_SALESRETURN
+Processing Start Time: 15:09:04
+Total Records: 5
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_CSL_SALESRETURN
+solution : Correct negative values in SRNGROSSAMT, SRNSPLDISCAMT, SRNSCHDISCAMT, SRNCASHDISCAMT, SRNDBDISCAMT, SRNTAXAMT, SRNROUNDOFFAMT, SRNNETAMT, PRDSALQTY, PRDUNSALQTY, PRDOFFERQTY, PRDSELRATE, PRDGROSSAMT, PRDSPLDISCAMT, PRDSCHDISCAMT, PRDCASHDISCAMT, PRDDBDISCAMT, PRDTAXAMT, PRDNETAMT, MRP, NRVALUE, PRDSELRATEAFTERTAX, RTNFREEQTYVALUE, and RTRID to reflect accurate data. Verify that the SRNREFTYPE and PRDSALQTY reflect valid sales returns and not negative sales.
+
+SQL Query:
+SELECT *
+FROM SDL_CSL_SALESRETURN
+WHERE SRNGROSSAMT < 0 
+   OR SRNSPLDISCAMT < 0 
+   OR SRNSCHDISCAMT < 0 
+   OR SRNCASHDISCAMT < 0 
+   OR SRNDBDISCAMT < 0 
+   OR SRNTAXAMT < 0 
+   OR SRNROUNDOFFAMT < 0 
+   OR SRNNETAMT < 0 
+   OR PRDSALQTY < 0 
+   OR PRDUNSALQTY < 0 
+   OR PRDOFFERQTY < 0 
+   OR PRDSELRATE < 0 
+   OR PRDGROSSAMT < 0 
+   OR PRDSPLDISCAMT < 0 
+   OR PRDSCHDISCAMT < 0 
+   OR PRDCASHDISCAMT < 0 
+   OR PRDDBDISCAMT < 0 
+   OR PRDTAXAMT < 0 
+   OR PRDNETAMT < 0 
+   OR MRP < 0 
+   OR NRVALUE < 0 
+   OR PRDSELRATEAFTERTAX < 0 
+   OR RTNFREEQTYVALUE < 0 
+   OR RTRID < 0;
+Semantic Analysis:
+1. Column Name: SRNGROSSAMT
+   Issue: The column name suggests it should contain gross amounts, likely positive values representing total sales before deductions. However, the sample data contains negative values, which might indicate returns or refunds. Check if the data aligns with the expected use of this column.
+
+2. Column Name: NRVALUE
+   Issue: This column name might suggest a "net return value" or similar metric. The sample data shows negative values, which could be valid for returns but should be confirmed if these are expected or indicative of another issue.
+
+3. Column Name: PRDSELRATEAFTERTAX
+   Issue: The column name suggests it should contain selling rates after tax, typically expected to be positive. The sample data shows negative values, which could be incorrect unless indicating a refund or return scenario.
+
+4. Column Name: RUN_ID
+   Issue: The column name suggests a unique identifier for each run or transaction. The sample data contains negative values, which is unusual for an ID field. This might indicate an error unless negative values are used for a specific purpose.
+
+5. Column Name: FILE_NAME
+   Issue: The sample data contains file names like "file001", "file002", etc. While these are valid file names, ensure they match the expected naming conventions or if they carry any specific information (e.g., date, batch number) that should be validated.
+Chunk Processing Time: 20.24 seconds
+
+Table Processing Time: 21.10 seconds
+Tables Processed: 54/194
+--------------------------------------------------------------------------------
+
+Table: SDL_CSL_DAILYSALES
+Processing Start Time: 15:09:26
+Total Records: 10
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_CSL_DAILYSALES
+solution : 
+1. SALNETAMT should equal SALGROSSAMT - SALTOTDEDN + SALTOTADDN + SALROUNDOFFAMT. Verify calculations: 40000 - 5800 + 0 + 0 = 34200 is correct.
+2. PRDNETAMT should equal PRDGROSSAMT - PRDSPLDISCAMT - PRDSCHDISCAMT - PRDCASHDISCAMT - PRDDBDISCAMT + PRDTAXAMT. Verify calculations: 40000 - 2000 - 1000 - 400 - 200 + 1600 = 34200 is correct.
+
+SQL Query:
+SELECT *
+FROM SDL_CSL_DAILYSALES
+WHERE (SALNETAMT != (SALGROSSAMT - SALTOTDEDN + SALTOTADDN + SALROUNDOFFAMT))
+   OR (PRDNETAMT != (PRDGROSSAMT - PRDSPLDISCAMT - PRDSCHDISCAMT - PRDCASHDISCAMT - PRDDBDISCAMT + PRDTAXAMT));
+Semantic Analysis:
+Issue: `DISTCODE`
+- The value `None` in row 3 does not align with its expected format as a district code, which is typically a non-null alphanumeric identifier.
+
+Issue: `NRVALUE`
+- All values are `0.000000`, which may indicate an issue if `NRVALUE` is expected to represent non-zero numerical data.
+
+Issue: `VCPSCHEMEAMOUNT`
+- All values are `0.000000`, which may indicate an issue if `VCPSCHEMEAMOUNT` is expected to represent non-zero numerical data.
+
+(Note: The analysis assumes that `NRVALUE` and `VCPSCHEMEAMOUNT` should contain meaningful non-zero data based on typical use cases. If these columns are allowed to have zero values under certain conditions, then there may not be an issue.)
+Chunk Processing Time: 36.34 seconds
+
+Table Processing Time: 37.27 seconds
+Tables Processed: 55/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MDS_MY_PRODUCT_MASTER
+Processing Start Time: 15:10:03
+Total Records: 5
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name: SDL_MDS_MY_PRODUCT_MASTER
+solution: 
+- Correct negative values: Change 'ATTACHMENTS' from -1 to a valid positive integer.
+- Correct negative values: Change 'DZ_PRICE' from -480.00 to a valid positive price.
+- Correct negative values: Change 'LIST_PRICE_W_GST' from -540.0000 to a valid positive price.
+- Correct negative values: Change 'product_dimension-l_(mm)' from -400.00 to a valid dimension.
+- Correct negative values: Change 'qty-inner_shipper_(pc)' from -175 to a valid quantity.
+- Correct negative values: Change 'qty-shrink_wrap_(pc)' from -50 to a valid quantity.
+- Correct negative values: Change 'shipper_dimension-l_(mm)' from -300.00 to a valid dimension.
+- Correct negative values: Change 'SELLING_STATUS_ID' from -5.0000 to a valid status ID.
+
+SQL Query:
+SELECT * FROM SDL_MDS_MY_PRODUCT_MASTER
+WHERE ATTACHMENTS < 0
+   OR DZ_PRICE < 0
+   OR LIST_PRICE_W_GST < 0
+   OR "product_dimension-l_(mm)" < 0
+   OR "qty-inner_shipper_(pc)" < 0
+   OR "qty-shrink_wrap_(pc)" < 0
+   OR "shipper_dimension-l_(mm)" < 0
+   OR SELLING_STATUS_ID < 0;
+Semantic Analysis:
+Column: ABC
+Issue: Data "Duplicate Entry", "None", etc., suggests text labels rather than standard identifiers or codes expected with a column name like "ABC".
+
+Column: apo-copy_history
+Issue: Data "Incorrect", "HistoryB", etc., suggests this might be a text or status description rather than a traditional copy history which might expect dates or identifiers.
+
+Column: apo-dp_product_type
+Issue: Data "TypeA", "TypeB", etc., suggests text labels which may align, but further context is needed to confirm if these are valid types.
+
+Column: apo-forecast_ind
+Issue: Data "1", "2", "3", etc., suggests numeric indicators which could be valid; however, without context, it's unclear if these are appropriate forecast indicators.
+
+Column: apo-master_code
+Issue: Data "MC001", "MC002", etc., suggests these are codes but should be confirmed if they accurately represent master codes without duplicates or errors.
+
+Column: VERSION_ID
+Issue: Data "1", "2", "3", etc., appears to align with version identifiers, but should be checked for correctness and uniqueness.
+
+Column: VERSIONFLAG
+Issue: Data "A", "B", "C", etc., suggests flag identifiers but should be verified for appropriate context use.
+
+Column: VERSIONNAME
+Issue: Data "VersionA", "VersionB", etc., suggests version names which may align, but should be validated for correctness and consistency.
+
+Column: VERSIONNUMBER
+Issue: Data "1", "2", "3", etc., aligns with version numbering but should be confirmed for proper sequential and logical order.
+Chunk Processing Time: 9.52 seconds
+
+Table Processing Time: 10.50 seconds
+Tables Processed: 56/194
+--------------------------------------------------------------------------------
+
+Table: SDL_MDS_VN_PRICE_PRODUCTS
+Processing Start Time: 15:10:13
+Total Records: 50
