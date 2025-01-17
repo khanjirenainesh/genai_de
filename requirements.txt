@@ -7,10 +7,9 @@ pytesseract
 streamlit
 pdf2image
 faiss-cpu
-cv2
 PyMuPDF
 fitz
-sklearn
+scikit-learn
 azure-storage-file-datalake
 azure-functions
 python-tabular
