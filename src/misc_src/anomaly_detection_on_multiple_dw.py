@@ -361,13 +361,27 @@ class InsightGenerator:
     def create_anomaly_prompt(self, issues: str) -> str:
         base_prompt = f"""The following issues were detected in the {self.warehouse_type} database:\n\n{issues}\n
                 Give specific solution based on the anomalies.
-                Don't add any extra line other than solution to the anomaly.
-                Give tablewise solution.
-                Don't mix up solution for different tables.
+                Dont add any extra line other than solution to the anomaly.
+                Ensure that the following steps are applied to every table and every column, without skipping any due to the number of columns or complexity
+                dont mix up solution for different tables.
                 Ensure the format intact for every table same.
                 Provide specific issue with wrong values.
                 
-                Give solution in concise way.
+                give solution in concise way.
+                Also generate SQL query which is strictly {self.warehouse_type} friendly to get anomalies. 
+                
+                Sample output:
+            
+                table_name : <table name>
+                solution : solution for issues provided.
+                
+                Also 
+                1. Highlight columns that should be masked or encrypted, with compliance standards as PII, HIPAA, GDPR, SOC2 and provide suggestions
+                2. Suggest appropriate masking techniques for each sensitive field
+                Sample output:
+            
+                column name : <column name>
+                solution : solution for issues provided.
                 """
                 
         # Add warehouse-specific SQL hints
@@ -401,7 +415,7 @@ class InsightGenerator:
                 3. Skip the columns where the semantic meaning and the data it holds is valid.
                 4. Check for {self.warehouse_type}-specific data type optimizations.
                 5. ONLY provide column names and its issues.
-                6. Go through all the columns.
+                6. Go through all the columns and all the tables.
                 7. Ensure the format intact.
                 8. Please provide details of columns which has issues.
                 
