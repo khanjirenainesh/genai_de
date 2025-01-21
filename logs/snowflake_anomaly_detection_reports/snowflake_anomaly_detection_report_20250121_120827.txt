@@ -1,0 +1,10 @@
+Data Warehouse: SNOWFLAKE
+Database/Project: RAW
+Schema/Dataset: TEST
+Analysis Start Time: 2025-01-21 12:08:27
+Total Tables to Process: 197
+--------------------------------------------------------------------------------
+
+
+Processing table DAILYSALES with 65 columns
+Total rows: 5
