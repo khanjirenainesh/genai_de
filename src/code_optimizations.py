@@ -14,6 +14,7 @@ from dotenv import load_dotenv
 from pathlib import Path
 from typing import Dict, List, Any
 
+load_dotenv(override=True)
 # Set up directory structure
 
 base_dir = str(Path(__file__).parent.parent)
@@ -22,7 +23,7 @@ input_dir = os.path.join(base_dir, "data", "test") # "input" or "test" folder in
 os.makedirs(logs_dir, exist_ok=True)
 
 
-load_dotenv()
+
 
 def get_snowflake_connection():
     """Create a Snowflake connection using environment variables."""
@@ -200,7 +201,7 @@ def main():
     try:
         # Get SQL sources based on configuration
         print("\n=== Getting SQL sources ===")
-        source_type = os.environ.get('SQL_SOURCE_TYPE', 'local').lower()
+        source_type = os.environ.get("SQL_SOURCE_TYPE").lower()
         print(f"Source type: {source_type}")
         
         all_sql_sources, source_info = get_sql_sources()

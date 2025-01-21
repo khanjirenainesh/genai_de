@@ -1,8 +1,3 @@
-'''
-- This code currently supports snowflake table connection and analysis
-- Diffrent Data warehouse support WIP
-'''
-
 from langchain_openai import AzureChatOpenAI
 from sklearn.ensemble import IsolationForest
 import snowflake.connector
@@ -18,13 +13,13 @@ import psycopg2
 from pandas.api.types import is_numeric_dtype
 import math
 
-load_dotenv()
+load_dotenv(override=True)
 
 class Config:
     """Store environment variables and warehouse configuration"""
     SUPPORTED_WAREHOUSES = ['snowflake', 'redshift', 'bigquery']
     
-    def __init__(self, warehouse_type: str = 'snowflake'):
+    def __init__(self, warehouse_type):
         if warehouse_type.lower() not in self.SUPPORTED_WAREHOUSES:
             raise ValueError(f"Unsupported warehouse type. Supported types: {', '.join(self.SUPPORTED_WAREHOUSES)}")
         
