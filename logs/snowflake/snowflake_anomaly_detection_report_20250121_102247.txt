@@ -1,0 +1,730 @@
+Data Warehouse: SNOWFLAKE
+Database/Project: RAW
+Schema/Dataset: TEST
+Analysis Start Time: 2025-01-21 10:22:47
+Total Tables to Process: 197
+--------------------------------------------------------------------------------
+
+
+Processing table DAILYSALES with 65 columns
+Total rows: 5
+
+Chunk 1/1, Batch 1:
+Anomaly Analysis:
+```plaintext
+table_name : sales_data
+solution : Correct negative values in columns 'PRDQTY' and 'SALNETAMT'. Ensure 'PRDQTY' reflects actual product quantities. Verify calculations for 'SALNETAMT' and adjust as needed.
+
+column name : SALESMANNAME
+solution : Encrypt or mask to comply with PII, HIPAA, GDPR, SOC2. Suggest using deterministic encryption or tokenization.
+
+column name : SALESROUTENAME
+solution : Mask to protect sensitive business information. Suggest using format-preserving masking.
+
+column name : PRDBATCDE
+solution : Mask to protect batch identification. Suggest using randomization masking.
+
+column name : DLVBOYNAME
+solution : Encrypt or mask to comply with PII, HIPAA, GDPR, SOC2. Suggest using deterministic encryption or tokenization.
+
+column name : FILE_NAME
+solution : Mask to protect file integrity and confidentiality. Suggest using substitution masking.
+
+SQL Query:
+SELECT 
+    * 
+FROM 
+    sales_data
+WHERE 
+    PRDQTY < 0 
+    OR SALNETAMT < 0 
+    OR PRDNETAMT != (PRDGROSSAMT - PRDSPLDISCAMT - PRDSCHDISCAMT - PRDCASHDISCAMT - PRDDBDISCAMT + PRDTAXAMT);
+```
+
+This output identifies the specific anomalies within the `sales_data` table, provides solutions for correcting these issues, and suggests appropriate data masking techniques for sensitive fields. The SQL query is designed to flag records where negative quantities or amounts exist or where calculations do not tally, ensuring data integrity.
+Semantic Analysis:
+Sure, let's analyze the sample data and metadata provided:
+
+### Issues Identified:
+
+1. **SALNETAMT**:
+   - **Issue**: The value `-1500.000000` seems anomalous for a net amount column, as net amounts are typically non-negative in most contexts.
+
+2. **TIME COLUMNS (Columns 48 and 51)**:
+   - **Issue**: These columns appear to contain datetime values, but there might be an opportunity to use a more specific data type like `TIMESTAMP` instead of generic `TEXT`.
+
+3. **FILE NAME COLUMN (Column 53)**:
+   - **Issue**: The `file001.txt` value suggests this column could be storing file paths or names, which might benefit from a more descriptive column name or data type adjustment if not already optimized.
+
+### Snowflake-Specific Data Type Optimizations:
+
+- **TEXT columns**: Verify if `VARCHAR` with an appropriate length constraint or `STRING` is being used for text data to optimize storage.
+- **NUMERIC columns**: Ensure that numeric columns have appropriate precision and scale defined to optimize storage and performance.
+
+This analysis focuses on identifying potential semantic mismatches and optimizations based on the sample data and metadata provided.
+Table: DAILYSALES
+Processing Start Time: 10:22:56
+Total Records: 5
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : DAILYSALES  
+solution :  
+- PRDQTY should not be negative; update to a valid quantity.  
+- PRDGROSSAMT should not be negative; recalculate based on valid PRDQTY and PRDSELRATEBEFORETAX.  
+- PRDNETAMT is negative; verify discounts and PRDGROSSAMT for corrections.  
+- SALNETAMT is negative; review the entire transaction for errors in amount calculations.  
+- MRP should not be negative; confirm with product pricing.  
+
+SQL Query:
+sql
+SELECT * 
+FROM DAILYSALES 
+WHERE PRDQTY < 0 
+   OR PRDGROSSAMT < 0 
+   OR PRDNETAMT < 0 
+   OR SALNETAMT < 0 
+   OR MRP < 0;
+
+
+column name : SALESMANNAME  
+solution : Should be masked to comply with PII and GDPR regulations.
+
+Masking Technique: Use SHA-256 hashing or a reversible tokenization technique.
+
+column name : DLVBOYNAME  
+solution : Should be masked to comply with PII and GDPR regulations.
+
+Masking Technique: Use SHA-256 hashing or a reversible tokenization technique.
+
+column name : PRDCODE  
+solution : Consider masking for business confidentiality under SOC2.
+
+Masking Technique: Use a reversible tokenization technique.
+
+column name : PRDBATCDE  
+solution : Consider masking for business confidentiality under SOC2.
+
+Masking Technique: Use a reversible tokenization technique.
+
+column name : FILE_NAME  
+solution : Consider masking if it contains sensitive information under SOC2.
+
+Masking Technique: Use a reversible tokenization technique.
+Semantic Analysis:
+Issue: None of the issues are highlighted in the provided sample data because the sample data doesn't include specific examples of semantic misalignments or data type inefficiencies. However, based on the metadata provided, here are potential considerations:
+
+1. **TEXT Data Type Optimization**: 
+   - `SALESROUTECODE` is defined as TEXT with a maximum length of 100. If the actual data does not exceed a shorter length, consider reducing the maximum length for optimization.
+
+2. **Number Data Type Optimization**:
+   - All `NUMBER` columns (e.g., `PRDSCHDISCAMT`, `SALFREEQTYVALUE`, `VCPSCHEMEAMOUNT`, etc.) should be checked to see if they can be defined with specific precision and scale to optimize storage and processing.
+
+3. **Variant/Array Columns**: 
+   - The sample and metadata do not provide specific details on variant or array columns. If such columns exist, ensure they are used appropriately for semi-structured data and evaluate if they can be simplified.
+
+For other columns or further details, specific data issues or inefficiencies need to be identified through a deeper analysis of the actual dataset and usage patterns.
+Chunk Processing Time: 6.27 seconds
+
+Table Processing Time: 15.56 seconds
+Tables Processed: 1/197
+--------------------------------------------------------------------------------
+
+
+Processing table SDL_ECOM_SHOPEE_COMPENSATION with 18 columns
+Total rows: 30
+Table: SDL_ECOM_SHOPEE_COMPENSATION
+Processing Start Time: 10:23:04
+Total Records: 30
+Chunk Processing Time: 0.00 seconds
+
+Table Processing Time: 1.76 seconds
+Tables Processed: 2/197
+--------------------------------------------------------------------------------
+
+
+Processing table SDL_IG_INVENTORY_DATA with 56 columns
+Total rows: 5
+Table: SDL_IG_INVENTORY_DATA
+Processing Start Time: 10:23:05
+Total Records: 5
+Chunk Processing Time: 0.00 seconds
+
+Table Processing Time: 0.91 seconds
+Tables Processed: 3/197
+--------------------------------------------------------------------------------
+
+
+Processing table SDL_JNJ_MER_COP with 23 columns
+Total rows: 10
+
+Chunk 1/1, Batch 1:
+Anomaly Analysis:
+```plaintext
+table_name : anomalies_batch_1
+solution : Address the "None" values in columns EMP_ADDRESS_PC, PC_NAME, SURVEY_NAME, EMP_ADDRESS_SUPERVISOR, SUPERVISOR_NAME, COP_PRIORITY, START_DATE, END_DATE, AREA, CHANNEL, ACCOUNT, STORE_ID, STORE_NAME, QUESTION by investigating missing data sources or correcting data entry errors. Ensure data integrity by setting default values or making these fields non-nullable.
+
+SQL Query:
+SELECT *
+FROM anomalies_batch_1
+WHERE EMP_ADDRESS_PC IS NULL
+   OR PC_NAME IS NULL
+   OR SURVEY_NAME IS NULL
+   OR EMP_ADDRESS_SUPERVISOR IS NULL
+   OR SUPERVISOR_NAME IS NULL
+   OR COP_PRIORITY IS NULL
+   OR START_DATE IS NULL
+   OR END_DATE IS NULL
+   OR AREA IS NULL
+   OR CHANNEL IS NULL
+   OR ACCOUNT IS NULL
+   OR STORE_ID IS NULL
+   OR STORE_NAME IS NULL
+   OR QUESTION IS NULL;
+
+column name : EMP_ADDRESS_PC
+solution : Encrypt using AES encryption to protect PII, compliant with GDPR standards.
+
+column name : EMP_ADDRESS_SUPERVISOR
+solution : Mask using partial redaction to hide part of the supervisor's address, aligning with SOC2 and GDPR standards.
+
+column name : SUPERVISOR_NAME
+solution : Use tokenization to replace actual names with tokens, ensuring PII compliance with GDPR.
+
+column name : STORE_ID
+solution : Apply hashing to anonymize store identifiers, ensuring data is GDPR compliant.
+
+column name : ACCOUNT
+solution : Mask using a random replacement to protect account information, adhering to SOC2 and GDPR standards.
+```
+
+Semantic Analysis:
+Issue: EMP_ADDRESS_PC - The sample data contains "None" which might not align with the expected format of an employee address.
+
+Issue: EMP_ADDRESS_SUPERVISOR - The sample data contains "4" which might not align with the expected format of an employee address.
+
+Issue: SUPERVISOR_NAME - The sample data contains "444" which might not align with the expected format of a supervisor's name.
+
+Issue: RUN_ID - This column is defined as NUMBER but the sample data doesn't provide a corresponding value to evaluate.
+
+Note: Consider converting TEXT columns to more appropriate data types like DATE for date fields or considering VARIANT for columns storing semi-structured data.
+Table: SDL_JNJ_MER_COP
+Processing Start Time: 10:23:14
+Total Records: 10
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_JNJ_MER_COP
+solution : 
+1. EMP_ADDRESS_PC: Detect and handle NULL values, possibly through default values or imputations.
+2. COP_DATE: Ensure COP_DATE is not in the future. Verify data entry processes.
+3. EMP_ADDRESS_SUPERVISOR: Handle NULL values, ensure data completeness and accuracy.
+
+column name : EMP_ADDRESS_PC
+solution : Consider masking as it's potentially sensitive information (PII). Suggest redaction or tokenization based on compliance needs.
+
+column name : EMP_ADDRESS_SUPERVISOR
+solution : Consider masking as it may be PII. Suggest redaction or tokenization based on compliance needs.
+
+column name : SUPERVISOR_NAME
+solution : Consider masking for privacy and compliance (PII). Suggest redaction or pseudonymization.
+
+SQL Query:
+SELECT * FROM SDL_JNJ_MER_COP
+WHERE EMP_ADDRESS_PC IS NULL
+   OR COP_DATE > CURRENT_DATE()
+   OR EMP_ADDRESS_SUPERVISOR IS NULL;
+Semantic Analysis:
+Issue: `COP_DATE`
+- The data type is `TEXT`, but it should be `DATE` for better semantic alignment and efficient querying.
+
+Issue: `YEARMO`
+- The data type is `TEXT`, but it should be `NUMBER` or `VARCHAR` with specific formatting to ensure it represents a valid year and month. The value `99999` is not valid for a year and month format.
+
+Issue: `EMP_ADDRESS_PC` and `EMP_ADDRESS_SUPERVISOR`
+- These columns contain address values, which could benefit from a structured format, potentially as a `VARIANT` to handle diverse address formats or as separate columns for components like street, city, etc.
+
+Issue: `RUN_ID`
+- Although the data type is `NUMBER`, it is not present in the sample data. Ensure it is used correctly or consider omitting it if not necessary.
+
+For better Snowflake optimization, consider using appropriate data types like `DATE` for dates, `VARCHAR` with specific lengths for strings, and `NUMBER` for numeric values. Additionally, consider using `VARIANT` for semi-structured data if needed.
+Chunk Processing Time: 5.09 seconds
+
+Table Processing Time: 14.41 seconds
+Tables Processed: 4/197
+--------------------------------------------------------------------------------
+
+
+Processing table SDL_LA_GT_CUSTOMER with 42 columns
+Total rows: 50
+
+Chunk 1/1, Batch 1:
+Anomaly Analysis:
+table_name : batch_1
+solution : ACTIVESTATUS contains -99999, replace with appropriate default or null value.
+
+SQL Query:
+```sql
+SELECT * 
+FROM batch_1 
+WHERE ACTIVESTATUS = -99999;
+```
+
+column name : BILLPROVINCE
+solution : Check if BILLPROVINCE contains sensitive information, consider masking or encrypting.
+
+column name : BILLZIPCODE
+solution : Check if BILLZIPCODE contains sensitive information, consider masking or encrypting.
+
+column name : LATITUDE
+solution : Latitude might be PII; consider masking to comply with GDPR. Use a generalization technique.
+
+column name : LONGITUDE
+solution : Longitude might be PII; consider masking to comply with GDPR. Use a generalization technique.
+
+column name : BRANCHNAME
+solution : If BRANCHNAME is considered sensitive, apply tokenization or encryption to comply with SOC2.
+
+column name : FILENAME
+solution : Ensure FILENAME does not contain sensitive information. If it does, apply a masking technique.
+
+Appropriate Masking Techniques:
+- For PII such as LATITUDE and LONGITUDE, use generalization or data redaction.
+- For fields like BRANCHNAME, use tokenization or encryption.
+- Ensure all masked data meets compliance with relevant standards (PII, GDPR, SOC2).
+Semantic Analysis:
+```plaintext
+Issue: ACTIVESTATUS - Contains a placeholder value of -99999, which may not align with expected active status values.
+
+Snowflake-specific data type optimization:
+- LONGITUDE and LATITUDE: Consider using FLOAT or GEOGRAPHY data type for more precise handling of geographical coordinates.
+- CRT_DTTM: Confirm that TIMESTAMP_NTZ is appropriate; if timezone information is necessary, consider using TIMESTAMP_TZ.
+```
+Table: SDL_LA_GT_CUSTOMER
+Processing Start Time: 10:23:38
+Total Records: 50
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_LA_GT_CUSTOMER
+solution : The detected anomalies suggest that there are missing or incorrect values in multiple columns. Specifically, 'BILLPROVINCE', 'BILLZIPCODE', 'ROUTESTEP1-7', 'LATITUDE', 'LONGITUDE', 'ROUTESTEP10', 'STORE', 'PRICELEVEL', 'SALESAREANAME', 'BRANCHCODE', 'BRANCHNAME', 'FREQUENCYOFVISIT', and 'FILENAME' have 'None' or '-99999' values. These should be addressed by verifying source data, updating missing values, and ensuring data type consistency. For 'BILLPROVINCE' and 'BILLZIPCODE', ensure they match valid geographic data. For 'ACTIVESTATUS', replace '-99999' with a correct status. The ROUTESTEP fields should have valid route information, and 'LATITUDE' and 'LONGITUDE' should contain valid geographic coordinates.
+
+SQL Query:
+SELECT *
+FROM SDL_LA_GT_CUSTOMER
+WHERE BILLPROVINCE IS NULL OR BILLZIPCODE IS NULL OR ACTIVESTATUS = -99999
+OR ROUTESTEP1 IS NULL OR ROUTESTEP2 IS NULL OR ROUTESTEP3 IS NULL OR ROUTESTEP4 IS NULL
+OR ROUTESTEP5 IS NULL OR ROUTESTEP6 IS NULL OR ROUTESTEP7 IS NULL OR LATITUDE IS NULL
+OR LONGITUDE IS NULL OR ROUTESTEP10 IS NULL OR STORE IS NULL OR PRICELEVEL IS NULL
+OR SALESAREANAME IS NULL OR BRANCHCODE IS NULL OR BRANCHNAME IS NULL OR FREQUENCYOFVISIT IS NULL
+OR FILENAME IS NULL;
+
+column name : BILLPROVINCE
+solution : Verify and update with correct province data. Consider masking if it represents PII.
+
+column name : BILLZIPCODE
+solution : Verify and update with correct zip code data. Consider masking if it represents PII.
+
+column name : ACTIVESTATUS
+solution : Replace '-99999' with correct status value.
+
+column name : LATITUDE
+solution : Verify and update with correct latitude data. Masking recommended as per geolocation data privacy guidelines.
+
+column name : LONGITUDE
+solution : Verify and update with correct longitude data. Masking recommended as per geolocation data privacy guidelines.
+
+column name : FILENAME
+solution : Ensure filename is correct and consistent with stored data. Consider masking if it contains PII or sensitive information.
+
+Masking Techniques:
+- Use dynamic data masking for fields requiring real-time access control.
+- Apply encryption for sensitive fields, ensuring compliance with PII, HIPAA, GDPR, and SOC2.
+
+For geolocation data such as LATITUDE and LONGITUDE, consider using geolocation masking techniques that allow for approximate values to protect precise locations.
+Semantic Analysis:
+**Issue:**
+
+1. **ARNAME**: Contains entries like "None" which are not valid customer names.
+2. **ARADDRESS**: Contains entries like "None" which are not valid addresses.
+3. **TELEPHONE**: Contains entries like "None" which are not valid telephone numbers.
+4. **FAX**: Contains entries like "None" which are not valid fax numbers.
+5. **DISTRIBUTORID**: Contains "None" which is not valid as a distributor ID.
+6. **CRT_DTTM**: Ensure the data type is optimized for TIMESTAMP_NTZ for Snowflake usage.
+
+These issues suggest entries that semantically do not align with expected values, indicating missing or misrepresented data. Snowflake-specific optimizations were checked, and issues were noted where applicable.
+Chunk Processing Time: 11.31 seconds
+
+Table Processing Time: 29.82 seconds
+Tables Processed: 5/197
+--------------------------------------------------------------------------------
+
+
+Processing table SDL_KR_COUPANG_BPA_REPORT with 58 columns
+Total rows: 7
+Table: SDL_KR_COUPANG_BPA_REPORT
+Processing Start Time: 10:23:50
+Total Records: 7
+Chunk Processing Time: 0.00 seconds
+
+Table Processing Time: 1.19 seconds
+Tables Processed: 6/197
+--------------------------------------------------------------------------------
+
+
+Processing table SDL_MDS_VN_GT_MSL_SHOPTYPE_MAPPING with 22 columns
+Total rows: 50
+
+Chunk 1/1, Batch 1:
+Anomaly Analysis:
+```plaintext
+table_name: <Your Table Name>
+solution: 
+- Row with ID 24.0 has an anomaly where the 'ACTIVE' column has a 'None' value. Ensure this is set to a valid state such as '1' for active or '0' for inactive.
+- Check for NaN and NaT values in 'VERSIONNUMBER', 'ENTERDATETIME', 'ENTERVERSIONNUMBER', 'LASTCHGDATETIME', and 'LASTCHGVERSIONNUMBER' for completeness and replace them with appropriate default values or investigate why they are missing.
+- Anomaly with 'VALIDATIONSTATUS' being NaN in row 2, ensure it has a valid status such as 'Valid' or 'Invalid'.
+- Ensure consistent data types across all rows and columns.
+
+SQL Query:
+```sql
+SELECT 
+    ID,
+    MUID,
+    VERSIONNAME,
+    VERSIONNUMBER,
+    VERSION_ID,
+    VERSIONFLAG,
+    NAME,
+    CODE,
+    CHANGETRACKINGMASK,
+    SHOPTYPE_CODE,
+    SHOPTYPE_NAME,
+    CHANNEL,
+    SUBCHANNEL,
+    MSL_SUBCHANNEL,
+    ACTIVE,
+    ENTERDATETIME,
+    ENTERUSERNAME,
+    ENTERVERSIONNUMBER,
+    LASTCHGDATETIME,
+    LASTCHGUSERNAME,
+    LASTCHGVERSIONNUMBER,
+    VALIDATIONSTATUS
+FROM 
+    <Your Table Name>
+WHERE 
+    ACTIVE IS NULL
+    OR VERSIONNUMBER IS NULL
+    OR ENTERDATETIME IS NULL
+    OR ENTERVERSIONNUMBER IS NULL
+    OR LASTCHGDATETIME IS NULL
+    OR LASTCHGVERSIONNUMBER IS NULL
+    OR VALIDATIONSTATUS IS NULL;
+```
+
+```plaintext
+column name: MUID
+solution: Consider masking or encrypting this column as it may contain unique identifiers that could be sensitive.
+
+Suggestion for Masking:
+- Use SHA2 or MD5 hashing for irreversible masking.
+- Use format preserving encryption for reversible masking.
+
+column name: ENTERUSERNAME
+solution: Mask or encrypt this column to comply with PII and privacy standards.
+
+Suggestion for Masking:
+- Use data redaction or tokenization to replace sensitive information with placeholders.
+
+column name: LASTCHGUSERNAME
+solution: Mask or encrypt this column to comply with PII and privacy standards.
+
+Suggestion for Masking:
+- Use data redaction or tokenization to replace sensitive information with placeholders.
+```
+
+Semantic Analysis:
+Based on the provided data and metadata, here are the identified issues:
+
+1. **VERSIONNUMBER**  
+   Issue: The column name suggests a version number, which should be numeric. However, in row 2, the value under this column is 'v47', which appears to be a string rather than a purely numeric value.
+
+2. **VERSION_ID**  
+   Issue: The column name indicates it should be a numeric identifier (possibly similar to VERSIONNUMBER), but the metadata shows it as a NUMBER. Ensure that all entries are numeric and consistent with the expected format.
+
+3. **VALIDATIONSTATUS**  
+   Issue: The column name suggests a status indicator, yet the metadata indicates it is of TEXT type with a maximum length of 500. This might be excessive if the status values are simple short strings like 'Valid' or 'Invalid'.
+
+4. **LASTCHGVERSIONNUMBER**  
+   Issue: In the sample data, the format appears to be a date '2023-02-17', which is inconsistent with the expected numeric type according to the metadata. This discrepancy should be checked for potential data type mismatch or conversion issues.
+
+Ensure these columns are reviewed for consistency between the data type, the actual data, and the semantic meaning implied by their names.
+Table: SDL_MDS_VN_GT_MSL_SHOPTYPE_MAPPING
+Processing Start Time: 10:24:02
+Total Records: 50
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_MDS_VN_GT_MSL_SHOPTYPE_MAPPING  
+solution :  
+1. The row with ID "24.0" has a "VERSIONFLAG" marked as "inactive" but "ACTIVE" is "0.0". Ensure consistency between these two fields.  
+2. The second anomalous row is entirely NaN except for "VALIDATIONSTATUS" which is "49.0". This likely indicates incomplete data entry. Validate entries or remove the row if it serves no purpose.  
+
+column name : MUID  
+solution : Consider masking or encrypting this column due to its potential as a unique identifier.  
+
+column name : ENTERUSERNAME, LASTCHGUSERNAME  
+solution : These columns contain user identifiers that should be masked or encrypted to comply with GDPR and SOC2 standards.  
+
+Suggested masking techniques:  
+- Use data masking to replace real values with fictitious but realistic-looking values.  
+- Apply encryption for sensitive identifiers to protect against unauthorized access.  
+
+SQL Query:
+sql
+WITH Anomalies AS (
+    SELECT *,
+        ROW_NUMBER() OVER (PARTITION BY ID ORDER BY ENTERDATETIME) AS rn
+    FROM SDL_MDS_VN_GT_MSL_SHOPTYPE_MAPPING
+    WHERE 
+        (ID IS NULL OR VERSIONNAME IS NULL OR VERSIONNUMBER IS NULL OR VERSION_ID IS NULL OR VERSIONFLAG IS NULL OR NAME IS NULL OR CODE IS NULL OR CHANGETRACKINGMASK IS NULL OR SHOPTYPE_CODE IS NULL OR SHOPTYPE_NAME IS NULL OR CHANNEL IS NULL OR SUBCHANNEL IS NULL OR MSL_SUBCHANNEL IS NULL OR ACTIVE IS NULL OR ENTERDATETIME IS NULL OR ENTERUSERNAME IS NULL OR ENTERVERSIONNUMBER IS NULL OR LASTCHGDATETIME IS NULL OR LASTCHGUSERNAME IS NULL OR LASTCHGVERSIONNUMBER IS NULL OR VALIDATIONSTATUS IS NULL)
+        OR (VERSIONFLAG = 'inactive' AND ACTIVE <> 0.0)
+)
+SELECT * FROM Anomalies
+WHERE rn = 1;
+Semantic Analysis:
+Issue: `VERSIONNUMBER` contains negative values, which may not align with its expected semantic meaning of representing a version number. Consider reviewing these values for accuracy.
+
+Issue: `ID` contains a value of -1, which may not align with its expected semantic meaning as an identifier. Consider reviewing this value for potential errors.
+
+Note: Ensure that all number-based columns have appropriate constraints, such as non-negative values for identifiers and version numbers, to maintain data integrity.
+Chunk Processing Time: 14.70 seconds
+
+Table Processing Time: 26.47 seconds
+Tables Processed: 7/197
+--------------------------------------------------------------------------------
+
+
+Processing table PRODBU_PRODUCTBUSINESSUNIT with 40 columns
+Total rows: 10
+
+Chunk 1/1, Batch 1:
+Anomaly Analysis:
+```plaintext
+table_name : ProductData
+solution : The column 'AZUREFILE' has an anomalous value of -999.0 which is likely incorrect. Ensure all file identifiers are valid and adjust accordingly. Missing values in hierarchical columns should be addressed by verifying source data completeness.
+
+SQL Query:
+SELECT *
+FROM ProductData
+WHERE AZUREFILE = -999.0 OR
+      HIER3 IS NULL OR
+      HIER6 IS NULL;
+
+column name : REMOTEKEY
+solution : Consider encrypting this field to protect sensitive product access keys. Use AES encryption.
+
+column name : PRODUCTREMOTEKEY
+solution : Encrypt this field to ensure security and compliance with standards. Use AES encryption.
+
+column name : BUSINESSUNITREMOTEKEY
+solution : This field should be masked using a reversible encryption to comply with PII and GDPR standards. Use Snowflake's built-in masking policies.
+
+column name : LOAD_KEY
+solution : Encrypt this column to protect data integrity and follow SOC2 compliance. Use AES encryption.
+```
+
+Semantic Analysis:
+Based on the provided sample data and metadata, here is the analysis:
+
+### Issues Identified:
+
+1. **FETCHEDDATETIME**:  
+   - Issue: The data type is `TEXT`, but this column holds datetime values. Consider using `TIMESTAMP` for proper datetime handling and storage efficiency.
+
+2. **AZUREDATETIME**:  
+   - Issue: The data type is `TEXT`, but this column holds datetime values. Consider using `TIMESTAMP` for proper datetime handling and storage efficiency.
+
+3. **CDL_DATETIME**:  
+   - Issue: The data type is `TEXT`, but this column name suggests it should hold datetime values. Consider using `TIMESTAMP` for proper datetime handling and storage efficiency.
+
+4. **FETCHEDSEQUENCE**:  
+   - Issue: The data type is `NUMBER`, but the sample data shows a time value format ("12:00:00"). If this column is intended to store time, consider using a `TIME` or `TIMESTAMP` type.
+
+5. **AZUREFILE**:  
+   - Issue: The data type is `TEXT`, but the sample data shows a numerical placeholder (-999.0). Ensure this column aligns with expected data input, or clarify its intended use if it stores numerical data.
+
+### Snowflake-Specific Data Type Optimization:
+
+- Consider revisiting the columns with datetime information and changing their data types from `TEXT` to `TIMESTAMP` to leverage Snowflake's datetime functions and optimizations.
+- Review columns storing numerical values as text and adjust to `NUMBER` if applicable to save storage space and improve performance.
+Table: PRODBU_PRODUCTBUSINESSUNIT
+Processing Start Time: 10:24:25
+Total Records: 10
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : PRODBU_PRODUCTBUSINESSUNIT  
+solution :  
+1. Correct the FETCHEDSEQUENCE value from -999.0 to a valid sequence number.  
+2. Fill missing values in the second anomalous row with appropriate data or consider it for deletion if it should not exist.  
+3. Ensure consistency in the hierarchy columns across rows.  
+4. Validate and correct ISLISTED, ISORDERABLE, and ISRETURNABLE fields for logical consistency.  
+5. Check for any null or NaN entries in critical columns and rectify them.  
+
+SQL Query: 
+sql
+WITH Anomalies AS (
+    SELECT *,
+        CASE WHEN FETCHEDSEQUENCE = -999.0 THEN 'Invalid FETCHEDSEQUENCE' ELSE NULL END AS fetch_sequence_issue,
+        CASE WHEN REGION IS NULL THEN 'Missing REGION' ELSE NULL END AS missing_region_issue,
+        -- Add more checks based on business rules for other columns
+        ROW_NUMBER() OVER (PARTITION BY PRODUCTBUSINESSUNITID ORDER BY CDL_DATETIME DESC) AS rn
+    FROM PRODBU_PRODUCTBUSINESSUNIT
+)
+SELECT * FROM Anomalies
+WHERE fetch_sequence_issue IS NOT NULL
+   OR missing_region_issue IS NOT NULL
+   OR rn > 1;  -- Example logic to detect anomalies; adjust as needed
+
+
+column name : FETCHEDSEQUENCE  
+solution : Mask negative or anomalous values for internal review and rectification.  
+
+column name : REGION  
+solution : Ensure non-null, verify data type and consistency.  
+
+column name : AZUREFILE  
+solution : Mask or encrypt using techniques like hashing or tokenization for compliance with SOC2.  
+
+column name : REMOTEKEY, PRODUCTREMOTEKEY, BUSINESSUNITREMOTEKEY  
+solution : Mask with irreversible hashing to comply with PII standards.  
+
+column name : PRODUCTTEXT, BUSINESSUNITTEXT  
+solution : Mask using techniques like data redaction or pseudonymization to comply with GDPR.  
+
+column name : ISLISTED, ISORDERABLE, ISRETURNABLE  
+solution : Ensure logical consistency and correct any anomalies.  
+
+column name : DELIVERYUNIT  
+solution : Validate entries, mask as needed in line with HIPAA if applicable.
+Semantic Analysis:
+Issue: `FETCHEDSEQUENCE` column contains negative values (-5, -999, -15), which may not align with the semantic meaning of a sequence typically being non-negative or zero.
+
+Optimization Suggestion: Consider using `TIMESTAMP_NTZ` for date and time columns like `FETCHEDDATETIME` and `CDL_DATETIME` instead of `TEXT` to leverage Snowflake-specific optimizations for datetime operations.
+Chunk Processing Time: 10.90 seconds
+
+Table Processing Time: 19.28 seconds
+Tables Processed: 8/197
+--------------------------------------------------------------------------------
+
+
+Processing table SDL_MDS_VN_CUSTOMER_SEGMENTATION with 22 columns
+Total rows: 50
+
+Chunk 1/1, Batch 1:
+Anomaly Analysis:
+```plaintext
+table_name : customer_segmentation
+solution : Address missing or null values for columns. Ensure all IDs are unique and non-null. Validate and correct 'VALIDATIONSTATUS' to ensure consistency.
+
+SQL Query:
+SELECT *
+FROM customer_segmentation
+WHERE 
+  ID IS NULL OR
+  MUID IS NULL OR
+  VERSIONNAME IS NULL OR
+  VERSIONNUMBER IS NULL OR
+  VERSION_ID IS NULL OR
+  VERSIONFLAG IS NULL OR
+  NAME IS NULL OR
+  CODE IS NULL OR
+  CHANGETRACKINGMASK IS NULL OR
+  CUSTOMER_SEGMENTATION_LEVEL_1_CODE IS NULL OR
+  CUSTOMER_SEGMENTATION_LEVEL_1_NAME IS NULL OR
+  CUSTOMER_SEGMENTATION_LEVEL_1_ID IS NULL OR
+  CUSTOMER_SEGMENTATION_LEVEL_2_CODE IS NULL OR
+  CUSTOMER_SEGMENTATION_LEVEL_2_NAME IS NULL OR
+  CUSTOMER_SEGMENTATION_LEVEL_2_ID IS NULL OR
+  ENTERDATETIME IS NULL OR
+  ENTERUSERNAME IS NULL OR
+  ENTERVERSIONNUMBER IS NULL OR
+  LASTCHGDATETIME IS NULL OR
+  LASTCHGUSERNAME IS NULL OR
+  LASTCHGVERSIONNUMBER IS NULL OR
+  VALIDATIONSTATUS IS NULL;
+
+-- Highlighting sensitive columns and suggesting masking techniques:
+
+column name : MUID
+solution : Considered sensitive for compliance standards such as GDPR and SOC2. Use deterministic encryption for consistent masking.
+
+column name : ENTERUSERNAME
+solution : Contains PII; mask using format preserving encryption to keep data structure intact.
+
+column name : LASTCHGUSERNAME
+solution : Contains PII; apply data redaction to obscure data for non-privileged users.
+```
+
+Semantic Analysis:
+```plaintext
+Issue: COLUMN_NAME 'VERSIONFLAG' contains a value 'inactive' that does not align with its expected semantic meaning if it's meant to represent a flag status that should be active/inactive.
+Issue: COLUMN_NAME 'VERSIONNUMBER' has a string representation like 'Alpha' which may not align with its expected semantic meaning of a numerical version number.
+```
+Table: SDL_MDS_VN_CUSTOMER_SEGMENTATION
+Processing Start Time: 10:24:51
+Total Records: 50
+
+Chunk 1/1:
+Anomaly Analysis:
+table_name : SDL_MDS_VN_CUSTOMER_SEGMENTATION
+solution : 
+1. ID should not be NaN. Ensure IDs are unique and non-null.
+2. MUID should be a valid UUID. Check for null or invalid UUIDs.
+3. VERSIONNUMBER and VERSION_ID should not be NaN. Validate version consistency.
+4. VERSIONFLAG should be either 'active' or 'inactive'. Validate against allowed values.
+5. CHANGETRACKINGMASK should not be NaN. Ensure proper change tracking configuration.
+6. CUSTOMER_SEGMENTATION_LEVEL_1_CODE and CUSTOMER_SEGMENTATION_LEVEL_2_CODE should not be NaN. Validate segmentation codes.
+7. ENTERDATETIME and LASTCHGDATETIME should not be NaT. Ensure these timestamps are correctly recorded.
+
+SQL Query:
+SELECT * FROM SDL_MDS_VN_CUSTOMER_SEGMENTATION
+WHERE ID IS NULL 
+   OR MUID IS NULL 
+   OR NOT TRY_TO_UUID(MUID) 
+   OR VERSIONNUMBER IS NULL 
+   OR VERSION_ID IS NULL 
+   OR VERSIONFLAG NOT IN ('active', 'inactive') 
+   OR CHANGETRACKINGMASK IS NULL 
+   OR CUSTOMER_SEGMENTATION_LEVEL_1_CODE IS NULL 
+   OR CUSTOMER_SEGMENTATION_LEVEL_2_CODE IS NULL 
+   OR ENTERDATETIME IS NULL 
+   OR LASTCHGDATETIME IS NULL;
+
+column name : MUID
+solution : Encrypt MUID as it may contain PII. Use deterministic encryption to allow joins.
+
+column name : ENTERDATETIME
+solution : Mask ENTERDATETIME to comply with SOC2 standards. Use dynamic data masking to obfuscate the time component.
+
+column name : LASTCHGDATETIME
+solution : Mask LASTCHGDATETIME to comply with SOC2 standards. Use dynamic data masking to obfuscate the time component.
+Semantic Analysis:
+Issue: VERSIONNUMBER
+- The column contains negative numbers, which may not align with the expected semantic meaning of a version number being a positive integer.
+
+Issue: VALIDATIONSTATUS
+- The column contains values "valid" and "invalid", which are text, while it might be more efficient to use a BOOLEAN data type (true/false) for such binary status in Snowflake.
+
+Issue: ID
+- The column contains negative numbers, which may not align with the typical expectation of an ID being a non-negative integer.
+Chunk Processing Time: 9.56 seconds
+
+Table Processing Time: 24.24 seconds
+Tables Processed: 9/197
+--------------------------------------------------------------------------------
+
+
+Processing table SDL_MDS_PH_CLOBOTICS_SOS_REF with 22 columns
+Total rows: 51

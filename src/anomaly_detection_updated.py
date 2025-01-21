@@ -1,3 +1,8 @@
+'''
+- This code currently supports snowflake table connection and analysis
+- Diffrent Data warehouse support WIP
+'''
+
 from langchain_openai import AzureChatOpenAI
 from sklearn.ensemble import IsolationForest
 import snowflake.connector

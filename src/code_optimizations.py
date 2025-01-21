@@ -1,9 +1,10 @@
 '''
-This code currently supports snowflake view connection and it's analysis
+This code currently supports snowflake view connection and local SQL file analysis
 '''
 
 import os
 import logging
+import glob
 import snowflake.connector
 from snowflake.connector.pandas_tools import write_pandas
 from langchain_openai import AzureChatOpenAI
@@ -15,9 +16,12 @@ from pathlib import Path
 from typing import Dict, List, Any
 
 # Set up directory structure
+
 base_dir = str(Path(__file__).parent.parent)
 logs_dir = os.path.join(base_dir, "logs")
+input_dir = os.path.join(base_dir, "data", "test")
 os.makedirs(logs_dir, exist_ok=True)
+
 
 load_dotenv()
 
@@ -52,6 +56,58 @@ def get_view_definitions(conn) -> List[Dict[str, str]]:
         return views
     finally:
         cursor.close()
+
+
+def get_local_sql_files() -> List[Dict[str, str]]:
+    """Read SQL files from the input directory and its subdirectories."""
+    sql_files = []
+    
+    # Use glob to recursively find all .sql files
+    for sql_file in glob.glob(os.path.join(input_dir, "**/*.sql"), recursive=True):
+        try:
+            with open(sql_file, 'r', encoding='utf-8') as f:
+                sql_content = f.read()
+            
+            # Get relative path for cleaner naming
+            relative_path = os.path.relpath(sql_file, input_dir)
+            sql_files.append({
+                'name': relative_path,
+                'definition': sql_content
+            })
+        except Exception as e:
+            logging.error(f"Error reading file {sql_file}: {str(e)}")
+    
+    return sql_files
+
+def get_sql_sources() -> List[Dict[str, str]]:
+    """Get SQL sources based on the source type specified in env file."""
+    source_type = os.environ.get('SQL_SOURCE_TYPE', 'local').lower()
+    
+    if source_type not in ['local', 'snowflake', 'both']:
+        raise ValueError("SQL_SOURCE_TYPE must be 'local', 'snowflake', or 'both'")
+    
+    sources = []
+    source_info = {}
+    
+    if source_type in ['local', 'both']:
+        local_files = get_local_sql_files()
+        sources.extend(local_files)
+        source_info['local'] = len(local_files)
+    
+    if source_type in ['snowflake', 'both']:
+        if not all(env_var in os.environ for env_var in ['SNOWFLAKE_USER', 'SNOWFLAKE_PASSWORD', 'SNOWFLAKE_ACCOUNT']):
+            raise ValueError("Snowflake credentials not found in environment variables")
+        
+        conn = get_snowflake_connection()
+        try:
+            views = get_view_definitions(conn)
+            sources.extend(views)
+            source_info['snowflake'] = len(views)
+        finally:
+            conn.close()
+    
+    return sources, source_info
+
 
 def main():
     # Load environment variables
@@ -138,28 +194,33 @@ def main():
 
     # Set up analysis report file
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    report_path = os.path.join(logs_dir, f"sql_view_logic_analysis_report_{timestamp}.txt")
+    report_path = os.path.join(logs_dir, f"sql_analysis_report_{timestamp}.txt")
     print(f"Analysis report will be saved to: {report_path}")
 
     try:
-        # Connect to Snowflake
-        print("\n=== Connecting to Snowflake ===")
-        conn = get_snowflake_connection()
+        # Get SQL sources based on configuration
+        print("\n=== Getting SQL sources ===")
+        source_type = os.environ.get('SQL_SOURCE_TYPE', 'local').lower()
+        print(f"Source type: {source_type}")
         
-        # Get view definitions
-        print("\n=== Retrieving view definitions ===")
-        views = get_view_definitions(conn)
-        views_count = len(views)
-        print(f"Found {views_count} views to analyze")
+        all_sql_sources, source_info = get_sql_sources()
+        total_sources = len(all_sql_sources)
+        
+        # Print source information
+        for source_type, count in source_info.items():
+            print(f"Found {count} {source_type} SQL sources")
+        print(f"Total SQL sources to analyze: {total_sources}")
 
         # Open report file for writing
         with open(report_path, 'w') as report_file:
-            report_file.write(f"SQL View Analysis Report - Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            report_file.write(f"SQL Analysis Report - Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+            for source_type, count in source_info.items():
+                report_file.write(f"{source_type.capitalize()} SQL sources: {count}\n")
             report_file.write("="*80 + "\n\n")
 
-            processed_views_count = 0
-            for view in views:
-                print(f"\nAnalyzing view: {view['name']}")
+            processed_count = 0
+            for source in all_sql_sources:
+                print(f"\nAnalyzing: {source['name']}")
                 
                 try:
                     prompt_template = PromptTemplate(
@@ -172,36 +233,36 @@ def main():
                     )
                     
                     start_time = time.time()
-                    result = model.invoke(prompt_template.format(code=view['definition']))
-                    sensitive_result = model.invoke(sensitive_prompt_template.format(sensitive_code=view['definition']))
+                    result = model.invoke(prompt_template.format(code=source['definition']))
+                    sensitive_result = model.invoke(sensitive_prompt_template.format(sensitive_code=source['definition']))
                     analysis_text = result.content
                     sensitive_text = sensitive_result.content
                     end_time = time.time()
                     print(f"Analysis completed in {end_time - start_time:.2f} seconds")
                     
                     # Write to report file
-                    report_file.write(f"View: {view['name']}\n")
+                    report_file.write(f"Source: {source['name']}\n")
                     report_file.write(f"Analysis Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
                     report_file.write("-"*80 + "\n")
                     report_file.write(analysis_text + "\n")
                     report_file.write(sensitive_text + "\n")
                     report_file.write("="*80 + "\n\n")
                     
-                    processed_views_count += 1
-                    print(f"Progress: {processed_views_count}/{views_count} views analyzed")
+                    processed_count += 1
+                    print(f"Progress: {processed_count}/{total_sources} analyzed")
                         
                 except Exception as e:
-                    error_message = f"Error analyzing view {view['name']}: {str(e)}"
+                    error_message = f"Error analyzing {source['name']}: {str(e)}"
                     logging.error(error_message)
-                    report_file.write(f"ERROR analyzing {view['name']}: {str(e)}\n")
+                    report_file.write(f"ERROR analyzing {source['name']}: {str(e)}\n")
                     report_file.write("="*80 + "\n\n")
 
-    finally:
-        if 'conn' in locals():
-            conn.close()
+    except Exception as e:
+        print(f"Error during analysis: {str(e)}")
+        logging.error(f"Error during analysis: {str(e)}")
 
     print(f"\n=== Analysis completed ===")
-    print(f"Total views analyzed: {processed_views_count}/{views_count}")
+    print(f"Total sources analyzed: {processed_count}/{total_sources}")
     print(f"Report file location: {os.path.abspath(report_path)}")
 
 if __name__ == "__main__":
