@@ -6,7 +6,6 @@ import os
 import logging
 import glob
 import snowflake.connector
-from snowflake.connector.pandas_tools import write_pandas
 from langchain_openai import AzureChatOpenAI
 from langchain_core.prompts import PromptTemplate
 from datetime import datetime
@@ -18,8 +17,8 @@ from typing import Dict, List, Any
 # Set up directory structure
 
 base_dir = str(Path(__file__).parent.parent)
-logs_dir = os.path.join(base_dir, "logs")
-input_dir = os.path.join(base_dir, "data", "test")
+logs_dir = os.path.join(base_dir, "logs", "code_optimizations")
+input_dir = os.path.join(base_dir, "data", "test") # "input" or "test" folder inside data folder
 os.makedirs(logs_dir, exist_ok=True)
 
 
@@ -195,6 +194,7 @@ def main():
     # Set up analysis report file
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     report_path = os.path.join(logs_dir, f"sql_analysis_report_{timestamp}.txt")
+    # os.makedirs(report_path, exist_ok=True) 
     print(f"Analysis report will be saved to: {report_path}")
 
     try:

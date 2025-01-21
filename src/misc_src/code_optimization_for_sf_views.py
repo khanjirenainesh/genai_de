@@ -5,7 +5,6 @@ This code currently supports snowflake view connection and it's analysis
 import os
 import logging
 import snowflake.connector
-from snowflake.connector.pandas_tools import write_pandas
 from langchain_openai import AzureChatOpenAI
 from langchain_core.prompts import PromptTemplate
 from datetime import datetime
