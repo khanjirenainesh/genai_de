@@ -14,12 +14,8 @@ import time
 from datetime import datetime
 from abc import ABC, abstractmethod
 from typing import Dict, Any, List, Tuple
-import pyodbc
-import pymysql
 import psycopg2
-import numpy as np
 from pandas.api.types import is_numeric_dtype
-from io import StringIO
 import math
 
 load_dotenv()
@@ -579,7 +575,7 @@ def main():
             
             # Set up logging directory
             base_dir = str(Path(__file__).parent.parent)
-            logs_dir = os.path.join(base_dir, "logs", warehouse_type)
+            logs_dir = os.path.join(base_dir, "logs", f"{warehouse_type}_anomaly_detection_reports")
             os.makedirs(logs_dir, exist_ok=True)
             
             # Create timestamp for the report
