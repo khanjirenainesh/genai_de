@@ -314,8 +314,19 @@ class ChunkProcessor:
     
     def get_numeric_columns(self, df: pd.DataFrame, columns: List[str]) -> List[str]:
         """Get numeric columns from a specific set of columns"""
-        return [col for col in columns 
-                if is_numeric_dtype(df[col]) and not pd.api.types.is_datetime64_any_dtype(df[col])]
+
+        numeric_columns = []
+        text_columns = []
+
+        # Iterate through the columns to check if they are numeric or non-numeric
+        for column in columns:
+        # Check if the column is not datetime and all values can be converted to numeric
+            if not pd.api.types.is_datetime64_any_dtype(df[column]) and pd.to_numeric(df[column], errors='coerce').notna().all():
+                numeric_columns.append(column)
+            else:
+                text_columns.append(column)
+
+        return numeric_columns
 
 class AnomalyDetector:
     """Enhanced anomaly detector to handle large column counts"""
@@ -338,9 +349,6 @@ class AnomalyDetector:
                 continue
                 
             numeric_data = df[numeric_columns]
-            
-            # Handle missing values before anomaly detection
-            numeric_data = numeric_data.fillna(numeric_data.mean())
             
             try:
                 model = IsolationForest(
