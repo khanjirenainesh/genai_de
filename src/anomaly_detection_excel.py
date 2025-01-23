@@ -106,26 +106,37 @@ class AnomalyDetector:
         # Convert all column names to strings
         df_copy.columns = df_copy.columns.astype(str)
 
-        numeric_columns = df_copy.select_dtypes(include=['int64', 'float64']).columns
+        numeric_columns = []
+        text_columns = []
 
-        if not numeric_columns.empty:
+        # Iterate through the columns to check if they are numeric or non-numeric
+        for column in df_copy.columns:
+        # Check if the column is not datetime and all values can be converted to numeric
+            if not pd.api.types.is_datetime64_any_dtype(df_copy[column]) and pd.to_numeric(df_copy[column], errors='coerce').notna().all():
+                numeric_columns.append(column)
+            else:
+                text_columns.append(column)
+
+        if numeric_columns:
             try:
-                anomaly_data = df_copy[numeric_columns]
+                anomaly_data = df[numeric_columns]
+                
+                anomaly_data_array = anomaly_data.to_numpy()
                 
                 # Ensure the data is numeric and reset index
-                anomaly_data = anomaly_data.apply(pd.to_numeric, errors='coerce')
-                anomaly_data = anomaly_data.dropna()
+                # anomaly_data = anomaly_data.apply(pd.to_numeric, errors='coerce')
+                # anomaly_data = anomaly_data.dropna()
                 
                 model = IsolationForest(
                     contamination=0.01,
                     max_features=min(1.0, 10 / len(numeric_columns)),
-                    max_samples=min(1.0, 1000 / len(anomaly_data)),
+                    max_samples=min(1.0, 1000 / len(anomaly_data_array)),
                     n_estimators=100,
                     random_state=42
                 )
 
                 # Fit and predict anomalies
-                anomalies = model.fit_predict(anomaly_data)
+                anomalies = model.fit_predict(anomaly_data_array)
                 anomaly_indices = anomaly_data.index[anomalies == -1]
 
                 if len(anomaly_indices) > 0:
