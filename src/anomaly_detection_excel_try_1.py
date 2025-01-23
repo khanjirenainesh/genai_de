@@ -307,11 +307,11 @@ def main():
                     if "Detected" in anomaly_result:
                         anomaly_insights = insight_generator.generate_insights(
                             insight_generator.create_anomaly_prompt(anomaly_result)
-                        ).replace("```plaintext", "").replace("```", "").strip() 
+                        ).replace("plaintext", "").replace("```", "").strip() 
 
                         semantic_insights = insight_generator.generate_insights(
                             insight_generator.create_semantic_prompt(chunk, table_metadata, table)
-                        ).replace("```plaintext", "").replace("```", "").strip() 
+                        ).replace("plaintext", "").replace("```", "").strip() 
                         
                         # Add to report
                         processing_time = time.time() - table_start
