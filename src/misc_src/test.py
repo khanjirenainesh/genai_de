@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
@@ -10,11 +11,13 @@ env_vars = {
     }
 warehouse_type = os.environ.get("WAREHOUSE_TYPE").lower()
 source_type = os.environ.get("SQL_SOURCE_TYPE").lower()
+base_dir = str(Path(__file__).parent.parent.parent)
 
 
-print(env_vars.get("AZURE_OPENAI_ENDPOINT"))
-print(source_type)
-print(warehouse_type)
+print(base_dir)
+# print(env_vars.get("AZURE_OPENAI_ENDPOINT"))
+# print(source_type)
+# print(warehouse_type)
 
 
 
