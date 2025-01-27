@@ -35,13 +35,15 @@ def initialize_azure_chat_model() -> AzureChatOpenAI:
     if missing_vars:
         raise ValueError(f"Missing required environment variables: {', '.join(missing_vars)}")
     
-    return AzureChatOpenAI(
-        azure_endpoint=os.environ["AZURE_OPENAI_ENDPOINT"],
-        azure_deployment=os.environ["AZURE_OPENAI_4o_DEPLOYMENT_NAME"],
-        api_version=os.environ["AZURE_OPENAI_API_VERSION"],
-        api_key=os.environ["AZURE_OPENAI_API_KEY"],
-        temperature=0
-    )
+    try:
+        return AzureChatOpenAI(
+            model=os.environ["AZURE_OPENAI_4o_DEPLOYMENT_NAME"],
+            azure_endpoint=os.environ["AZURE_OPENAI_ENDPOINT"],
+            api_key=os.environ["AZURE_OPENAI_API_KEY"],
+            api_version=os.environ["AZURE_OPENAI_API_VERSION"]
+        )
+    except Exception as e:
+        raise Exception(f"Error initializing AzureChatOpenAI: {str(e)}")
 
 # [Previous functions remain unchanged: get_snowflake_connection, get_view_definitions, 
 # get_local_sql_files, get_sql_sources, flatten_sensitive_analysis, perform_analysis]
@@ -229,6 +231,7 @@ def perform_analysis(source: dict[str, str], model: AzureChatOpenAI) -> dict[str
             "source_name": source['name'],
             "error": str(e)
         }
+
 
 def main():
     st.title("ViewLogic AI")
