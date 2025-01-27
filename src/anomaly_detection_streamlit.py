@@ -13,11 +13,13 @@ anomaly_detector = AnomalyDetector()
 insight_generator = InsightGenerator(config)
 
 # Streamlit UI
-st.title("Anomaly Detection and Analysis")
+st.title("Data Anomaly Detection")
 
-# Initialize session state for selected tables
+# Initialize session state variables
 if 'selected_tables' not in st.session_state:
     st.session_state.selected_tables = []
+if 'select_all' not in st.session_state:
+    st.session_state.select_all = False
 
 # Sidebar for additional user input
 st.sidebar.header("Settings")
@@ -25,22 +27,35 @@ chunk_size = st.sidebar.slider("Select chunk size for processing:", min_value=10
 enable_semantic_analysis = st.sidebar.checkbox("Enable Semantic Analysis", value=True)
 enable_anomaly_detection = st.sidebar.checkbox("Enable Anomaly Detection", value=True)
 
-
-# Dropdown to select multiple tables or scan all tables
+# Get table metadata
 metadata = db_connector.get_table_metadata()
 table_names = metadata['table_name'].unique().tolist()
 
-# Add a "Select All" option
-if st.checkbox("Select All Tables"):
-    st.session_state.selected_tables = table_names
-else:
-    # Use session state to preserve selected tables across reruns
-    selected_tables = st.multiselect(
-        "Select tables to analyze:",
-        table_names,
-        default=st.session_state.selected_tables
-    )
-    st.session_state.selected_tables = selected_tables
+# Functions to handle state changes
+def handle_select_all():
+    if st.session_state.select_all:
+        st.session_state.selected_tables = table_names
+    else:
+        st.session_state.selected_tables = []
+
+def handle_table_selection():
+    # This ensures the selected_tables state is updated when individual tables are selected
+    st.session_state.select_all = False
+
+# Add a "Select All" option with on_change handler
+select_all = st.checkbox(f"Select All Tables from {config.env_vars['SNOWFLAKE_SCHEMA']} Schema", 
+                        value=st.session_state.select_all,
+                        key='select_all',
+                        on_change=handle_select_all)
+
+# Table selection with on_change handler
+selected_tables = st.multiselect(
+    "Select tables to analyze:",
+    table_names,
+    default=st.session_state.selected_tables,
+    key='selected_tables',
+    on_change=handle_table_selection
+)
 
 # Button to start analysis
 if st.button("Start Analysis"):
@@ -123,7 +138,7 @@ if st.button("Start Analysis"):
                                 str(anomaly_insights_json.get("anomaly_solution", "")),
                                 str(anomaly_insights_json.get("SQL_query", "")),
                                 str(anomaly_insights_json.get("Sensitive_Data_Compliance_Suggestions", ""))
-                            ])
+                            ]) 
 
                     # Semantic analysis
                     if enable_semantic_analysis:
