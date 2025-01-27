@@ -13,7 +13,7 @@ import time
 import glob
 from typing import Dict, List, Any
 
-# Load environment variables
+
 load_dotenv(override=True)
 
 # Set up directory structure
@@ -207,7 +207,7 @@ def perform_analysis(source: dict[str, str], model: AzureChatOpenAI) -> dict[str
         }
 
 def main():
-    st.title("SQL Query Optimizer")
+    st.title("ViewLogic AI")
     st.sidebar.title("Configuration")
 
     # Load environment variables

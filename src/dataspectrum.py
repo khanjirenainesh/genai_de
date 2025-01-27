@@ -4,7 +4,7 @@ from datetime import datetime
 import time
 import json
 from pathlib import Path
-from anomaly_detection_load_excel import Config, SnowflakeConnector, AnomalyDetector, InsightGenerator, ExcelReportGenerator
+from dataspectrum_main import Config, SnowflakeConnector, AnomalyDetector, InsightGenerator, ExcelReportGenerator
 
 # Initialize components
 config = Config()
@@ -13,7 +13,7 @@ anomaly_detector = AnomalyDetector()
 insight_generator = InsightGenerator(config)
 
 # Streamlit UI
-st.title("Data Anomaly Detection")
+st.title("DataSpectrum AI")
 
 # Initialize session state variables
 if 'selected_tables' not in st.session_state:
@@ -91,7 +91,7 @@ if st.button("Start Analysis"):
         for table in st.session_state.selected_tables:
             log_messages.append(f"Processing table: {table}")
             # Update the single log area with all messages
-            log_area.text_area("Logs", value="\n".join(log_messages), height=200)       
+            log_area.text_area(value="\n".join(log_messages), height=200)       
 
             table_start = time.time()
             anomalous_records_count = 0
@@ -120,7 +120,7 @@ if st.button("Start Analysis"):
                         anomalous_records_count += len(anomaly_detector.anomalous_records)
                         if "Detected" in anomaly_result:
                             anomaly_insights = insight_generator.generate_insights(
-                                insight_generator.create_anomaly_prompt(anomaly_result)
+                                insight_generator.create_anomaly_prompt(anomaly_result),analysis_type='anomaly'
                             ).replace("plaintext", "").replace("json", "").replace("```", "").strip()
 
                             anomaly_insights_json = json.loads(anomaly_insights)
@@ -146,7 +146,7 @@ if st.button("Start Analysis"):
                     # Semantic analysis
                     if enable_semantic_analysis:
                         semantic_insights = insight_generator.generate_insights(
-                            insight_generator.create_semantic_prompt(chunk, table_metadata, table)
+                            insight_generator.create_semantic_prompt(chunk, table_metadata, table),analysis_type='semantic'
                         ).replace("plaintext", "").replace("json", "").replace("```", "").strip()
 
                         # Display results in Streamlit
