@@ -13,6 +13,7 @@ import time
 import glob
 from typing import Dict, List, Any
 
+
 load_dotenv(override=True)
 
 # Set up directory structure
@@ -20,33 +21,6 @@ base_dir = str(Path(__file__).parent.parent)
 logs_dir = os.path.join(base_dir, "logs", "code_optimizations")
 input_dir = os.path.join(base_dir, "data", "test")
 os.makedirs(logs_dir, exist_ok=True)
-
-def initialize_azure_chat_model() -> AzureChatOpenAI:
-    """Initialize and return an AzureChatOpenAI model instance."""
-    required_env_vars = [
-        "AZURE_OPENAI_ENDPOINT",
-        "AZURE_OPENAI_4o_DEPLOYMENT_NAME",
-        "AZURE_OPENAI_API_VERSION",
-        "AZURE_OPENAI_API_KEY"
-    ]
-    
-    # Verify all required environment variables are present
-    missing_vars = [var for var in required_env_vars if not os.environ.get(var)]
-    if missing_vars:
-        raise ValueError(f"Missing required environment variables: {', '.join(missing_vars)}")
-    
-    try:
-        return AzureChatOpenAI(
-            model=os.environ["AZURE_OPENAI_4o_DEPLOYMENT_NAME"],
-            azure_endpoint=os.environ["AZURE_OPENAI_ENDPOINT"],
-            api_key=os.environ["AZURE_OPENAI_API_KEY"],
-            api_version=os.environ["AZURE_OPENAI_API_VERSION"]
-        )
-    except Exception as e:
-        raise Exception(f"Error initializing AzureChatOpenAI: {str(e)}")
-
-# [Previous functions remain unchanged: get_snowflake_connection, get_view_definitions, 
-# get_local_sql_files, get_sql_sources, flatten_sensitive_analysis, perform_analysis]
 
 def get_snowflake_connection():
     """Create a Snowflake connection using environment variables."""
@@ -232,62 +206,70 @@ def perform_analysis(source: dict[str, str], model: AzureChatOpenAI) -> dict[str
             "error": str(e)
         }
 
-
 def main():
     st.title("ViewLogic AI")
     st.sidebar.title("Configuration")
 
-    try:
-        # Initialize the Azure Chat model
-        model = initialize_azure_chat_model()
-        
-        # Source type selection
-        source_type = st.sidebar.selectbox("Select SQL Source Type", ["local", "snowflake", "both"])
+    # Load environment variables
+    env_vars = {
+        "AZURE_OPENAI_ENDPOINT": os.environ.get("AZURE_OPENAI_ENDPOINT"),
+        "AZURE_OPENAI_4o_DEPLOYMENT_NAME": os.environ.get("AZURE_OPENAI_4o_DEPLOYMENT_NAME"),
+        "AZURE_OPENAI_API_VERSION": os.environ.get("AZURE_OPENAI_API_VERSION"),
+        "AZURE_OPENAI_API_KEY": os.environ.get("AZURE_OPENAI_API_KEY"),
+    }
 
-        if st.sidebar.button("Run Analysis"):
-            with st.spinner("Running analysis..."):
-                try:
-                    # Step 1: Fetching SQL sources
-                    st.write("Fetching SQL sources...")
-                    all_sql_sources, source_info = get_sql_sources(source_type)
-                    total_sources = len(all_sql_sources)
-                    st.success(f"Found {total_sources} SQL sources to analyze.")
+    model = AzureChatOpenAI(
+        azure_endpoint=env_vars.get("AZURE_OPENAI_ENDPOINT"),
+        azure_deployment=env_vars.get("AZURE_OPENAI_4o_DEPLOYMENT_NAME"),
+        openai_api_version=env_vars.get("AZURE_OPENAI_API_VERSION"),
+        openai_api_key=env_vars.get("AZURE_OPENAI_API_KEY"),
+    )
 
-                    # Step 2: Perform analysis
-                    analysis_data = []
-                    progress_bar = st.progress(0)
-                    status_text = st.empty()
+    # Source type selection
+    source_type = st.sidebar.selectbox("Select SQL Source Type", ["local", "snowflake", "both"])
 
-                    for i, source in enumerate(all_sql_sources):
-                        status_text.text(f"Analyzing source {i + 1} of {total_sources}: {source['name']}")
-                        analysis_result = perform_analysis(source, model)
-                        analysis_data.append(analysis_result)
-                        progress_bar.progress((i + 1) / total_sources)
-                        time.sleep(0.1)  # Simulate some delay for better UX
+    if st.sidebar.button("Run Analysis"):
+        with st.spinner("Running analysis..."):
+            try:
+                # Step 1: Fetching SQL sources
+                st.write("Fetching SQL sources...")
+                all_sql_sources, source_info = get_sql_sources(source_type)
+                total_sources = len(all_sql_sources)
+                st.success(f"Found {total_sources} SQL sources to analyze.")
 
-                    # Step 3: Display results
-                    st.write("Analysis Results:")
-                    df = pd.DataFrame(analysis_data)
-                    st.dataframe(df)
+                # Step 2: Perform analysis
+                analysis_data = []
+                progress_bar = st.progress(0)
+                status_text = st.empty()
 
-                    # Step 4: Save report to Excel
-                    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                    report_path = os.path.join(logs_dir, f"sql_analysis_report_{timestamp}.xlsx")
-                    df.to_excel(report_path, index=False)
-                    st.success(f"Analysis report saved to: {report_path}")
+                for i, source in enumerate(all_sql_sources):
+                    status_text.text(f"Analyzing source {i + 1} of {total_sources}: {source['name']}")
+                    analysis_result = perform_analysis(source, model)
+                    analysis_data.append(analysis_result)
+                    progress_bar.progress((i + 1) / total_sources)
+                    time.sleep(0.1)  # Simulate some delay for better UX
 
-                    # Step 5: Provide download link
-                    with open(report_path, "rb") as file:
-                        btn = st.download_button(
-                            label="Download Report",
-                            data=file,
-                            file_name=f"sql_analysis_report_{timestamp}.xlsx",
-                            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                        )
-                except Exception as e:
-                    st.error(f"Error during analysis: {str(e)}")
-    except Exception as e:
-        st.error(f"Error initializing Azure OpenAI model: {str(e)}")
+                # Step 3: Display results
+                st.write("Analysis Results:")
+                df = pd.DataFrame(analysis_data)
+                st.dataframe(df)
+
+                # Step 4: Save report to Excel
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                report_path = os.path.join(logs_dir, f"sql_analysis_report_{timestamp}.xlsx")
+                df.to_excel(report_path, index=False)
+                st.success(f"Analysis report saved to: {report_path}")
+
+                # Step 5: Provide download link
+                with open(report_path, "rb") as file:
+                    btn = st.download_button(
+                        label="Download Report",
+                        data=file,
+                        file_name=f"sql_analysis_report_{timestamp}.xlsx",
+                        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                    )
+            except Exception as e:
+                st.error(f"Error during analysis: {str(e)}")
 
 if __name__ == "__main__":
     main()
