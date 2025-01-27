@@ -13,7 +13,6 @@ pymysql
 openpyxl
 snowflake-sqlalchemy
 snowflake-connector-python
-psycopg2
 PyMuPDF
 fitz
 scikit-learn
