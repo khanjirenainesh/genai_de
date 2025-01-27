@@ -280,7 +280,7 @@ class ExcelReportGenerator:
             'summary': ["Database", "Schema", "Total Tables", "Tables Processed", 
                        "Start Time", "End Time", "Total Processing Time (s)", "Status"],
             'anomaly': ["Table Name", "Processing Time", "Total Records", "Anomaly Count", 
-                       "Affected Columns", "anomaly solution", "SQL Query", "Sensitive Data Compliance Suggestions"],
+                        "anomaly solution", "SQL Query", "Sensitive Data Compliance Suggestions"],
             'semantic': ["Table Name", "Column Name", "Data Type", "Issue Type", 
                         "Issue Description", "Recommended Action"]
         }
@@ -378,8 +378,7 @@ def main():
                         processing_time = time.time() - table_start
                         report_generator.add_entry('anomaly', [
                             table, f"{processing_time:.2f}", len(df),
-                            anomalous_records_count, 
-                            ", ".join(df.columns),
+                            anomalous_records_count,
                             str(anomaly_insights_json.get("anomaly_solution","")),
                             str(anomaly_insights_json.get("SQL_query","")),
                             str(anomaly_insights_json.get("Sensitive_Data_Compliance_Suggestions",""))
