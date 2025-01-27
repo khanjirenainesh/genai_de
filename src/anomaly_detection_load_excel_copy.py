@@ -198,7 +198,7 @@ class InsightGenerator:
         }
         print("Insight generator initialized")
 
-    def generate_insights(self, prompt: str, analysis_type: str = 'anomaly') -> str:
+    def generate_insights(self, prompt: str, analysis_type: str ) -> str:
         print("Generating insights from prompt")
         system_prompt = self.system_prompts.get(
             analysis_type
