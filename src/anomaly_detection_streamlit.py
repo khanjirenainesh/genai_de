@@ -84,11 +84,14 @@ if st.button("Start Analysis"):
 
         # Real-time logs
         log_container = st.expander("Real-Time Logs", expanded=True)
+        log_area = log_container.empty()  # Create an empty placeholder
         log_messages = []
 
+        # Process tables
         for table in st.session_state.selected_tables:
             log_messages.append(f"Processing table: {table}")
-            log_container.text_area("Logs", value="\n".join(log_messages), height=200)
+            # Update the single log area with all messages
+            log_area.text_area("Logs", value="\n".join(log_messages), height=200)       
 
             table_start = time.time()
             anomalous_records_count = 0
