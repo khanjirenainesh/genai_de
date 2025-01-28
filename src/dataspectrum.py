@@ -91,7 +91,7 @@ if st.button("Start Analysis"):
         for table in st.session_state.selected_tables:
             log_messages.append(f"Processing table: {table}")
             # Update the single log area with all messages
-            log_area.text_area(value="\n".join(log_messages), height=200)       
+            log_area.text_area("Logs",value="\n".join(log_messages), height=200)       
 
             table_start = time.time()
             anomalous_records_count = 0
