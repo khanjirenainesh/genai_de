@@ -213,27 +213,27 @@ class InsightGenerator:
 
     def create_anomaly_prompt(self, issues: str) -> str:
         return f"""The following issues were detected in the Snowflake database:\n\n{issues}\n
-                Give specific solution based on the anomalies.
-                Don't add any extra line other than solution to the anomaly.
+                Give specific solution based on the issues.
+                Don't add any extra line other than solution to the issue.
                 Ensure that the following steps are applied to every table and every column.
                 Don't mix up solution for different tables.
                 Ensure the format intact for every table same.
                 Provide specific issue with wrong values.
                 
                 Give solution in concise way.
-                Also generate SQL query which is strictly Snowflake friendly to get anomalies.
+                Also generate SQL query which is strictly Snowflake friendly to get issues.
                 
                 Also 
                 1. Highlight columns that should be masked or encrypted, with compliance standards as PII, HIPAA, GDPR, SOC2 and provide suggestions
                 2. Suggest appropriate masking techniques for each sensitive field. Dont use json formating for sensitive data compliance suggestions.
                 
                 I have the following unstructured text output containing:
-                    1.Solutions to anomalies
+                    1.Solutions to issues
                     2.SQL query
                     3.Sensitive data compliance suggestions
                  Convert this text into a proper JSON format with the following columns:
                     
-                    [anomaly_solution,SQL_query,Sensitive_Data_Compliance_Suggestions]
+                    [Issue_solution,SQL_query,Sensitive_Data_Compliance_Suggestions]
                     
                 Ensure that:
                 Each key in the JSON corresponds to the specified columns.
@@ -291,7 +291,7 @@ class ExcelReportGenerator:
         self.workbook.remove(self.workbook.active)
         self.sheets = {
             'summary': self.workbook.create_sheet("Executive Summary"),
-            'anomaly': self.workbook.create_sheet("Anomaly Analysis"),
+            'anomaly': self.workbook.create_sheet("Issue Analysis"),
             'semantic': self.workbook.create_sheet("Semantic Analysis")
         }
         
@@ -299,8 +299,8 @@ class ExcelReportGenerator:
         headers = {
             'summary': ["Database", "Schema", "Total Tables", "Tables Processed", 
                        "Start Time", "End Time", "Total Processing Time (s)", "Status"],
-            'anomaly': ["Table Name", "Processing Time", "Total Records", "Anomaly Count", 
-                        "anomaly solution", "SQL Query", "Sensitive Data Compliance Suggestions"],
+            'anomaly': ["Table Name", "Processing Time", "Total Records", 
+                        "Issue solution", "SQL Query", "Sensitive Data Compliance Suggestions"],
             'semantic': ["Table Name", "Column Name", "Data Type", "Issue Type", 
                         "Issue Description", "Recommended Action"]
         }
@@ -346,7 +346,7 @@ def main():
         reports_dir = Path(__file__).parent.parent / "logs" / "snowflake_data_identification_reports"
         reports_dir.mkdir(parents=True, exist_ok=True)
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        report_path = reports_dir / f"snowflake_anomaly_report_{timestamp}.xlsx"
+        report_path = reports_dir / f"snowflake_data_report_{timestamp}.xlsx"
         
         report_generator = ExcelReportGenerator(
             config.env_vars['SNOWFLAKE_DATABASE'],
@@ -389,17 +389,14 @@ def main():
                             insight_generator.create_semantic_prompt(chunk, table_metadata, table),analysis_type='semantic'
                         ).replace("plaintext", "").replace("json", "").replace("```", "").strip() 
                         
-                        # json_result = insight_generator.generate_insights(
-                        #     insight_generator.create_result_json(anomaly_insights)
-                        # ).replace("json", "").replace("```", "").strip()
                         
                         
                         # Add to report
                         processing_time = time.time() - table_start
                         report_generator.add_entry('anomaly', [
                             table, f"{processing_time:.2f}", len(df),
-                            anomalous_records_count,
-                            str(anomaly_insights_json.get("anomaly_solution","")),
+                            str(anomaly_insights_json.get("Issue_solution","")),
+                            # str(anomaly_insights_json),
                             str(anomaly_insights_json.get("SQL_query","")),
                             str(anomaly_insights_json.get("Sensitive_Data_Compliance_Suggestions",""))
                         ])

@@ -25,7 +25,7 @@ if 'select_all' not in st.session_state:
 st.sidebar.header("Settings")
 chunk_size = st.sidebar.slider("Select chunk size for processing:", min_value=1000, max_value=10000, value=5000, step=1000)
 enable_semantic_analysis = st.sidebar.checkbox("Enable Semantic Analysis", value=True)
-enable_anomaly_detection = st.sidebar.checkbox("Enable Anomaly Detection", value=True)
+enable_anomaly_detection = st.sidebar.checkbox("Enable Deviation Analysis", value=True)
 
 # Get table metadata
 metadata = db_connector.get_table_metadata()
@@ -66,7 +66,7 @@ if st.button("Start Analysis"):
         reports_dir = Path(__file__).parent.parent / "logs" / "snowflake_data_identification_reports"
         reports_dir.mkdir(parents=True, exist_ok=True)
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        report_path = reports_dir / f"snowflake_anomaly_report_{timestamp}.xlsx"
+        report_path = reports_dir / f"snowflake_data_report_{timestamp}.xlsx"
 
         report_generator = ExcelReportGenerator(
             config.env_vars['SNOWFLAKE_DATABASE'],
@@ -126,18 +126,17 @@ if st.button("Start Analysis"):
                             anomaly_insights_json = json.loads(anomaly_insights)
 
                             # Display results in Streamlit
-                            with st.expander(f"Anomaly Insights for Table: {table}", expanded=False):
-                                st.write(f"Anomalies detected in table: {table}")
+                            with st.expander(f"Data Deviation Insights for Table: {table}", expanded=False):
+                                st.write(f"Data deviations detected in table: {table}")
                                 st.write(anomaly_result)
-                                st.write("Anomaly Insights:")
+                                st.write("Data Deviation Insights:")
                                 st.json(anomaly_insights_json)
 
                             # Add to report
                             processing_time = time.time() - table_start
                             report_generator.add_entry('anomaly', [
                                 table, f"{processing_time:.2f}", len(df),
-                                anomalous_records_count,
-                                str(anomaly_insights_json.get("anomaly_solution", "")),
+                                str(anomaly_insights_json.get("Issue_solution", "")),
                                 str(anomaly_insights_json.get("SQL_query", "")),
                                 str(anomaly_insights_json.get("Sensitive_Data_Compliance_Suggestions", ""))
                             ]) 
@@ -155,9 +154,7 @@ if st.button("Start Analysis"):
 
                         # Add to report
                         report_generator.add_entry('semantic', [
-                            table, "", "", "Semantic Analysis",
-                            semantic_insights, ""
-                        ])
+                            table, semantic_insights])
 
                 tables_processed += 1
 
