@@ -1,6 +1,5 @@
 # Python 3.11 or above
 snowflake-connector-python
-langchain_openai
 python-dotenv==1.0.1
 openai==1.43.0
 tiktoken==0.7.0
