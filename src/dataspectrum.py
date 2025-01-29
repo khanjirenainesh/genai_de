@@ -137,7 +137,6 @@ if st.button("Start Analysis"):
                             report_generator.add_entry('anomaly', [
                                 table, f"{processing_time:.2f}", len(df),
                                 anomalous_records_count,
-                                ", ".join(df.columns),
                                 str(anomaly_insights_json.get("anomaly_solution", "")),
                                 str(anomaly_insights_json.get("SQL_query", "")),
                                 str(anomaly_insights_json.get("Sensitive_Data_Compliance_Suggestions", ""))
