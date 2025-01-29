@@ -225,7 +225,7 @@ class InsightGenerator:
                 
                 Also 
                 1. Highlight columns that should be masked or encrypted, with compliance standards as PII, HIPAA, GDPR, SOC2 and provide suggestions
-                2. Suggest appropriate masking techniques for each sensitive field. Dont use json formating for sensitive data compliance suggestions.
+                2. Suggest appropriate masking techniques for each sensitive field. Dont use json formatting for sensitive data compliance suggestions.
                 
                 I have the following unstructured text output containing:
                     1.Solutions to issues
@@ -301,8 +301,7 @@ class ExcelReportGenerator:
                        "Start Time", "End Time", "Total Processing Time (s)", "Status"],
             'anomaly': ["Table Name", "Processing Time", "Total Records", 
                         "Issue solution", "SQL Query", "Sensitive Data Compliance Suggestions"],
-            'semantic': ["Table Name", "Column Name", "Data Type", "Issue Type", 
-                        "Issue Description", "Recommended Action"]
+            'semantic': ["Table Name","Issue Description"]
         }
         
         for sheet_name, header_list in headers.items():
