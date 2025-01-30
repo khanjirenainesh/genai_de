@@ -128,7 +128,7 @@ def perform_analysis(source: dict[str, str], model: AzureChatOpenAI) -> dict[str
     - Suggest parameterization strategies
     - Suggest parameterization or dynamic alternatives.
     - Provide sample code for implementation.
-    - Don't provide unnecessary comments if the issue doesn't exist
+    - Don't provide unnecessary comments if the issues don't exist
     - Don't provide any other unnecessary information apart from above mentioned issues.
     
     SQL Query:
@@ -139,14 +139,12 @@ def perform_analysis(source: dict[str, str], model: AzureChatOpenAI) -> dict[str
     - Map the query execution flow.
     - Identify performance bottlenecks in nested operations.
     - Suggest opportunities for flattening or restructuring.
-    - Provide alternative query structures with explanations.
     - Analyze column usage:
     - Flag any *'SELECT ' statements.
     - List unused columns in JOIN conditions - [columns list].
     - Identify columns fetched but not used in the final output.
-    - Provide optimized SELECT statements with specific columns.
     - List specific unused column names.
-    - Don't provide unnecessary comments if the issue doesn't exist
+    - Don't provide unnecessary comments if the issues don't exist
     - Don't provide any other unnecessary information apart from above mentioned issues.
     SQL Query:
     {code}"""
@@ -157,7 +155,7 @@ def perform_analysis(source: dict[str, str], model: AzureChatOpenAI) -> dict[str
     - Identify unused columns from joined tables.
     - Suggest removal of unnecessary joins.
     - Recommend appropriate join types (LEFT, INNER, etc.)
-    - Don't provide unnecessary comments if the issue doesn't exist
+    - Don't provide unnecessary comments if the issues don't exist
     - Don't provide any other unnecessary information apart from above mentioned issues.    
     
     SQL Query:
@@ -175,7 +173,7 @@ def perform_analysis(source: dict[str, str], model: AzureChatOpenAI) -> dict[str
     - Suggest suitable clustering keys.
     - Explain benefits of query result caching.
     - Recommend strategies for execution plan optimization.
-    - Don't provide unnecessary comments if the issue doesn't exist
+    - Don't provide unnecessary comments if the issues don't exist
     - Don't provide any other unnecessary information apart from above mentioned issues.
     
     SQL Query:
@@ -183,17 +181,16 @@ def perform_analysis(source: dict[str, str], model: AzureChatOpenAI) -> dict[str
 
 
     revised_query_optimization_prompt = """
-    - Only give me a optimzed query based on your analysis of the given SQL query below.
+    - strictly only provide me an optimzed SQL query based on your analysis.
     - Rewrite the provided Snowflake SQL query for better performance.
     - Ensure the following optimizations:
     - Use of Table Aliases: Apply clear and concise aliases for readability and maintainability.
-    - Materialized Views: Identify opportunities where materialized views can improve performance.
     - Query Result Caching: Ensure the query takes advantage of Snowflake's result caching for faster execution.
     - Execution Plan Optimization: Recommend changes that reduce scan time, optimize joins, and eliminate redundant operations.
     - Formatting & Readability: Ensure proper indentation, consistent naming conventions, and well-structured SQL.
     - Don't provide any other unnecessary information apart from above mentioned issues.
-    - Don't provide unnecessary comments if the issue doesn't exist
-    Strictly focus on performance improvements and do not alter the query logic or return additional information.
+    - Don't provide unnecessary comments if the issues don't exist
+    Strictly focus on performance improvements and do not alter the query logic or do not return additional information.
     
     SQL Query:
     {code} """
@@ -226,11 +223,11 @@ def perform_analysis(source: dict[str, str], model: AzureChatOpenAI) -> dict[str
 
         return {
             "source_name": source['name'],
-            "hardcoded_value_identification": hardcoded_result,
-            "query_structure_optimization": structure_result,
-            "join_analysis": join_result.replace("**", " ").replace("####", " "),
-            "performance_enhancement_recommendations": performance_result,
-            "code_optimization_suggestions": code_optimization_result.replace("```sql", " ").replace("```", " ")
+            "hardcoded_value_identification": hardcoded_result.replace("**", " ").replace("####", " ").replace("###", " "),
+            "query_structure_optimization": structure_result.replace("**", " ").replace("####", " ").replace("###", " "),
+            "join_analysis": join_result.replace("**", " ").replace("####", " ").replace("###", " "),
+            "performance_enhancement_recommendations": performance_result.replace("**", " ").replace("####", " ").replace("###", " "),
+            "code_optimization_suggestions": code_optimization_result.replace("```sql", " ").replace("```", " ").replace("###", " ")
         }
     except Exception as e:
         return {
