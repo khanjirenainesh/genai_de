@@ -192,6 +192,7 @@ class InsightGenerator:
             - Check alignment between column names and data content
             - Identify mismatched data types
             - Suggest Snowflake-specific optimizations
+            - Provide all the inconsistancies present with their values.
             - Highlight semantic inconsistencies
             
             Provide clear, structured analysis focusing on actionable findings."""
@@ -213,12 +214,16 @@ class InsightGenerator:
 
     def create_anomaly_prompt(self, issues: str) -> str:
         return f"""The following issues were detected in the Snowflake database:\n\n{issues}\n
-                Give specific solution based on the issues.
-                Don't add any extra line other than solution to the issue.
-                Ensure that the following steps are applied to every table and every column.
-                Don't mix up solution for different tables.
-                Ensure the format intact for every table same.
-                Provide specific issue with wrong values.
+                * Strictly follow:-
+                - Give specific solution based on the issues.
+                - Don't add any extra line other than solution to the issue.
+                - Ensure that the following steps are applied to every table and every column.
+                - Don't mix up solution for different tables.
+                - Ensure the format intact for every table same.
+                - Provide specific issue with wrong values.
+                - Dont give anything in brackets, Provide only.
+                - Provide all the inconsistancies present with their values.
+                - In example provide all the discrepancy values.
                 
                 Give solution in concise way.
                 Also generate SQL query which is strictly Snowflake friendly to get issues.
@@ -228,7 +233,7 @@ class InsightGenerator:
                 2. Suggest appropriate masking techniques for each sensitive field. Dont use json formatting for sensitive data compliance suggestions.
                 
                 I have the following unstructured text output containing:
-                    1.Solutions to issues
+                    1.Solutions to issues.
                     2.SQL query
                     3.Sensitive data compliance suggestions
                  Convert this text into a proper JSON format with the following columns:
@@ -241,7 +246,7 @@ class InsightGenerator:
                 If any section is missing in the input, leave the corresponding value as an empty string ("").
                 Dont provide any extra texts before and after json data.
                 Also Dont add any suggestion ot explaination before and after json data, Output should start with curly braces as json format.
-                provide all accordingle json format so tat I ccan fetch details of specific column.
+                provide all accordingle json format so tat I can fetch details of specific column.
                 
                 """
 
@@ -264,6 +269,8 @@ class InsightGenerator:
                 6. Go through all the columns and all the tables.
                 7. Ensure the format intact.
                 8. Please provide details of columns which has issues.
+                9. Provide all the inconsistancies present with their values.
+                10. In example provide all the discrepancy values.
                 """
  
 class ExcelReportGenerator:
