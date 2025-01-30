@@ -128,7 +128,6 @@ if st.button("Start Analysis"):
                             # Display results in Streamlit
                             with st.expander(f"Data Deviation Insights for Table: {table}", expanded=False):
                                 st.write(f"Data deviations detected in table: {table}")
-                                # st.write(anomaly_result)
                                 st.write("Data Deviation Insights:")
                                 st.json(anomaly_insights_json)
 

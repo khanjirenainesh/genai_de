@@ -104,7 +104,8 @@ def flatten_sensitive_analysis(sensitive_analysis_result: str) -> dict[str, Any]
             "hardcoded_value_identification",
             "query_structure_optimization",
             "join_analysis",
-            "performance_enhancement_recommendations"
+            "performance_enhancement_recommendations",
+            "code_optimization_suggestions"
         ]
         for key in required_keys:
             if key not in sensitive_data:
@@ -115,7 +116,8 @@ def flatten_sensitive_analysis(sensitive_analysis_result: str) -> dict[str, Any]
             "hardcoded_value_identification": "",
             "query_structure_optimization": "",
             "join_analysis": "",
-            "performance_enhancement_recommendations": ""
+            "performance_enhancement_recommendations": "",
+            "code_optimization_suggestions": ""
         }
 
 def perform_analysis(source: dict[str, str], model: AzureChatOpenAI) -> dict[str, str]:
@@ -126,6 +128,8 @@ def perform_analysis(source: dict[str, str], model: AzureChatOpenAI) -> dict[str
     - Suggest parameterization strategies
     - Suggest parameterization or dynamic alternatives.
     - Provide sample code for implementation.
+    - Don't provide unnecessary comments if the issue doesn't exist
+    - Don't provide any other unnecessary information apart from above mentioned issues.
     
     SQL Query:
     {code}"""
@@ -142,7 +146,8 @@ def perform_analysis(source: dict[str, str], model: AzureChatOpenAI) -> dict[str
     - Identify columns fetched but not used in the final output.
     - Provide optimized SELECT statements with specific columns.
     - List specific unused column names.
-    
+    - Don't provide unnecessary comments if the issue doesn't exist
+    - Don't provide any other unnecessary information apart from above mentioned issues.
     SQL Query:
     {code}"""
 
@@ -152,6 +157,8 @@ def perform_analysis(source: dict[str, str], model: AzureChatOpenAI) -> dict[str
     - Identify unused columns from joined tables.
     - Suggest removal of unnecessary joins.
     - Recommend appropriate join types (LEFT, INNER, etc.)
+    - Don't provide unnecessary comments if the issue doesn't exist
+    - Don't provide any other unnecessary information apart from above mentioned issues.    
     
     SQL Query:
     {code}"""
@@ -168,9 +175,28 @@ def perform_analysis(source: dict[str, str], model: AzureChatOpenAI) -> dict[str
     - Suggest suitable clustering keys.
     - Explain benefits of query result caching.
     - Recommend strategies for execution plan optimization.
+    - Don't provide unnecessary comments if the issue doesn't exist
+    - Don't provide any other unnecessary information apart from above mentioned issues.
     
     SQL Query:
     {code}"""
+
+
+    revised_query_optimization_prompt = """
+    - Only give me a optimzed query based on your analysis of the given SQL query below.
+    - Rewrite the provided Snowflake SQL query for better performance.
+    - Ensure the following optimizations:
+    - Use of Table Aliases: Apply clear and concise aliases for readability and maintainability.
+    - Materialized Views: Identify opportunities where materialized views can improve performance.
+    - Query Result Caching: Ensure the query takes advantage of Snowflake's result caching for faster execution.
+    - Execution Plan Optimization: Recommend changes that reduce scan time, optimize joins, and eliminate redundant operations.
+    - Formatting & Readability: Ensure proper indentation, consistent naming conventions, and well-structured SQL.
+    - Don't provide any other unnecessary information apart from above mentioned issues.
+    - Don't provide unnecessary comments if the issue doesn't exist
+    Strictly focus on performance improvements and do not alter the query logic or return additional information.
+    
+    SQL Query:
+    {code} """
 
     try:
         hardcoded_result = model.invoke(
@@ -193,12 +219,18 @@ def perform_analysis(source: dict[str, str], model: AzureChatOpenAI) -> dict[str
             .format(code=source['definition'])
         ).content
 
+        code_optimization_result = model.invoke(
+            PromptTemplate(input_variables=["code"], template=revised_query_optimization_prompt)
+            .format(code=source['definition'])
+        ).content
+
         return {
             "source_name": source['name'],
             "hardcoded_value_identification": hardcoded_result,
             "query_structure_optimization": structure_result,
-            "join_analysis": join_result,
-            "performance_enhancement_recommendations": performance_result
+            "join_analysis": join_result.replace("**", " ").replace("####", " "),
+            "performance_enhancement_recommendations": performance_result,
+            "code_optimization_suggestions": code_optimization_result.replace("```sql", " ").replace("```", " ")
         }
     except Exception as e:
         return {
