@@ -224,7 +224,7 @@ class InsightGenerator:
                 Also generate SQL query which is strictly Snowflake friendly to get issues.
                 
                 Also 
-                1. Highlight columns that should be masked or encrypted, with compliance standards as PII, HIPAA, GDPR, SOC2 and provide suggestions
+                1. Highlight columns that should be masked or encrypted, with compliance standards as PII, HIPAA, GDPR, SOC2, PHI, PCI and provide suggestions
                 2. Suggest appropriate masking techniques for each sensitive field. Dont use json formatting for sensitive data compliance suggestions.
                 
                 I have the following unstructured text output containing:
