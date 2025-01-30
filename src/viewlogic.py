@@ -211,18 +211,12 @@ def main():
     st.sidebar.title("Configuration")
 
     # Load environment variables
-    env_vars = {
-        "AZURE_OPENAI_ENDPOINT": os.environ.get("AZURE_OPENAI_ENDPOINT"),
-        "AZURE_OPENAI_4o_DEPLOYMENT_NAME": os.environ.get("AZURE_OPENAI_4o_DEPLOYMENT_NAME"),
-        "AZURE_OPENAI_API_VERSION": os.environ.get("AZURE_OPENAI_API_VERSION"),
-        "AZURE_OPENAI_API_KEY": os.environ.get("AZURE_OPENAI_API_KEY"),
-    }
 
     model = AzureChatOpenAI(
-        azure_endpoint=env_vars.get("AZURE_OPENAI_ENDPOINT"),
-        azure_deployment=env_vars.get("AZURE_OPENAI_4o_DEPLOYMENT_NAME"),
-        openai_api_version=env_vars.get("AZURE_OPENAI_API_VERSION"),
-        openai_api_key=env_vars.get("AZURE_OPENAI_API_KEY"),
+        azure_endpoint=os.environ.get("AZURE_OPENAI_ENDPOINT"),
+        azure_deployment=os.environ.get("AZURE_OPENAI_4o_DEPLOYMENT_NAME"),
+        openai_api_version=os.environ.get("AZURE_OPENAI_API_VERSION"),
+        openai_api_key=os.environ.get("AZURE_OPENAI_API_KEY"),
     )
 
     # Source type selection
