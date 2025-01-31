@@ -136,7 +136,7 @@ class AnomalyDetector:
                 model = IsolationForest(
                     contamination=0.05,
                     max_features=1.0,
-                    max_samples=min(1.0, 1000 / len(anomaly_data_array)),,
+                    max_samples=min(1.0, 1000 / len(anomaly_data_array)),
                     n_estimators=200,
                     random_state=42
                 )
