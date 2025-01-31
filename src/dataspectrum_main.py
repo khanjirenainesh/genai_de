@@ -13,6 +13,8 @@ from openpyxl.styles import PatternFill, Font, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 from sqlalchemy import create_engine
 import json
+import warnings
+warnings.filterwarnings("ignore")
 
 load_dotenv(override=True)
 
@@ -132,10 +134,10 @@ class AnomalyDetector:
                 # anomaly_data = anomaly_data.dropna()
                 
                 model = IsolationForest(
-                    contamination=0.01,
-                    max_features=min(1.0, 10 / len(numeric_columns)),
-                    max_samples=min(1.0, 1000 / len(anomaly_data_array)),
-                    n_estimators=100,
+                    contamination=0.05,
+                    max_features=1.0,
+                    max_samples=min(1.0, 1000 / len(anomaly_data_array)),,
+                    n_estimators=200,
                     random_state=42
                 )
 

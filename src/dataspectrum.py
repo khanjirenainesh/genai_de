@@ -5,6 +5,8 @@ import time
 import json
 from pathlib import Path
 from dataspectrum_main import Config, SnowflakeConnector, AnomalyDetector, InsightGenerator, ExcelReportGenerator
+import warnings
+warnings.filterwarnings("ignore")
 
 # Initialize components
 config = Config()
