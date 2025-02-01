@@ -1,3 +1,6 @@
+"""
+add python script enhancement
+"""
 import streamlit as st
 import pandas as pd
 import os
@@ -71,18 +74,18 @@ def get_local_sql_files() -> list[dict[str, str]]:
 
 def get_sql_sources(source_type: str) -> tuple[list[dict[str, str]], dict[str, int]]:
     """Get SQL sources based on the source type specified."""
-    if source_type not in ['local', 'snowflake', 'both']:
-        raise ValueError("SQL_SOURCE_TYPE must be 'local', 'snowflake', or 'both'")
+    if source_type not in ['local', 'snowflake']:
+        raise ValueError("SQL_SOURCE_TYPE must be 'local', 'snowflake'")
     
     sources = []
     source_info = {}
     
-    if source_type in ['local', 'both']:
+    if source_type in ['local']:
         local_files = get_local_sql_files()
         sources.extend(local_files)
         source_info['local'] = len(local_files)
     
-    if source_type in ['snowflake', 'both']:
+    if source_type in ['snowflake']:
         if not all(env_var in os.environ for env_var in ['SNOWFLAKE_USER', 'SNOWFLAKE_PASSWORD', 'SNOWFLAKE_ACCOUNT']):
             raise ValueError("Snowflake credentials not found in environment variables")
         
@@ -249,7 +252,7 @@ def main():
     )
 
     # Source type selection
-    source_type = st.sidebar.selectbox("Select SQL Source Type", ["local", "snowflake", "both"])
+    source_type = st.sidebar.selectbox("Select SQL Source Type", ["local", "snowflake"])
 
     if st.sidebar.button("Run Analysis"):
         with st.spinner("Running analysis..."):
