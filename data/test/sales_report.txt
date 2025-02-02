@@ -1,0 +1,5 @@
+Sales Analysis Report
+===================
+Total Records: 20
+High Value Sales: 9
+Total Sales Value: $29558.5

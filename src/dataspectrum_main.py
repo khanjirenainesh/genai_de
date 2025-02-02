@@ -9,6 +9,9 @@ import time
 from datetime import datetime
 from typing import Dict, List
 from openpyxl import Workbook
+from langchain_community.vectorstores import FAISS
+from langchain_community.embeddings import OpenAIEmbeddings
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 from openpyxl.styles import PatternFill, Font, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 from sqlalchemy import create_engine
@@ -68,13 +71,27 @@ class SnowflakeConnector:
 
     def get_table_metadata(self, table: str = None) -> pd.DataFrame:
         try:
-            table_condition = f"and TABLE_NAME = '{table}'" if table else ""
+            table_condition = f"and t.TABLE_NAME = '{table}'" if table else ""
             query = f"""
                 SELECT 
-                    TABLE_NAME, COLUMN_NAME, DATA_TYPE, IS_NULLABLE, CHARACTER_MAXIMUM_LENGTH
-                FROM {self.config.env_vars['SNOWFLAKE_DATABASE']}.INFORMATION_SCHEMA.COLUMNS
-                WHERE TABLE_SCHEMA = '{self.config.env_vars['SNOWFLAKE_SCHEMA']}' {table_condition}
+                    c.TABLE_NAME, c.COLUMN_NAME, c.DATA_TYPE, c.IS_NULLABLE, c.CHARACTER_MAXIMUM_LENGTH
+                FROM {self.config.env_vars['SNOWFLAKE_DATABASE']}.INFORMATION_SCHEMA.COLUMNS c
+                JOIN {self.config.env_vars['SNOWFLAKE_DATABASE']}.INFORMATION_SCHEMA.TABLES t 
+                    ON c.TABLE_NAME = t.TABLE_NAME
+                WHERE t.TABLE_TYPE = 'BASE TABLE' and c.TABLE_SCHEMA = '{self.config.env_vars['SNOWFLAKE_SCHEMA']}' {table_condition}
             """
+            # SELECT 
+            #     c.TABLE_NAME,   
+            #     c.COLUMN_NAME, 
+            #     c.DATA_TYPE, 
+            #     c.IS_NULLABLE, 
+            #     c.CHARACTER_MAXIMUM_LENGTH
+            # FROM RAW.INFORMATION_SCHEMA.COLUMNS c
+            # JOIN RAW.INFORMATION_SCHEMA.TABLES t 
+            #     ON c.TABLE_NAME = t.TABLE_NAME
+            # WHERE t.TABLE_TYPE = 'BASE TABLE' and t.TABLE_NAME = 'actual_table_name';
+
+
             metadata = pd.read_sql(query, self.engine)
             
             if metadata.empty:
@@ -364,7 +381,6 @@ def main():
         # Process tables
         start_time = datetime.now()
         metadata = db_connector.get_table_metadata()
-        print("Metadata columns:", metadata.columns)
         total_tables = len(metadata['table_name'].unique())
 
         tables_processed = 0
