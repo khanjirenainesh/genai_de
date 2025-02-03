@@ -234,9 +234,9 @@ class InsightGenerator:
     def create_anomaly_prompt(self, issues: str) -> str:
         return f"""The following issues were detected in the Snowflake database:\n\n{issues}\n
                 * Strictly follow:-
-                - Give specific solution based on the issues.
+                - Give specific solution based on the issues mentioned above.
                 - Don't add any extra line other than solution to the issue.
-                - Ensure that the following steps are applied to every table and every column.
+                - Ensure that the following steps are applied to every column.
                 - Don't mix up solution for different tables.
                 - Ensure the format intact for every table same.
                 - Provide specific issue with wrong values.
@@ -245,7 +245,7 @@ class InsightGenerator:
                 - In example provide all the discrepancy values.
                 
                 Give solution in concise way.
-                Also generate SQL query which is strictly Snowflake friendly to get issues.
+                Also generate SQL query which is strictly Snowflake friendly to find issues.
                 
                 Also 
                 1. Highlight columns that should be masked or encrypted, with compliance standards as PII, HIPAA, GDPR, SOC2, PHI, PCI and provide suggestions
