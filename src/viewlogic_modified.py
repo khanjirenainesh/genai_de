@@ -28,7 +28,7 @@ class PromptConfig:
     structure: str
     performance: str
     optimization: str
-    additional_analysis: str = ""  # For language-specific analysis
+    optimized_python_code: str = ""  # For language-specific analysis
 
 # Prompt configurations for different languages
 SQL_PROMPTS = PromptConfig(
@@ -39,85 +39,183 @@ SQL_PROMPTS = PromptConfig(
     - Suggest parameterization or dynamic alternatives.
     - Provide sample code for implementation.
     - Don't provide unnecessary comments if the issues don't exist
+    - Don't provide any other unnecessary information apart from above mentioned issues.
     
     SQL Query:
     {code}""",
     
     structure="""Analyze the query structure and optimization opportunities:
-    - Review nested queries and subqueries
-    - Map the query execution flow
-    - Identify performance bottlenecks
-    - Suggest opportunities for restructuring
-    - Analyze column usage and efficiency
+    - Review nested queries and subqueries:
+    - Map the query execution flow.
+    - Identify performance bottlenecks in nested operations.
+    - Suggest opportunities for flattening or restructuring.
+    - Analyze column usage:
+    - Flag any *'SELECT ' statements.
+    - List unused columns in JOIN conditions - [columns list].
+    - Identify columns fetched but not used in the final output.
+    - List specific unused column names.
+    - Don't provide unnecessary comments if the issues don't exist
+    - Don't provide any other unnecessary information apart from above mentioned issues.
     
     SQL Query:
     {code}""",
     
     performance="""Performance enhancement recommendations:
-    - Suggest specific improvements in coding standards
-    - Recommend use of appropriate indexes
-    - Discuss when to use temporary tables vs CTEs
-    - Explore opportunities for materialized views
-    - Provide performance-focused recommendations
-    
+    - Review all JOIN operations:
+    - Suggest specific improvements in coding standards:
+    - Use of table aliases and naming conventions.
+    - Ensure proper indentation and formatting.
+    - Recommend use of appropriate indexes.
+    - Discuss when to use temporary tables vs CTEs.
+    - Explore opportunities for materialized views.
+    - Provide performance-focused recommendations:
+    - Discuss potential partitioning strategies.
+    - Suggest suitable clustering keys.
+    - Explain benefits of query result caching.
+    - Recommend appropriate join types (LEFT, INNER, etc.)
+    - Recommend strategies for execution plan optimization.
+    - Don't provide unnecessary comments if the issues don't exist
+    - Don't provide any other unnecessary information apart from above mentioned issues.
+
     SQL Query:
     {code}""",
     
     optimization="""Provide an optimized version of the SQL query:
-    - Use clear table aliases
-    - Optimize for performance
-    - Maintain proper formatting
-    - Ensure readability
+    - strictly only provide me an optimzed SQL query based on your analysis.
+    - Rewrite the provided Snowflake SQL query for better performance.
+    - Ensure the following optimizations:
+    - Use of Table Aliases: Apply clear and concise aliases for readability and maintainability.
+    - Query Result Caching: Ensure the query takes advantage of Snowflake's result caching for faster execution.
+    - Execution Plan Optimization: Recommend changes that reduce scan time, optimize joins, and eliminate redundant operations.
+    - Formatting & Readability: Ensure proper indentation, consistent naming conventions, and well-structured SQL.
+    - Don't provide any other unnecessary information apart from above mentioned issues.
+    - Don't provide unnecessary comments if the issues don't exist
+     Strictly focus on performance improvements and do not alter the query logic or do not return additional information.
+    
     
     SQL Query:
     {code}"""
 )
 
 PYTHON_PROMPTS = PromptConfig(
-    hardcoded_value="""Identify and analyze hardcoded values in the Python code:
-    - List all hardcoded values
-    - Suggest configuration or environment variable alternatives
-    - Explain potential maintenance risks
-    - Provide implementation examples
+    hardcoded_value="""Comprehensive Analysis of Hardcoded Values
+
+                1. Value Identification:
+                - List all numerical constants, string literals, and fixed configurations
+                - Flag critical business logic constants
+                - Identify magic numbers and strings
+                - Document array/collection size constraints
+
+                2. Configuration Recommendations:
+                - Design a configuration management strategy
+                - Suggest environment variable implementations
+                - Propose constants file organization
+                - Recommend configuration validation approaches
+
+                3. Risk Assessment:
+                - Evaluate deployment flexibility limitations
+                - Analyze cross-environment compatibility
+                - Consider scaling implications
+                - Document security considerations
+
+                Python Code:
+                {code}""",
     
-    Python Code:
-    {code}""",
+    structure="""Code Architecture and Organization Analysis
+
+                1. Structural Review:
+                - Evaluate class hierarchy and relationships
+                - Analyze function modularity and cohesion
+                - Assess interface design patterns
+                - Review naming conventions and documentation
+
+                2. Code Quality Assessment:
+                - Identify repeated logic patterns
+                - Evaluate function complexity
+                - Analyze code coupling
+                - Review inheritance patterns
+
+                3. Architecture Recommendations:
+                - Suggest design pattern implementations
+                - Propose modularization strategies
+                - Recommend SOLID principle applications
+                - Outline refactoring priorities
+
+                4. Dependency Analysis:
+                - Map module interactions
+                - Evaluate circular dependencies
+                - Assess external package usage
+                - Review import organization
+
+                Python Code:
+                {code}""",
     
-    structure="""Analyze the code structure and organization:
-    - Review function and class organization
-    - Identify code duplication
-    - Suggest architectural improvements
-    - Analyze module dependencies
+    performance="""Performance Optimization Analysis
+
+                1. Performance Analysis:
+                - Profile critical code sections
+                - Measure time complexity
+                - Identify resource-intensive operations
+                - Analyze I/O patterns
+
+                2. Algorithm Enhancement:
+                - Suggest optimization techniques
+                - Recommend caching strategies
+                - Propose parallel processing options
+                - Evaluate time-space tradeoffs
+
+                3. Data Structure Optimization:
+                - Review collection type choices
+                - Suggest efficient alternatives
+                - Analyze memory patterns
+                - Recommend indexing strategies
+
+                4. Resource Management:
+                - Evaluate memory usage patterns
+                - Suggest garbage collection optimization
+                - Review connection handling
+                - Analyze resource cleanup
+
+                Python Code:
+                {code}""",
     
-    Python Code:
-    {code}""",
+    optimization="""Code Optimization and Best Practices
+
+                1. Python Optimization:
+                - Apply language-specific optimizations
+                - Implement performance enhancements
+                - Optimize import statements
+                - Review generator usage
+
+                2. Code Quality:
+                - Apply consistent formatting
+                - Implement clear documentation
+                - Use descriptive naming
+                - Optimize function signatures
+
+                3. PEP 8 Compliance:
+                - Format according to style guide
+                - Review spacing and indentation
+                - Check naming conventions
+                - Verify docstring formats
+
+                4. Readability Improvements:
+                - Enhance code organization
+                - Add meaningful comments
+                - Improve variable naming
+                - Structure logical flows
+
+                Python Code:
+                {code}""",
     
-    performance="""Performance enhancement recommendations:
-    - Identify performance bottlenecks
-    - Suggest algorithmic improvements
-    - Recommend appropriate data structures
-    - Discuss memory optimization
-    
-    Python Code:
-    {code}""",
-    
-    optimization="""Provide an optimized version of the Python code:
-    - Apply Python best practices
-    - Optimize for performance
-    - Improve readability
-    - Follow PEP 8 standards
-    
-    Python Code:
-    {code}""",
-    
-    additional_analysis="""Analyze Python-specific aspects:
-    - Type hints usage
-    - Exception handling
-    - Resource management
-    - Testing opportunities
-    
-    Python Code:
-    {code}"""
+    optimized_python_code="""Python Code Optimization:
+
+                - Give me an optimized version of below python script.
+                - Don't add any other information other than the optimized version of code
+                - Don't modify any business logic, function names, variable names, comments, symbols, definitions, structs, tests, or arbitrary lines of code that are 'above' or 'below' in their instruction.
+
+                Python Code:
+                {code}"""
 )
 
 def get_snowflake_connection():
@@ -225,9 +323,9 @@ def perform_analysis(source: dict[str, str], model: AzureChatOpenAI, language: L
             ).content
         }
         
-        if language == 'python' and prompts.additional_analysis:
-            analysis_results["python_specific_analysis"] = model.invoke(
-                PromptTemplate(input_variables=["code"], template=prompts.additional_analysis)
+        if language == 'python' and prompts.optimized_python_code:
+            analysis_results["optimized_python_code"] = model.invoke(
+                PromptTemplate(input_variables=["code"], template=prompts.optimized_python_code)
                 .format(code=source['definition'])
             ).content
             
