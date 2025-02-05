@@ -80,17 +80,17 @@ SQL_PROMPTS = PromptConfig(
     SQL Query:
     {code}""",
     
-    optimization="""Provide an optimized version of the SQL query:
-    - strictly only provide me an optimzed SQL query based on your analysis.
-    - Rewrite the provided Snowflake SQL query for better performance.
+    optimization="""
+    - Provide me an optimzed SQL query based on your analysis.
+    - Rewrite the provided Snowflake SQL query for better performance without altering the query logic or additional columns.
     - Ensure the following optimizations:
+    - use proper group by clause.
+    - use proper join clause.
     - Use of Table Aliases: Apply clear and concise aliases for readability and maintainability.
-    - Query Result Caching: Ensure the query takes advantage of Snowflake's result caching for faster execution.
     - Execution Plan Optimization: Recommend changes that reduce scan time, optimize joins, and eliminate redundant operations.
-    - Formatting & Readability: Ensure proper indentation, consistent naming conventions, and well-structured SQL.
     - Don't provide any other unnecessary information apart from above mentioned issues.
     - Don't provide unnecessary comments if the issues don't exist
-     Strictly focus on performance improvements and do not alter the query logic or do not return additional information.
+     Strictly focus on performance improvements ,execution time reduction and do not alter the query logic or additional columns and do not return additional information.
     
     
     SQL Query:
@@ -443,6 +443,7 @@ def main():
         azure_deployment=os.environ.get("AZURE_OPENAI_4o_DEPLOYMENT_NAME"),
         openai_api_version=os.environ.get("AZURE_OPENAI_API_VERSION"),
         openai_api_key=os.environ.get("AZURE_OPENAI_API_KEY"),
+        temperature=0.7
     )
 
     # Run Analysis button

@@ -3,18 +3,16 @@ from collections import defaultdict
 from statistics import mean
 
 def analyze_student_data_optimized():
-    # Store student scores efficiently
     student_scores = [
         {"student_id": 1, "name": "John", "scores": [75, 82, 91, 65, 88]},
         {"student_id": 2, "name": "Emma", "scores": [95, 88, 92, 87, 90]},
         {"student_id": 3, "name": "Michael", "scores": [70, 65, 88, 92, 85]},
         {"student_id": 4, "name": "Sarah", "scores": [89, 91, 95, 88, 85]},
         {"student_id": 5, "name": "James", "scores": [78, 85, 91, 87, 83]},
-    ] * 2000  # Multiplying data to make performance difference noticeable
+    ] * 2000  
 
     start_time = time.time()
 
-    # Use a single pass for calculating averages and identifying top performers
     student_averages = []
     top_students = []
     all_scores = []
