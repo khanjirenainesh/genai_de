@@ -87,6 +87,7 @@ SQL_PROMPTS = PromptConfig(
     - use proper group by clause.
     - use proper join clause.
     - Use of Table Aliases: Apply clear and concise aliases for readability and maintainability.
+    - the output query should use less snowflake credits and less elapsed execution time.
     - Execution Plan Optimization: Recommend changes that reduce scan time, optimize joins, and eliminate redundant operations.
     - Don't provide any other unnecessary information apart from above mentioned issues.
     - Don't provide unnecessary comments if the issues don't exist
