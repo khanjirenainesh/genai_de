@@ -1,0 +1,68 @@
+table_name,timestamp,data_quality_analysis,semantic_analysis
+SALES_DATA,20250217_132252,"```json
+{
+  ""data_quality_issues"": {
+    ""inconsistent_currency_conversion"": ""Rows with different `from_crncy` and `to_crncy` pairs should have the same `ex_rt_typ` and `ex_rt`. Inconsistencies may exist."",
+    ""missing_data"": ""Fields such as `categroy_2` and `store_nm` have multiple empty entries indicating potential data loss or incorrect capturing."",
+    ""potential_typos"": ""The column `categroy_2` seems to be a typo, likely intended to be `category_2`."",
+    ""negative_values"": ""Columns `tot_invc_val` and `tot_invc_qty` have negative values indicating possible errors or returns not clearly marked.""
+  },
+  ""recommended_solutions"": {
+    ""standardize_currency_conversion"": ""Ensure uniform `ex_rt_typ` and `ex_rt` values for identical `from_crncy` and `to_crncy` pairs using data validation checks."",
+    ""enhance_data_capture"": ""Implement validation processes to ensure that all mandatory fields such as `categroy_2` and `store_nm` are captured and non-null."",
+    ""correct_typos"": ""Rename `categroy_2` to `category_2` to maintain consistency across datasets."",
+    ""validate_negative_values"": ""Conduct an audit on negative `tot_invc_val` and `tot_invc_qty` to verify if these represent valid returns or errors in data entry.""
+  },
+  ""sql_queries"": {
+    ""identify_inconsistent_currency_conversion"": ""SELECT from_crncy, to_crncy, ex_rt_typ, ex_rt, COUNT(*) FROM YOUR_TABLE GROUP BY from_crncy, to_crncy, ex_rt_typ, ex_rt HAVING COUNT(*) > 1;"",
+    ""find_missing_data"": ""SELECT COUNT(*) FROM YOUR_TABLE WHERE categroy_2 IS NULL OR store_nm IS NULL;"",
+    ""negative_values_check"": ""SELECT * FROM YOUR_TABLE WHERE tot_invc_val < 0 OR tot_invc_qty < 0;""
+  },
+  ""sensitive_data_recommendations"": {
+    ""customer_information_protection"": ""Fields `cust_no`, `key_acct_nm`, and `EDW_cust_nm` contain potentially sensitive customer data. Implement encryption or masking for these fields."",
+    ""personal_identifiers"": ""Ensure `ean_num` is anonymized or protected if it contains personally identifiable information.""
+  }
+}
+```","1. **CATEGROY_2**
+   - **Current semantic meaning**: Category 2 description.
+   - **Data type issues**: Typographical error in the column name (""CATEGROY_2"" instead of ""CATEGORY_2"").
+   - **Example of inconsistent values**: There is no direct issue with values themselves; the inconsistency is in the typo within the column name.
+   - **Recommended improvements**: Correct the column name to ""CATEGORY_2"" for accurate representation.
+
+2. **CURRENT_FISC_PER** 
+   - **Current semantic meaning**: Current fiscal period identifier.
+   - **Data type issues**: Current data type is ""NUMBER""; however, if it represents a period or a concatenated string of year and month, a more descriptive format like ""VARCHAR"" might be more suitable if the fiscal period is not strictly numerical.
+   - **Example of inconsistent values**: The value ""2018012"" appears as a long number, which might be meaningful as a VARCHAR if it's a formatted identifier.
+   - **Recommended improvements**: Consider using a textual format like ""VARCHAR"" if it includes non-numeric formatting, or add metadata to explain the structure.
+
+3. **SLS_OFC_CV_CD**
+   - **Current semantic meaning**: Sales office CV code.
+   - **Data type issues**: Defined as ""NUMBER"", but in records like ""T42-Auchan"", it appears to hold alphanumeric values, which should be ""TEXT"".
+   - **Example of inconsistent values**: ""T42-Auchan"".
+   - **Recommended improvements**: Change data type to ""TEXT"" to align with the data format.
+
+4. **SLS_OFC_CY**
+   - **Current semantic meaning**: Sales office country.
+   - **Data type issues**: No discrepancies in data type; however, consistency in case format could be maintained to ensure uniformity.
+   - **Example of inconsistent values**: Some entries have mixed casing, such as ""South Korea"" versus all uppercase or lowercase.
+   - **Recommended improvements**: Standardize text casing across entries for consistency.
+
+5. **PROD_HIER_L9**
+   - **Current semantic meaning**: Product hierarchy level 9.
+   - **Data type issues**: Some entries exceed practical length, possibly leading to data truncation or readability issues.
+   - **Example of inconsistent values**: Values like ""Listerine TTC GumCareMild 750ml KR 23GD+ - 8801008006221"" appear lengthy.
+   - **Recommended improvements**: Consider enforcing a reasonable character limit.
+
+6. **TOT_INVC_VAL**
+   - **Current semantic meaning**: Total invoice value.
+   - **Data type issues**: The presence of large negative values could indicate incorrect data if not expected.
+   - **Example of inconsistent values**: Values like ""-12059.0"" and ""-6354.0"".
+   - **Recommended improvements**: Validate the business context to ensure negative totals are expected; otherwise, correct them. Use constraints or validation to ensure value consistency.
+
+7. **TOT_INVC_QTY**
+   - **Current semantic meaning**: Total invoice quantity.
+   - **Data type issues**: Negative quantities might not be intended in the dataset.
+   - **Example of inconsistent values**: Values like ""-1.0"" and ""-80.0"".
+   - **Recommended improvements**: Review and enforce business rules to handle negative quantities unless valid cases are determined.
+
+By addressing these issues, improvements in data integrity, usability, and consistency are achieved, ensuring the dataset adheres to business logic and domain semantics."
