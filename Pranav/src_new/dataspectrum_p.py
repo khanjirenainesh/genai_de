@@ -122,6 +122,7 @@ if st.button("Start Analysis"):
                     # Detect anomalies and generate insights
                     if enable_anomaly_detection:
                         anomaly_result = anomaly_detector.detect_anomalies(chunk, my_model,numeric_columns, table)
+                        
                         anomalous_records_count += len(anomaly_detector.anomalous_records)
                         if "Detected" in anomaly_result:
                             anomaly_insights = insight_generator.generate_insights(
@@ -134,8 +135,9 @@ if st.button("Start Analysis"):
                             with st.expander(f"Data Deviation Insights for Table: {table}", expanded=False):
                                 st.write(f"Data deviations detected in table: {table}")
                                 st.write("Data Deviation Insights:")
-                                st.json(anomaly_insights_json)
-
+                                # st.json(anomaly_insights_json)
+                                st.write(anomaly_result)
+                                
                             # Add to report
                             processing_time = time.time() - table_start
                             report_generator.add_entry('anomaly', [
