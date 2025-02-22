@@ -123,7 +123,7 @@ venv.bak/
 # Spyder project settings
 .spyderproject
 .spyproject
-
+*.devcontainer*
 # Rope project settings
 .ropeproject
 
