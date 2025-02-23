@@ -1,35 +1,8 @@
 name,age,gender,blood_type,medical_condition,date_of_admission,doctor,hospital,insurance_provider,billing_amount,room_number,admission_type,discharge_date,medication,test_results,ensemble_anomaly_score,is_anomaly
-test_5,40,Male,,high blood pressure,2000-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,2,Emergency,2025-02-26,Lisinopril,file not found,0.29935491409240006,True
-test_2,45,F,AA,perfect,2008-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,Emergency,2040-02-25,Lisinopril,critical,0.3582958971298478,True
-test_1,450,M,abc,perfectly fine,2025-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,Emergency,2025-02-25,,Normal,0.38947908383439106,True
-test_3,450,M,XYZ,Hypertension,2025-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,Emergency,2025-02-25,Lisinopril,Normal,0.41721730524223116,True
-test_4,400,F,AA,high blood pressure,2025-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,some random text data,2025-02-26,Lisinopril,critical,0.4298123208726892,True
-ALBerT wALteRs,80,Female,A+,Arthritis,2019-05-11,Shelby Walters,"Cox Stone, and Merritt",Medicare,4699.31,108,Elective,2019-06-09,Penicillin,Abnormal,0.6594098563220926,True
-HOlLy YOunG,85,Female,A+,Obesity,2024-04-15,Amber Johnston,"Adams, Collins Simmons and",Medicare,22255.45,455,Urgent,2024-05-12,Lipitor,Inconclusive,0.6672989597980917,True
-AbIgail rUsh,65,Female,O-,Asthma,2019-05-11,Casey Robinson,"Cordova Williams Nguyen, and",UnitedHealthcare,47383.51,178,Urgent,2019-05-16,Aspirin,Abnormal,0.6693983317491873,True
-todd MAsoN,84,Female,A+,Obesity,2019-05-25,Rodney Wright,Watson-Jones,UnitedHealthcare,40971.5,123,Urgent,2019-06-08,Ibuprofen,Abnormal,0.6786487182926505,True
-thoMAS wiLliaMS,82,Female,O+,Hypertension,2019-05-16,Whitney Howell,LLC Allen,UnitedHealthcare,3012.39,157,Emergency,2019-05-19,Ibuprofen,Abnormal,0.6818791184439889,True
-pATriCk MANNinG,18,Male,O-,Arthritis,2023-08-29,Zachary Walker,Allen-Price,Medicare,41176.15,493,Elective,2023-09-24,Penicillin,Inconclusive,0.6854462367127289,True
-pATrICk gUTiERrez dvM,21,Female,O-,Obesity,2023-12-05,William Lynch,Johnson Inc,UnitedHealthcare,49577.49,438,Elective,2023-12-20,Aspirin,Abnormal,0.6865235678940519,True
-ALliSon peTers,74,Female,A-,Obesity,2020-03-24,Amanda Griffin,"Thompson Wiggins and Frazier,",UnitedHealthcare,1962.63,486,Urgent,2020-03-27,Penicillin,Abnormal,0.6902989418851236,True
-BRAdlEY bLAiR,19,Male,O-,Arthritis,2020-01-18,Anita Craig,Adams-Velasquez,Cigna,6481.97,490,Emergency,2020-02-17,Penicillin,Abnormal,0.6919304926844042,True
-suSaN haynes,76,Male,O-,Obesity,2024-04-07,Todd Mccall,Nelson LLC,UnitedHealthcare,1863.5,434,Emergency,2024-04-12,Paracetamol,Abnormal,0.6921291746113338,True
-mIChAEl LOgan,79,Female,O+,Diabetes,2024-05-06,Timothy Jimenez,and Sons Johnson,UnitedHealthcare,3140.91,163,Elective,2024-06-01,Penicillin,Inconclusive,0.6939765907087151,True
-ANgeL RaNDOlPH ddS,74,Female,A+,Asthma,2023-07-06,Ann Brown,"White Wilson and Farmer,",UnitedHealthcare,386.05,165,Elective,2023-08-03,Aspirin,Normal,0.69803410082682,True
-miSTy JOnES,82,Female,O-,Asthma,2019-09-04,Rachel Underwood,and Sons Morton,UnitedHealthcare,35571.42,106,Urgent,2019-09-26,Aspirin,Abnormal,0.7000138723092686,True
-AntONiO broWN,83,Male,A-,Cancer,2023-09-20,Tiffany Williams,Martinez-Strong,UnitedHealthcare,47614.9,112,Urgent,2023-10-06,Penicillin,Abnormal,0.7009166230772786,True
-AntONiO broWN,84,Male,A-,Cancer,2023-09-20,Tiffany Williams,Martinez-Strong,UnitedHealthcare,47614.9,112,Urgent,2023-10-06,Penicillin,Abnormal,0.7015697479290507,True
-lIsa sUAreZ,22,Male,A-,Arthritis,2023-02-11,Adam Alexander,"Collins Small, and Crawford",UnitedHealthcare,49339.88,426,Urgent,2023-02-12,Penicillin,Abnormal,0.7041997653381276,True
-josEPH VaSquEZ,21,Female,A+,Obesity,2024-01-27,Veronica Phelps,Bailey-Murray,UnitedHealthcare,6954.06,338,Urgent,2024-01-28,Lipitor,Normal,0.7057093103135356,True
-ANNe lEE,81,Female,A+,Asthma,2023-06-21,Dr. Teresa Sullivan,Bishop Ltd,Cigna,51419.15,480,Urgent,2023-06-23,Aspirin,Abnormal,0.7065598516816407,True
-meLiNDA KENt,57,Male,O-,Arthritis,2024-02-17,Walter Collins,Christensen-Villanueva,UnitedHealthcare,13957.14,105,Urgent,2024-02-19,Penicillin,Normal,0.7073009964846979,True
-jaDe BaKER,88,Female,O-,Obesity,2021-05-31,Todd Evans,"and Gray Smith, Jennings",UnitedHealthcare,1990.27,488,Urgent,2021-06-03,Lipitor,Normal,0.7145307128587054,True
-Patient_000$$$,45,F,A-,Asthma_&_COPD???,2025-02-24,Dr. Strange_M.D.,Unknown Facility 007,Self-Pay!!,3100.75,601,Admissi0nTypeError123,2025-03-02,Ventolin Inhaler+,###Inconclusive###,0.7205636065928182,True
-Patient_999$$$,45,F,A-,Asthma_&_COPD???,2025-02-24,Dr. Strange_M.D.,Unknown Facility 007,Self-Pay!!,3100.75,601,Admissi0nTypeError123,2025-03-02,Ventolin Inhaler+,###Inconclusive###,0.72056368400483,True
-jaDe BaKER,84,Female,O-,Obesity,2021-05-31,Todd Evans,"and Gray Smith, Jennings",UnitedHealthcare,1990.27,488,Urgent,2021-06-03,Lipitor,Normal,0.7249468248126515,True
-AMANdA aNdersoN,73,Male,A-,Asthma,2023-10-19,Albert Thompson,"and Kidd, Martinez Acevedo",UnitedHealthcare,29891.83,123,Elective,2023-10-26,Penicillin,Abnormal,0.7275632286524103,True
-test_9_error_case,60,F,B-,Chronic pain1234,2025-02-22,Dr. John Doe,City Hospital,No Coverage!!,1800.0,401,0utp@tient123,2025-02-28,Ibuprofen-500MG!,Unkn0wn??,0.7409984528271994,True
-test_6_error_case,60,F,B-,Chronic pain1234,2025-02-22,Dr. John Doe,City Hospital,No Coverage!!,1800.0,401,0utp@tient123,2025-02-28,Ibuprofen-500MG!,Unkn0wn??,0.7409986449409799,True
-thomaS seLLeRs,27,Female,B+,Arthritis,2023-01-21,Chelsea Baker,"White and Bell, Holland",UnitedHealthcare,3504.87,102,Urgent,2023-02-19,Aspirin,Abnormal,0.7628026086776057,True
-test_68@@@###,55,M,O+,Diabetes,2025-02-21,Dr. Sm1th_!!,C!ty H0sp!tal,HealthCare Inc.,2000.5,305,!!!@##ER_ADMISSION###,2025-02-27,Metformin,Stable,0.7704576074685688,True
-test_5@@@###,55,M,O+,Diabetes,2025-02-21,Dr. Sm1th_!!,C!ty H0sp!tal,HealthCare Inc.,2000.5,305,!!!@##ER_ADMISSION###,2025-02-27,Metformin,Stable,0.7704579368925865,True
+test_2,45,F,AA,perfect,2008-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,Emergency,2040-02-25,Lisinopril,critical,0.320978864117413,True
+test_5,40,Male,,high blood pressure,2000-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,2,Emergency,2025-02-26,Lisinopril,file not found,0.32831596423426274,True
+test_1,450,M,abc,perfectly fine,2025-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,Emergency,2025-02-25,,Normal,0.3403111230164059,True
+test_4,400,F,AA,high blood pressure,2025-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,some random text data,2025-02-26,Lisinopril,critical,0.3837241186832226,True
+test_3,450,M,XYZ,Hypertension,2025-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,Emergency,2025-02-25,Lisinopril,Normal,0.39507169385232527,True
+test_68@@@###,55,M,O+,Diabetes,2025-02-21,Dr. Sm1th_!!,C!ty H0sp!tal,HealthCare Inc.,2000.5,305,!!!@##ER_ADMISSION###,2025-02-27,Metformin,Stable,0.7036058182400392,True
+Patient_000$$$,45,F,A-,Asthma_&_COPD???,2025-02-24,Dr. Strange_M.D.,Unknown Facility 007,Self-Pay!!,3100.75,601,Admissi0nTypeError123,2025-03-02,Ventolin Inhaler+,###Inconclusive###,0.7113082779455437,True
