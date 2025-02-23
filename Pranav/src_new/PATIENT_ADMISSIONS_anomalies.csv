@@ -1,0 +1,51 @@
+NAME,AGE,GENDER,BLOOD_TYPE,MEDICAL_CONDITION,DATE_OF_ADMISSION,DOCTOR,HOSPITAL,INSURANCE_PROVIDER,BILLING_AMOUNT,ROOM_NUMBER,ADMISSION_TYPE,DISCHARGE_DATE,MEDICATION,TEST_RESULTS,anomaly_score,is_anomaly
+BrITTaNy LewiS,69,Female,O-,Arthritis,2019-07-11,Tanya Arellano,"Bailey, Jones and Cobb",Blue Cross,47400.71,164,Elective,2019-07-12,Penicillin,Normal,-0.02733824276291974,True
+test_1,450,M,abc,perfectly fine,2025-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,Emergency,2025-02-25,,Normal,-0.026580201601391074,True
+test_4,400,F,AA,high blood pressure,2025-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,some random text data,2025-02-26,Lisinopril,critical,-0.021913282579719473,True
+test_5,40,Male,,high blood pressure,2000-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,2,Emergency,2025-02-26,Lisinopril,file not found,-0.017940792353808965,True
+laUrEn MarTinEz DVM,85,Male,A+,Asthma,2024-04-20,Andrew Rogers,Martin-Hamilton,UnitedHealthcare,25339.95,498,Urgent,2024-04-28,Penicillin,Abnormal,-0.016051244038983725,True
+stePhaNiE HOod,34,Female,A-,Obesity,2019-05-25,Paula Lam,Conner Ltd,UnitedHealthcare,48508.51,115,Urgent,2019-06-13,Ibuprofen,Inconclusive,-0.011392927638033346,True
+jonATHAn grEen,81,Female,A+,Arthritis,2024-05-02,Jason Hart,"Nelson, Rush and Moore",Aetna,1518.44,102,Urgent,2024-05-13,Lipitor,Abnormal,-0.011156181011604427,True
+CaNdICe JoHNSon,47,Male,A+,Arthritis,2019-06-13,Alexandra Shelton,Wright-Daniels,Blue Cross,12196.45,102,Emergency,2019-07-03,Aspirin,Abnormal,-0.01064361135737213,True
+JENNY HaRRIS,77,Male,A+,Arthritis,2020-01-30,Bernard Garcia,"and Perez, Snyder Smith",Aetna,44321.94,134,Elective,2020-02-22,Paracetamol,Normal,-0.010605138917991419,True
+ANGeLA haWkiNs,67,Female,A+,Hypertension,2024-04-10,Anthony Green,Ferguson-West,UnitedHealthcare,7991.89,497,Urgent,2024-04-16,Paracetamol,Abnormal,-0.009223812029654388,True
+ASHLeY jOHNSON,78,Female,O-,Arthritis,2019-06-29,Shannon Hall,"Young and Hatfield, Massey",Cigna,4616.16,129,Elective,2019-07-11,Lipitor,Inconclusive,-0.008607188412397715,True
+test_3,450,M,XYZ,Hypertension,2025-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,Emergency,2025-02-25,Lisinopril,Normal,-0.008244926873626546,True
+BRian halL,51,Female,O+,Arthritis,2024-02-21,Ryan Rich,Hickman Group,UnitedHealthcare,5164.55,470,Urgent,2024-03-19,Paracetamol,Abnormal,-0.00783294897444109,True
+CINDY BUTLEr,85,Female,B-,Arthritis,2020-05-31,Teresa Miller,"and Neal, Cook Garcia",Medicare,7587.35,491,Urgent,2020-06-02,Aspirin,Abnormal,-0.007527210619243996,True
+GREGOrY BrOWNinG,79,Male,O-,Obesity,2019-05-15,Kelly Young,Silva Group,Aetna,10740.35,464,Elective,2019-06-13,Aspirin,Normal,-0.006954544162878218,True
+miChAeL SMiTh,39,Male,A-,Arthritis,2024-04-09,Alexander Jackson,Group Luna,UnitedHealthcare,7799.53,178,Urgent,2024-04-13,Lipitor,Abnormal,-0.006264405685696639,True
+Sean gARza,80,Male,A+,Arthritis,2019-09-08,Robert Bowen,"Wagner, Perez and Lucas",UnitedHealthcare,48762.27,385,Urgent,2019-09-11,Paracetamol,Abnormal,-0.006124537957374332,True
+ANgeL RaNDOlPH ddS,74,Female,A+,Asthma,2023-07-06,Ann Brown,"White Wilson and Farmer,",UnitedHealthcare,386.05,165,Elective,2023-08-03,Aspirin,Normal,-0.00610070014909303,True
+DEnISe OcOnnoR,66,Female,A+,Cancer,2024-02-24,Donald Patel,"and Lee Peck Alexander,",Aetna,3713.08,474,Elective,2024-03-20,Penicillin,Abnormal,-0.005971965410516589,True
+AndRea caLdWEll,31,Female,O-,Arthritis,2019-05-17,Tonya Thomas,Gonzalez Ltd,UnitedHealthcare,8969.14,342,Elective,2019-06-04,Aspirin,Inconclusive,-0.005919322337499033,True
+racHEL haHN,21,Female,A+,Arthritis,2021-01-02,Sonia Gray,Braun-Norman,Aetna,11262.87,156,Urgent,2021-01-29,Penicillin,Abnormal,-0.005400343717619993,True
+pETeR suLlIVaN,73,Female,O+,Arthritis,2019-06-09,Patrick Stevens,"and Pena Pierce Salazar,",Blue Cross,21324.71,114,Elective,2019-07-09,Aspirin,Abnormal,-0.00509551905778749,True
+nANCy WHiTeHEad,22,Male,A+,Arthritis,2019-12-15,Eric Johnson,Walls LLC,Aetna,48582.64,125,Urgent,2019-12-16,Paracetamol,Abnormal,-0.004768386222951615,True
+jOSEPh MeNDOZa,80,Female,A-,Arthritis,2019-05-25,Natalie Munoz,Dixon-Higgins,UnitedHealthcare,33037.72,383,Elective,2019-06-13,Penicillin,Abnormal,-0.00463224359482417,True
+GINa mCCAnn,78,Female,A-,Arthritis,2019-10-26,Jerry Patterson,Barnes-Hernandez,Aetna,19399.49,500,Elective,2019-11-05,Aspirin,Normal,-0.004469338921686217,True
+CArL McCARthY,72,Female,O-,Obesity,2019-09-13,Richard Booker,"Cochran Whitney, and Novak",UnitedHealthcare,41808.53,102,Elective,2019-09-26,Aspirin,Inconclusive,-0.004333523502179526,True
+ASHLey bRENNAN,22,Female,AB-,Arthritis,2020-11-26,Stephen Salazar,"Diaz, Little Shea and",Cigna,48585.23,497,Urgent,2020-12-14,Paracetamol,Normal,-0.00421403085130434,True
+HaLEY DUnn,38,Female,O-,Arthritis,2023-11-29,Kenneth Ponce,Austin Group,UnitedHealthcare,44105.97,268,Elective,2023-12-05,Lipitor,Normal,-0.003489970396492015,True
+CORY jUArez,80,Male,O-,Cancer,2019-08-24,Laurie Holland,Burns-Drake,Aetna,47173.57,439,Urgent,2019-09-20,Paracetamol,Abnormal,-0.0033264166718797172,True
+MichaEl MONTgomErY,18,Male,A+,Obesity,2023-11-28,Samuel Finley,Collins-Esparza,UnitedHealthcare,18179.4,474,Elective,2023-12-15,Aspirin,Abnormal,-0.002794726231698186,True
+tRaVIS laRsoN,29,Female,A+,Hypertension,2022-01-29,Candice Strong,"and Diaz Dawson, Mendoza",UnitedHealthcare,3949.3,108,Urgent,2022-02-16,Penicillin,Abnormal,-0.002649482284333704,True
+FeRNaNDo JOrdan,51,Female,O-,Asthma,2023-04-06,Terry Sanchez,Allen-Sawyer,Aetna,3468.95,111,Elective,2023-04-29,Penicillin,Abnormal,-0.002612244665655794,True
+test_2,45,F,AA,perfect,2008-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,Emergency,2040-02-25,Lisinopril,critical,-0.0023796865700352887,True
+AMANDA quiNn,49,Male,B+,Obesity,2019-08-01,Amy Moore,Villarreal-Dixon,Medicare,43007.12,485,Urgent,2019-08-12,Paracetamol,Abnormal,-0.0023131295745532077,True
+anNE CardEnaS,21,Male,AB+,Hypertension,2024-03-04,Amanda Parker,"Deleon and Allen, Huynh",Aetna,49652.72,106,Elective,2024-03-25,Lipitor,Abnormal,-0.0015913554984888778,True
+RUsseLl BOOnE,37,Female,A+,Obesity,2024-01-20,Cheryl Farrell,"Gonzalez Hernandez and Ramos,",Aetna,48065.82,362,Elective,2024-01-22,Penicillin,Normal,-0.0013913427099957465,True
+ALEXaNDeR sLoAN,25,Female,B+,Arthritis,2019-06-04,Brittany Wilson,"Johnson, and Bell Dickerson",UnitedHealthcare,45684.03,367,Urgent,2019-06-14,Ibuprofen,Abnormal,-0.0013897451816026196,True
+CHEryl balL,76,Female,O-,Arthritis,2020-08-14,Christopher Snow,Hammond-Buck,UnitedHealthcare,46875.88,444,Urgent,2020-09-04,Penicillin,Abnormal,-0.0013674592437188382,True
+MARCuS BRanCh,19,Male,O+,Hypertension,2024-01-16,Jessica Blackwell,"and Miller Davis Luna,",Aetna,6153.78,492,Urgent,2024-01-26,Paracetamol,Abnormal,-0.0012403610581837032,True
+tAMMY MUrrAY,80,Male,B+,Asthma,2019-06-17,Donna Armstrong,Alexander-Murphy,UnitedHealthcare,24562.01,103,Emergency,2019-07-15,Penicillin,Normal,-0.001032318862024928,True
+ChARles KinG,84,Female,A+,Hypertension,2024-04-18,Jeremy Benitez,West-Stewart,Aetna,9437.78,451,Emergency,2024-05-17,Penicillin,Normal,-0.0008840956517458531,True
+naTaLie gLOVer,32,Female,O-,Arthritis,2024-02-21,Breanna Woods,"French Wilson, and Woods",Aetna,41395.39,169,Urgent,2024-03-04,Lipitor,Abnormal,-0.000789500176975988,True
+Brian wILsoN,79,Female,O+,Arthritis,2023-08-21,William Herring,Thomas-Turner,Aetna,9375.7,466,Urgent,2023-08-22,Lipitor,Normal,-0.0006079376413551385,True
+ANn fErnAnDEZ,36,Female,O-,Obesity,2023-05-19,Amy Holden,"Ballard, Baker and Cross",Cigna,7215.01,391,Elective,2023-05-31,Paracetamol,Abnormal,-0.00050370299329483,True
+laureN tayloR,33,Female,B-,Arthritis,2024-03-15,Alexander Mcintosh,Garrett PLC,UnitedHealthcare,7475.74,373,Elective,2024-03-20,Penicillin,Abnormal,-0.0004241314613260272,True
+MR. Anthony mArTIn,77,Male,O-,Arthritis,2024-04-05,Joseph Nolan,"and Rodriguez Alvarez Gonzalez,",Medicare,45451.96,385,Urgent,2024-04-18,Ibuprofen,Normal,-0.0004071241308253315,True
+vAnesSa kEller,46,Male,A-,Arthritis,2019-09-12,Zoe Roberts,"and Williams Garza, Herman",UnitedHealthcare,38594.42,206,Emergency,2019-09-18,Penicillin,Abnormal,-0.00020830793080928167,True
+sHaNe TaTe,31,Male,O+,Cancer,2024-03-19,Tiffany Ortega,Inc Rangel,Cigna,50563.8,441,Urgent,2024-04-07,Penicillin,Inconclusive,-0.00014524404207505448,True
+lAurA jOnEs,79,Male,O+,Asthma,2023-12-30,Sharon Stanley,"and Perkins Johnson, Bryant",Aetna,48418.75,188,Emergency,2024-01-16,Penicillin,Abnormal,-0.0001223974821866758,True
+MiCHaEl caBRera,81,Male,B-,Obesity,2020-01-11,Ronald Smith,"and Ortega Harrell Thomas,",Aetna,47501.22,426,Elective,2020-02-03,Penicillin,Normal,-1.0418157880609513e-05,True
