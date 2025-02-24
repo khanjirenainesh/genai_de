@@ -1,8 +1,8 @@
-name,age,gender,blood_type,medical_condition,date_of_admission,doctor,hospital,insurance_provider,billing_amount,room_number,admission_type,discharge_date,medication,test_results,ensemble_anomaly_score,is_anomaly
-test_2,45,F,AA,perfect,2008-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,Emergency,2040-02-25,Lisinopril,critical,0.320978864117413,True
-test_5,40,Male,,high blood pressure,2000-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,2,Emergency,2025-02-26,Lisinopril,file not found,0.32831596423426274,True
-test_1,450,M,abc,perfectly fine,2025-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,Emergency,2025-02-25,,Normal,0.3403111230164059,True
-test_4,400,F,AA,high blood pressure,2025-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,some random text data,2025-02-26,Lisinopril,critical,0.3837241186832226,True
-test_3,450,M,XYZ,Hypertension,2025-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,Emergency,2025-02-25,Lisinopril,Normal,0.39507169385232527,True
-test_68@@@###,55,M,O+,Diabetes,2025-02-21,Dr. Sm1th_!!,C!ty H0sp!tal,HealthCare Inc.,2000.5,305,!!!@##ER_ADMISSION###,2025-02-27,Metformin,Stable,0.7036058182400392,True
-Patient_000$$$,45,F,A-,Asthma_&_COPD???,2025-02-24,Dr. Strange_M.D.,Unknown Facility 007,Self-Pay!!,3100.75,601,Admissi0nTypeError123,2025-03-02,Ventolin Inhaler+,###Inconclusive###,0.7113082779455437,True
+NAME,AGE,GENDER,BLOOD_TYPE,MEDICAL_CONDITION,DATE_OF_ADMISSION,DOCTOR,HOSPITAL,INSURANCE_PROVIDER,BILLING_AMOUNT,ROOM_NUMBER,ADMISSION_TYPE,DISCHARGE_DATE,MEDICATION,TEST_RESULTS,ensemble_anomaly_score,is_anomaly
+Test_2,45,F,AA,perfect,2008-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,Emergency,2040-02-25,Lisinopril,critical,0.33211922888450834,True
+Test_5,40,Male,,high blood pressure,2000-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,2,Emergency,2025-02-26,Lisinopril,file not found,0.34205709452209154,True
+Test_1,450,M,abc,perfectly fine,2025-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,Emergency,2025-02-25,,Normal,0.35410428882789424,True
+Test_4,400,F,AA,high blood pressure,2025-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,some random text data,2025-02-26,Lisinopril,critical,0.37776567381420834,True
+Test_3,450,M,XYZ,Hypertension,2025-02-20,Dr. Smith,City Hospital,HealthCare Inc.,1500.75,203,Emergency,2025-02-25,Lisinopril,Normal,0.4091026689517257,True
+Patient_999$$$,45,F,A-,Asthma_&_COPD???,2025-02-24,Dr. Strange_M.D.,Unknown Facility 007,Self-Pay!!,3100.75,601,Admissi0nTypeError123,2025-03-02,Ventolin Inhaler+,###Inconclusive###,0.7171512425893732,True
+Test_68@@@###,55,M,O+,Diabetes,2025-02-21,Dr. Sm1th_!!,C!ty H0sp!tal,HealthCare Inc.,2000.5,305,!!!@##ER_ADMISSION###,2025-02-27,Metformin,Stable,0.7242895661061982,True

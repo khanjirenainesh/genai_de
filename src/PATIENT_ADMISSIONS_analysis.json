@@ -1,0 +1,137 @@
+{
+  "verified_anomalies": [
+    {
+      "row_id": "9",
+      "is_genuine": false,
+      "reason": "Blood type 'AA' is incorrect, but ensemble_anomaly_score does not justify a genuine anomaly."
+    },
+    {
+      "row_id": "13",
+      "is_genuine": true,
+      "reason": "AGE is not specified in a standard numeric format and 'file not found' in TEST_RESULTS."
+    },
+    {
+      "row_id": "8",
+      "is_genuine": true,
+      "reason": "AGE value '450' is unrealistic; 'abc' in BLOOD_TYPE is invalid; MEDICATION is missing."
+    },
+    {
+      "row_id": "11",
+      "is_genuine": true,
+      "reason": "AGE value '400' is unrealistic; 'some random text data' in ADMISSION_TYPE is invalid."
+    },
+    {
+      "row_id": "10",
+      "is_genuine": true,
+      "reason": "AGE value '450' is unrealistic; BLOOD_TYPE 'XYZ' is invalid."
+    },
+    {
+      "row_id": "3",
+      "is_genuine": true,
+      "reason": "Multiple non-standard formats in NAME, BLOOD_TYPE, and MEDICAL_CONDITION."
+    },
+    {
+      "row_id": "4",
+      "is_genuine": true,
+      "reason": "Non-standard characters in NAME, DOCTOR, HOSPITAL, and ADMISSION_TYPE."
+    }
+  ],
+  "quality_issues": [
+    {
+      "issue": "Invalid blood type format",
+      "columns": [
+        "BLOOD_TYPE"
+      ],
+      "fix": "Restrict BLOOD_TYPE to standard values like 'A+', 'A-', 'B+', 'B-', etc."
+    },
+    {
+      "issue": "Unrealistic age values",
+      "columns": [
+        "AGE"
+      ],
+      "fix": "Set realistic upper and lower bounds for AGE (0-120)."
+    },
+    {
+      "issue": "Non-standard characters in text fields",
+      "columns": [
+        "NAME",
+        "DOCTOR",
+        "HOSPITAL"
+      ],
+      "fix": "Remove or replace non-alphabetic characters and ensure standard formatting."
+    },
+    {
+      "issue": "Blank or placeholder TEXT_RESULTS",
+      "columns": [
+        "TEST_RESULTS"
+      ],
+      "fix": "Ensure TEST_RESULTS are categorized correctly with valid descriptions."
+    },
+    {
+      "issue": "Missing MEDICATION data",
+      "columns": [
+        "MEDICATION"
+      ],
+      "fix": "Ensure MEDICATION field is never empty and provide default values if necessary."
+    }
+  ],
+  "sql_checks": [
+    {
+      "purpose": "Find non-standard blood types",
+      "query": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-');"
+    },
+    {
+      "purpose": "Identify unrealistic ages",
+      "query": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120;"
+    },
+    {
+      "purpose": "Detect names and text fields with special characters",
+      "query": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME REGEXP '[^a-zA-Z ]' OR DOCTOR REGEXP '[^a-zA-Z ]' OR HOSPITAL REGEXP '[^a-zA-Z ]';"
+    },
+    {
+      "purpose": "Check for empty or default TEXT_RESULTS",
+      "query": "SELECT * FROM PATIENT_ADMISSIONS WHERE TEST_RESULTS = '' OR TEST_RESULTS IS NULL OR TEST_RESULTS LIKE 'file not found';"
+    },
+    {
+      "purpose": "Identify records with missing MEDICATION data",
+      "query": "SELECT * FROM PATIENT_ADMISSIONS WHERE MEDICATION IS NULL OR MEDICATION = '';"
+    }
+  ],
+  "sensitive_data_compliance_suggestions": [
+    {
+      "column": "NAME",
+      "compliance_standard": [
+        "PII",
+        "GDPR"
+      ],
+      "masking_technique": "Hashing or Tokenization",
+      "justification": "Protects personally identifiable information in compliance with GDPR."
+    },
+    {
+      "column": "DATE_OF_ADMISSION",
+      "compliance_standard": [
+        "PHI",
+        "HIPAA"
+      ],
+      "masking_technique": "Date Shifting",
+      "justification": "Helps in securing patient's medical information as per HIPAA."
+    },
+    {
+      "column": "BILLING_AMOUNT",
+      "compliance_standard": [
+        "PCI"
+      ],
+      "masking_technique": "Partial Masking or Tokenization",
+      "justification": "Sensitive financial data that needs protection as per PCI standards."
+    },
+    {
+      "column": "MEDICAL_CONDITION",
+      "compliance_standard": [
+        "PHI",
+        "HIPAA"
+      ],
+      "masking_technique": "Generalization",
+      "justification": "Medically sensitive data requiring de-identification for privacy."
+    }
+  ]
+}
