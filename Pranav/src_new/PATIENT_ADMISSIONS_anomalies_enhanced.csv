@@ -1,0 +1,12 @@
+NAME,AGE,GENDER,BLOOD_TYPE,MEDICAL_CONDITION,DATE_OF_ADMISSION,DOCTOR,HOSPITAL,INSURANCE_PROVIDER,BILLING_AMOUNT,ROOM_NUMBER,ADMISSION_TYPE,DISCHARGE_DATE,MEDICATION,TEST_RESULTS,ensemble_anomaly_score,is_anomaly
+ALBerT wALteRs,80,Female,A+,Arthritis,2019-05-11,Shelby Walters,"Cox Stone, and Merritt",Medicare,4699.31,108,Elective,2019-06-09,Penicillin,Abnormal,0.08862275598880354,True
+mATtHeW cARTeR,19,Male,O-,Arthritis,2023-06-20,Willie Carter,Fischer-Garner,Aetna,27644.21,110,Elective,2023-07-18,Penicillin,Abnormal,0.09165153236320212,True
+jaDe BaKER,88,Female,O-,Obesity,2021-05-31,Todd Evans,"and Gray Smith, Jennings",UnitedHealthcare,1990.27,488,Urgent,2021-06-03,Lipitor,Normal,0.11402670399655201,True
+BRAdlEY bLAiR,19,Male,O-,Arthritis,2020-01-18,Anita Craig,Adams-Velasquez,Cigna,6481.97,490,Emergency,2020-02-17,Penicillin,Abnormal,0.12044201317621771,True
+pHYLlIs florEs Md,77,Male,O-,Arthritis,2020-06-15,Brenda Morris,"and Smith Dyer Vargas,",Aetna,2616.85,495,Elective,2020-07-15,Lipitor,Abnormal,0.1238175864340279,True
+BrITTaNy LewiS,69,Female,O-,Arthritis,2019-07-11,Tanya Arellano,"Bailey, Jones and Cobb",Blue Cross,47400.71,164,Elective,2019-07-12,Penicillin,Normal,0.1706063076919598,True
+ALliSon peTers,74,Female,A-,Obesity,2020-03-24,Amanda Griffin,"Thompson Wiggins and Frazier,",UnitedHealthcare,1962.63,486,Urgent,2020-03-27,Penicillin,Abnormal,0.17467890391201202,True
+meLiNDA KENt,57,Male,O-,Arthritis,2024-02-17,Walter Collins,Christensen-Villanueva,UnitedHealthcare,13957.14,105,Urgent,2024-02-19,Penicillin,Normal,0.1788333815201948,True
+CYNThiA hudsON,15,Male,O-,Obesity,2023-11-14,Adam Wyatt,Atkinson LLC,Aetna,25629.94,432,Urgent,2023-12-13,Lipitor,Normal,0.2018917825224257,True
+BrIttaNY KElLEY,78,Male,O+,Cancer,2023-09-29,Amy Stone MD,Barker Inc,Aetna,49163.42,108,Elective,2023-10-06,Paracetamol,Inconclusive,0.21628511387295446,True
+CaRRie MeyErS,28,Male,A+,Arthritis,2021-07-20,Veronica Dalton,"Boyle, and Jackson Smith",UnitedHealthcare,41609.41,195,Urgent,2021-07-31,Penicillin,Normal,0.21924016828611356,True
