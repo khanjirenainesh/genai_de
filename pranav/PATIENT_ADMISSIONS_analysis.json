@@ -1,0 +1,4286 @@
+[
+  {
+    "chunk": 1,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_02",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_03",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BLOOD_TYPE"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT IN ('A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-')",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT IN ('A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-')"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_04",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "GENDER"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE GENDER NOT IN ('M', 'F', 'Male', 'Female')",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE GENDER NOT IN ('M', 'F', 'Male', 'Female')"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_05",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "GDPR"
+          ],
+          "masking_technique": "Hashing",
+          "severity": "HIGH",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NOT NULL"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Redaction",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT NULL"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Detect future dates in DATE_OF_ADMISSION and DISCHARGE_DATE",
+          "affected_columns": [
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "detection_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE DATE_OF_ADMISSION > CURRENT_DATE OR DISCHARGE_DATE > CURRENT_DATE",
+          "severity": "HIGH",
+          "recommended_action": "Review and correct dates to ensure they are not in the future"
+        },
+        {
+          "description": "Inconsistent naming formats in DOCTOR and HOSPITAL columns",
+          "affected_columns": [
+            "DOCTOR",
+            "HOSPITAL"
+          ],
+          "detection_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE DOCTOR ~ '[^a-zA-Z\\s]' OR HOSPITAL ~ '[^a-zA-Z\\s]'",
+          "severity": "LOW",
+          "recommended_action": "Standardize naming conventions to ensure consistency"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 2,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DISCHARGE_DATE IS NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT COUNT(*) FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DISCHARGE_DATE IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "GENDER"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE GENDER NOT IN ('Male', 'Female')",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT COUNT(*) FROM PATIENT_ADMISSIONS WHERE GENDER NOT IN ('Male', 'Female')"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT COUNT(*) FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_04",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BLOOD_TYPE"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT COUNT(*) FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_05",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "NAME",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "SELECT NAME, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY NAME, DATE_OF_ADMISSION HAVING COUNT(*) > 1",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "LONG_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT NAME, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY NAME, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII"
+          ],
+          "masking_technique": "Partial Masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT MASKED"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PHI"
+          ],
+          "masking_technique": "Full Masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT MASKED"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Billing amount is negative, which is an anomaly.",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0",
+          "severity": "HIGH",
+          "recommended_action": "Investigate and correct negative billing amounts."
+        },
+        {
+          "description": "Future date of admission detected.",
+          "affected_columns": [
+            "DATE_OF_ADMISSION"
+          ],
+          "detection_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE DATE_OF_ADMISSION > CURRENT_DATE",
+          "severity": "HIGH",
+          "recommended_action": "Validate and correct future admission dates."
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 3,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "All values in NAME, DATE_OF_ADMISSION, and DISCHARGE_DATE must not be NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR DATE_OF_ADMISSION IS NULL OR DISCHARGE_DATE IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "GENDER"
+          ],
+          "validation_expression": "Values in GENDER must be 'Male' or 'Female'",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE GENDER NOT IN ('Male', 'Female')"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE must be between 0 and 120",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_04",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "Combination of ROOM_NUMBER and DATE_OF_ADMISSION must be unique",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Partial masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT NULL"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PII"
+          ],
+          "masking_technique": "Full masking",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT NULL"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Detection of large billing amount anomalies",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "Identify values in BILLING_AMOUNT that are statistical outliers",
+          "severity": "MEDIUM",
+          "recommended_action": "Review and validate outlier billing amounts",
+          "detection_sql": "SELECT BILLING_AMOUNT FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT > (SELECT AVG(BILLING_AMOUNT) + 3 * STDDEV(BILLING_AMOUNT) FROM PATIENT_ADMISSIONS)"
+        },
+        {
+          "description": "Inconsistency in discharge date pattern",
+          "affected_columns": [
+            "DISCHARGE_DATE"
+          ],
+          "detection_expression": "DISCHARGE_DATE should be after DATE_OF_ADMISSION",
+          "severity": "HIGH",
+          "recommended_action": "Correct records with invalid discharge dates",
+          "detection_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE DISCHARGE_DATE <= DATE_OF_ADMISSION"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 4,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "HOSPITAL"
+          ],
+          "validation_expression": "CHECK (NAME IS NOT NULL AND AGE IS NOT NULL AND GENDER IS NOT NULL AND BLOOD_TYPE IS NOT NULL AND DATE_OF_ADMISSION IS NOT NULL AND HOSPITAL IS NOT NULL)",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR HOSPITAL IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "CHECK (DATE_OF_ADMISSION ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$' AND DISCHARGE_DATE ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$')",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE DATE_OF_ADMISSION !~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$' OR DISCHARGE_DATE !~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "CHECK (AGE BETWEEN 0 AND 120)",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_04",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "UNIQUE (ROOM_NUMBER, DATE_OF_ADMISSION)",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "LONG_TERM",
+            "complexity": "HIGH",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Partial Masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT NULL"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PHI",
+            "HIPAA"
+          ],
+          "masking_technique": "Tokenization",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT NULL"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Detect negative or excessively high billing amounts",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "CHECK (BILLING_AMOUNT >= 0 AND BILLING_AMOUNT < 100000)",
+          "severity": "HIGH",
+          "recommended_action": "Review and correct billing amounts that fall outside typical ranges",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0 OR BILLING_AMOUNT >= 100000"
+        },
+        {
+          "description": "Detect gender and blood type inconsistencies",
+          "affected_columns": [
+            "GENDER",
+            "BLOOD_TYPE"
+          ],
+          "detection_expression": "CHECK (GENDER IN ('Male', 'Female') AND BLOOD_TYPE IN ('A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'))",
+          "severity": "MEDIUM",
+          "recommended_action": "Standardize gender and blood type values",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE GENDER NOT IN ('Male', 'Female') OR BLOOD_TYPE NOT IN ('A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-')"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 5,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "column IS NOT NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR DATE_OF_ADMISSION IS NULL OR DISCHARGE_DATE IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BLOOD_TYPE"
+          ],
+          "validation_expression": "BLOOD_TYPE REGEXP '^(A|B|AB|O)[+-]$'",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT REGEXP '^(A|B|AB|O)[+-]$'"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE BETWEEN 0 AND 120",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_04",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "validation_expression": "BILLING_AMOUNT >= 0",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_05",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "COUNT(DISTINCT ROOM_NUMBER, DATE_OF_ADMISSION) = COUNT(*)",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "LONG_TERM",
+            "complexity": "HIGH",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Partial Masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "HIPAA"
+          ],
+          "masking_technique": "Hashing",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Detection of unexpected negative billing amounts",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "BILLING_AMOUNT < 0",
+          "severity": "HIGH",
+          "recommended_action": "Investigate and correct negative values"
+        },
+        {
+          "description": "Inconsistent gender values",
+          "affected_columns": [
+            "GENDER"
+          ],
+          "detection_expression": "GENDER NOT IN ('Male', 'Female')",
+          "severity": "MEDIUM",
+          "recommended_action": "Standardize gender values to 'Male' or 'Female'"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 6,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "column_name IS NOT NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DISCHARGE_DATE IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_02",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_03",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BLOOD_TYPE"
+          ],
+          "validation_expression": "BLOOD_TYPE IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_04",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE BETWEEN 0 AND 120",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_CUSTOM_05",
+          "rule_type": "CUSTOM",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "validation_expression": "BILLING_AMOUNT >= 0",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Partial Masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NOT NULL"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PHI",
+            "HIPAA"
+          ],
+          "masking_technique": "Anonymization",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT NULL"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Negative billing amounts detected",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "BILLING_AMOUNT < 0",
+          "severity": "HIGH",
+          "recommended_action": "Investigate records and correct billing amounts"
+        },
+        {
+          "description": "Gender values potentially inconsistent with traditional binary values",
+          "affected_columns": [
+            "GENDER"
+          ],
+          "detection_expression": "GENDER NOT IN ('Male', 'Female')",
+          "severity": "LOW",
+          "recommended_action": "Review gender values for non-binary inclusion or correct inconsistencies"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 7,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "All values must be present and cannot be NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DISCHARGE_DATE IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "NAME"
+          ],
+          "validation_expression": "Names should be in proper case",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME != INITCAP(NAME)"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE should be between 0 and 120",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_04",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER"
+          ],
+          "validation_expression": "ROOM_NUMBER should be unique per DATE_OF_ADMISSION",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Partial Masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NOT NULL"
+        },
+        {
+          "column": "BILLING_AMOUNT",
+          "compliance_standard": [
+            "PCI"
+          ],
+          "masking_technique": "Redaction",
+          "severity": "HIGH",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT IS NOT NULL"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Potential gender mismatch with name titles",
+          "affected_columns": [
+            "NAME",
+            "GENDER"
+          ],
+          "detection_expression": "Detect name prefixes like 'Mr.' and 'Mrs.' that mismatch with GENDER",
+          "severity": "LOW",
+          "recommended_action": "Review and correct misaligned gender titles",
+          "detection_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE (NAME LIKE 'Mr.%' AND GENDER = 'Female') OR (NAME LIKE 'Mrs.%' AND GENDER = 'Male')"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 8,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "HOSPITAL",
+            "INSURANCE_PROVIDER",
+            "BILLING_AMOUNT"
+          ],
+          "validation_expression": "ALL NOT NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR HOSPITAL IS NULL OR INSURANCE_PROVIDER IS NULL OR BILLING_AMOUNT IS NULL;"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_02",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE BETWEEN 0 AND 120",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120;"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_03",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BLOOD_TYPE"
+          ],
+          "validation_expression": "BLOOD_TYPE IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-');"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_04",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "NAME",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "UNIQUE(NAME, DATE_OF_ADMISSION)",
+          "severity": "LOW",
+          "implementation": {
+            "phase": "LONG_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT NAME, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY NAME, DATE_OF_ADMISSION HAVING COUNT(*) > 1;"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_05",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "validation_expression": "BILLING_AMOUNT >= 0",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0;"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Anonymization",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT NULL;"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "HIPAA"
+          ],
+          "masking_technique": "Hashing",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT NULL;"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Detection of future or incorrect DATE_OF_ADMISSION entries.",
+          "affected_columns": [
+            "DATE_OF_ADMISSION"
+          ],
+          "detection_expression": "DATE_OF_ADMISSION > CURRENT_DATE",
+          "severity": "HIGH",
+          "recommended_action": "Correct or remove future dates unless valid for pre-scheduled admissions.",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE DATE_OF_ADMISSION > CURRENT_DATE;"
+        },
+        {
+          "description": "Unexpected gender values or misspellings.",
+          "affected_columns": [
+            "GENDER"
+          ],
+          "detection_expression": "GENDER NOT IN ('Male', 'Female')",
+          "severity": "MEDIUM",
+          "recommended_action": "Standardize gender values to 'Male' or 'Female'.",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE GENDER NOT IN ('Male', 'Female');"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 9,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "DOCTOR",
+            "HOSPITAL"
+          ],
+          "validation_expression": "column IS NOT NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DOCTOR IS NULL OR HOSPITAL IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_02",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE BETWEEN 0 AND 120",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_03",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "DATE_OF_ADMISSION <= DISCHARGE_DATE",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE DATE_OF_ADMISSION > DISCHARGE_DATE"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_04",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "COUNT(DISTINCT ROOM_NUMBER, DATE_OF_ADMISSION) = COUNT(*)",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "GDPR"
+          ],
+          "masking_technique": "Initials masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT MASKED"
+        },
+        {
+          "column": "BILLING_AMOUNT",
+          "compliance_standard": [
+            "PCI"
+          ],
+          "masking_technique": "Partial masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT BILLING_AMOUNT FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT IS NOT MASKED"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Negative billing amounts detected",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "BILLING_AMOUNT < 0",
+          "severity": "HIGH",
+          "recommended_action": "Investigate and correct negative billing amounts"
+        },
+        {
+          "description": "Gender value inconsistencies",
+          "affected_columns": [
+            "GENDER"
+          ],
+          "detection_expression": "GENDER NOT IN ('Male', 'Female', 'Other')",
+          "severity": "MEDIUM",
+          "recommended_action": "Standardize gender values to accepted categories"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 10,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "HOSPITAL"
+          ],
+          "validation_expression": "All affected columns must not be NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR HOSPITAL IS NULL;"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "NAME"
+          ],
+          "validation_expression": "NAME should follow capitalization pattern with each word capitalized",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME <> INITCAP(NAME);"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE should be between 0 and 120",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120;"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_04",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "Combination of ROOM_NUMBER and DATE_OF_ADMISSION should be unique",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "HIGH",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1;"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_REFERENTIAL_05",
+          "rule_type": "REFERENTIAL",
+          "affected_columns": [
+            "INSURANCE_PROVIDER"
+          ],
+          "validation_expression": "INSURANCE_PROVIDER should reference a valid list of providers",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "LONG_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER NOT IN (SELECT PROVIDER_NAME FROM INSURANCE_PROVIDERS);"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "GDPR"
+          ],
+          "masking_technique": "Partial masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME LIKE '%';"
+        },
+        {
+          "column": "BLOOD_TYPE",
+          "compliance_standard": [
+            "PHI"
+          ],
+          "masking_technique": "Redaction",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE LIKE '%';"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Anomaly detection for unusually high billing amounts",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "Identify BILLING_AMOUNT significantly higher than average",
+          "severity": "HIGH",
+          "recommended_action": "Investigate and validate high billing amounts",
+          "detection_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT > (SELECT AVG(BILLING_AMOUNT) + 2 * STDDEV(BILLING_AMOUNT) FROM PATIENT_ADMISSIONS);"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 11,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "DOCTOR",
+            "HOSPITAL",
+            "INSURANCE_PROVIDER",
+            "BILLING_AMOUNT",
+            "ADMISSION_TYPE"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DOCTOR IS NULL OR HOSPITAL IS NULL OR INSURANCE_PROVIDER IS NULL OR BILLING_AMOUNT IS NULL OR ADMISSION_TYPE IS NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT COUNT(*) FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DOCTOR IS NULL OR HOSPITAL IS NULL OR INSURANCE_PROVIDER IS NULL OR BILLING_AMOUNT IS NULL OR ADMISSION_TYPE IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "NAME"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME NOT REGEXP '^[A-Z][a-z]*( [A-Z][a-z]*)*$'",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT COUNT(*) FROM PATIENT_ADMISSIONS WHERE NAME NOT REGEXP '^[A-Z][a-z]*( [A-Z][a-z]*)*$'"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT COUNT(*) FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Partial Masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT NULL"
+        },
+        {
+          "column": "BILLING_AMOUNT",
+          "compliance_standard": [
+            "PCI"
+          ],
+          "masking_technique": "Full Masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT BILLING_AMOUNT FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT IS NOT NULL"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Identify possible gender misclassification based on typical names",
+          "affected_columns": [
+            "NAME",
+            "GENDER"
+          ],
+          "detection_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE GENDER = 'Female' AND NAME LIKE 'Mr. %'",
+          "severity": "MEDIUM",
+          "recommended_action": "Verify and correct gender based on names"
+        },
+        {
+          "description": "Detect outlier billing amounts significantly deviating from the mean",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT > (SELECT AVG(BILLING_AMOUNT) + 3 * STDDEV(BILLING_AMOUNT) FROM PATIENT_ADMISSIONS)",
+          "severity": "HIGH",
+          "recommended_action": "Review billing amounts for errors or mischarges"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 12,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "NOT NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DISCHARGE_DATE IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_02",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "Unique Constraint",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE BETWEEN 0 AND 120",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_04",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "YYYY-MM-DD",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE TRY_CAST(DATE_OF_ADMISSION AS DATE) IS NULL OR TRY_CAST(DISCHARGE_DATE AS DATE) IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_CUSTOM_05",
+          "rule_type": "CUSTOM",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "validation_expression": "BILLING_AMOUNT >= 0",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Anonymization",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT MASKED"
+        },
+        {
+          "column": "DATE_OF_ADMISSION",
+          "compliance_standard": [
+            "HIPAA"
+          ],
+          "masking_technique": "Date Shifting",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT DATE_OF_ADMISSION FROM PATIENT_ADMISSIONS WHERE DATE_OF_ADMISSION IS NOT MASKED"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Billing amount with negative values",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "BILLING_AMOUNT < 0",
+          "severity": "HIGH",
+          "recommended_action": "Investigate and correct negative billing amounts, ensure data entry validation prevents negative values"
+        },
+        {
+          "description": "Inconsistent gender and blood type combinations",
+          "affected_columns": [
+            "GENDER",
+            "BLOOD_TYPE"
+          ],
+          "detection_expression": "CHECK FOR VALID GENDER AND BLOOD_TYPE PAIRINGS",
+          "severity": "LOW",
+          "recommended_action": "Review data entry processes to ensure correct gender and blood type combinations"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 13,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_FORMAT_NAME_01",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "NAME"
+          ],
+          "validation_expression": "CHECK (NAME ~* '^[A-Z][a-z]* [A-Z][a-z]*$')",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NOT (NAME ~* '^[A-Z][a-z]* [A-Z][a-z]*$')"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_VALID_BLOOD_TYPE_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BLOOD_TYPE"
+          ],
+          "validation_expression": "CHECK (BLOOD_TYPE IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'))",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_AGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "CHECK (AGE BETWEEN 0 AND 120)",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII"
+          ],
+          "masking_technique": "Partial Masking (e.g., first name initial only)",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE LENGTH(NAME) > 0"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PHI"
+          ],
+          "masking_technique": "Full Masking",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS WHERE LENGTH(INSURANCE_PROVIDER) > 0"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Detects age outliers that deviate significantly from the average",
+          "affected_columns": [
+            "AGE"
+          ],
+          "detection_expression": "AGE > AVG(AGE) + 3 * STDDEV(AGE) OR AGE < AVG(AGE) - 3 * STDDEV(AGE)",
+          "severity": "MEDIUM",
+          "recommended_action": "Review patient records for data entry errors"
+        },
+        {
+          "description": "Identify records with billing amounts significantly lower than expected for surgery types",
+          "affected_columns": [
+            "BILLING_AMOUNT",
+            "ADMISSION_TYPE"
+          ],
+          "detection_expression": "BILLING_AMOUNT < 5000 AND ADMISSION_TYPE = 'Elective'",
+          "severity": "HIGH",
+          "recommended_action": "Investigate potential billing or data entry errors"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 14,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "All mentioned columns must not be NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR DATE_OF_ADMISSION IS NULL OR DISCHARGE_DATE IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_02",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE BETWEEN 0 AND 120",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_03",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "NAME"
+          ],
+          "validation_expression": "NAME must follow proper capitalization",
+          "severity": "LOW",
+          "implementation": {
+            "phase": "LONG_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME != INITCAP(NAME)"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_04",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "Combination of ROOM_NUMBER and DATE_OF_ADMISSION must be unique",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII"
+          ],
+          "masking_technique": "Full masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NOT MASKED"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "HIPAA"
+          ],
+          "masking_technique": "Partial masking",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT PARTIALLY MASKED"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Detect outliers in BILLING_AMOUNT",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "BILLING_AMOUNT significantly deviates from the mean",
+          "severity": "MEDIUM",
+          "recommended_action": "Analyze and verify the outliers for potential data entry errors",
+          "detection_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT > 1.5 * (SELECT AVG(BILLING_AMOUNT) FROM PATIENT_ADMISSIONS) OR BILLING_AMOUNT < 0.5 * (SELECT AVG(BILLING_AMOUNT) FROM PATIENT_ADMISSIONS)"
+        },
+        {
+          "description": "Inconsistent gender data with medical titles in NAME",
+          "affected_columns": [
+            "NAME",
+            "GENDER"
+          ],
+          "detection_expression": "Mismatch between gender and medical titles like 'MD'",
+          "severity": "LOW",
+          "recommended_action": "Review gender data and titles for consistency",
+          "detection_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE (NAME LIKE '%MD%' AND GENDER = 'Female') OR (NAME NOT LIKE '%MD%' AND GENDER = 'Male')"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 15,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "CHECK(NAME IS NOT NULL AND AGE IS NOT NULL AND GENDER IS NOT NULL AND BLOOD_TYPE IS NOT NULL AND DATE_OF_ADMISSION IS NOT NULL AND DISCHARGE_DATE IS NOT NULL)",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DISCHARGE_DATE IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "NAME"
+          ],
+          "validation_expression": "CHECK(NAME ~ '^[A-Z][a-z]+ [A-Z][a-z]+$')",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME NOT SIMILAR TO '^[A-Z][a-z]+ [A-Z][a-z]+$'"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "CHECK(AGE BETWEEN 0 AND 120)",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Full Masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PHI",
+            "HIPAA"
+          ],
+          "masking_technique": "Partial Masking",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Negative billing amounts detected",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0",
+          "severity": "HIGH",
+          "recommended_action": "Review and correct negative billing amounts"
+        },
+        {
+          "description": "Inconsistent gender and name patterns",
+          "affected_columns": [
+            "NAME",
+            "GENDER"
+          ],
+          "detection_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE (GENDER = 'Male' AND NAME ~ '[a-z]*[aeiou]{2}[a-z]*') OR (GENDER = 'Female' AND NAME ~ '[a-z]*[bcdfghjklmnpqrstvwxyz]{2}[a-z]*')",
+          "severity": "MEDIUM",
+          "recommended_action": "Review and verify gender and name consistency"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 16,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "HOSPITAL"
+          ],
+          "validation_expression": "ALL COLUMNS NOT NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR HOSPITAL IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "NAME"
+          ],
+          "validation_expression": "Ensure NAME follows standard capitalization format",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME != INITCAP(NAME)"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE BETWEEN 0 AND 120",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_04",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "Ensure dates are valid and in proper format",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NOT DATE_OF_ADMISSION::DATE IS NOT NULL OR NOT DISCHARGE_DATE::DATE IS NOT NULL"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Hashing",
+          "severity": "HIGH",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT MASKED"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Detect negative billing amounts",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "BILLING_AMOUNT < 0",
+          "severity": "HIGH",
+          "recommended_action": "Investigate and correct negative billing entries",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0"
+        },
+        {
+          "description": "Detect gender inconsistencies",
+          "affected_columns": [
+            "GENDER"
+          ],
+          "detection_expression": "GENDER NOT IN ('Male', 'Female')",
+          "severity": "MEDIUM",
+          "recommended_action": "Standardize gender values",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE GENDER NOT IN ('Male', 'Female')"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 17,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "HOSPITAL"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR HOSPITAL IS NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT COUNT(*) FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR HOSPITAL IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "NAME"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME NOT REGEXP '^[A-Z][a-z]+ [A-Z][a-z]+$'",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT COUNT(*) FROM PATIENT_ADMISSIONS WHERE NAME NOT REGEXP '^[A-Z][a-z]+ [A-Z][a-z]+$'"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT COUNT(*) FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_04",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER"
+          ],
+          "validation_expression": "SELECT ROOM_NUMBER, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER HAVING COUNT(*) > 1",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "HIGH",
+            "validation_sql": "SELECT COUNT(*) FROM (SELECT ROOM_NUMBER, COUNT(*) AS cnt FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER HAVING cnt > 1)"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Partial Masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT MASKED PROPERLY"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PII"
+          ],
+          "masking_technique": "Full Masking",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT MASKED"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Negative billing amounts identified",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0",
+          "severity": "HIGH",
+          "recommended_action": "Review and correct negative billing amounts"
+        },
+        {
+          "description": "Discharge dates before admission dates",
+          "affected_columns": [
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "detection_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE DISCHARGE_DATE < DATE_OF_ADMISSION",
+          "severity": "HIGH",
+          "recommended_action": "Correct the discharge dates to be after admission dates"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 18,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "DOCTOR",
+            "HOSPITAL",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DOCTOR IS NULL OR HOSPITAL IS NULL OR DISCHARGE_DATE IS NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT COUNT(*) FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DOCTOR IS NULL OR HOSPITAL IS NULL OR DISCHARGE_DATE IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_02",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT COUNT(*) FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_04",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "NAME"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME NOT REGEXP '^[A-Za-z ]+$'",
+          "severity": "LOW",
+          "implementation": {
+            "phase": "LONG_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT COUNT(*) FROM PATIENT_ADMISSIONS WHERE NAME NOT REGEXP '^[A-Za-z ]+$'"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_CUSTOM_05",
+          "rule_type": "CUSTOM",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "validation_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT COUNT(*) FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Full Masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT NULL"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "HIPAA"
+          ],
+          "masking_technique": "Partial Masking",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT NULL"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Negative billing amounts detected",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0",
+          "severity": "HIGH",
+          "recommended_action": "Investigate and correct the negative billing amounts"
+        },
+        {
+          "description": "Inconsistency in GENDER values",
+          "affected_columns": [
+            "GENDER"
+          ],
+          "detection_expression": "SELECT * FROM PATIENT_ADMISSIONS WHERE GENDER NOT IN ('Male', 'Female')",
+          "severity": "MEDIUM",
+          "recommended_action": "Standardize GENDER values to 'Male' or 'Female'"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 19,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "ALL NOT NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "NAME"
+          ],
+          "validation_expression": "Proper case format",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME NOT SIMILAR TO '^[A-Z][a-z]+( [A-Z][a-z]+)+$'"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE BETWEEN 0 AND 120",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_CUSTOM_04",
+          "rule_type": "CUSTOM",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "validation_expression": "BILLING_AMOUNT >= 0",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Partial masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT MASKED"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PHI",
+            "HIPAA"
+          ],
+          "masking_technique": "Hashing",
+          "severity": "HIGH",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT HASHED"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Negative billing amounts detected",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "BILLING_AMOUNT < 0",
+          "severity": "HIGH",
+          "recommended_action": "Correct negative billing amounts to zero or a valid positive value"
+        },
+        {
+          "description": "Gender and medical condition inconsistency",
+          "affected_columns": [
+            "GENDER",
+            "MEDICAL_CONDITION"
+          ],
+          "detection_expression": "Complex logic to detect gender-specific conditions",
+          "severity": "LOW",
+          "recommended_action": "Review and correct gender-specific medical condition entries"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 20,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "COLUMN IS NOT NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL;"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "NAME"
+          ],
+          "validation_expression": "NAME REGEXP '^[A-Za-z\\s\\.]+$'",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME NOT REGEXP '^[A-Za-z\\s\\.]+$';"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE BETWEEN 0 AND 120",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120;"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_04",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "COUNT(*) = 1 FOR EACH GROUP",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1;"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_REFERENTIAL_05",
+          "rule_type": "REFERENTIAL",
+          "affected_columns": [
+            "INSURANCE_PROVIDER"
+          ],
+          "validation_expression": "INSURANCE_PROVIDER IN (SELECT DISTINCT PROVIDER_NAME FROM INSURANCE_PROVIDERS)",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "LONG_TERM",
+            "complexity": "HIGH",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER NOT IN (SELECT DISTINCT PROVIDER_NAME FROM INSURANCE_PROVIDERS);"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "GDPR"
+          ],
+          "masking_technique": "Full masking with random strings",
+          "severity": "HIGH",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NOT MASKED;"
+        },
+        {
+          "column": "MEDICAL_CONDITION",
+          "compliance_standard": [
+            "PHI",
+            "HIPAA"
+          ],
+          "masking_technique": "Tokenization",
+          "severity": "HIGH",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE MEDICAL_CONDITION IS NOT TOKENIZED;"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Negative or zero billing amounts identified",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "BILLING_AMOUNT <= 0",
+          "severity": "HIGH",
+          "recommended_action": "Review and correct billing entries with negative or zero amounts",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT <= 0;"
+        },
+        {
+          "description": "Inconsistent gender values detected",
+          "affected_columns": [
+            "GENDER"
+          ],
+          "detection_expression": "GENDER NOT IN ('Male', 'Female')",
+          "severity": "MEDIUM",
+          "recommended_action": "Standardize gender values to 'Male' and 'Female'",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE GENDER NOT IN ('Male', 'Female');"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 21,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "column_name IS NOT NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DISCHARGE_DATE IS NULL;"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BLOOD_TYPE"
+          ],
+          "validation_expression": "BLOOD_TYPE REGEXP '^(A|B|AB|O)[+-]$'",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT REGEXP '^(A|B|AB|O)[+-]$';"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE BETWEEN 0 AND 120",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120;"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_CUSTOM_04",
+          "rule_type": "CUSTOM",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "validation_expression": "BILLING_AMOUNT >= 0",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0;"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Partial Masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT MASKED;"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PII"
+          ],
+          "masking_technique": "Redaction",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT REDACTED;"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Detect unusually high or low billing amounts",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "BILLING_AMOUNT < 100 OR BILLING_AMOUNT > 50000",
+          "severity": "MEDIUM",
+          "recommended_action": "Review and validate billing processes to confirm amounts are correct"
+        },
+        {
+          "description": "Identify inconsistent gender values",
+          "affected_columns": [
+            "GENDER"
+          ],
+          "detection_expression": "GENDER NOT IN ('Male', 'Female', 'Other')",
+          "severity": "LOW",
+          "recommended_action": "Standardize gender values across records"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 22,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "HOSPITAL"
+          ],
+          "validation_expression": "All columns in (NAME, AGE, GENDER, BLOOD_TYPE, DATE_OF_ADMISSION, HOSPITAL) should not be NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR HOSPITAL IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "NAME",
+            "DOCTOR"
+          ],
+          "validation_expression": "Names should follow proper capitalization (e.g., 'John Doe')",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME != INITCAP(NAME) OR DOCTOR != INITCAP(DOCTOR)"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE should be a positive integer and less than or equal to 120",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE <= 0 OR AGE > 120"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Partial Masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT NULL AND LENGTH(INSURANCE_PROVIDER) > 0"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Detect gender mismatch anomalies",
+          "affected_columns": [
+            "GENDER"
+          ],
+          "detection_expression": "Check for values outside expected set ('Male', 'Female')",
+          "severity": "MEDIUM",
+          "recommended_action": "Correct gender values to match accepted standards",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE GENDER NOT IN ('Male', 'Female')"
+        },
+        {
+          "description": "Identify billing anomalies",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "Detect unusually low or high billing amounts",
+          "severity": "MEDIUM",
+          "recommended_action": "Review and validate billing amounts for accuracy",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 1000 OR BILLING_AMOUNT > 100000"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 23,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "column IS NOT NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DISCHARGE_DATE IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_02",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "COUNT(DISTINCT ROOM_NUMBER, DATE_OF_ADMISSION) = COUNT(*)",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE BETWEEN 0 AND 120",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_04",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BLOOD_TYPE"
+          ],
+          "validation_expression": "BLOOD_TYPE IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Partial Masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT MASKED"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PHI",
+            "HIPAA"
+          ],
+          "masking_technique": "Generalization",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT MASKED"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Detection of negative or zero billing amounts",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "BILLING_AMOUNT <= 0",
+          "severity": "HIGH",
+          "recommended_action": "Review and correct billing entries with invalid amounts",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT <= 0"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 24,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "DOCTOR",
+            "HOSPITAL",
+            "INSURANCE_PROVIDER",
+            "BILLING_AMOUNT",
+            "ROOM_NUMBER",
+            "ADMISSION_TYPE",
+            "DISCHARGE_DATE",
+            "MEDICATION",
+            "TEST_RESULTS"
+          ],
+          "validation_expression": "All columns must not be NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DOCTOR IS NULL OR HOSPITAL IS NULL OR INSURANCE_PROVIDER IS NULL OR BILLING_AMOUNT IS NULL OR ROOM_NUMBER IS NULL OR ADMISSION_TYPE IS NULL OR DISCHARGE_DATE IS NULL OR MEDICATION IS NULL OR TEST_RESULTS IS NULL;"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "NAME"
+          ],
+          "validation_expression": "NAME should follow the pattern of capitalized first letters for first and last names",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME NOT REGEXP '^[A-Z][a-z]+ [A-Z][a-z]+$';"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE should be between 0 and 120",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120;"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_04",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "ROOM_NUMBER and DATE_OF_ADMISSION combination should be unique",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1;"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA",
+            "GDPR"
+          ],
+          "masking_technique": "Anonymization",
+          "severity": "HIGH",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME NOT LIKE 'XXXX';"
+        },
+        {
+          "column": "BILLING_AMOUNT",
+          "compliance_standard": [
+            "PCI"
+          ],
+          "masking_technique": "Redaction",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT IS NOT NULL AND LENGTH(CAST(BILLING_AMOUNT AS VARCHAR)) != 5;"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Future dates detected in DATE_OF_ADMISSION",
+          "affected_columns": [
+            "DATE_OF_ADMISSION"
+          ],
+          "detection_expression": "DATE_OF_ADMISSION should not be in the future",
+          "severity": "HIGH",
+          "recommended_action": "Review and correct future dates",
+          "detection_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE DATE_OF_ADMISSION > CURRENT_DATE;"
+        },
+        {
+          "description": "GENDER values inconsistency",
+          "affected_columns": [
+            "GENDER"
+          ],
+          "detection_expression": "GENDER should only contain 'Male', 'Female', or 'Other'",
+          "severity": "MEDIUM",
+          "recommended_action": "Standardize gender values",
+          "detection_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE GENDER NOT IN ('Male', 'Female', 'Other');"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 25,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "HOSPITAL"
+          ],
+          "validation_expression": "Each column should not have any NULL values",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR HOSPITAL IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BLOOD_TYPE"
+          ],
+          "validation_expression": "BLOOD_TYPE should match the pattern '^(A|B|AB|O)[+-]$'",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT REGEXP '^(A|B|AB|O)[+-]$'"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE should be between 0 and 120",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_CUSTOM_04",
+          "rule_type": "CUSTOM",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "validation_expression": "BILLING_AMOUNT should be a positive number",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT <= 0"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_05",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "Combination of ROOM_NUMBER and DATE_OF_ADMISSION should be unique",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "LONG_TERM",
+            "complexity": "HIGH",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII"
+          ],
+          "masking_technique": "Partial masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE LENGTH(NAME) < 3 OR NAME LIKE '% %'"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PHI"
+          ],
+          "masking_technique": "Redaction",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NULL"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Detects gender inconsistency with associated names",
+          "affected_columns": [
+            "NAME",
+            "GENDER"
+          ],
+          "detection_expression": "Use a gender prediction model to flag name-gender mismatches",
+          "severity": "LOW",
+          "recommended_action": "Manually review and correct the gender based on NAME"
+        },
+        {
+          "description": "Outliers in billing amounts",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "Identify BILLING_AMOUNT values beyond 3 standard deviations",
+          "severity": "MEDIUM",
+          "recommended_action": "Review and confirm outlier billing entries for accuracy"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 26,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "DOCTOR",
+            "HOSPITAL",
+            "INSURANCE_PROVIDER"
+          ],
+          "validation_expression": "NOT NULL constraint",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DOCTOR IS NULL OR HOSPITAL IS NULL OR INSURANCE_PROVIDER IS NULL;"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "GENDER"
+          ],
+          "validation_expression": "GENDER IN ('Male', 'Female')",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE GENDER NOT IN ('Male', 'Female');"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE BETWEEN 0 AND 120",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120;"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_04",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "NAME",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "Unique constraint on (NAME, DATE_OF_ADMISSION)",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "LONG_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT NAME, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY NAME, DATE_OF_ADMISSION HAVING COUNT(*) > 1;"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_CUSTOM_05",
+          "rule_type": "CUSTOM",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "validation_expression": "BILLING_AMOUNT >= 0",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0;"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Full name masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NOT MASKED;"
+        },
+        {
+          "column": "MEDICAL_CONDITION",
+          "compliance_standard": [
+            "PHI",
+            "HIPAA"
+          ],
+          "masking_technique": "Condition masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE MEDICAL_CONDITION IS NOT MASKED;"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Negative billing amount detected indicating potential data entry error",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "BILLING_AMOUNT < 0",
+          "severity": "HIGH",
+          "recommended_action": "Review and correct negative billing amounts"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 27,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "CHECK (NAME IS NOT NULL AND AGE IS NOT NULL AND GENDER IS NOT NULL AND BLOOD_TYPE IS NOT NULL AND DATE_OF_ADMISSION IS NOT NULL AND DISCHARGE_DATE IS NOT NULL)",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DISCHARGE_DATE IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BLOOD_TYPE"
+          ],
+          "validation_expression": "CHECK (BLOOD_TYPE IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'))",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_03",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "UNIQUE (ROOM_NUMBER, DATE_OF_ADMISSION)",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "LONG_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Hashing",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT MASKED"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Negative billing amounts detected",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "BILLING_AMOUNT < 0",
+          "severity": "HIGH",
+          "recommended_action": "Review and correct negative billing amounts"
+        },
+        {
+          "description": "Discharge date is earlier than admission date",
+          "affected_columns": [
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "detection_expression": "DISCHARGE_DATE < DATE_OF_ADMISSION",
+          "severity": "HIGH",
+          "recommended_action": "Ensure discharge dates are after admission dates"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 28,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "HOSPITAL"
+          ],
+          "validation_expression": "All mandatory columns must not have NULL values.",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR HOSPITAL IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BLOOD_TYPE"
+          ],
+          "validation_expression": "BLOOD_TYPE should match the pattern /^[ABO][+-]$/",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT REGEXP '^[ABO][+-]$'"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE should be between 0 and 120",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_04",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "NAME",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "Combination of NAME and DATE_OF_ADMISSION should be unique",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "LONG_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT NAME, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY NAME, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "GDPR"
+          ],
+          "masking_technique": "Anonymization",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT NULL"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PHI",
+            "HIPAA"
+          ],
+          "masking_technique": "Tokenization",
+          "severity": "HIGH",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT NULL"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Negative or zero billing amounts are anomalies.",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "BILLING_AMOUNT <= 0",
+          "severity": "HIGH",
+          "recommended_action": "Investigate and correct the billing amounts.",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT <= 0"
+        },
+        {
+          "description": "Discharge dates before admission dates are anomalies.",
+          "affected_columns": [
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "detection_expression": "DISCHARGE_DATE < DATE_OF_ADMISSION",
+          "severity": "HIGH",
+          "recommended_action": "Correct the discharge dates to be after the admission dates.",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE DISCHARGE_DATE < DATE_OF_ADMISSION"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 29,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "Ensure no NULL values in NAME, AGE, GENDER, BLOOD_TYPE, DATE_OF_ADMISSION",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "NAME"
+          ],
+          "validation_expression": "Ensure NAME follows proper casing (e.g., 'First Last')",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME != INITCAP(NAME)"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "Ensure AGE is between 0 and 120",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_04",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BLOOD_TYPE"
+          ],
+          "validation_expression": "Ensure BLOOD_TYPE is one of ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_05",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "NAME",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "Ensure combination of NAME and DATE_OF_ADMISSION is unique",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "LONG_TERM",
+            "complexity": "HIGH",
+            "validation_sql": "SELECT NAME, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY NAME, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "HIPAA"
+          ],
+          "masking_technique": "Full Name Redaction",
+          "severity": "HIGH",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NOT MASKED"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "HIPAA"
+          ],
+          "masking_technique": "Partial Masking",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT MASKED"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Identify negative or abnormally high billing amounts",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "Billing amounts should be positive and within a reasonable range",
+          "severity": "HIGH",
+          "recommended_action": "Review and correct billing entries",
+          "detection_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0 OR BILLING_AMOUNT > 100000"
+        },
+        {
+          "description": "Detect gender inconsistencies with common names",
+          "affected_columns": [
+            "NAME",
+            "GENDER"
+          ],
+          "detection_expression": "Check gender against known name databases",
+          "severity": "MEDIUM",
+          "recommended_action": "Verify and update gender information",
+          "detection_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IN ('common name list') AND GENDER NOT IN ('expected gender list')"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 30,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "All columns must not contain NULL values",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DISCHARGE_DATE IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BLOOD_TYPE"
+          ],
+          "validation_expression": "Blood types must match the pattern (A|B|AB|O)[+-]",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT REGEXP '^(A|B|AB|O)[+-]$'"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE must be between 0 and 120",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_04",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "Combination of ROOM_NUMBER and DATE_OF_ADMISSION must be unique",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_CUSTOM_05",
+          "rule_type": "CUSTOM",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "validation_expression": "BILLING_AMOUNT must be a positive number",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT <= 0"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Partial Masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT NULL"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PHI"
+          ],
+          "masking_technique": "Full Masking",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT NULL"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Negative billing amounts detected",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "Detect rows where BILLING_AMOUNT < 0",
+          "severity": "HIGH",
+          "recommended_action": "Investigate and correct negative billing amounts",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0"
+        },
+        {
+          "description": "Gender Inconsistencies",
+          "affected_columns": [
+            "GENDER"
+          ],
+          "detection_expression": "Detect invalid gender entries",
+          "severity": "MEDIUM",
+          "recommended_action": "Standardize gender values to 'Male' or 'Female'",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE GENDER NOT IN ('Male', 'Female')"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 31,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "HOSPITAL"
+          ],
+          "validation_expression": "COLUMN_NAME IS NOT NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR HOSPITAL IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BLOOD_TYPE"
+          ],
+          "validation_expression": "BLOOD_TYPE IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE BETWEEN 0 AND 120",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_04",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "COUNT(DISTINCT ROOM_NUMBER, DATE_OF_ADMISSION) = COUNT(*)",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "LONG_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Full Name Masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT MASKED"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Negative billing amounts detected, indicating potential data entry errors.",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "BILLING_AMOUNT < 0",
+          "severity": "HIGH",
+          "recommended_action": "Review and correct negative billing amounts",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 32,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "DATE_OF_ADMISSION",
+            "INSURANCE_PROVIDER"
+          ],
+          "validation_expression": "column IS NOT NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR DATE_OF_ADMISSION IS NULL OR INSURANCE_PROVIDER IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "GENDER"
+          ],
+          "validation_expression": "GENDER IN ('Male', 'Female')",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE GENDER NOT IN ('Male', 'Female')"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE BETWEEN 0 AND 120",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_04",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "UNIQUE(ROOM_NUMBER, DATE_OF_ADMISSION)",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "LONG_TERM",
+            "complexity": "HIGH",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "partial_masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT MASKED"
+        },
+        {
+          "column": "MEDICAL_CONDITION",
+          "compliance_standard": [
+            "PHI",
+            "HIPAA"
+          ],
+          "masking_technique": "full_masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT MEDICAL_CONDITION FROM PATIENT_ADMISSIONS WHERE MEDICAL_CONDITION IS NOT MASKED"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Negative or zero billing amount detected",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "BILLING_AMOUNT <= 0",
+          "severity": "HIGH",
+          "recommended_action": "Review records and correct billing amounts",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT <= 0"
+        },
+        {
+          "description": "Discharge date before admission date",
+          "affected_columns": [
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "detection_expression": "DISCHARGE_DATE < DATE_OF_ADMISSION",
+          "severity": "HIGH",
+          "recommended_action": "Ensure discharge dates are correct and logical",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE DISCHARGE_DATE < DATE_OF_ADMISSION"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 33,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "Ensure columns are not NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_02",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE BETWEEN 0 AND 120",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_03",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "DATE_OF_ADMISSION <= DISCHARGE_DATE",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE DATE_OF_ADMISSION > DISCHARGE_DATE"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_CUSTOM_04",
+          "rule_type": "CUSTOM",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "validation_expression": "BILLING_AMOUNT > 0",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT <= 0"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_CUSTOM_05",
+          "rule_type": "CUSTOM",
+          "affected_columns": [
+            "GENDER"
+          ],
+          "validation_expression": "GENDER IN ('Male', 'Female', 'Other')",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE GENDER NOT IN ('Male', 'Female', 'Other')"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Partial Masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE LENGTH(NAME) < 5"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Tokenization",
+          "severity": "HIGH",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS WHERE LENGTH(INSURANCE_PROVIDER) < 3"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Negative billing amounts detected",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "BILLING_AMOUNT < 0",
+          "severity": "HIGH",
+          "recommended_action": "Review and correct data entry errors or processing logic"
+        },
+        {
+          "description": "Inconsistent capitalization in names",
+          "affected_columns": [
+            "NAME"
+          ],
+          "detection_expression": "LENGTH(NAME) - LENGTH(UPPER(NAME)) > 0 AND LENGTH(NAME) - LENGTH(LOWER(NAME)) > 0",
+          "severity": "MEDIUM",
+          "recommended_action": "Standardize capitalization"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 34,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "column IS NOT NULL",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DISCHARGE_DATE IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_02",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE BETWEEN 0 AND 120",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_03",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BLOOD_TYPE"
+          ],
+          "validation_expression": "BLOOD_TYPE IN ('A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-')",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT IN ('A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-')"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_04",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "COUNT(DISTINCT ROOM_NUMBER, DATE_OF_ADMISSION) = COUNT(*)",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "LONG_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_CUSTOM_05",
+          "rule_type": "CUSTOM",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "validation_expression": "BILLING_AMOUNT >= 0",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Full Name Hashing",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "HIPAA"
+          ],
+          "masking_technique": "Tokenization",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Detects negative billing amounts",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "BILLING_AMOUNT < 0",
+          "severity": "HIGH",
+          "recommended_action": "Review and correct entries with negative billing amounts"
+        },
+        {
+          "description": "Detects gender inconsistencies with respect to titles in the NAME column",
+          "affected_columns": [
+            "NAME",
+            "GENDER"
+          ],
+          "detection_expression": "GENDER = 'Male' AND NAME LIKE 'Mrs.%' OR GENDER = 'Female' AND NAME LIKE 'Mr.%'",
+          "severity": "LOW",
+          "recommended_action": "Review and correct gender or name title discrepancies"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 35,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "HOSPITAL"
+          ],
+          "validation_expression": "All columns should not have NULL values",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR HOSPITAL IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_02",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "Each ROOM_NUMBER should be unique per DATE_OF_ADMISSION",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_03",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BLOOD_TYPE"
+          ],
+          "validation_expression": "BLOOD_TYPE should match pattern '^(A|B|AB|O)[+-]$'",
+          "severity": "LOW",
+          "implementation": {
+            "phase": "LONG_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT REGEXP '^(A|B|AB|O)[+-]$'"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_04",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "AGE should be between 0 and 120",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII"
+          ],
+          "masking_technique": "Redaction",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT MASKED"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PHI"
+          ],
+          "masking_technique": "Tokenization",
+          "severity": "HIGH",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT TOKENIZED"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Detect negative or zero BILLING_AMOUNT values",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "BILLING_AMOUNT <= 0",
+          "severity": "HIGH",
+          "recommended_action": "Review and correct billing entries",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT <= 0"
+        },
+        {
+          "description": "Identify GENDER values not in expected set ['Male', 'Female']",
+          "affected_columns": [
+            "GENDER"
+          ],
+          "detection_expression": "GENDER NOT IN ('Male', 'Female')",
+          "severity": "MEDIUM",
+          "recommended_action": "Standardize GENDER values",
+          "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE GENDER NOT IN ('Male', 'Female')"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 36,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "Check if any rows have NULL values in NAME, AGE, GENDER, BLOOD_TYPE, DATE_OF_ADMISSION, or DISCHARGE_DATE",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DISCHARGE_DATE IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BLOOD_TYPE"
+          ],
+          "validation_expression": "Check if BLOOD_TYPE matches the allowed pattern: A+, A-, B+, B-, O+, O-, AB+, AB-",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT IN ('A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-')"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_03",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "Check if AGE is between 0 and 120",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_CONSISTENCY_04",
+          "rule_type": "CUSTOM",
+          "affected_columns": [
+            "NAME"
+          ],
+          "validation_expression": "Check if NAME is consistently capitalized",
+          "severity": "LOW",
+          "implementation": {
+            "phase": "LONG_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME != UPPER(NAME)"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII"
+          ],
+          "masking_technique": "Partial Masking (e.g., first name initial, last name)",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE LENGTH(NAME) > 0"
+        },
+        {
+          "column": "BILLING_AMOUNT",
+          "compliance_standard": [
+            "PCI"
+          ],
+          "masking_technique": "Tokenization",
+          "severity": "HIGH",
+          "validation_sql": "SELECT BILLING_AMOUNT FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT IS NOT NULL"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Detect negative billing amounts which are anomalous",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "Identify rows where BILLING_AMOUNT is negative",
+          "severity": "HIGH",
+          "recommended_action": "Review and correct the billing records to ensure no negative values exist",
+          "detection_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0"
+        },
+        {
+          "description": "Detect gender inconsistencies with AGE (e.g., very young ages with unlikely gender assignments)",
+          "affected_columns": [
+            "AGE",
+            "GENDER"
+          ],
+          "detection_expression": "Identify rows with age-related gender anomalies",
+          "severity": "LOW",
+          "recommended_action": "Verify gender and age combinations for data entry errors",
+          "detection_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 5 AND GENDER NOT IN ('Female', 'Male')"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 37,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "GENDER",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "HOSPITAL"
+          ],
+          "validation_expression": "Ensure all columns have non-null values",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR GENDER IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR HOSPITAL IS NULL;"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_RANGE_02",
+          "rule_type": "RANGE",
+          "affected_columns": [
+            "AGE"
+          ],
+          "validation_expression": "Check if AGE is between 0 and 120",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE AGE < 0 OR AGE > 120;"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_03",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "BLOOD_TYPE"
+          ],
+          "validation_expression": "Ensure BLOOD_TYPE matches one of ('A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-')",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BLOOD_TYPE NOT IN ('A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-');"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_04",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "Ensure combination of ROOM_NUMBER and DATE_OF_ADMISSION is unique",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1;"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Partial Masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE NAME IS NOT MASKED;"
+        },
+        {
+          "column": "INSURANCE_PROVIDER",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Full Masking",
+          "severity": "MEDIUM",
+          "validation_sql": "SELECT INSURANCE_PROVIDER FROM PATIENT_ADMISSIONS WHERE INSURANCE_PROVIDER IS NOT MASKED;"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Negative billing amounts detected",
+          "affected_columns": [
+            "BILLING_AMOUNT"
+          ],
+          "detection_expression": "Identify records with negative BILLING_AMOUNT",
+          "severity": "HIGH",
+          "recommended_action": "Review and correct the negative billing entries",
+          "detection_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE BILLING_AMOUNT < 0;"
+        },
+        {
+          "description": "Discharge date earlier than admission date",
+          "affected_columns": [
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "detection_expression": "Check if DISCHARGE_DATE is earlier than DATE_OF_ADMISSION",
+          "severity": "HIGH",
+          "recommended_action": "Validate and correct dates for logical consistency",
+          "detection_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE DISCHARGE_DATE < DATE_OF_ADMISSION;"
+        }
+      ]
+    }
+  },
+  {
+    "chunk": 38,
+    "analysis_results": {
+      "data_quality_rules": [
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_NOT_NULL_01",
+          "rule_type": "NOT_NULL",
+          "affected_columns": [
+            "NAME",
+            "AGE",
+            "BLOOD_TYPE",
+            "DATE_OF_ADMISSION",
+            "DISCHARGE_DATE"
+          ],
+          "validation_expression": "CHECK (NAME IS NOT NULL AND AGE IS NOT NULL AND BLOOD_TYPE IS NOT NULL AND DATE_OF_ADMISSION IS NOT NULL AND DISCHARGE_DATE IS NOT NULL)",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "LOW",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME IS NULL OR AGE IS NULL OR BLOOD_TYPE IS NULL OR DATE_OF_ADMISSION IS NULL OR DISCHARGE_DATE IS NULL"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_PATTERN_02",
+          "rule_type": "PATTERN",
+          "affected_columns": [
+            "NAME",
+            "GENDER",
+            "BLOOD_TYPE",
+            "INSURANCE_PROVIDER"
+          ],
+          "validation_expression": "NAME ~ '^[A-Za-z ]+$' AND GENDER IN ('Male', 'Female') AND BLOOD_TYPE IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')",
+          "severity": "MEDIUM",
+          "implementation": {
+            "phase": "SHORT_TERM",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT * FROM PATIENT_ADMISSIONS WHERE NAME !~ '^[A-Za-z ]+$' OR GENDER NOT IN ('Male', 'Female') OR BLOOD_TYPE NOT IN ('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-')"
+          }
+        },
+        {
+          "rule_name": "DQR_PATIENT_ADMISSIONS_UNIQUENESS_03",
+          "rule_type": "UNIQUENESS",
+          "affected_columns": [
+            "ROOM_NUMBER",
+            "DATE_OF_ADMISSION"
+          ],
+          "validation_expression": "CHECK (COUNT(*) OVER (PARTITION BY ROOM_NUMBER, DATE_OF_ADMISSION) = 1)",
+          "severity": "HIGH",
+          "implementation": {
+            "phase": "IMMEDIATE",
+            "complexity": "MEDIUM",
+            "validation_sql": "SELECT ROOM_NUMBER, DATE_OF_ADMISSION, COUNT(*) FROM PATIENT_ADMISSIONS GROUP BY ROOM_NUMBER, DATE_OF_ADMISSION HAVING COUNT(*) > 1"
+          }
+        }
+      ],
+      "compliance_rules": [
+        {
+          "column": "NAME",
+          "compliance_standard": [
+            "PII",
+            "HIPAA"
+          ],
+          "masking_technique": "Partial masking",
+          "severity": "HIGH",
+          "validation_sql": "SELECT NAME FROM PATIENT_ADMISSIONS WHERE LENGTH(NAME) < 5 OR NAME ~ '[^A-Za-z ]'"
+        },
+        {
+          "column": "MEDICAL_CONDITION",
+          "compliance_standard": [
+            "PHI",
+            "HIPAA"
+          ],
+          "masking_technique": "Redaction",
+          "severity": "HIGH",
+          "validation_sql": "SELECT MEDICAL_CONDITION FROM PATIENT_ADMISSIONS WHERE MEDICAL_CONDITION ~ '[^A-Za-z ]'"
+        }
+      ],
+      "anomaly_detection_rules": [
+        {
+          "description": "Detection of invalid characters and unexpected patterns",
+          "affected_columns": [
+            "NAME",
+            "DOCTOR",
+            "HOSPITAL"
+          ],
+          "detection_expression": "NAME ~ '[^A-Za-z ]' OR DOCTOR ~ '[^A-Za-z ]' OR HOSPITAL ~ '[^A-Za-z0-9 ]'",
+          "severity": "MEDIUM",
+          "recommended_action": "Perform data cleansing to standardize values"
+        },
+        {
+          "description": "Unexpected admission types and test results",
+          "affected_columns": [
+            "ADMISSION_TYPE",
+            "TEST_RESULTS"
+          ],
+          "detection_expression": "ADMISSION_TYPE ~ '[^A-Za-z ]' OR TEST_RESULTS ~ '[^A-Za-z ]'",
+          "severity": "LOW",
+          "recommended_action": "Validate against predefined lists and correct anomalies"
+        }
+      ]
+    }
+  }
+]
